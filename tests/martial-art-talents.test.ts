@@ -7,9 +7,6 @@ import { martialArtDefinitions } from "@/application/gameData/martialArts"
 import { emptyAttunementStats } from "@/calculations/attunementStats"
 import type { DamageBreakdown } from "@/calculations/damage"
 import type { RotationSimulationBaseline } from "@/calculations/rotationCalculator"
-import type { FormulaStatValue, StatEffectValues } from "@/calculations/statEffects"
-import type { CharacterStats, EnemyProfile } from "@/types"
-
 import type {
   EditableObject,
   EffectDefinition,
@@ -18,8 +15,11 @@ import type {
   TimelineBuildInput,
   TimelineRow,
   RotationStep,
-} from "../src/calculations/rotationTimeline.ts"
-import type { StatKey, WeaponId } from "../src/types.ts"
+} from "@/calculations/rotationTimeline.ts"
+import type { FormulaStatValue, StatEffectValues } from "@/calculations/statEffects"
+import type { CharacterStats, EnemyProfile } from "@/types"
+import type { StatKey, WeaponId } from "@/types.ts"
+
 import { withImmediateAttacks } from "./helpers/attack-response-fixtures"
 import { assertClose } from "./helpers/floatEquality"
 import { castStep, delayStep } from "./helpers/rotationSteps"
@@ -30,12 +30,12 @@ describe("martial-art-talents", () => {
     const read = async <T>(path: string): Promise<T> => JSON.parse(await readFile(path, "utf8"))
     const close = (actual: number | undefined, expected: number, label: string) =>
       assertClose(actual, expected, 1e-8, label)
-    const { martialArtEffectsForRank } = await import("../src/data/martialArtTalents.ts")
-    const { calculateStatsWithEffects } = await import("../src/calculations/statEffects.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { calculateRotationBaseline } = await import("../src/calculations/rotationCalculator.ts")
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const { martialArtEffectsForRank } = await import("@/data/martialArtTalents.ts")
+    const { calculateStatsWithEffects } = await import("@/calculations/statEffects.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { calculateRotationBaseline } = await import("@/calculations/rotationCalculator.ts")
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
     const system = await read<{ initialResources: ResourceState }>("data/system.json")
     const arts = martialArtDefinitions
     const effectDirectories = ["buff", "debuff"]
@@ -86,6 +86,8 @@ describe("martial-art-talents", () => {
     ): effect is RawStatConversion & { stat: Partial<Record<StatKey, FormulaStatValue>> } =>
       Boolean(effect.rawStat && effect.stat)
     for (const weapon of Object.keys(arts) as WeaponId[]) {
+      // Unimplemented martial arts have no talents to convert.
+      if (arts[weapon].talent.every(rank => rank.length === 0)) continue
       const effect = martialArtEffectsForRank(arts, [weapon], 13).filter(isRawStatConversion)
       const sheet = calculateStatsWithEffects(emptyStats, effect, 0, [weapon])
       const raw = Object.entries(sheet.rawStats).filter(

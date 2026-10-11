@@ -65,6 +65,17 @@
     "lockedWeapons": ["panaceaFan", "soulshadeUmbrella"],
     "arsenal": "Silkbind"
   },
+  "silkbindWing": {
+    "name": "Wings",
+    "tag": "SilkbindWing",
+    "status": "wip",
+    "buildGroup": "silkbind-wing",
+    "defaultBuild": "empty",
+    "graduated": ["empty"],
+    "defaultRotation": "empty",
+    "lockedWeapons": ["wendongNichang", "xingyouCaoye"],
+    "arsenal": "Silkbind"
+  },
   "bamboocutWind": {
     "name": "Wind",
     "tag": "BamboocutWind",

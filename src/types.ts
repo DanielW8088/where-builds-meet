@@ -63,6 +63,7 @@ export type CharacterStats = {
   gauntletDmgBoost: number
   spearDmgBoost: number
   swordDmgBoost: number
+  ribbonAndDrumDmgBoost: number
   fanDmgBoost: number
   dualBladesDmgBoost: number
   singleTargetMysticDmgBoost: number
@@ -102,9 +103,12 @@ export const weaponIds = [
   "mortalRopeDart",
   "skystrikeGauntlets",
   "rivenTwinblades",
+  "wendongNichang",
+  "xingyouCaoye",
 ] as const
 export type WeaponId = (typeof weaponIds)[number]
 const legacyUniversalWeaponIdSets: readonly (readonly WeaponId[])[] = [
+  weaponIds.filter(id => id !== "wendongNichang" && id !== "xingyouCaoye"),
   ["snowparting", "phalanxbane", "thundercry", "stormbreaker", "everspring", "unfettered", "heavenwill", "skygrasp"],
   [
     "snowparting",
@@ -149,6 +153,7 @@ export type WeaponFamily =
   | "RopeDart"
   | "Gauntlet"
   | "Sword"
+  | "RibbonAndDrum"
   | "Fan"
   | "DualBlades"
 

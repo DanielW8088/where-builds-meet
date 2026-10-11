@@ -353,6 +353,8 @@ export function weaponArtBonus(stats: CharacterStats, skillTags: string[]) {
         return stats.umbrellaDmgBoost
       case "Sword":
         return stats.swordDmgBoost
+      case "RibbonAndDrum":
+        return stats.ribbonAndDrumDmgBoost
       case "Fan":
         return stats.fanDmgBoost
       case "DualBlades":

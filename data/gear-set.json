@@ -133,7 +133,10 @@
       "VernalUmbrella",
       "InkwellFan",
       "EverspringUmbrella",
-      "UnfetteredRopeDart"
+      "UnfetteredRopeDart",
+      "SilkbindWing",
+      "WendongNichang",
+      "XingyouCaoye"
     ],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
@@ -320,6 +323,16 @@
     "name": "Tiltrim",
     "altersTimeline": false,
     "tags": ["BamboocutDraught", "SkystrikeGauntlets", "RivenTwinblades"],
+    "options": {
+      "0": { "name": "0", "effect": {} },
+      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
+      "4": { "name": "4", "effect": { "rawStat": { "minPhys": 77.8 } } }
+    }
+  },
+  "Cloudshear": {
+    "name": "Cloudshear",
+    "altersTimeline": false,
+    "tags": ["SilkbindWing", "WendongNichang", "XingyouCaoye"],
     "options": {
       "0": { "name": "0", "effect": {} },
       "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },

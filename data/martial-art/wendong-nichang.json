@@ -1,0 +1,119 @@
+{
+  "name": "文動霓裳",
+  "weapon": "RibbonAndDrum",
+  "tag": "WendongNichang",
+  "talent": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 73.92 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 } } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "rawStat": { "minSilkbind": 98, "maxSilkbind": 196 },
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.11 } }
+            }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 79.2 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 } } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "rawStat": { "minSilkbind": 106, "maxSilkbind": 212 },
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.118 } }
+            }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] },
+      {
+        "name": "Increases Additional Attack",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "WendongNichang" }],
+            "effect": { "flatAttackBonus": 0.0725 }
+          }
+        ]
+      }
+    ]
+  ]
+}

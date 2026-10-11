@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest"
 
-import type { RotationEntry } from "../src/rotationTransfer.ts"
+import type { RotationEntry } from "@/rotationTransfer"
 
 // Ported from script/probe/check-rotation-transfer.mjs.
 describe("rotation-transfer", () => {
   it("Rotation export and import checks passed", async () => {
     const transfer = await import("../src/rotationTransfer.ts")
-    const { normalizeStoredWeaponIds, weaponIds } = await import("../src/types.ts")
+    const { normalizeStoredWeaponIds, weaponIds } = await import("@/types")
 
     const previousUniversalMartialArts = weaponIds.filter(
-      weapon => weapon !== "skystrikeGauntlets" && weapon !== "rivenTwinblades",
+      weapon => !["skystrikeGauntlets", "rivenTwinblades", "wendongNichang", "xingyouCaoye"].includes(weapon),
     )
     expect(
       normalizeStoredWeaponIds(previousUniversalMartialArts).length === weaponIds.length,

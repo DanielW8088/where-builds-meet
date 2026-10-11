@@ -14,6 +14,7 @@ export type PathId =
   | "stonesplitMight"
   | "silkbindJade"
   | "silkbindDeluge"
+  | "silkbindWing"
   | "bamboocutWind"
   | "bamboocutKite"
   | "bamboocutDust"

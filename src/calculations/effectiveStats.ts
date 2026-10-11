@@ -56,6 +56,8 @@ export function mainAttributeForWeapons(weapons: WeaponId[]) {
       case "strategicSword":
       case "heavenquakerSpear":
         return "bellstrike" as const
+      case "wendongNichang":
+      case "xingyouCaoye":
       case "vernalUmbrella":
       case "inkwellFan":
       case "panaceaFan":

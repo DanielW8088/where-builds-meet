@@ -118,6 +118,13 @@ export const defenseStats: StatDefinition[] = [
   { key: "gauntletDmgBoost", label: "Art of Gauntlet", unit: "%", showUnitInLabel: false, showUnitInInput: true },
   { key: "spearDmgBoost", label: "Art of Spear", unit: "%", showUnitInLabel: false, showUnitInInput: true },
   { key: "swordDmgBoost", label: "Art of Sword", unit: "%", showUnitInLabel: false, showUnitInInput: true },
+  {
+    key: "ribbonAndDrumDmgBoost",
+    label: "Art of Ribbon & Drum",
+    unit: "%",
+    showUnitInLabel: false,
+    showUnitInInput: true,
+  },
   { key: "fanDmgBoost", label: "Art of Fan", unit: "%", showUnitInLabel: false, showUnitInInput: true },
   { key: "dualBladesDmgBoost", label: "Art of Dual Blades", unit: "%", showUnitInLabel: false, showUnitInInput: true },
 ]

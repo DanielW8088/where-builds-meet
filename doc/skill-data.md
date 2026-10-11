@@ -1322,3 +1322,51 @@ Endurance food rebuild combat with the variant’s starting Endurance and capaci
 release ending at 0.831138954 seconds. Its release preserves all damage and
 Bleed applications. The one-minute Umbra preset uses this cancel twice;
 its timed Qi ramps are recalibrated around the earlier attached Qi break.
+
+### Silkbind Wings placeholder
+
+Wings follows Deluge in the path selector and is WIP (Dev mode required). Its
+martial arts are 文動霓裳 (Ribbon & Drum) and 杏遊草野 (Fan); English martial-art
+names are not yet available. Rank 13/14 talents are implemented; castable skills remain absent.
+Wings uses empty build and rotation presets. Ribbon & Drum is a distinct weapon
+family; its gear record has no base stats or affix choices until verified data
+is supplied. Existing Fan gear remains available to 杏遊草野. No Wings combat
+mechanics or damage coefficients are inferred from other paths.
+
+### Wings talent and Inner Way stat coverage
+
+The 2026-10-11 CN normal martial-art export supplies rank 13/14 conversions.
+文動霓裳 converts Agility to minimum Physical Attack and minimum Silkbind
+Attack to Silkbind damage bonus. 杏遊草野 converts Agility to Critical and
+minimum Silkbind Attack to Silkbind Penetration (22/23.6 caps). Both gain
+98–196 or 106–212 raw Silkbind Attack and rank 14 adds 7.25% additional attack
+to that martial art only. The 1.5 Silkbind coefficient belongs in skill data,
+as with other martial arts; it is not a second talent damage multiplier.
+
+`DrumSeries` selects 文動霓裳 drum attacks: +40% base damage while `Tailwind`
+or `RadiantDrum` is active, and Critical damage scales by half sheet Critical
+up to 30%. 杏遊草野 adds Physical and Silkbind damage bonuses under either
+buff, scaling by minimum Physical Attack at 0.00016 up to 12%. Its Tailwind
+modifier sets 24 seconds; while 文動霓裳 is equipped, Tailwind grants 6%
+attribute attack through the shared stat pipeline. Buff application, third-heavy
+follow-up grants, and Tenacity await Wings skills and buff definitions. These
+conditional rules are authored but do not create those combat events.
+
+相和歌 (Song of Harmony), 風知意, 弦墨篇, and 寸草心 currently implement
+only cumulative T2/T5 stats. Other tiers are intentionally empty. Solo Level
+arrays prepend the app’s index-zero slot to the export’s zero-based levels;
+duplicate references are not summed. 寸草心 uses the first Void Attack table,
+matching Celestial Vigor (19.9–39.9 at Solo Level 21), rather than the alternative
+17.9–35.9 table. These stat-only definitions do not alter combat timelines.
+
+### Wings weapon sets
+
+Wings offers Cloudshear and Etherwrath for 文動霓裳 and 杏遊草野. Etherwrath
+uses its existing effects. Cloudshear (set 71 in `wwm-item-sets.json`) currently
+applies only its two-piece minimum Physical Attack bonus, retained at four
+pieces, following the existing WIP set pattern. The authored 77.8 value matches
+the level-96 baseline used by existing weapon-set definitions. Cloudshear’s four-piece buff application is pending:
+applying a qualifying attack buff grants up to 15 seconds of +2% all damage
+and healing to an ally, replaced by +6% when applied to self. Qualifying effects
+are 烁鼓, 扶風, and 千香引魂蠱’s damage buffs. Wings skill/buff application
+is still absent, so this set does not assume permanent coverage.
