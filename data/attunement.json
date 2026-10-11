@@ -326,5 +326,35 @@
     "percentage": true,
     "tags": ["Armor", "BamboocutDraught", "RivenTwinblades"],
     "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["RivenTwinblades", "MartialArt"] }
+  },
+  "wendongNichangMartialBoost": {
+    "name": "文動霓裳 - Martial Art Skill DMG Boost",
+    "percentage": true,
+    "tags": ["Armor", "SilkbindWing", "WendongNichang"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WendongNichang", "MartialArt"] }
+  },
+  "wendongNichangSpecialBoost": {
+    "name": "文動霓裳 - Special Skill DMG Boost",
+    "percentage": true,
+    "tags": ["Armor", "SilkbindWing", "WendongNichang"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WendongNichang", "Special"] }
+  },
+  "wendongNichangLightHeavyVariedComboBoost": {
+    "name": "文動霓裳 - Light/Heavy Attack & Varied Combo DMG Boost",
+    "percentage": true,
+    "tags": ["Armor", "SilkbindWing", "WendongNichang"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WendongNichang", ["Light", "Heavy", "VariedCombo"]] }
+  },
+  "xingyouCaoyeMartialBoost": {
+    "name": "杏遊草野 - Martial Art Skill DMG Boost",
+    "percentage": true,
+    "tags": ["Armor", "SilkbindWing", "XingyouCaoye"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["XingyouCaoye", "MartialArt"] }
+  },
+  "xingyouCaoyeHeavyVariedComboBoost": {
+    "name": "杏遊草野 - Heavy Attack & Varied Combo DMG Boost",
+    "percentage": true,
+    "tags": ["Armor", "SilkbindWing", "XingyouCaoye"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["XingyouCaoye", ["Heavy", "VariedCombo"]] }
   }
 }

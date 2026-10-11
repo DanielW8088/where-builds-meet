@@ -30,6 +30,11 @@ function hasDamageFields(effect: Record<string, unknown>) {
 }
 
 export type AttunementStats = {
+  wendongNichangMartialBoost: number
+  wendongNichangSpecialBoost: number
+  wendongNichangLightHeavyVariedComboBoost: number
+  xingyouCaoyeMartialBoost: number
+  xingyouCaoyeHeavyVariedComboBoost: number
   driftcleaveDeepdazeBoost: number
   skystrikeSpecialBoost: number
   skystrikeMartialBoost: number

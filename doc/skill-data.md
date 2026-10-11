@@ -1370,3 +1370,11 @@ applying a qualifying attack buff grants up to 15 seconds of +2% all damage
 and healing to an ally, replaced by +6% when applied to self. Qualifying effects
 are 烁鼓, 扶風, and 千香引魂蠱’s damage buffs. Wings skill/buff application
 is still absent, so this set does not assume permanent coverage.
+
+### Wings attunements
+
+The tier-96 and tier-100 item exports share five Wings attunement categories.
+文動霓裳 covers Martial Art, Special, and Light/Heavy/Varied Combo damage;
+杏遊草野 covers Martial Art and Heavy/Varied Combo damage. Derived attacks
+use the existing VariedCombo tag. Armor rolls use the shared level-based limits
+(6% at tier 96 and 7% at tier 100); the two tiers import into the same keys.

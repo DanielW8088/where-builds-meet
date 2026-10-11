@@ -15,13 +15,23 @@ import { weaponPair } from "./helpers/weaponPair"
 describe("attunement-import", () => {
   it("attunement-import checks", async () => {
     const close = (actual: number, expected: number, label: string) => assertClose(actual, expected, 1e-9, label)
-    const { parseOfficialGearExport } = await import("../src/officialGearImport.ts")
-    const { mergeImportedBuildState, calculateEquippedGearEffects, maxGearRoll } = await import("../src/gear.ts")
-    const { calculateDamageBreakdown } = await import("../src/calculations/damage.ts")
-    const { calculateHealingBreakdown } = await import("../src/calculations/healing.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const { parseOfficialGearExport } = await import("@/officialGearImport.ts")
+    const { mergeImportedBuildState, calculateEquippedGearEffects, maxGearRoll } = await import("@/gear.ts")
+    const { calculateDamageBreakdown } = await import("@/calculations/damage.ts")
+    const { calculateHealingBreakdown } = await import("@/calculations/healing.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
     const cases: Array<[number, string]> = [
+      [279651, "wendongNichangMartialBoost"],
+      [289651, "wendongNichangMartialBoost"],
+      [279652, "wendongNichangSpecialBoost"],
+      [289652, "wendongNichangSpecialBoost"],
+      [279653, "wendongNichangLightHeavyVariedComboBoost"],
+      [289653, "wendongNichangLightHeavyVariedComboBoost"],
+      [279654, "xingyouCaoyeMartialBoost"],
+      [289654, "xingyouCaoyeMartialBoost"],
+      [279655, "xingyouCaoyeHeavyVariedComboBoost"],
+      [289655, "xingyouCaoyeHeavyVariedComboBoost"],
       [279551, "driftcleaveDeepdazeBoost"],
       [279552, "skystrikeSpecialBoost"],
       [279553, "skystrikeMartialBoost"],
