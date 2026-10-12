@@ -405,8 +405,8 @@ export function buildEntryAvailableForPath(
 }
 
 const weaponDefinitionIds: Record<WeaponId, string> = {
-  wendongNichang: "ribbonAndDrum",
-  xingyouCaoye: "fan",
+  museflowWaistDrum: "ribbonAndDrum",
+  willowbendFan: "fan",
   snowparting: "hengBlade",
   phalanxbane: "moBlade",
   thundercry: "moBlade",

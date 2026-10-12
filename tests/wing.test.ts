@@ -22,8 +22,8 @@ describe("Wings integration", () => {
       expect(productionWeaponIds.has(weapon)).toBe(true)
   })
   it.each([
-    ["xingyouCaoye", 0.1],
-    ["wendongNichang", 0.25],
+    ["willowbendFan", 0.1],
+    ["museflowWaistDrum", 0.25],
   ])("applies the matching Art affix to every %s damage skill and component", (martialArt, expected) => {
     const skills = Object.values(allSkillDefinitions).filter(
       skill =>
@@ -57,7 +57,7 @@ describe("Wings integration", () => {
     ).toBe(0.25)
   })
   it("expands a previously universal weapon list while preserving a specific saved pair", () => {
-    const oldUniversal = weaponIds.filter(id => id !== "wendongNichang" && id !== "xingyouCaoye")
+    const oldUniversal = weaponIds.filter(id => id !== "museflowWaistDrum" && id !== "willowbendFan")
     expect(normalizeStoredWeaponIds(oldUniversal)).toEqual([...weaponIds])
     expect(normalizeStoredWeaponIds(["panaceaFan", "soulshadeUmbrella"])).toEqual(["panaceaFan", "soulshadeUmbrella"])
   })

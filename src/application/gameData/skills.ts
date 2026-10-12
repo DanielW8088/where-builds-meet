@@ -35,6 +35,7 @@ import heavenwillSkills from "@gamedata/skill/heavenwill-gauntlets.json"
 import infernalSkills from "@gamedata/skill/infernal-twinblades.json"
 import mechanismSkills from "@gamedata/skill/mechanism.json"
 import mortalSkills from "@gamedata/skill/mortal-rope-dart.json"
+import drumSkills from "@gamedata/skill/museflow-waist-drum.json"
 import mysticSkills from "@gamedata/skill/mystic.json"
 import namelessSpearSkills from "@gamedata/skill/nameless-spear.json"
 import namelessSwordSkills from "@gamedata/skill/nameless-sword.json"
@@ -47,16 +48,15 @@ import stormbreakerSkills from "@gamedata/skill/stormbreaker-spear.json"
 import strategicSwordSkills from "@gamedata/skill/strategic-sword.json"
 import thundercrySkills from "@gamedata/skill/thundercry-blade.json"
 import unfetteredSkills from "@gamedata/skill/unfettered-rope-dart.json"
-import drumSkills from "@gamedata/skill/wendong-nichang.json"
-import wingFanSkills from "@gamedata/skill/xingyou-caoye.json"
+import wingFanSkills from "@gamedata/skill/willowbend-fan.json"
 
 import type { EffectDefinition, SkillRecord, TrackedEffect } from "@/calculations/rotationTimeline"
 import type { EditorCategory, SkillCategory, SkillMap } from "@/skillOverrides"
 import type { WeaponId } from "@/types"
 
 export const defaultSkillMaps: Record<SkillCategory, SkillMap> = {
-  WendongNichang: drumSkills as SkillMap,
-  XingyouCaoye: wingFanSkills as SkillMap,
+  MuseflowWaistDrum: drumSkills as SkillMap,
+  WillowbendFan: wingFanSkills as SkillMap,
   Snowparting: snowpartingSkills as SkillMap,
   Phalanxbane: phalanxbaneSkills as SkillMap,
   Thundercry: thundercrySkills as SkillMap,
@@ -129,8 +129,8 @@ export const skillCategoryByWeapon: Partial<Record<WeaponId, SkillCategory>> = {
   thundercry: "Thundercry",
   stormbreaker: "Stormbreaker",
   heavenwill: "Heavenwill",
-  wendongNichang: "WendongNichang",
-  xingyouCaoye: "XingyouCaoye",
+  museflowWaistDrum: "MuseflowWaistDrum",
+  willowbendFan: "WillowbendFan",
   skygrasp: "Skygrasp",
   panaceaFan: "Panacea",
   soulshadeUmbrella: "Soulshade",
@@ -145,8 +145,8 @@ export const skillCategoryByWeapon: Partial<Record<WeaponId, SkillCategory>> = {
 }
 export const allSkillDefinitions = Object.assign({}, ...Object.values(defaultSkillMaps)) as SkillMap
 export const skillDataNamespaceByCategory: Record<SkillCategory, string> = {
-  WendongNichang: "wendongNichang",
-  XingyouCaoye: "xingyouCaoye",
+  MuseflowWaistDrum: "museflowWaistDrum",
+  WillowbendFan: "willowbendFan",
   Snowparting: "snowpartingBlade",
   Phalanxbane: "phalanxbaneBlade",
   Thundercry: "thundercryBlade",

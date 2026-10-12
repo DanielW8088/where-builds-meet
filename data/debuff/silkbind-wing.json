@@ -9,7 +9,7 @@
   },
   "InkRhyme": {
     "name": "墨韻",
-    "description": "Increases Fan and Drum Series damage against the target by 5% and reduces its outgoing damage by 5%. Feng Zhiyi T4 increases both effects to 10% against non-player targets.",
+    "description": "Increases Fan and Drum Series damage against the target by 5% and reduces its outgoing damage by 5%. Zephyr Whispers T4 increases both effects to 10% against non-player targets.",
     "duration": 8,
     "maxStack": 1,
     "refresh": true,
@@ -19,7 +19,7 @@
           {
             "operator": "or",
             "operand": [
-              { "target": "skillTag", "value": "XingyouCaoye" },
+              { "target": "skillTag", "value": "WillowbendFan" },
               { "target": "skillTag", "value": "DrumSeries" }
             ]
           }
@@ -30,7 +30,7 @@
   },
   "Cuncao": {
     "name": "寸草",
-    "description": "寸草心 stacks require an eligible varied attack, including 鼓樂和 or 煞盡東風, to hit at least 3 enemies simultaneously (2 at T4; 3 grants 2 stacks). Lasts 5s, or 8s at T1; up to 5 stacks. Eligible attacks deal 2% more damage per stack, increased to 4% at T3. T6 adds 5% damage against targets at 5 stacks. Cannot build stacks against a single target.",
+    "description": "Blade's Will stacks require an eligible varied attack, including 鼓樂和 or 煞盡東風, to hit at least 3 enemies simultaneously (2 at T4; 3 grants 2 stacks). Lasts 5s, or 8s at T1; up to 5 stacks. Eligible attacks deal 2% more damage per stack, increased to 4% at T3. T6 adds 5% damage against targets at 5 stacks. Cannot build stacks against a single target.",
     "duration": 5,
     "maxStack": 5,
     "refresh": true,
@@ -62,7 +62,7 @@
                 { "target": "skillTag", "value": "FiendishSquall" }
               ]
             },
-            { "target": "self", "value": "CuncaoXinT3" }
+            { "target": "self", "value": "BladesWillT3" }
           ],
           "effect": { "globalDmgBonus": 0.02 }
         }
@@ -93,7 +93,7 @@
                 { "target": "skillTag", "value": "FiendishSquall" }
               ]
             },
-            { "target": "self", "value": "CuncaoXinT3" }
+            { "target": "self", "value": "BladesWillT3" }
           ],
           "effect": { "globalDmgBonus": 0.04 }
         }
@@ -124,7 +124,7 @@
                 { "target": "skillTag", "value": "FiendishSquall" }
               ]
             },
-            { "target": "self", "value": "CuncaoXinT3" }
+            { "target": "self", "value": "BladesWillT3" }
           ],
           "effect": { "globalDmgBonus": 0.06 }
         }
@@ -155,7 +155,7 @@
                 { "target": "skillTag", "value": "FiendishSquall" }
               ]
             },
-            { "target": "self", "value": "CuncaoXinT3" }
+            { "target": "self", "value": "BladesWillT3" }
           ],
           "effect": { "globalDmgBonus": 0.08 }
         }
@@ -186,7 +186,7 @@
                 { "target": "skillTag", "value": "FiendishSquall" }
               ]
             },
-            { "target": "self", "value": "CuncaoXinT3" }
+            { "target": "self", "value": "BladesWillT3" }
           ],
           "effect": { "globalDmgBonus": 0.1 }
         }

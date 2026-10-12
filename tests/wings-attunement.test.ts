@@ -5,17 +5,19 @@ import { maxGearRoll } from "@/gear"
 
 describe("Wings attunement eligibility", () => {
   it.each([
-    ["WendongNichang", "MartialArt", "wendongNichangMartialBoost"],
-    ["WendongNichang", "Special", "wendongNichangSpecialBoost"],
-    ["WendongNichang", "Light", "wendongNichangLightHeavyVariedComboBoost"],
-    ["WendongNichang", "Heavy", "wendongNichangLightHeavyVariedComboBoost"],
-    ["WendongNichang", "VariedCombo", "wendongNichangLightHeavyVariedComboBoost"],
-    ["XingyouCaoye", "MartialArt", "xingyouCaoyeMartialBoost"],
-    ["XingyouCaoye", "Heavy", "xingyouCaoyeHeavyVariedComboBoost"],
-    ["XingyouCaoye", "VariedCombo", "xingyouCaoyeHeavyVariedComboBoost"],
+    ["MuseflowWaistDrum", "MartialArt", "museflowWaistDrumMartialBoost"],
+    ["MuseflowWaistDrum", "Special", "museflowWaistDrumSpecialBoost"],
+    ["MuseflowWaistDrum", "Light", "museflowWaistDrumLightHeavyVariedComboBoost"],
+    ["MuseflowWaistDrum", "Heavy", "museflowWaistDrumLightHeavyVariedComboBoost"],
+    ["MuseflowWaistDrum", "VariedCombo", "museflowWaistDrumLightHeavyVariedComboBoost"],
+    ["WillowbendFan", "MartialArt", "willowbendFanMartialBoost"],
+    ["WillowbendFan", "Heavy", "willowbendFanHeavyVariedComboBoost"],
+    ["WillowbendFan", "VariedCombo", "willowbendFanHeavyVariedComboBoost"],
   ])("applies only the matching bonus to %s %s", (art, category, key) => {
     const wingsKeys = new Set(
-      Object.keys(emptyAttunementStats).filter(id => id.startsWith("wendongNichang") || id.startsWith("xingyouCaoye")),
+      Object.keys(emptyAttunementStats).filter(
+        id => id.startsWith("museflowWaistDrum") || id.startsWith("willowbendFan"),
+      ),
     )
     const matched = matchingAttunementEntries(emptyAttunementStats, [art, category]).filter(entry =>
       wingsKeys.has(entry.key),
@@ -27,13 +29,13 @@ describe("Wings attunement eligibility", () => {
   })
 
   it.each([
-    ["XingyouCaoye", "Light"],
-    ["WendongNichang", "Charged"],
+    ["WillowbendFan", "Light"],
+    ["MuseflowWaistDrum", "Charged"],
     ["NamelessSword", "MartialArt"],
   ])("does not boost unrelated %s %s attacks", (art, category) => {
     const matched = matchingAttunementEntries(emptyAttunementStats, [art, category])
-    expect(matched.some(entry => entry.key.startsWith("wendongNichang") || entry.key.startsWith("xingyouCaoye"))).toBe(
-      false,
-    )
+    expect(
+      matched.some(entry => entry.key.startsWith("museflowWaistDrum") || entry.key.startsWith("willowbendFan")),
+    ).toBe(false)
   })
 })

@@ -103,12 +103,12 @@ export const weaponIds = [
   "mortalRopeDart",
   "skystrikeGauntlets",
   "rivenTwinblades",
-  "wendongNichang",
-  "xingyouCaoye",
+  "museflowWaistDrum",
+  "willowbendFan",
 ] as const
 export type WeaponId = (typeof weaponIds)[number]
 const legacyUniversalWeaponIdSets: readonly (readonly WeaponId[])[] = [
-  weaponIds.filter(id => id !== "wendongNichang" && id !== "xingyouCaoye"),
+  weaponIds.filter(id => id !== "museflowWaistDrum" && id !== "willowbendFan"),
   ["snowparting", "phalanxbane", "thundercry", "stormbreaker", "everspring", "unfettered", "heavenwill", "skygrasp"],
   [
     "snowparting",

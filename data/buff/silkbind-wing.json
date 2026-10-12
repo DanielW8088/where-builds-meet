@@ -7,7 +7,7 @@
     "effect": [
       {
         "requirement": [
-          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
           "stat": {
@@ -116,7 +116,7 @@
     "effect": [
       {
         "requirement": [
-          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
           "dmgBonus": 0.06,
@@ -138,7 +138,7 @@
     "effect": [
       {
         "requirement": [
-          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
           "dmgBonus": 0.06,
@@ -160,7 +160,7 @@
     "effect": [
       {
         "requirement": [
-          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
           "dmgBonus": 0.06,
@@ -176,7 +176,7 @@
   },
   "WingsSupportDuration": {
     "name": "Wings Support Duration",
-    "global": { "equippedMartialArt": "wendongNichang" },
+    "global": { "equippedMartialArt": "museflowWaistDrum" },
     "effect": [
       {
         "requirement": [{ "target": "self", "value": "WingsSupportBlue" }],

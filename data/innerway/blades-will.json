@@ -1,10 +1,10 @@
 {
-  "name": "寸草心",
+  "name": "Blade's Will",
   "description": "An Inner Way for multiple targets. Its damage stacks require an eligible attack to hit at least 3 enemies simultaneously, reduced to 2 at T4. Drum Specials do not qualify. Against one target, only the T2 Void Attack and T5 Formless Penetration stats contribute; the stacking damage bonuses cannot activate.",
   "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {
-    "CuncaoXinT0": {
+    "BladesWillT0": {
       "trigger": [
         {
           "target": "target",
@@ -23,7 +23,7 @@
               "operand": [
                 { "target": "enemyCount", "comparison": ">=", "amount": 3 },
                 [
-                  { "target": "self", "value": "CuncaoXinT4" },
+                  { "target": "self", "value": "BladesWillT4" },
                   { "target": "enemyCount", "comparison": ">=", "amount": 2 }
                 ]
               ]
@@ -38,7 +38,7 @@
               "reapply": true,
               "additionalStack": {
                 "requirement": [
-                  { "target": "self", "value": "CuncaoXinT4" },
+                  { "target": "self", "value": "BladesWillT4" },
                   { "target": "enemyCount", "comparison": ">=", "amount": 3 }
                 ],
                 "stack": 1
@@ -48,8 +48,8 @@
         }
       ]
     },
-    "CuncaoXinT1": { "effect": [{ "target": "Cuncao", "modify": { "duration": 8 } }] },
-    "CuncaoXinT2": {
+    "BladesWillT1": { "effect": [{ "target": "Cuncao", "modify": { "duration": 8 } }] },
+    "BladesWillT2": {
       "effect": [
         {
           "rawStat": {
@@ -117,10 +117,10 @@
         }
       ]
     },
-    "CuncaoXinT3": {},
-    "CuncaoXinT4": {},
-    "CuncaoXinT5": { "effect": [{ "rawStat": { "formlessPenetration": 6 } }] },
-    "CuncaoXinT6": {
+    "BladesWillT3": {},
+    "BladesWillT4": {},
+    "BladesWillT5": { "effect": [{ "rawStat": { "formlessPenetration": 6 } }] },
+    "BladesWillT6": {
       "effect": [
         {
           "requirement": [

@@ -1,6 +1,6 @@
 {
   "name": "Dummy 1 Min Jadebreaker",
-  "martialArts": ["wendongNichang", "xingyouCaoye"],
+  "martialArts": ["museflowWaistDrum", "willowbendFan"],
   "targetType": "Dummy",
   "eventTimeReference": "battleStart",
   "start": { "step": 3, "action": 3 },

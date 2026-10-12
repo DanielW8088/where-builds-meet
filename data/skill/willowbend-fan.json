@@ -22,8 +22,8 @@
       }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "MartialArt", "Rustling", "Fan"],
-    "martialArt": "xingyouCaoye",
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "MartialArt", "Rustling", "Fan"],
+    "martialArt": "willowbendFan",
     "weapon": "Fan",
     "cooldown": 15,
     "cooldownGroup": "BoundlessBloom"
@@ -59,8 +59,8 @@
       }
     ],
     "modifier": [{ "effect": { "hpDMGBonus": 0.25 } }],
-    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "MartialArt", "BoundlessBloom", "Fan"],
-    "martialArt": "xingyouCaoye",
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "MartialArt", "BoundlessBloom", "Fan"],
+    "martialArt": "willowbendFan",
     "weapon": "Fan",
     "cooldown": 15,
     "cooldownGroup": "BoundlessBloom"
@@ -97,8 +97,8 @@
       { "type": "apply", "target": "self", "value": "FlowingWind", "stack": 1, "reapply": true, "time": 0 }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "Special", "NorthwindSweep", "Fan"],
-    "martialArt": "xingyouCaoye",
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "Special", "NorthwindSweep", "Fan"],
+    "martialArt": "willowbendFan",
     "weapon": "Fan",
     "cooldown": 8
   },
@@ -125,47 +125,47 @@
       },
       {
         "type": "trigger",
-        "value": "FengNobleRecovery",
+        "value": "ZephyrWhispersNobleRecovery",
         "time": 0.566,
-        "requirement": [{ "target": "self", "value": "FengZhiyiT3" }]
+        "requirement": [{ "target": "self", "value": "ZephyrWhispersT3" }]
       },
       {
         "type": "apply",
         "target": "target",
         "value": "InkRhyme",
         "time": 1.816,
-        "requirement": [{ "target": "self", "value": "FengZhiyiT1" }]
+        "requirement": [{ "target": "self", "value": "ZephyrWhispersT1" }]
       },
       {
         "type": "trigger",
-        "value": "FengNobleRecovery",
+        "value": "ZephyrWhispersNobleRecovery",
         "time": 0.966,
         "requirement": [
-          { "target": "self", "value": "FengZhiyiT3" },
+          { "target": "self", "value": "ZephyrWhispersT3" },
           { "target": "enemyCount", "comparison": ">=", "amount": 2 }
         ]
       },
       {
         "type": "trigger",
-        "value": "FengNobleRecovery",
+        "value": "ZephyrWhispersNobleRecovery",
         "time": 1.366,
         "requirement": [
-          { "target": "self", "value": "FengZhiyiT3" },
+          { "target": "self", "value": "ZephyrWhispersT3" },
           { "target": "enemyCount", "comparison": ">=", "amount": 3 }
         ]
       },
       {
         "type": "trigger",
-        "value": "FengNobleRecovery",
+        "value": "ZephyrWhispersNobleRecovery",
         "time": 1.766,
         "requirement": [
-          { "target": "self", "value": "FengZhiyiT3" },
+          { "target": "self", "value": "ZephyrWhispersT3" },
           { "target": "enemyCount", "comparison": ">=", "amount": 4 }
         ]
       }
     ],
     "modifier": [
-      { "requirement": [{ "target": "self", "value": "FengZhiyiT3" }], "effect": { "baseDMGBonus": 0.2 } },
+      { "requirement": [{ "target": "self", "value": "ZephyrWhispersT3" }], "effect": { "baseDMGBonus": 0.2 } },
       {
         "requirement": [{ "target": "enemyCount", "comparison": ">=", "amount": 2 }],
         "effect": {
@@ -185,13 +185,13 @@
         }
       }
     ],
-    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "Perception", "FiendishSquall", "Fan"],
-    "martialArt": "xingyouCaoye",
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "Perception", "FiendishSquall", "Fan"],
+    "martialArt": "willowbendFan",
     "weapon": "Fan",
-    "requirement": [{ "target": "self", "value": "FengZhiyiT0" }]
+    "requirement": [{ "target": "self", "value": "ZephyrWhispersT0" }]
   },
-  "FengNobleRecovery": {
-    "name": "風知意·雅意回復",
+  "ZephyrWhispersNobleRecovery": {
+    "name": "Zephyr Whispers: Noble Recovery",
     "castTime": 0,
     "ignorePing": true,
     "cooldown": 15,

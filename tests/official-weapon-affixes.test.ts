@@ -53,7 +53,7 @@ describe("official weapon damage affixes", () => {
           },
         },
       },
-      ["wendongNichang", "xingyouCaoye"],
+      ["museflowWaistDrum", "willowbendFan"],
     )
     expect(parsed.warnings).toEqual([])
     const merged = mergeImportedBuildState({ entries: [], activeBuildId: "", gearItems: [] }, parsed.exportValue)

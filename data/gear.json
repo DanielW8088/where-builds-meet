@@ -1554,7 +1554,7 @@
     "ribbonAndDrum": {
       "name": "Ribbon & Drum",
       "slots": ["leftWeapon", "rightWeapon"],
-      "weapon": "wendongNichang",
+      "weapon": "museflowWaistDrum",
       "baseStats": {
         "91": { "Gold": { "minPhys": 53, "maxPhys": 124 }, "Purple": { "minPhys": 48, "maxPhys": 112 } },
         "96": { "Gold": { "minPhys": 65, "maxPhys": 151 }, "Purple": { "minPhys": 59, "maxPhys": 136 } },

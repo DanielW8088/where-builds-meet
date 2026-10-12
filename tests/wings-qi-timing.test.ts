@@ -11,7 +11,7 @@ it.each([jade, dawn])("depletes Qi proportionally before the third Drum Special 
   const bundle = buildPresetRotationBundle(
     {
       pathId: "silkbindWing",
-      martialArts: ["wendongNichang", "xingyouCaoye"],
+      martialArts: ["museflowWaistDrum", "willowbendFan"],
       rotation: rotation as RotationRecord,
       breakthrough: "17",
       globalDebuffs: { ...defaultGlobalDebuffs },

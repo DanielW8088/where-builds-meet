@@ -2,10 +2,10 @@ import adaptiveSteel from "@gamedata/innerway/adaptive-steel.json"
 import artOfResistance from "@gamedata/innerway/art-of-resistance.json"
 import battleAnthem from "@gamedata/innerway/battle-anthem.json"
 import bitterSeasons from "@gamedata/innerway/bitter-seasons.json"
+import bladesWill from "@gamedata/innerway/blades-will.json"
 import blossomBarrage from "@gamedata/innerway/blossom-barrage.json"
 import breakingPoint from "@gamedata/innerway/breaking-point.json"
 import celestialVigor from "@gamedata/innerway/celestial-vigor.json"
-import cuncaoXin from "@gamedata/innerway/cuncao-xin.json"
 import divineRoulette from "@gamedata/innerway/divine-roulette.json"
 import echoesOfOblivion from "@gamedata/innerway/echoes-of-oblivion.json"
 import empiricalEdge from "@gamedata/innerway/empirical-edge.json"
@@ -15,12 +15,13 @@ import esotericRevival from "@gamedata/innerway/esoteric-revival.json"
 import evasiveCharge from "@gamedata/innerway/evasive-charge.json"
 import eveningSnow from "@gamedata/innerway/evening-snow.json"
 import exquisiteScenery from "@gamedata/innerway/exquisite-scenery.json"
-import fengZhiyi from "@gamedata/innerway/feng-zhiyi.json"
 import fivefoldBleed from "@gamedata/innerway/fivefold-bleed.json"
 import frostCladNight from "@gamedata/innerway/frost-clad-night.json"
 import furyHarvest from "@gamedata/innerway/fury-harvest.json"
 import gourdToss from "@gamedata/innerway/gourd-toss.json"
+import harmonySong from "@gamedata/innerway/harmony-song.json"
 import heartOfFire from "@gamedata/innerway/heart-of-fire.json"
+import inkAndStrings from "@gamedata/innerway/ink-and-strings.json"
 import insightfulStrike from "@gamedata/innerway/insightful-strike.json"
 import lightAndShadowAlike from "@gamedata/innerway/light-and-shadow-alike.json"
 import lightAnew from "@gamedata/innerway/light-anew.json"
@@ -39,7 +40,6 @@ import shadowAssault from "@gamedata/innerway/shadow-assault.json"
 import skyGripped from "@gamedata/innerway/sky-gripped.json"
 import skyspeak from "@gamedata/innerway/skyspeak.json"
 import soaringHigh from "@gamedata/innerway/soaring-high.json"
-import songOfHarmony from "@gamedata/innerway/song-of-harmony.json"
 import songOfTang from "@gamedata/innerway/song-of-tang.json"
 import starReacher from "@gamedata/innerway/star-reacher.json"
 import steadfastDevotion from "@gamedata/innerway/steadfast-devotion.json"
@@ -57,7 +57,7 @@ import wildfireSpark from "@gamedata/innerway/wildfire-spark.json"
 import wildfireSurge from "@gamedata/innerway/wildfire-surge.json"
 import windBeneathWings from "@gamedata/innerway/wind-beneath-wings.json"
 import wolfchasersArt from "@gamedata/innerway/wolfchasers-art.json"
-import xianmoPian from "@gamedata/innerway/xianmo-pian.json"
+import zephyrWhispers from "@gamedata/innerway/zephyr-whispers.json"
 
 /**
  * A tier's authored effect, as the data files carry it. The rule that applies it
@@ -79,10 +79,10 @@ export type InnerWayDefinition = {
 }
 
 export const innerWayDefinitions = {
-  CuncaoXin: cuncaoXin,
-  XianmoPian: xianmoPian,
-  FengZhiyi: fengZhiyi,
-  SongOfHarmony: songOfHarmony,
+  BladesWill: bladesWill,
+  InkAndStrings: inkAndStrings,
+  ZephyrWhispers: zephyrWhispers,
+  HarmonySong: harmonySong,
   FrostCladNight: frostCladNight,
   MoraleChant: moraleChant,
   SteadfastDevotion: steadfastDevotion,

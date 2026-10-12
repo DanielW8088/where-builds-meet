@@ -1,9 +1,9 @@
 {
-  "name": "弦墨篇",
+  "name": "Ink and Strings",
   "altersTimeline": false,
   "tags": ["SilkbindWing"],
   "effect": {
-    "XianmoPianT0": {
+    "InkAndStringsT0": {
       "effect": [
         {
           "requirement": [
@@ -17,14 +17,14 @@
               ]
             },
             { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-            { "operator": "not", "operand": [{ "target": "self", "value": "XianmoPianT4" }] }
+            { "operator": "not", "operand": [{ "target": "self", "value": "InkAndStringsT4" }] }
           ],
           "effect": { "stat": { "formlessPenetration": 5 } }
         }
       ]
     },
-    "XianmoPianT1": {},
-    "XianmoPianT2": {
+    "InkAndStringsT1": {},
+    "InkAndStringsT2": {
       "effect": [
         {
           "rawStat": {
@@ -92,7 +92,7 @@
         }
       ]
     },
-    "XianmoPianT3": {
+    "InkAndStringsT3": {
       "effect": [
         {
           "requirement": [
@@ -106,13 +106,13 @@
               ]
             },
             { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-            { "operator": "not", "operand": [{ "target": "self", "value": "XianmoPianT4" }] }
+            { "operator": "not", "operand": [{ "target": "self", "value": "InkAndStringsT4" }] }
           ],
           "effect": { "stat": { "formlessPenetration": 3 } }
         }
       ]
     },
-    "XianmoPianT4": {
+    "InkAndStringsT4": {
       "effect": [
         {
           "requirement": [
@@ -125,14 +125,14 @@
                 { "target": "self", "value": "FloatingGraceDeluge" }
               ]
             },
-            { "operator": "not", "operand": [{ "target": "self", "value": "XianmoPianT6" }] }
+            { "operator": "not", "operand": [{ "target": "self", "value": "InkAndStringsT6" }] }
           ],
           "effect": { "stat": { "formlessPenetration": 8 } }
         }
       ]
     },
-    "XianmoPianT5": { "effect": [{ "rawStat": { "physDmgBonus": 0.025 } }] },
-    "XianmoPianT6": {
+    "InkAndStringsT5": { "effect": [{ "rawStat": { "physDmgBonus": 0.025 } }] },
+    "InkAndStringsT6": {
       "effect": [
         {
           "requirement": [

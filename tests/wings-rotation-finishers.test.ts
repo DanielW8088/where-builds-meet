@@ -25,7 +25,7 @@ describe("Wings rotation finishers", () => {
         const bundle = buildPresetRotationBundle(
           {
             pathId: "silkbindWing",
-            martialArts: ["wendongNichang", "xingyouCaoye"],
+            martialArts: ["museflowWaistDrum", "willowbendFan"],
             rotation: candidate,
             breakthrough,
             globalDebuffs: { ...defaultGlobalDebuffs },

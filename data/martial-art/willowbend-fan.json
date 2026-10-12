@@ -1,7 +1,7 @@
 {
-  "name": "杏遊草野",
+  "name": "Willowbend Fan",
   "weapon": "Fan",
-  "tag": "XingyouCaoye",
+  "tag": "WillowbendFan",
   "talent": [
     [
       {
@@ -10,7 +10,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -35,7 +35,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -66,7 +66,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -123,7 +123,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -192,7 +192,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -258,7 +258,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -328,7 +328,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -392,7 +392,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -458,7 +458,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -524,7 +524,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -590,7 +590,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -660,7 +660,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -730,7 +730,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -796,7 +796,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -862,7 +862,7 @@
           {
             "requirement": [
               { "target": "self", "value": "Tailwind" },
-              { "target": "equippedMartialArt", "value": "wendongNichang" }
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
             ],
             "effect": {
               "stat": {
@@ -923,7 +923,7 @@
         "name": "Increases Additional Attack",
         "effect": [
           {
-            "requirement": [{ "target": "skillTag", "value": "XingyouCaoye" }],
+            "requirement": [{ "target": "skillTag", "value": "WillowbendFan" }],
             "effect": { "flatAttackBonus": 0.0725 }
           }
         ]

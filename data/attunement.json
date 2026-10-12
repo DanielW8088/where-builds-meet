@@ -327,34 +327,34 @@
     "tags": ["Armor", "BamboocutDraught", "RivenTwinblades"],
     "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["RivenTwinblades", "MartialArt"] }
   },
-  "wendongNichangMartialBoost": {
-    "name": "文動霓裳 - Martial Art Skill DMG Boost",
+  "museflowWaistDrumMartialBoost": {
+    "name": "Museflow Waist Drum - Martial Art Skill DMG Boost",
     "percentage": true,
-    "tags": ["Armor", "SilkbindWing", "WendongNichang"],
-    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WendongNichang", "MartialArt"] }
+    "tags": ["Armor", "SilkbindWing", "MuseflowWaistDrum"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["MuseflowWaistDrum", "MartialArt"] }
   },
-  "wendongNichangSpecialBoost": {
-    "name": "文動霓裳 - Special Skill DMG Boost",
+  "museflowWaistDrumSpecialBoost": {
+    "name": "Museflow Waist Drum - Special Skill DMG Boost",
     "percentage": true,
-    "tags": ["Armor", "SilkbindWing", "WendongNichang"],
-    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WendongNichang", "Special"] }
+    "tags": ["Armor", "SilkbindWing", "MuseflowWaistDrum"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["MuseflowWaistDrum", "Special"] }
   },
-  "wendongNichangLightHeavyVariedComboBoost": {
-    "name": "文動霓裳 - Light/Heavy Attack & Varied Combo DMG Boost",
+  "museflowWaistDrumLightHeavyVariedComboBoost": {
+    "name": "Museflow Waist Drum - Light/Heavy Attack & Varied Combo DMG Boost",
     "percentage": true,
-    "tags": ["Armor", "SilkbindWing", "WendongNichang"],
-    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WendongNichang", ["Light", "Heavy", "VariedCombo"]] }
+    "tags": ["Armor", "SilkbindWing", "MuseflowWaistDrum"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["MuseflowWaistDrum", ["Light", "Heavy", "VariedCombo"]] }
   },
-  "xingyouCaoyeMartialBoost": {
-    "name": "杏遊草野 - Martial Art Skill DMG Boost",
+  "willowbendFanMartialBoost": {
+    "name": "Willowbend Fan - Martial Art Skill DMG Boost",
     "percentage": true,
-    "tags": ["Armor", "SilkbindWing", "XingyouCaoye"],
-    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["XingyouCaoye", "MartialArt"] }
+    "tags": ["Armor", "SilkbindWing", "WillowbendFan"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WillowbendFan", "MartialArt"] }
   },
-  "xingyouCaoyeHeavyVariedComboBoost": {
-    "name": "杏遊草野 - Heavy Attack & Varied Combo DMG Boost",
+  "willowbendFanHeavyVariedComboBoost": {
+    "name": "Willowbend Fan - Heavy Attack & Varied Combo DMG Boost",
     "percentage": true,
-    "tags": ["Armor", "SilkbindWing", "XingyouCaoye"],
-    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["XingyouCaoye", ["Heavy", "VariedCombo"]] }
+    "tags": ["Armor", "SilkbindWing", "WillowbendFan"],
+    "effect": { "stat": { "attunementDMGBonus": 1 }, "tags": ["WillowbendFan", ["Heavy", "VariedCombo"]] }
   }
 }

@@ -291,7 +291,7 @@
       "fixture": {
         "build": "wings-fully-relayed-min",
         "rotation": "wings-dummy-1-min-dawnsun",
-        "martialArts": ["wendongNichang", "xingyouCaoye"],
+        "martialArts": ["museflowWaistDrum", "willowbendFan"],
         "breakthrough": "17",
         "ping": 40,
         "food": "SimmeringFishSlices",
@@ -317,7 +317,7 @@
       "fixture": {
         "build": "wings-fully-relayed-min",
         "rotation": "wings-dummy-1-min-jadebreaker",
-        "martialArts": ["wendongNichang", "xingyouCaoye"],
+        "martialArts": ["museflowWaistDrum", "willowbendFan"],
         "breakthrough": "17",
         "ping": 40,
         "food": "SimmeringFishSlices",

@@ -9,7 +9,7 @@ describe("rotation-transfer", () => {
     const { normalizeStoredWeaponIds, weaponIds } = await import("@/types")
 
     const previousUniversalMartialArts = weaponIds.filter(
-      weapon => !["skystrikeGauntlets", "rivenTwinblades", "wendongNichang", "xingyouCaoye"].includes(weapon),
+      weapon => !["skystrikeGauntlets", "rivenTwinblades", "museflowWaistDrum", "willowbendFan"].includes(weapon),
     )
     expect(
       normalizeStoredWeaponIds(previousUniversalMartialArts).length === weaponIds.length,

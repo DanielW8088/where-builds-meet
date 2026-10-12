@@ -4,6 +4,7 @@ import heavenwillMartialArt from "@gamedata/martial-art/heavenwill-gauntlets.jso
 import infernalTwinbladesMartialArt from "@gamedata/martial-art/infernal-twinblades.json"
 import inkwellFanMartialArt from "@gamedata/martial-art/inkwell-fan.json"
 import mortalRopeDartMartialArt from "@gamedata/martial-art/mortal-rope-dart.json"
+import museflowWaistDrumMartialArt from "@gamedata/martial-art/museflow-waist-drum.json"
 import namelessSpearMartialArt from "@gamedata/martial-art/nameless-spear.json"
 import namelessSwordMartialArt from "@gamedata/martial-art/nameless-sword.json"
 import panaceaFanMartialArt from "@gamedata/martial-art/panacea-fan.json"
@@ -18,8 +19,7 @@ import strategicSwordMartialArt from "@gamedata/martial-art/strategic-sword.json
 import thundercryMartialArt from "@gamedata/martial-art/thundercry-blade.json"
 import unfetteredMartialArt from "@gamedata/martial-art/unfettered-rope-dart.json"
 import vernalUmbrellaMartialArt from "@gamedata/martial-art/vernal-umbrella.json"
-import wendongNichangMartialArt from "@gamedata/martial-art/wendong-nichang.json"
-import xingyouCaoyeMartialArt from "@gamedata/martial-art/xingyou-caoye.json"
+import willowbendFanMartialArt from "@gamedata/martial-art/willowbend-fan.json"
 
 import type { MartialArtTalent } from "@/data/martialArtTalents"
 import type { WeaponFamily, WeaponId, CharacterStats } from "@/types"
@@ -34,8 +34,8 @@ export type MartialArtDefinition = {
   talent: MartialArtTalent<SetupEffect>[][]
 }
 export const martialArtDefinitions: Record<WeaponId, MartialArtDefinition> = {
-  wendongNichang: wendongNichangMartialArt as MartialArtDefinition,
-  xingyouCaoye: xingyouCaoyeMartialArt as MartialArtDefinition,
+  museflowWaistDrum: museflowWaistDrumMartialArt as MartialArtDefinition,
+  willowbendFan: willowbendFanMartialArt as MartialArtDefinition,
   snowparting: snowpartingMartialArt as MartialArtDefinition,
   phalanxbane: phalanxbaneMartialArt as MartialArtDefinition,
   thundercry: thundercryMartialArt as MartialArtDefinition,

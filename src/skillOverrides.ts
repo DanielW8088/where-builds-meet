@@ -7,8 +7,8 @@ import { migrateSkillId } from "@/skillIdMigrations"
 
 export type SkillMap = Record<string, SkillRecord>
 export type SkillCategory =
-  | "WendongNichang"
-  | "XingyouCaoye"
+  | "MuseflowWaistDrum"
+  | "WillowbendFan"
   | "Snowparting"
   | "Phalanxbane"
   | "Thundercry"

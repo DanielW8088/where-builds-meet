@@ -11,8 +11,8 @@
       { "type": "apply", "target": "target", "value": "TangledGauze", "stack": 1, "reapply": true, "time": 0 }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "MartialArt", "CraneWings", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "MartialArt", "CraneWings", "RibbonAndDrum"],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "cooldown": 15
   },
@@ -28,8 +28,16 @@
     "modifier": [
       { "requirement": [{ "target": "target", "value": "TangledGauze" }], "effect": { "baseDMGBonus": 0.2 } }
     ],
-    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "MartialArt", "DrumSeries", "CraneCry", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "MuseflowWaistDrum",
+      "MartialArt",
+      "DrumSeries",
+      "CraneCry",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum"
   },
   "HarmoniousDrum": {
@@ -51,14 +59,14 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Light",
       "LightVariedCombo",
       "DrumSeries",
       "HarmoniousDrum",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "skillBreakdownCategory": "鼓樂和"
   },
@@ -70,8 +78,8 @@
       { "type": "damage", "phyCoef": 0.49166, "phyBonus": 137, "attrCoef": 0.49166, "attrBonus": 74, "time": 0 }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "Heavy", "RibbonHeavy1", "SubAction", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "Heavy", "RibbonHeavy1", "SubAction", "RibbonAndDrum"],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },
@@ -90,8 +98,8 @@
       }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "Heavy", "RibbonHeavy2", "SubAction", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "Heavy", "RibbonHeavy2", "SubAction", "RibbonAndDrum"],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },
@@ -113,14 +121,14 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Heavy",
       "DrumSeries",
       "RibbonHeavy3",
       "SubAction",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },
@@ -138,7 +146,7 @@
         "reapply": true,
         "time": 0,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT0" },
+          { "target": "self", "value": "HarmonySongT0" },
           {
             "operator": "or",
             "operand": [
@@ -190,21 +198,21 @@
         "value": "DrumSpecialDefense",
         "time": 0,
         "duration": 5.852,
-        "requirement": [{ "target": "self", "value": "SongOfHarmonyT1" }]
+        "requirement": [{ "target": "self", "value": "HarmonySongT1" }]
       }
     ],
     "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Special",
       "DrumSeries",
       "RippleJadebreaker",
       "JadebreakerNormal",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "cooldown": 20,
     "cooldownGroup": "RipplingDew",
@@ -224,7 +232,7 @@
         "reapply": true,
         "time": 0,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT0" },
+          { "target": "self", "value": "HarmonySongT0" },
           {
             "operator": "or",
             "operand": [
@@ -276,7 +284,7 @@
         "duration": 4,
         "time": 5.165,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "HarmonySongT6" },
           {
             "operator": "not",
             "operand": [
@@ -298,7 +306,7 @@
         "duration": 4,
         "time": 5.165,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "HarmonySongT6" },
           { "target": "self", "value": "Tailwind" },
           { "operator": "not", "operand": [{ "target": "self", "value": "RadiantDrum" }] },
           {
@@ -321,7 +329,7 @@
         "value": "DrumSpecialDefense",
         "time": 0,
         "duration": 5.92,
-        "requirement": [{ "target": "self", "value": "SongOfHarmonyT1" }]
+        "requirement": [{ "target": "self", "value": "HarmonySongT1" }]
       },
       {
         "type": "apply",
@@ -330,7 +338,7 @@
         "time": 5.165,
         "duration": 4,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "HarmonySongT6" },
           { "target": "self", "value": "RadiantDrum" }
         ]
       },
@@ -341,7 +349,7 @@
         "time": 0.982,
         "duration": 2,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT3" },
+          { "target": "self", "value": "HarmonySongT3" },
           { "target": "self", "value": "RadiantDrum" }
         ]
       },
@@ -352,7 +360,7 @@
         "time": 2.963,
         "duration": 2,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT3" },
+          { "target": "self", "value": "HarmonySongT3" },
           { "target": "self", "value": "RadiantDrum" }
         ]
       },
@@ -363,7 +371,7 @@
         "time": 5.165,
         "duration": 4,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "HarmonySongT6" },
           { "target": "self", "value": "RadiantDrum" }
         ]
       }
@@ -372,13 +380,13 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Special",
       "DrumSeries",
       "RippleDawnsun",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "cooldown": 20,
     "cooldownGroup": "RipplingDew"
@@ -405,7 +413,7 @@
         "attrBonus": 333.2,
         "time": 0.2,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "HarmonySongT6" },
           { "target": "self", "value": "RadiantDrum" }
         ]
       }
@@ -414,14 +422,14 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Special",
       "DrumSeries",
       "JadebreakerEnhanced",
       "Triggered",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "skillBreakdownCategory": "凌波·撼玉"
   },
@@ -483,14 +491,14 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Light",
       "Charged",
       "RibbonLightCharged",
       "SubAction",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum"
   },
   "RibbonHeavy3PreVC": {
@@ -511,14 +519,14 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Heavy",
       "DrumSeries",
       "RibbonHeavy3",
       "SubAction",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },
@@ -529,8 +537,8 @@
     "castTime": 0,
     "action": [],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "RibbonLightChargedVC", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "RibbonLightChargedVC", "RibbonAndDrum"],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "subAction": [{ "value": "RibbonLightCharged" }, { "value": "HarmoniousDrum" }]
   },
@@ -541,8 +549,8 @@
     "castTime": 0,
     "action": [],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "RibbonHeavyComboVC", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "RibbonHeavyComboVC", "RibbonAndDrum"],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "subAction": [
       { "value": "RibbonHeavy1" },
@@ -566,7 +574,7 @@
         "reapply": true,
         "time": 0,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT0" },
+          { "target": "self", "value": "HarmonySongT0" },
           {
             "operator": "or",
             "operand": [
@@ -616,7 +624,7 @@
         "value": "FlourishingNotesField",
         "time": 0,
         "requirement": [
-          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "HarmonySongT6" },
           { "target": "self", "value": "RadiantDrum" }
         ]
       }
@@ -625,13 +633,13 @@
     "tags": [
       "DirectDamage",
       "MartialArts",
-      "WendongNichang",
+      "MuseflowWaistDrum",
       "Special",
       "DrumSeries",
       "RippleFlourishingNotes",
       "RibbonAndDrum"
     ],
-    "martialArt": "wendongNichang",
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
     "cooldown": 20,
     "cooldownGroup": "RipplingDew"
@@ -675,8 +683,8 @@
       }
     ],
     "modifier": [],
-    "tags": ["DOT", "MartialArts", "WendongNichang", "Special", "DrumSeries", "Triggered", "RibbonAndDrum"],
-    "martialArt": "wendongNichang",
+    "tags": ["DOT", "MartialArts", "MuseflowWaistDrum", "Special", "DrumSeries", "Triggered", "RibbonAndDrum"],
+    "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum"
   }
 }

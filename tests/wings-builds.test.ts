@@ -19,7 +19,7 @@ describe("Wings builds", () => {
         const bundle = buildPresetRotationBundle(
           {
             pathId: "silkbindWing",
-            martialArts: ["wendongNichang", "xingyouCaoye"],
+            martialArts: ["museflowWaistDrum", "willowbendFan"],
             rotation: rotation as RotationRecord,
             breakthrough: String(breakthrough),
             globalDebuffs: { ...defaultGlobalDebuffs },
@@ -80,11 +80,11 @@ describe("Wings builds", () => {
   )("approaches the critical cap for $id at gear tier $tier", ({ tier, id }) => {
     const preset = defaultBuildPresets.find(row => row.id === id)!
     const inventory = buildPresetInventory(preset, tier)
-    const gear = calculateEquippedGearEffects(inventory, ["wendongNichang", "xingyouCaoye"])
+    const gear = calculateEquippedGearEffects(inventory, ["museflowWaistDrum", "willowbendFan"])
     const breakthrough = Object.entries(typedBreakthroughProfiles).find(([, profile]) => profile.gearTier === tier)![0]
     const result = calculateGlobalStatState(
       {},
-      { weapons: ["wendongNichang", "xingyouCaoye"], breakthrough, ping: 40 },
+      { weapons: ["museflowWaistDrum", "willowbendFan"], breakthrough, ping: 40 },
       { rawStat: gear.stats },
       preset.setup!,
       { food: "SimmeringFishSlices", script: "None", divinecraft: "Fire" },

@@ -1,10 +1,10 @@
 {
-  "name": "Song of Harmony",
+  "name": "Harmony Song",
   "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {
-    "SongOfHarmonyT0": {},
-    "SongOfHarmonyT1": {
+    "HarmonySongT0": {},
+    "HarmonySongT1": {
       "effect": [
         {
           "target": "RadiantDrum",
@@ -26,7 +26,7 @@
         }
       ]
     },
-    "SongOfHarmonyT2": {
+    "HarmonySongT2": {
       "effect": [
         {
           "rawStat": {
@@ -64,7 +64,7 @@
         }
       ]
     },
-    "SongOfHarmonyT3": {
+    "HarmonySongT3": {
       "effect": [
         {
           "requirement": [
@@ -75,7 +75,7 @@
         }
       ]
     },
-    "SongOfHarmonyT4": {
+    "HarmonySongT4": {
       "trigger": [
         {
           "event": "damage",
@@ -97,8 +97,8 @@
         }
       ]
     },
-    "SongOfHarmonyT5": { "effect": [{ "rawStat": { "directCrit": 0.046 } }] },
-    "SongOfHarmonyT6": {
+    "HarmonySongT5": { "effect": [{ "rawStat": { "directCrit": 0.046 } }] },
+    "HarmonySongT6": {
       "effect": [
         {
           "target": "RadiantDrum",

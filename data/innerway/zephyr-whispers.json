@@ -1,21 +1,21 @@
 {
-  "name": "風知意",
+  "name": "Zephyr Whispers",
   "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {
-    "FengZhiyiT0": {},
-    "FengZhiyiT1": {
+    "ZephyrWhispersT0": {},
+    "ZephyrWhispersT1": {
       "effect": [
         {
           "requirement": [
             { "target": "target", "value": "InkRhyme" },
-            { "operator": "not", "operand": [{ "target": "self", "value": "FengZhiyiT4" }] }
+            { "operator": "not", "operand": [{ "target": "self", "value": "ZephyrWhispersT4" }] }
           ],
           "effect": { "directDamageReduction": 0.05 }
         }
       ]
     },
-    "FengZhiyiT2": {
+    "ZephyrWhispersT2": {
       "effect": [
         {
           "rawStat": {
@@ -53,8 +53,8 @@
         }
       ]
     },
-    "FengZhiyiT3": {},
-    "FengZhiyiT4": {
+    "ZephyrWhispersT3": {},
+    "ZephyrWhispersT4": {
       "effect": [
         {
           "target": "InkRhyme",
@@ -66,7 +66,7 @@
                   {
                     "operator": "or",
                     "operand": [
-                      { "target": "skillTag", "value": "XingyouCaoye" },
+                      { "target": "skillTag", "value": "WillowbendFan" },
                       { "target": "skillTag", "value": "DrumSeries" }
                     ]
                   }
@@ -79,8 +79,8 @@
         { "requirement": [{ "target": "target", "value": "InkRhyme" }], "effect": { "directDamageReduction": 0.1 } }
       ]
     },
-    "FengZhiyiT5": { "effect": [{ "rawStat": { "critDmgBonus": 0.04 } }] },
-    "FengZhiyiT6": {
+    "ZephyrWhispersT5": { "effect": [{ "rawStat": { "critDmgBonus": 0.04 } }] },
+    "ZephyrWhispersT6": {
       "effect": [
         {
           "target": "Tailwind",

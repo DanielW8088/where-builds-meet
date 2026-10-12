@@ -12,7 +12,7 @@ import type { WeaponId } from "@/types"
 
 import { asTalentEffects } from "./helpers/shippedData"
 
-const weapons: WeaponId[] = ["wendongNichang", "xingyouCaoye"]
+const weapons: WeaponId[] = ["museflowWaistDrum", "willowbendFan"]
 describe("Wings talent calculations", () => {
   it("applies independent rank conversions with caps and keeps Fan penetration distinct from ribbon damage", () => {
     for (const [rank, attack, cap, critCap, physicalCap] of [
@@ -90,28 +90,28 @@ describe("Wings talent calculations", () => {
     }).metrics.totalDamage
   }
   it("gates drum base damage on its tag and either active buff", () => {
-    const plain = hit("wendongNichang", 0)
-    expect(hit("wendongNichang", 0, "Tailwind")).toBeCloseTo(plain * 1.4)
-    expect(hit("wendongNichang", 0, "RadiantDrum")).toBeCloseTo(plain * 1.4)
-    expect(hit("wendongNichang", 0, "Tailwind", false)).toBeCloseTo(plain)
+    const plain = hit("museflowWaistDrum", 0)
+    expect(hit("museflowWaistDrum", 0, "Tailwind")).toBeCloseTo(plain * 1.4)
+    expect(hit("museflowWaistDrum", 0, "RadiantDrum")).toBeCloseTo(plain * 1.4)
+    expect(hit("museflowWaistDrum", 0, "Tailwind", false)).toBeCloseTo(plain)
   })
   it("scales drum Critical damage from sheet Critical and isolates it from other skills", () => {
     for (const crit of [0.2, 0.6]) {
-      const plain = hit("wendongNichang", 2, undefined, false, 750, crit)
-      expect(hit("wendongNichang", 2, undefined, true, 750, crit)).toBeCloseTo(
+      const plain = hit("museflowWaistDrum", 2, undefined, false, 750, crit)
+      expect(hit("museflowWaistDrum", 2, undefined, true, 750, crit)).toBeCloseTo(
         plain * (1 + crit * Math.min(crit * 0.5, 0.3)),
       )
     }
   })
   it("requires Tailwind and the paired ribbon martial art for the Fan attack enhancement", () => {
-    const plain = hit("xingyouCaoye", 0)
-    expect(hit("xingyouCaoye", 0, "RadiantDrum")).toBeCloseTo(plain)
-    expect(hit("xingyouCaoye", 0, "Tailwind")).toBeGreaterThan(plain)
+    const plain = hit("willowbendFan", 0)
+    expect(hit("willowbendFan", 0, "RadiantDrum")).toBeCloseTo(plain)
+    expect(hit("willowbendFan", 0, "Tailwind")).toBeGreaterThan(plain)
   })
   it("scales the Fan damage bonus to its cap without double counting both damage channels", () => {
     for (const min of [375, 750, 1500]) {
-      const plain = hit("xingyouCaoye", 2, undefined, true, min)
-      expect(hit("xingyouCaoye", 2, "Tailwind", true, min)).toBeCloseTo(plain * (1 + Math.min(min * 0.00016, 0.12)))
+      const plain = hit("willowbendFan", 2, undefined, true, min)
+      expect(hit("willowbendFan", 2, "Tailwind", true, min)).toBeCloseTo(plain * (1 + Math.min(min * 0.00016, 0.12)))
     }
   })
 })
@@ -119,13 +119,13 @@ describe("Wings talent calculations", () => {
 describe("Wings Inner Way stat tiers", () => {
   it("resolves level tables once and accumulates T2 and T5 through the shared stat pipeline", () => {
     expect(innerWayEntriesForTag("SilkbindWing").map(([id]) => id)).toEqual(
-      expect.arrayContaining(["SongOfHarmony", "FengZhiyi", "XianmoPian", "CuncaoXin"]),
+      expect.arrayContaining(["HarmonySong", "ZephyrWhispers", "InkAndStrings", "BladesWill"]),
     )
     const expected = {
-      SongOfHarmony: { minPhys: 97.8, directCrit: 0.046 },
-      FengZhiyi: { crit: 0.101, critDmgBonus: 0.04 },
-      XianmoPian: { minPhys: 29.3, maxPhys: 58.7, physDmgBonus: 0.025 },
-      CuncaoXin: { minVoidAttack: 18.5, maxVoidAttack: 36.9, formlessPenetration: 6 },
+      HarmonySong: { minPhys: 97.8, directCrit: 0.046 },
+      ZephyrWhispers: { crit: 0.101, critDmgBonus: 0.04 },
+      InkAndStrings: { minPhys: 29.3, maxPhys: 58.7, physDmgBonus: 0.025 },
+      BladesWill: { minVoidAttack: 18.5, maxVoidAttack: 36.9, formlessPenetration: 6 },
     }
     for (const [id, values] of Object.entries(expected)) {
       const definition = innerWayDefinitionForSoloLevel(innerWayDefinitions[id as keyof typeof innerWayDefinitions], 20)
@@ -134,13 +134,13 @@ describe("Wings Inner Way stat tiers", () => {
       for (const [key, value] of Object.entries(values)) expect(stats[key as keyof typeof stats]).toBeCloseTo(value)
     }
     for (const level of [5, 10, 17, 20]) {
-      const effects = (key: "CuncaoXin" | "CelestialVigor") =>
+      const effects = (key: "BladesWill" | "CelestialVigor") =>
         asTalentEffects(
           Object.values(innerWayDefinitionForSoloLevel(innerWayDefinitions[key], level).effect).flatMap(
             t => t.effect ?? [],
           ),
         )
-      const a = calculateStatsWithEffects(emptyStats, effects("CuncaoXin"), 0, weapons).rawStats
+      const a = calculateStatsWithEffects(emptyStats, effects("BladesWill"), 0, weapons).rawStats
       const b = calculateStatsWithEffects(emptyStats, effects("CelestialVigor"), 0, weapons).rawStats
       expect(a.minVoidAttack).toBe(b.minVoidAttack)
       expect(a.maxVoidAttack).toBe(b.maxVoidAttack)

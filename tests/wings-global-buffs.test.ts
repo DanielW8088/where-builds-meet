@@ -12,7 +12,7 @@ function bundle(selection: Selection, wings = true, special = "RippleDawnsun", t
   const result = buildPresetRotationBundle(
     {
       pathId: wings ? "silkbindWing" : "silkbindDeluge",
-      martialArts: wings ? ["wendongNichang", "xingyouCaoye"] : ["panaceaFan", "soulshadeUmbrella"],
+      martialArts: wings ? ["museflowWaistDrum", "willowbendFan"] : ["panaceaFan", "soulshadeUmbrella"],
       rotation: {
         name: "Wings support",
         ping: 0,
@@ -39,7 +39,7 @@ function bundle(selection: Selection, wings = true, special = "RippleDawnsun", t
   }
   if (tier === "T0")
     result.timeline.innerWayRules = result.timeline.innerWayRules?.filter(
-      rule => rule.source !== "SongOfHarmony" || rule.tier === 0,
+      rule => rule.source !== "HarmonySong" || rule.tier === 0,
     )
   return result
 }

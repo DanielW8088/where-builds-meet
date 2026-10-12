@@ -59,6 +59,12 @@ catalog completion percentage; English remains unadorned.
 Locale state belongs to the UI. Calculation bundles, worker messages, cache
 keys, IDs, formulas, and persisted game data remain language-neutral.
 
+Wings uses the English IDs `museflowWaistDrum` and `willowbendFan` for martial
+arts, and `HarmonySong`, `ZephyrWhispers`, `BladesWill`, and `InkAndStrings`
+for Inner Ways. Definition filenames and localization keys follow those IDs.
+The former Wings IDs have no compatibility migration; saved builds, rotations,
+and editor overrides referring to them must be recreated.
+
 ## Message conventions
 
 Chinese event labels use an ASCII colon followed by a space (`事件: 名稱`),

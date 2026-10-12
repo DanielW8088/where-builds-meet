@@ -33,7 +33,7 @@ function calculate(
     precision: 1,
     ...options.stats,
   }
-  const weapons = ["wendongNichang", "xingyouCaoye"] as const
+  const weapons = ["museflowWaistDrum", "willowbendFan"] as const
   const setupEffects =
     options.rank === undefined ? [] : martialArtEffectsForRank(martialArtDefinitions, weapons, options.rank)
   const bundle: RotationSimulationBundle = {
@@ -90,7 +90,7 @@ const grant = (value: string) => ({ type: "apply", target: "self", value, time: 
 
 describe("Wings supported Inner Way effects", () => {
   it.each([1, 2, 4])("applies Ink Rhyme after the final hit with %s targets", enemyCount => {
-    const result = calculate([{ innerWay: "FengZhiyi", tier: "T4" }], [], {
+    const result = calculate([{ innerWay: "ZephyrWhispers", tier: "T4" }], [], {
       rotation: { name: "Ink timing", enemyCount, ping: 0, steps: [{ type: "skill", skill: "FiendishSquall" }] },
     })
     const row = result.timeline.find(row => row.step.skill === "FiendishSquall")!
@@ -100,7 +100,7 @@ describe("Wings supported Inner Way effects", () => {
     expect(hits).toHaveLength(2)
     for (const [, state] of hits) expect(state.debuffs.has("InkRhyme")).toBe(false)
     // Check the live state through a later cast, separately from the applying hit snapshots.
-    const observed = calculate([{ innerWay: "FengZhiyi", tier: "T4" }], [], {
+    const observed = calculate([{ innerWay: "ZephyrWhispers", tier: "T4" }], [], {
       rotation: {
         name: "Ink expiry",
         enemyCount,
@@ -113,14 +113,14 @@ describe("Wings supported Inner Way effects", () => {
     }).timeline.find(row => row.step.skill === "Probe")!
     expect(observed.debuffs.get("InkRhyme")!.expiresAt).toBeCloseTo(1.816 + 0.4 * (enemyCount - 1) + 18)
   })
-  it.each(["XingyouCaoye", "DrumSeries", "Heavy"])("limits T4 Ink Rhyme bonus to its skill scope (%s)", tag => {
+  it.each(["WillowbendFan", "DrumSeries", "Heavy"])("limits T4 Ink Rhyme bonus to its skill scope (%s)", tag => {
     const actions = [{ type: "apply", target: "target", value: "InkRhyme", time: 0 }, hit(1)]
-    const boosted = calculate([{ innerWay: "FengZhiyi", tier: "T4" }], actions, { tags: ["DirectDamage", tag] })
-    const plain = calculate([{ innerWay: "FengZhiyi", tier: "T4" }], [hit(1)], { tags: ["DirectDamage", tag] })
+    const boosted = calculate([{ innerWay: "ZephyrWhispers", tier: "T4" }], actions, { tags: ["DirectDamage", tag] })
+    const plain = calculate([{ innerWay: "ZephyrWhispers", tier: "T4" }], [hit(1)], { tags: ["DirectDamage", tag] })
     expect(boosted.metrics.totalDamage / plain.metrics.totalDamage).toBeCloseTo(tag === "Heavy" ? 1 : 1.1)
   })
   it.each([1, 2, 4])("limits 雅意 recovery to two target procs per 15s (%s targets)", enemyCount => {
-    const result = calculate([{ innerWay: "FengZhiyi", tier: "T3" }], [], {
+    const result = calculate([{ innerWay: "ZephyrWhispers", tier: "T3" }], [], {
       rotation: {
         name: "Noble window",
         enemyCount,
@@ -132,7 +132,7 @@ describe("Wings supported Inner Way effects", () => {
         ],
       },
     })
-    const procs = result.timeline.filter(row => row.step.skill === "FengNobleRecovery")
+    const procs = result.timeline.filter(row => row.step.skill === "ZephyrWhispersNobleRecovery")
     expect(procs).toHaveLength(2)
     expect(result.timeline.find(row => row.step.skill === "Probe")!.resources.NobleWill).toBe(60)
   })
@@ -156,21 +156,21 @@ describe("Wings supported Inner Way effects", () => {
     expect(result.actionBreakdowns[`${row.id}:0`].total).toBe(result.actionBreakdowns[`${row.id}:2`].total)
   })
   it.each(["DirectDamage", "DrumSeries"])("uses replacement Xianmo T6 penetration for %s", tag => {
-    const withWay = calculate([{ innerWay: "XianmoPian", tier: "T6" }], [grant("Tailwind"), hit(1)], {
-      tags: ["DirectDamage", "WendongNichang", tag],
+    const withWay = calculate([{ innerWay: "InkAndStrings", tier: "T6" }], [grant("Tailwind"), hit(1)], {
+      tags: ["DirectDamage", "MuseflowWaistDrum", tag],
     })
     const penetration = tag === "DrumSeries" ? 20 : 8
-    const expected = calculate([{ innerWay: "XianmoPian", tier: "T5" }], [grant("Tailwind"), hit(1)], {
-      tags: ["DirectDamage", "WendongNichang", tag],
+    const expected = calculate([{ innerWay: "InkAndStrings", tier: "T5" }], [grant("Tailwind"), hit(1)], {
+      tags: ["DirectDamage", "MuseflowWaistDrum", tag],
       stats: { physicalPenetration: penetration, formlessPenetration: penetration - 8 },
     })
     expect(withWay.metrics.totalDamage).toBeCloseTo(expected.metrics.totalDamage, 10)
     const t4 = calculate(
-      [{ innerWay: "XianmoPian", tier: "T4" }],
+      [{ innerWay: "InkAndStrings", tier: "T4" }],
       [grant("Tailwind"), { type: "setHP", time: 0, currentHP: 5000 }, hit(1)],
     )
     const t3 = calculate(
-      [{ innerWay: "XianmoPian", tier: "T3" }],
+      [{ innerWay: "InkAndStrings", tier: "T3" }],
       [grant("Tailwind"), { type: "setHP", time: 0, currentHP: 5000 }, hit(1)],
     )
     expect(t4.metrics.totalDamage).toBeGreaterThan(t3.metrics.totalDamage)
@@ -183,7 +183,7 @@ describe("Wings supported Inner Way effects", () => {
   })
   it("reduces incoming damage against an Ink Rhyme target at T4", () => {
     const result = calculate(
-      [{ innerWay: "FengZhiyi", tier: "T4" }],
+      [{ innerWay: "ZephyrWhispers", tier: "T4" }],
       [
         { type: "apply", target: "target", value: "InkRhyme", time: 0 },
         { type: "takeDamage", damage: 100, time: 1 },
@@ -217,7 +217,7 @@ describe("Wings supported Inner Way effects", () => {
   })
   it("applies Harmony's cast reduction and Dawnsun shield state using existing effects", () => {
     const result = calculate(
-      [{ innerWay: "SongOfHarmony", tier: "T6" }],
+      [{ innerWay: "HarmonySong", tier: "T6" }],
       [{ type: "takeDamage", damage: 100, time: 1 }, hit(2)],
       {
         rotation: {
@@ -236,7 +236,7 @@ describe("Wings supported Inner Way effects", () => {
     expect(probe.actionStates[1].currentHP).toBe(9910)
   })
   it("excludes Drum Specials from Cuncao's explicit eligible attack list", () => {
-    const result = calculate([{ innerWay: "CuncaoXin", tier: "T6" }], [], {
+    const result = calculate([{ innerWay: "BladesWill", tier: "T6" }], [], {
       rotation: {
         name: "Cuncao special",
         enemyCount: 3,

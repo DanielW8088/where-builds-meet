@@ -2,13 +2,13 @@
   "id": "wings-max",
   "name": "Fully Relayed Max Build",
   "order": 4,
-  "martialArts": ["wendongNichang", "xingyouCaoye"],
+  "martialArts": ["museflowWaistDrum", "willowbendFan"],
   "relayed": true,
   "setup": {
     "innerWays": [
-      { "innerWay": "SongOfHarmony", "tier": "T6" },
-      { "innerWay": "FengZhiyi", "tier": "T6" },
-      { "innerWay": "XianmoPian", "tier": "T6" },
+      { "innerWay": "HarmonySong", "tier": "T6" },
+      { "innerWay": "ZephyrWhispers", "tier": "T6" },
+      { "innerWay": "InkAndStrings", "tier": "T6" },
       { "innerWay": "MoraleChant", "tier": "T6" }
     ],
     "weaponSets": { "Cloudshear": 4 },
@@ -81,7 +81,7 @@
           { "key": "crit", "value": 0.0846 },
           { "key": "maxSilkbind", "value": 41.548 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       },
       "chestpiece": {
         "definitionId": "chestpiece",
@@ -94,7 +94,7 @@
           { "key": "crit", "value": 0.0846 },
           { "key": "maxSilkbind", "value": 41.548 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       },
       "greaves": {
         "definitionId": "greaves",
@@ -107,7 +107,7 @@
           { "key": "vsBossDmg", "value": 0.03008 },
           { "key": "maxSilkbind", "value": 41.548 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       },
       "bracer": {
         "definitionId": "bracer",
@@ -120,7 +120,7 @@
           { "key": "vsBossDmg", "value": 0.03008 },
           { "key": "maxSilkbind", "value": 41.548 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       }
     },
     "100": {
@@ -187,7 +187,7 @@
           { "key": "crit", "value": 0.09775999999999999 },
           { "key": "maxSilkbind", "value": 48.315999999999995 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       },
       "chestpiece": {
         "definitionId": "chestpiece",
@@ -200,7 +200,7 @@
           { "key": "crit", "value": 0.09775999999999999 },
           { "key": "maxSilkbind", "value": 48.315999999999995 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       },
       "greaves": {
         "definitionId": "greaves",
@@ -213,7 +213,7 @@
           { "key": "vsBossDmg", "value": 0.035719999999999995 },
           { "key": "maxSilkbind", "value": 48.315999999999995 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       },
       "bracer": {
         "definitionId": "bracer",
@@ -226,7 +226,7 @@
           { "key": "vsBossDmg", "value": 0.035719999999999995 },
           { "key": "maxSilkbind", "value": 48.315999999999995 }
         ],
-        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+        "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       }
     }
   }

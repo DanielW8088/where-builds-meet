@@ -1,7 +1,7 @@
 {
-  "name": "文動霓裳",
+  "name": "Museflow Waist Drum",
   "weapon": "RibbonAndDrum",
-  "tag": "WendongNichang",
+  "tag": "MuseflowWaistDrum",
   "talent": [
     [],
     [
@@ -597,7 +597,7 @@
         "name": "Increases Additional Attack",
         "effect": [
           {
-            "requirement": [{ "target": "skillTag", "value": "WendongNichang" }],
+            "requirement": [{ "target": "skillTag", "value": "MuseflowWaistDrum" }],
             "effect": { "flatAttackBonus": 0.0725 }
           }
         ]

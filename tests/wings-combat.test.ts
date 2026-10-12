@@ -18,7 +18,7 @@ import { martialArtEffectsForRank } from "@/data/martialArtTalents"
 import type { BuildSetup } from "@/gear"
 import type { WeaponId } from "@/types"
 
-const weapons: WeaponId[] = ["wendongNichang", "xingyouCaoye"]
+const weapons: WeaponId[] = ["museflowWaistDrum", "willowbendFan"]
 function timeline(
   rotation: unknown,
   harmonyTier = "T6",
@@ -26,7 +26,7 @@ function timeline(
   extraInnerWays: BuildSetup["innerWays"] = [],
 ) {
   const innerWays = build.setup.innerWays
-    .map(row => Object.assign({}, row, { tier: row.innerWay === "SongOfHarmony" ? harmonyTier : row.tier }))
+    .map(row => Object.assign({}, row, { tier: row.innerWay === "HarmonySong" ? harmonyTier : row.tier }))
     .concat(extraInnerWays) as BuildSetup["innerWays"]
   const setupEffects = martialArtEffectsForRank(martialArtDefinitions, weapons, 14)
   return buildRotationTimeline({
@@ -98,7 +98,7 @@ describe("Wings preset combat", () => {
       },
       "T6",
       { ...allSkillDefinitions, Observe: { castTime: 0, action: [] } },
-      [{ innerWay: "CuncaoXin", tier }],
+      [{ innerWay: "BladesWill", tier }],
     )
     const observations = rows.filter(row => row.step.skill === "Observe")
     expect(observations[0].debuffs.has("Cuncao")).toBe(false)
@@ -237,7 +237,7 @@ describe("Wings preset combat", () => {
     expect(damage(combined)).toEqual(damage(separate))
   })
   it("offers the two ready-to-use combos while hiding their attack components", () => {
-    const ids = selectableRotationSkillGroups(["wendongNichang", "xingyouCaoye"]).flatMap(group => group.skillIds)
+    const ids = selectableRotationSkillGroups(["museflowWaistDrum", "willowbendFan"]).flatMap(group => group.skillIds)
     expect(ids).toEqual(expect.arrayContaining(["RibbonLightChargedVC", "RibbonHeavyComboVC"]))
     for (const id of ["RibbonHeavy1", "RibbonHeavy2", "RibbonHeavy3", "RibbonHeavy3PreVC", "RibbonLightCharged"])
       expect(ids).not.toContain(id)

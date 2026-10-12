@@ -11,7 +11,7 @@ function compare(rotation: RotationRecord) {
   const bundle = buildPresetRotationBundle(
     {
       pathId: "silkbindWing",
-      martialArts: ["wendongNichang", "xingyouCaoye"],
+      martialArts: ["museflowWaistDrum", "willowbendFan"],
       rotation,
       breakthrough: "17",
       globalDebuffs: { ...defaultGlobalDebuffs },
@@ -24,7 +24,7 @@ function compare(rotation: RotationRecord) {
     "wings-fully-relayed-min",
   )!
   const gated = calculateRotationBaseline(bundle)
-  const rule = bundle.timeline.innerWayRules!.find(rule => rule.source === "SongOfHarmony" && rule.tier === 3)!
+  const rule = bundle.timeline.innerWayRules!.find(rule => rule.source === "HarmonySong" && rule.tier === 3)!
   expect(rule).toBeDefined()
   rule.requirement = [{ target: "skillTag", value: "JadebreakerNormal" }]
   return { gated, ungated: calculateRotationBaseline(bundle) }

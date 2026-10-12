@@ -1,5 +1,5 @@
-import drum from "@gamedata/skill/wendong-nichang.json"
-import fan from "@gamedata/skill/xingyou-caoye.json"
+import drum from "@gamedata/skill/museflow-waist-drum.json"
+import fan from "@gamedata/skill/willowbend-fan.json"
 import { describe, expect, it } from "vitest"
 
 import { emptyAttunementStats } from "@/calculations/attunementStats"
@@ -10,7 +10,7 @@ import type { WeaponId } from "@/types"
 
 import { asSkillRecords, skillActions } from "./helpers/shippedData"
 
-const weapons: WeaponId[] = ["wendongNichang", "xingyouCaoye"]
+const weapons: WeaponId[] = ["museflowWaistDrum", "willowbendFan"]
 const enemy = {
   name: "Coefficient target",
   level: 100,

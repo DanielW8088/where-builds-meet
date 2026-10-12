@@ -135,8 +135,8 @@
       "EverspringUmbrella",
       "UnfetteredRopeDart",
       "SilkbindWing",
-      "WendongNichang",
-      "XingyouCaoye"
+      "MuseflowWaistDrum",
+      "WillowbendFan"
     ],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
@@ -332,7 +332,7 @@
   "Cloudshear": {
     "name": "Cloudshear",
     "altersTimeline": true,
-    "tags": ["SilkbindWing", "WendongNichang", "XingyouCaoye"],
+    "tags": ["SilkbindWing", "MuseflowWaistDrum", "WillowbendFan"],
     "options": {
       "0": { "name": "0", "effect": {} },
       "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
