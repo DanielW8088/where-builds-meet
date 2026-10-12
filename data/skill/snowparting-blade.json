@@ -34,16 +34,7 @@
     "modifier": [
       { "requirement": [{ "target": "self", "value": "Forgetfulness" }], "effect": { "castTimeModifier": -0.65 } }
     ],
-    "tags": [
-      "DirectDamage",
-      "MartialArts",
-      "Light",
-      "VariedCombo",
-      "Charged",
-      "HengBlade",
-      "SnowpartingBlade",
-      "GraveFrost"
-    ],
+    "tags": ["DirectDamage", "MartialArts", "Light", "Charged", "HengBlade", "SnowpartingBlade", "GraveFrost"],
     "martialArt": "snowparting",
     "weapon": "HengBlade"
   },

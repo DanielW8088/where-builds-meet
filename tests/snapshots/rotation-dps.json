@@ -387,8 +387,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 67492.2679958544,
-      "totalDamage": 4049536.079751264,
+      "dps": 67395.84544895132,
+      "totalDamage": 4043750.72693708,
       "duration": 60
     },
     "stonesplitStrength/mixed-dummy-1-min-double-stab": {
@@ -413,8 +413,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 66752.02424355024,
-      "totalDamage": 4005121.4546130146,
+      "dps": 66653.62193112556,
+      "totalDamage": 3999217.315867533,
       "duration": 60
     },
     "stonesplitStrength/mixed-dummy-infinite-vitality-1-min": {
@@ -439,8 +439,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 67806.2615959671,
-      "totalDamage": 4068375.6957580256,
+      "dps": 67757.04178633557,
+      "totalDamage": 4065422.5071801343,
       "duration": 60
     },
     "stonesplitStrength/mixed-dummy-smolder-poet-1-min": {
@@ -491,8 +491,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 67328.81405400993,
-      "totalDamage": 4039728.843240596,
+      "dps": 63675.50823519309,
+      "totalDamage": 3820530.4941115854,
       "duration": 60
     }
   }

@@ -220,7 +220,9 @@ the marker.
 Attack categories are independent, not exclusive. A charged attack carries `Charged`
 plus the attack it charges: `Charged` and `Heavy` for Avalanche, Burning Heart, and
 Piercing Dart; `Charged` and `Light` for Snowparting's charged light. `Charged` alone
-is for a dedicated charged move that is neither, such as Vile Condemned. Gate an
+is for a dedicated charged move that is neither, such as Vile Condemned.
+Grave Frost is a charged light attack, not a Varied Combo: it carries `Charged`
+and `Light`, without `VariedCombo`, so Varied Combo bonuses do not apply. Gate an
 effect on the combination when it should only cover one of them, as Exquisite
 Scenery's T6 does with `Heavy` and `Charged`.
 

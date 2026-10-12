@@ -81,7 +81,7 @@ describe("Adaptive Steel Heng Blade", () => {
     }
     for (const [tags, expected] of [
       [snowparting.SnowpartingHeavyVC.tags, 125],
-      [snowparting.SnowpartingLightCharged.tags, 125],
+      [snowparting.SnowpartingLightCharged.tags, 120],
       [snowparting.SnowpartingQ.tags, 120],
       [["MoBlade", "Heavy", "VariedCombo"], 120],
       [["HengBlade", "Heavy"], 120],
