@@ -40,7 +40,7 @@
           { "key": "minPhys", "value": 77.8 },
           { "key": "maxVoidAttack", "value": 44.2 },
           { "key": "precision", "value": 0.08 },
-          { "key": "crit", "value": 0.09 }
+          { "key": "agility", "value": 49.4 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 11 }
       },
@@ -51,7 +51,7 @@
         "baseAffix": { "key": "minPhys", "value": 77.8 },
         "additionalAffixes": [
           { "key": "minPhys", "value": 77.8 },
-          { "key": "maxSilkbind", "value": 44.2 },
+          { "key": "agility", "value": 49.4 },
           { "key": "precision", "value": 0.08 },
           { "key": "allMartialArts", "value": 0.032 }
         ],
@@ -64,7 +64,7 @@
         "baseAffix": { "key": "minPhys", "value": 77.8 },
         "additionalAffixes": [
           { "key": "minPhys", "value": 77.8 },
-          { "key": "maxSilkbind", "value": 44.2 },
+          { "key": "agility", "value": 49.4 },
           { "key": "precision", "value": 0.08 },
           { "key": "allMartialArts", "value": 0.032 }
         ],
@@ -170,7 +170,7 @@
         "baseAffix": { "key": "minPhys", "value": 90.6 },
         "additionalAffixes": [
           { "key": "minPhys", "value": 90.6 },
-          { "key": "maxSilkbind", "value": 51.4 },
+          { "key": "agility", "value": 57.4 },
           { "key": "precision", "value": 0.094 },
           { "key": "allMartialArts", "value": 0.036 }
         ],
@@ -184,7 +184,7 @@
         "additionalAffixes": [
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
-          { "key": "crit", "value": 0.104 },
+          { "key": "precision", "value": 0.094 },
           { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }

@@ -77,7 +77,7 @@ describe("Wings builds", () => {
         "wings-max",
       ].map(id => ({ tier, id })),
     ),
-  )("approaches the critical cap for $id at gear tier $tier", ({ tier, id }) => {
+  )("keeps effective crit within its cap for $id at gear tier $tier", ({ tier, id }) => {
     const preset = defaultBuildPresets.find(row => row.id === id)!
     const inventory = buildPresetInventory(preset, tier)
     const gear = calculateEquippedGearEffects(inventory, ["museflowWaistDrum", "willowbendFan"])
@@ -90,14 +90,47 @@ describe("Wings builds", () => {
       { food: "SimmeringFishSlices", script: "None", divinecraft: "Fire" },
       "silkbindWing",
     )
-    expect(result.derivedStats.effectiveCrit).toBeGreaterThanOrEqual(0.79)
     expect(result.derivedStats.effectiveCrit).toBeLessThanOrEqual(0.8)
+    expect(result.derivedStats.effectiveCrit).toBeGreaterThanOrEqual(
+      id === "wings-fully-relayed-min-attribute" ? 0.79 : 0,
+    )
     expect(inventory.items.every(item => item.relayed)).toBe(true)
-    const attackRolls = inventory.items
-      .flatMap(item => [item.baseAffix!].concat(item.additionalAffixes))
-      .filter(affix =>
-        ["minPhys", "maxPhys", "minVoidAttack", "maxVoidAttack", "minSilkbind", "maxSilkbind"].includes(affix.key),
-      )
-    expect(attackRolls).toHaveLength(20)
+  })
+  it.each([96, 100] as const)("equips Agility on every piece of each Min layout at tier %s", tier => {
+    for (const preset of defaultBuildPresets.filter(
+      row => row.buildGroup === "silkbind-wing" && !["wings-max", "wings-fully-relayed-min-attribute"].includes(row.id),
+    )) {
+      const inventory = buildPresetInventory(preset, tier)
+      expect(inventory.items).toHaveLength(8)
+      for (const item of inventory.items) {
+        const agility = item.additionalAffixes.filter(affix => affix.key === "agility")
+        expect(agility).toHaveLength(1)
+        expect(agility[0].value).toBe(maxGearRoll("agility", "affix", !!preset.relayed, tier))
+      }
+    }
+    const maximum = buildPresetInventory(
+      defaultBuildPresets.find(row => row.id === "wings-max")!,
+      tier,
+    )
+    for (const item of maximum.items.filter(row => row.slot === "leftWeapon" || row.slot === "rightWeapon"))
+      expect(item.baseAffix.key).toBe("maxPhys")
+  })
+  it.each([96, 100] as const)(
+    "keeps Min Attribute at ten rolls per attack channel and three Agility at tier %s",
+    tier => {
+      const preset = defaultBuildPresets.find(row => row.id === "wings-fully-relayed-min-attribute")!
+      const inventory = buildPresetInventory(preset, tier)
+      const affixes = inventory.items.flatMap(item => [item.baseAffix].concat(item.additionalAffixes))
+      expect(affixes.filter(affix => affix.key === "minSilkbind")).toHaveLength(10)
+      expect(affixes.filter(affix => affix.key === "maxPhys")).toHaveLength(10)
+      expect(affixes.filter(affix => affix.key === "agility")).toHaveLength(3)
+    },
+  )
+  it.each([96, 100] as const)("keeps Double Min at twelve Physical and eight Silkbind rolls at tier %s", tier => {
+    const preset = defaultBuildPresets.find(row => row.id === "wings-fully-relayed-double-min")!
+    const inventory = buildPresetInventory(preset, tier)
+    const affixes = inventory.items.flatMap(item => [item.baseAffix].concat(item.additionalAffixes))
+    expect(affixes.filter(affix => affix.key === "minPhys")).toHaveLength(12)
+    expect(affixes.filter(affix => affix.key === "minSilkbind")).toHaveLength(8)
   })
 })

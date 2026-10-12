@@ -1462,12 +1462,7 @@ Target count is a proxy for simultaneous hits, including the Fan perception
 route; per-target hit tracking and PvP effects remain unimplemented. See
 [wings-implementation-audit.md](wings-implementation-audit.md) for remaining gaps.
 
-The Wings Fully Relayed Max Build uses relayed gear maximums, changes the original
-Min Physical Attack rolls to Max Physical Attack, retains three Agility rolls,
-and uses Max Silkbind Attack on seven additional attack rolls. Two spare rolls become
-Critical Rate, reaching 80% effective crit at breakthrough 17 and 79.21% at 18
-with Simmering Fish Slices. Pendant uses Max Silkbind Attack instead of its former
-additional Min Physical Attack roll. Setup, weapon set, and attunements match the Full Min Build preset.
+The Wings Fully Relayed Max Build uses Max Physical Attack weapon base affixes. Its additional affixes are optimized independently at each gear tier; setup and attunements remain fixed.
 
 Official item imports map Ribbon & Drum Art affixes 9793032/9794032 (tier 96)
 and 10193032/10194032 (tier 100) to `ribbonAndDrumDmgBoost`. The item exports omit these affixes' name fields; the user-provided
@@ -1480,44 +1475,31 @@ The game caps this extension at ten seconds remaining; that cap is documented
 but not enforced because the modeled route cannot exceed it.
 
 Wings has four fully relayed attack layouts: Double Min (Min Physical and Min
-Void/Silkbind), Min (12 Min Physical and 8 Max Void/Silkbind), Min Attribute
-(10 Max Physical and 10 Min Void/Silkbind), and Max (Max Physical and Max
-Void/Silkbind). Counts include base affixes. Double Min and Max compare Physical,
-Void, and relay-only Silkbind weapon bases; Disc and Pendant bases remain Physical.
+Void/Silkbind), Min (Min Physical and Max Void/Silkbind), Min Attribute
+(Max Physical and Min Void/Silkbind), and Max (Max Physical and Max
+Void/Silkbind). Graduate retains its non-relayed Min layout and maximum rolls.
+Double Min, Min, and Graduate require eight Agility rolls, one
+additional affix on every equipped piece, at both tiers. Missing Agility replaces
+Critical Rate or attribute attack, choosing the higher average preset DPS.
+This requirement takes precedence over the former twenty-attack-roll and 79%
+effective-critical-rate constraints. Max weapon bases are fixed to Max Physical.
 
 Affix optimization uses the average DPS of the Jadebreaker and Dawnsun presets,
-Simmering Fish Slices, Fire, no script, and the default global debuffs at
-breakthroughs 17/18. Min and Min Attribute have twenty attack rolls; the search
-preserves their specified Physical/attribute splits.
-It repeatedly accepts the best eligible single-affix replacement, also testing
-paired attack-roll replacements for weapon bases when needed to preserve the
-split. Remaining rolls are optimized with at least 79% effective critical rate.
-Weapons, sets, inner ways, and attunements remain fixed. These are constrained
-local optima rather than a global search.
-
-Double Min subsequently compares Physical and Formless Penetration with all
-four weapon/accessory attunements switched together. After removing the duplicate
-Wings attribute coefficient multiplier, Physical wins both preset rotations at
-both gear tiers and is used for that layout. The relayed Min layout remains ahead
-of Double Min, Min Attribute, and Max under the two-rotation average objective.
-
+Simmering Fish Slices, Fire, no script, and default global debuffs at
+breakthroughs 17/18. After applying the Agility and weapon-base constraints,
+the remaining attack rolls stay fixed to preserve each layout. Remaining
+additional affixes other than flat attack are optimized by repeatedly accepting the best
+eligible single replacement until none increases the objective. Required
+Agility stays fixed in Min layouts. Weapons, sets, Inner Ways, armor bases, and
+attunements remain fixed. These are constrained local optima, not a global search.
 A weapon cannot combine Void and Silkbind rolls of the same attack bound.
-The corrected presets retain Silkbind on relayed weapons and replace the
-conflicting Void rolls with eligible non-attack affixes selected by DPS.
-Min and Min Attribute move the displaced attribute rolls to Disc and Pendant
-to retain their requested totals. Double Min and Max instead add Physical rolls
-to those accessories, so all four relayed layouts retain twenty attack rolls.
+Physical penetration remains the selected attunement for every layout.
 
-Graduate compares the four layouts independently at each gear tier with maximum
-non-relayed rolls, replacing relay-only affixes with eligible alternatives and
-optimizing remaining rolls under the same objective. Its persisted preset ID
-remains `wings-graduate` even if the winning attack layout changes.
-With corrected Wings coefficients, the non-relayed Min layout wins at both
-tiers. The recheck preserves attack allocations, optimizes eligible non-attack
-additional affixes to a single-replacement local optimum with at least 79%
-effective critical rate, and compares Physical/Formless penetration. Physical
-penetration wins. Tier 96 remains unchanged; tier 100 reaches 80% effective
-critical rate and improves the average preset DPS from 44,727.83 to 46,967.79.
+Double Min requires twelve Min Physical and eight Min Silkbind rolls, including
+Min Physical weapon bases, while retaining eight Agility rolls. The 12/8 split improves both preset rotations at both tiers compared with 10/10. Additional offensive affixes
+may be replaced only when neither preset rotation loses DPS. The tier-100
+layout moves Precision from weapon/accessory rolls to the helmet to meet this
+constraint. Min Attribute requires ten Min Silkbind, ten Max Physical, and three Agility rolls at both tiers. Its remaining Agility/Critical/Power positions are filled with Critical Rate or Power by enumerating legal assignments and selecting the highest two-rotation average DPS. Existing Precision and damage-boost affixes remain fixed. Both tiers select eight total Critical Rate rolls, reaching 79.83% effective crit at tier 96 and 79.21% at tier 100 with Simmering Fish Slices. Remaining fills use one Power roll at tier 96 and two at tier 100; an additional crit roll lowers the objective.
 
 ### Wings supported-effect corrections
 
