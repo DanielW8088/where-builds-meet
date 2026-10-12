@@ -29,7 +29,7 @@
           { "key": "agility", "value": 46.43599999999999 },
           { "key": "ribbonAndDrumDmgBoost", "value": 0.05828 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 13 }
+        "attunement": { "key": "physicalPenetration", "value": 11 }
       },
       "rightWeapon": {
         "definitionId": "fan",
@@ -42,7 +42,7 @@
           { "key": "agility", "value": 46.43599999999999 },
           { "key": "crit", "value": 0.0846 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 13 }
+        "attunement": { "key": "physicalPenetration", "value": 11 }
       },
       "disc": {
         "definitionId": "disc",
@@ -55,7 +55,7 @@
           { "key": "precision", "value": 0.0752 },
           { "key": "allMartialArts", "value": 0.03008 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 13 }
+        "attunement": { "key": "physicalPenetration", "value": 11 }
       },
       "pendant": {
         "definitionId": "pendant",
@@ -68,7 +68,7 @@
           { "key": "precision", "value": 0.0752 },
           { "key": "allMartialArts", "value": 0.03008 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 13 }
+        "attunement": { "key": "physicalPenetration", "value": 11 }
       },
       "helmet": {
         "definitionId": "helmet",
@@ -135,7 +135,7 @@
           { "key": "crit", "value": 0.09775999999999999 },
           { "key": "ribbonAndDrumDmgBoost", "value": 0.06956 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "rightWeapon": {
         "definitionId": "fan",
@@ -148,7 +148,7 @@
           { "key": "precision", "value": 0.08836 },
           { "key": "crit", "value": 0.09775999999999999 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "disc": {
         "definitionId": "disc",
@@ -161,7 +161,7 @@
           { "key": "precision", "value": 0.08836 },
           { "key": "allMartialArts", "value": 0.033839999999999995 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "pendant": {
         "definitionId": "pendant",
@@ -174,7 +174,7 @@
           { "key": "precision", "value": 0.08836 },
           { "key": "allMartialArts", "value": 0.033839999999999995 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "helmet": {
         "definitionId": "helmet",

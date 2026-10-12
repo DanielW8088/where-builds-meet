@@ -128,27 +128,27 @@
         "definitionId": "ribbonAndDrum",
         "level": 100,
         "rarity": "Gold",
-        "baseAffix": { "key": "minVoidAttack", "value": 51.4 },
+        "baseAffix": { "key": "minPhys", "value": 90.6 },
         "additionalAffixes": [
           { "key": "minPhys", "value": 90.6 },
-          { "key": "minVoidAttack", "value": 51.4 },
+          { "key": "maxVoidAttack", "value": 51.4 },
           { "key": "agility", "value": 57.4 },
           { "key": "ribbonAndDrumDmgBoost", "value": 0.074 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "rightWeapon": {
         "definitionId": "fan",
         "level": 100,
         "rarity": "Gold",
-        "baseAffix": { "key": "minVoidAttack", "value": 51.4 },
+        "baseAffix": { "key": "minPhys", "value": 90.6 },
         "additionalAffixes": [
           { "key": "minPhys", "value": 90.6 },
-          { "key": "minVoidAttack", "value": 51.4 },
-          { "key": "precision", "value": 0.094 },
-          { "key": "crit", "value": 0.104 }
+          { "key": "maxVoidAttack", "value": 51.4 },
+          { "key": "agility", "value": 57.4 },
+          { "key": "precision", "value": 0.094 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "disc": {
         "definitionId": "disc",
@@ -156,12 +156,12 @@
         "rarity": "Gold",
         "baseAffix": { "key": "minPhys", "value": 90.6 },
         "additionalAffixes": [
-          { "key": "minSilkbind", "value": 51.4 },
           { "key": "minPhys", "value": 90.6 },
-          { "key": "precision", "value": 0.094 },
-          { "key": "allMartialArts", "value": 0.036 }
+          { "key": "maxSilkbind", "value": 51.4 },
+          { "key": "allMartialArts", "value": 0.036 },
+          { "key": "agility", "value": 57.4 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "pendant": {
         "definitionId": "pendant",
@@ -169,12 +169,12 @@
         "rarity": "Gold",
         "baseAffix": { "key": "minPhys", "value": 90.6 },
         "additionalAffixes": [
-          { "key": "minSilkbind", "value": 51.4 },
           { "key": "minPhys", "value": 90.6 },
+          { "key": "maxSilkbind", "value": 51.4 },
           { "key": "precision", "value": 0.094 },
           { "key": "allMartialArts", "value": 0.036 }
         ],
-        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+        "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
       "helmet": {
         "definitionId": "helmet",
@@ -185,7 +185,7 @@
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
           { "key": "crit", "value": 0.104 },
-          { "key": "minSilkbind", "value": 51.4 }
+          { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
       },
@@ -198,7 +198,7 @@
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
           { "key": "crit", "value": 0.104 },
-          { "key": "minSilkbind", "value": 51.4 }
+          { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
       },
@@ -211,7 +211,7 @@
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
           { "key": "vsBossDmg", "value": 0.038 },
-          { "key": "minSilkbind", "value": 51.4 }
+          { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
       },
@@ -224,7 +224,7 @@
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
           { "key": "vsBossDmg", "value": 0.038 },
-          { "key": "minSilkbind", "value": 51.4 }
+          { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
       }

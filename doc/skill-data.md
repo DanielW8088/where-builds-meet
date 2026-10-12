@@ -1330,8 +1330,9 @@ Wings follows Deluge in the selector and is available without Dev mode with a Pr
 normal layer-zero, level-100 numerical records from `wwm-skills-normal-all.json`.
 Alternative hit IDs with identical numerical ownership are not extra hits.
 Fan Q uses the tooltip's 0.8 multiplier; special variants use their exported
-0.85 or 0.7225 multipliers. The rank's 1.5 attribute coefficient is included
-once in `attrCoef`.
+0.85 or 0.7225 multipliers. Attribute coefficients retain the same baseline as
+physical coefficients. The shared damage calculator applies the primary Silkbind
+attribute's 1.5 multiplier once; it must not also be baked into `attrCoef`.
 
 The updated export supplies provisional animation clocks. Wings imports the
 interrupt clock as the cancelable cast duration when the route identifies the
@@ -1491,8 +1492,10 @@ Weapons, sets, inner ways, and attunements remain fixed. These are constrained
 local optima rather than a global search.
 
 Double Min subsequently compares Physical and Formless Penetration with all
-four weapon/accessory attunements switched together. Formless wins both preset
-rotations at both gear tiers and is used for that layout.
+four weapon/accessory attunements switched together. After removing the duplicate
+Wings attribute coefficient multiplier, Physical wins both preset rotations at
+both gear tiers and is used for that layout. The relayed Min layout remains ahead
+of Double Min, Min Attribute, and Max under the two-rotation average objective.
 
 A weapon cannot combine Void and Silkbind rolls of the same attack bound.
 The corrected presets retain Silkbind on relayed weapons and replace the
@@ -1505,6 +1508,12 @@ Graduate compares the four layouts independently at each gear tier with maximum
 non-relayed rolls, replacing relay-only affixes with eligible alternatives and
 optimizing remaining rolls under the same objective. Its persisted preset ID
 remains `wings-graduate` even if the winning attack layout changes.
+With corrected Wings coefficients, the non-relayed Min layout wins at both
+tiers. The recheck preserves attack allocations, optimizes eligible non-attack
+additional affixes to a single-replacement local optimum with at least 79%
+effective critical rate, and compares Physical/Formless penetration. Physical
+penetration wins. Tier 96 remains unchanged; tier 100 reaches 80% effective
+critical rate and improves the average preset DPS from 44,727.83 to 46,967.79.
 
 ### Wings supported-effect corrections
 

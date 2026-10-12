@@ -4,10 +4,10 @@
     "shortName": "Drum Q1",
     "castTime": 1,
     "action": [
-      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
-      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
-      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
-      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.6285, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.6285, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.6285, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.6285, "attrBonus": 94.75, "time": 0 },
       { "type": "apply", "target": "target", "value": "TangledGauze", "stack": 1, "reapply": true, "time": 0 }
     ],
     "modifier": [],
@@ -22,14 +22,7 @@
     "castTime": 0.9523809523809523,
     "action": [
       { "type": "addResource", "value": "NobleWill", "amount": 20, "time": 0 },
-      {
-        "type": "damage",
-        "phyCoef": 2.5212,
-        "phyBonus": 698,
-        "attrCoef": 3.7817999999999996,
-        "attrBonus": 380,
-        "time": 0
-      },
+      { "type": "damage", "phyCoef": 2.5212, "phyBonus": 698, "attrCoef": 2.5212, "attrBonus": 380, "time": 0 },
       { "type": "addResource", "value": "NobleWill", "amount": 10, "time": 0 }
     ],
     "modifier": [
@@ -48,7 +41,7 @@
         "type": "damage",
         "phyCoef": 2.33473,
         "phyBonus": 646,
-        "attrCoef": 3.5020949999999997,
+        "attrCoef": 2.33473,
         "attrBonus": 352,
         "time": 0.5471428571428572
       },
@@ -74,7 +67,7 @@
     "shortName": "Drum Heavy 1",
     "castTime": 0.6941666666666667,
     "action": [
-      { "type": "damage", "phyCoef": 0.49166, "phyBonus": 137, "attrCoef": 0.73749, "attrBonus": 74, "time": 0 }
+      { "type": "damage", "phyCoef": 0.49166, "phyBonus": 137, "attrCoef": 0.49166, "attrBonus": 74, "time": 0 }
     ],
     "modifier": [],
     "tags": ["DirectDamage", "MartialArts", "WendongNichang", "Heavy", "RibbonHeavy1", "SubAction", "RibbonAndDrum"],
@@ -91,7 +84,7 @@
         "type": "damage",
         "phyCoef": 0.3517,
         "phyBonus": 98,
-        "attrCoef": 0.52755,
+        "attrCoef": 0.3517,
         "attrBonus": 53,
         "time": 0.19156950769230768
       }
@@ -111,7 +104,7 @@
         "type": "damage",
         "phyCoef": 0.74244,
         "phyBonus": 206,
-        "attrCoef": 1.1136599999999999,
+        "attrCoef": 0.74244,
         "attrBonus": 112,
         "time": 0.4166666666666667
       }
@@ -160,7 +153,7 @@
         "type": "damage",
         "phyCoef": 1.81254,
         "phyBonus": 501.5,
-        "attrCoef": 2.71881,
+        "attrCoef": 1.81254,
         "attrBonus": 273.7,
         "time": 0.982
       },
@@ -168,7 +161,7 @@
         "type": "damage",
         "phyCoef": 1.81254,
         "phyBonus": 501.5,
-        "attrCoef": 2.71881,
+        "attrCoef": 1.81254,
         "attrBonus": 273.7,
         "time": 3.033
       },
@@ -176,7 +169,7 @@
         "type": "damage",
         "phyCoef": 1.81254,
         "phyBonus": 501.5,
-        "attrCoef": 2.71881,
+        "attrCoef": 1.81254,
         "attrBonus": 273.7,
         "time": 4.089
       },
@@ -246,7 +239,7 @@
         "type": "damage",
         "phyCoef": 1.540659,
         "phyBonus": 426.275,
-        "attrCoef": 2.3109885,
+        "attrCoef": 1.540659,
         "attrBonus": 232.645,
         "time": 0.982
       },
@@ -254,7 +247,7 @@
         "type": "damage",
         "phyCoef": 1.540659,
         "phyBonus": 426.275,
-        "attrCoef": 2.3109885,
+        "attrCoef": 1.540659,
         "attrBonus": 232.645,
         "time": 2.963
       },
@@ -262,7 +255,7 @@
         "type": "damage",
         "phyCoef": 1.8777486,
         "phyBonus": 519.4775,
-        "attrCoef": 2.8166229,
+        "attrCoef": 1.8777486,
         "attrBonus": 283.22,
         "time": 5.165
       },
@@ -400,7 +393,7 @@
         "type": "damage",
         "phyCoef": 2.209116,
         "phyBonus": 611.15,
-        "attrCoef": 3.313674,
+        "attrCoef": 2.209116,
         "attrBonus": 333.2,
         "time": 0
       },
@@ -408,7 +401,7 @@
         "type": "damage",
         "phyCoef": 2.209116,
         "phyBonus": 611.15,
-        "attrCoef": 3.313674,
+        "attrCoef": 2.209116,
         "attrBonus": 333.2,
         "time": 0.2,
         "requirement": [
@@ -441,7 +434,7 @@
         "type": "damage",
         "phyCoef": 0.25913115000000003,
         "phyBonus": 71.82000000000001,
-        "attrCoef": 0.3886967250000001,
+        "attrCoef": 0.25913115000000003,
         "attrBonus": 58.72500000000001,
         "time": 0
       },
@@ -449,7 +442,7 @@
         "type": "damage",
         "phyCoef": 0.25913115000000003,
         "phyBonus": 71.82000000000001,
-        "attrCoef": 0.3886967250000001,
+        "attrCoef": 0.25913115000000003,
         "attrBonus": 58.72500000000001,
         "time": 0
       },
@@ -457,7 +450,7 @@
         "type": "damage",
         "phyCoef": 0.25913115000000003,
         "phyBonus": 71.82000000000001,
-        "attrCoef": 0.3886967250000001,
+        "attrCoef": 0.25913115000000003,
         "attrBonus": 58.72500000000001,
         "time": 0
       },
@@ -465,7 +458,7 @@
         "type": "damage",
         "phyCoef": 0.25913115000000003,
         "phyBonus": 71.82000000000001,
-        "attrCoef": 0.3886967250000001,
+        "attrCoef": 0.25913115000000003,
         "attrBonus": 58.72500000000001,
         "time": 0
       },
@@ -473,7 +466,7 @@
         "type": "damage",
         "phyCoef": 0.25913115000000003,
         "phyBonus": 71.82000000000001,
-        "attrCoef": 0.3886967250000001,
+        "attrCoef": 0.25913115000000003,
         "attrBonus": 58.72500000000001,
         "time": 0
       },
@@ -481,7 +474,7 @@
         "type": "damage",
         "phyCoef": 0.3647031,
         "phyBonus": 101.08,
-        "attrCoef": 0.54705465,
+        "attrCoef": 0.3647031,
         "attrBonus": 82.65,
         "time": 0
       }
@@ -509,7 +502,7 @@
         "type": "damage",
         "phyCoef": 0.74244,
         "phyBonus": 206,
-        "attrCoef": 1.1136599999999999,
+        "attrCoef": 0.74244,
         "attrBonus": 112,
         "time": 0.4166666666666667
       }
@@ -588,7 +581,7 @@
         "type": "damage",
         "phyCoef": 1.540659,
         "phyBonus": 426.275,
-        "attrCoef": 2.3109885,
+        "attrCoef": 1.540659,
         "attrBonus": 232.645,
         "time": 0
       },
@@ -596,7 +589,7 @@
         "type": "damage",
         "phyCoef": 1.540659,
         "phyBonus": 426.275,
-        "attrCoef": 2.3109885,
+        "attrCoef": 1.540659,
         "attrBonus": 232.645,
         "time": 0
       },
@@ -604,7 +597,7 @@
         "type": "damage",
         "phyCoef": 1.8777486,
         "phyBonus": 519.4775,
-        "attrCoef": 2.8166229,
+        "attrCoef": 1.8777486,
         "attrBonus": 283.22,
         "time": 0
       },
@@ -652,7 +645,7 @@
         "type": "damage",
         "phyCoef": 0.08836464000000001,
         "phyBonus": 24.445999999999998,
-        "attrCoef": 0.13254696,
+        "attrCoef": 0.08836464000000001,
         "attrBonus": 13.328000000000001,
         "time": 0.45
       },
@@ -660,7 +653,7 @@
         "type": "damage",
         "phyCoef": 0.08836464000000001,
         "phyBonus": 24.445999999999998,
-        "attrCoef": 0.13254696,
+        "attrCoef": 0.08836464000000001,
         "attrBonus": 13.328000000000001,
         "time": 0.95
       },
@@ -668,7 +661,7 @@
         "type": "damage",
         "phyCoef": 0.08836464000000001,
         "phyBonus": 24.445999999999998,
-        "attrCoef": 0.13254696,
+        "attrCoef": 0.08836464000000001,
         "attrBonus": 13.328000000000001,
         "time": 1.45
       },
@@ -676,7 +669,7 @@
         "type": "damage",
         "phyCoef": 0.08836464000000001,
         "phyBonus": 24.445999999999998,
-        "attrCoef": 0.13254696,
+        "attrCoef": 0.08836464000000001,
         "attrBonus": 13.328000000000001,
         "time": 1.95
       }

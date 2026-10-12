@@ -251,3 +251,22 @@ The user also accepted the initial Wings Preview snapshots: Jadebreaker at
 Fully Relayed Min Build and a 60-second encounter. Remaining Wings limitations
 are tracked in `wings-implementation-audit.md`. All other accepted snapshots
 remain unchanged.
+
+## Wings attribute multiplier correction review (2026-10-12)
+
+The user accepted the corrected Wings snapshots after reviewing the duplicated
+primary-attribute multiplier. Both Wings skill files now retain equal Physical
+and attribute coefficients; the shared damage calculator applies the 1.5 primary
+Silkbind multiplier once. Flat damage, timing, and rotation sequences are unchanged.
+
+At breakthrough 17 on Fully Relayed Min, Dawnsun changes from
+35,943.38925113531 to 32,612.608937578592 DPS and from 2,156,603.355068119
+to 1,956,756.5362547156 total damage. Jadebreaker changes from
+50,343.070273433346 to 45,143.906152993135 DPS and from 3,020,584.216406001
+to 2,708,634.3691795883 total damage. Both durations remain 60 seconds.
+Only these two reviewed snapshots were refreshed.
+
+The corrected comparisons retain Min as the best of the four Wings layouts at
+both gear tiers. Double Min returns to Physical penetration, and Graduate uses
+the winning non-relayed Min layout at both tiers. These preset changes do not
+change the snapshot fixture, which continues to use Fully Relayed Min.

@@ -1,10 +1,49 @@
+import dawnsun from "@gamedata/rotation/silkbind-wing/wings-dummy-1-min-dawnsun.json"
+import jadebreaker from "@gamedata/rotation/silkbind-wing/wings-dummy-1-min-jadebreaker.json"
 import { describe, expect, it } from "vitest"
 
 import { calculateGlobalStatState } from "@/application/characterComposition"
 import { typedBreakthroughProfiles } from "@/application/gameData/setup"
+import { buildPresetRotationBundle } from "@/application/graduation"
+import { calculateRotationBaseline } from "@/calculations/rotationCalculator"
+import type { RotationRecord } from "@/calculations/rotationTimeline"
 import { buildPresetInventory, calculateEquippedGearEffects, defaultBuildPresets, maxGearRoll } from "@/gear"
+import { defaultGlobalDebuffs } from "@/globalDebuffs"
 
 describe("Wings builds", () => {
+  it.each([17, 18])(
+    "keeps Double Min's selected penetration ahead on both rotations at breakthrough %s",
+    breakthrough => {
+      const tier = breakthrough === 17 ? 96 : 100
+      for (const rotation of [dawnsun, jadebreaker]) {
+        const bundle = buildPresetRotationBundle(
+          {
+            pathId: "silkbindWing",
+            martialArts: ["wendongNichang", "xingyouCaoye"],
+            rotation: rotation as RotationRecord,
+            breakthrough: String(breakthrough),
+            globalDebuffs: { ...defaultGlobalDebuffs },
+            food: "SimmeringFishSlices",
+            script: "None",
+            divinecraft: "Fire",
+            skillOverrides: {},
+            previewId: null,
+          },
+          "wings-fully-relayed-double-min",
+        )!
+        const selected = calculateRotationBaseline(bundle).metrics.dps
+        const alternate = {
+          ...bundle,
+          attunement: {
+            ...bundle.attunement,
+            physicalPenetration: 0,
+            formlessPenetration: maxGearRoll("formlessPenetration", "attunement", false, tier)! * 4,
+          },
+        }
+        expect(selected).toBeGreaterThan(calculateRotationBaseline(alternate).metrics.dps)
+      }
+    },
+  )
   it("does not combine Void and Silkbind rolls for the same weapon attack bound", () => {
     for (const preset of defaultBuildPresets.filter(row => row.buildGroup === "silkbind-wing")) {
       for (const gear of Object.values(preset.gearByTier)) {

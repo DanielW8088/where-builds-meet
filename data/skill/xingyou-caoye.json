@@ -8,7 +8,7 @@
         "type": "damage",
         "phyCoef": 1.016904,
         "phyBonus": 281.6,
-        "attrCoef": 1.5253560000000002,
+        "attrCoef": 1.016904,
         "attrBonus": 153.60000000000002,
         "time": 0
       },
@@ -37,7 +37,7 @@
         "type": "damage",
         "phyCoef": 1.016904,
         "phyBonus": 281.6,
-        "attrCoef": 1.5253560000000002,
+        "attrCoef": 1.016904,
         "attrBonus": 153.60000000000002,
         "time": 0.5
       },
@@ -45,7 +45,7 @@
         "type": "damage",
         "phyCoef": 0.7586416,
         "phyBonus": 209.91999999999996,
-        "attrCoef": 1.1379624,
+        "attrCoef": 0.7586416,
         "attrBonus": 113.91999999999996,
         "time": 1
       },
@@ -74,7 +74,7 @@
         "type": "damage",
         "phyCoef": 0.278136,
         "phyBonus": 77.1,
-        "attrCoef": 0.417204,
+        "attrCoef": 0.278136,
         "attrBonus": 42,
         "time": 0.3769230769230769
       },
@@ -82,7 +82,7 @@
         "type": "damage",
         "phyCoef": 0.278136,
         "phyBonus": 77.1,
-        "attrCoef": 0.417204,
+        "attrCoef": 0.278136,
         "attrBonus": 42,
         "time": 0.5269230769230768
       },
@@ -90,7 +90,7 @@
         "type": "damage",
         "phyCoef": 0.370848,
         "phyBonus": 102.8,
-        "attrCoef": 0.556272,
+        "attrCoef": 0.370848,
         "attrBonus": 56,
         "time": 0.676923076923077
       },
@@ -111,7 +111,7 @@
         "type": "damage",
         "phyCoef": 0.918624,
         "phyBonus": 254.1,
-        "attrCoef": 1.377936,
+        "attrCoef": 0.918624,
         "attrBonus": 138.6,
         "time": 0.566
       },
@@ -119,7 +119,7 @@
         "type": "damage",
         "phyCoef": 2.143456,
         "phyBonus": 592.9,
-        "attrCoef": 3.215184,
+        "attrCoef": 2.143456,
         "attrBonus": 323.4,
         "time": 1.816
       },
