@@ -165,60 +165,90 @@
     "name": "Yi River",
     "shortName": "Yi",
     "showCoverage": true,
-    "description": "Increase damage by 1% and physical penetration by 2 per stack.",
+    "description": "Increases damage and healing by 1% per stack; T1 adds 2 Physical Penetration per stack. T3 doubles the damage/healing bonus against controlled targets.",
     "duration": 8,
     "cooldown": 2,
     "maxStack": 5,
     "stackEffects": [
       [
-        { "effect": { "dmgBonus": 0.01, "physicalPenetration": 2 } },
+        { "effect": { "healingBonus": 0.01 } },
         {
           "requirement": [
             { "target": "target", "value": "Controlled" },
             { "target": "self", "value": "MoraleChantT3" }
           ],
-          "effect": { "dmgBonus": 0.01 }
-        }
+          "effect": { "dmgBonus": 0.01, "healingBonus": 0.01 }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "physicalPenetration": 2 } },
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "MoraleChantT1" }] }],
+          "effect": { "stat": { "physDmgBonus": 0.01 } }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "dmgBonus": 0.01 } }
       ],
       [
-        { "effect": { "dmgBonus": 0.02, "physicalPenetration": 4 } },
+        { "effect": { "healingBonus": 0.02 } },
         {
           "requirement": [
             { "target": "target", "value": "Controlled" },
             { "target": "self", "value": "MoraleChantT3" }
           ],
-          "effect": { "dmgBonus": 0.02 }
-        }
+          "effect": { "dmgBonus": 0.02, "healingBonus": 0.02 }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "physicalPenetration": 4 } },
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "MoraleChantT1" }] }],
+          "effect": { "stat": { "physDmgBonus": 0.02 } }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "dmgBonus": 0.02 } }
       ],
       [
-        { "effect": { "dmgBonus": 0.03, "physicalPenetration": 6 } },
+        { "effect": { "healingBonus": 0.03 } },
         {
           "requirement": [
             { "target": "target", "value": "Controlled" },
             { "target": "self", "value": "MoraleChantT3" }
           ],
-          "effect": { "dmgBonus": 0.03 }
-        }
+          "effect": { "dmgBonus": 0.03, "healingBonus": 0.03 }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "physicalPenetration": 6 } },
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "MoraleChantT1" }] }],
+          "effect": { "stat": { "physDmgBonus": 0.03 } }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "dmgBonus": 0.03 } }
       ],
       [
-        { "effect": { "dmgBonus": 0.04, "physicalPenetration": 8 } },
+        { "effect": { "healingBonus": 0.04 } },
         {
           "requirement": [
             { "target": "target", "value": "Controlled" },
             { "target": "self", "value": "MoraleChantT3" }
           ],
-          "effect": { "dmgBonus": 0.04 }
-        }
+          "effect": { "dmgBonus": 0.04, "healingBonus": 0.04 }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "physicalPenetration": 8 } },
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "MoraleChantT1" }] }],
+          "effect": { "stat": { "physDmgBonus": 0.04 } }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "dmgBonus": 0.04 } }
       ],
       [
-        { "effect": { "dmgBonus": 0.05, "physicalPenetration": 10 } },
+        { "effect": { "healingBonus": 0.05 } },
         {
           "requirement": [
             { "target": "target", "value": "Controlled" },
             { "target": "self", "value": "MoraleChantT3" }
           ],
-          "effect": { "dmgBonus": 0.05 }
-        }
+          "effect": { "dmgBonus": 0.05, "healingBonus": 0.05 }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "physicalPenetration": 10 } },
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "MoraleChantT1" }] }],
+          "effect": { "stat": { "physDmgBonus": 0.05 } }
+        },
+        { "requirement": [{ "target": "self", "value": "MoraleChantT1" }], "effect": { "dmgBonus": 0.05 } }
       ]
     ],
     "refresh": true

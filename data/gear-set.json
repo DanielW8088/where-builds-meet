@@ -331,12 +331,12 @@
   },
   "Cloudshear": {
     "name": "Cloudshear",
-    "altersTimeline": false,
+    "altersTimeline": true,
     "tags": ["SilkbindWing", "WendongNichang", "XingyouCaoye"],
     "options": {
       "0": { "name": "0", "effect": {} },
       "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "minPhys": 77.8 } } }
+      "4": { "name": "4", "effect": { "rawStat": { "minPhys": 77.8 }, "condition": "Cloudshear4P" } }
     }
   }
 }

@@ -4,7 +4,7 @@ import path from "node:path"
 import { assert, describe, it } from "vitest"
 
 import type { PathId } from "@/application/contracts"
-import { typedPathDefinitions } from "@/application/gameData/paths"
+import { pathRequiresDev, typedPathDefinitions } from "@/application/gameData/paths"
 import type { PathDefinition } from "@/application/gameData/paths"
 import { gearData, statRollsForLevel } from "@/gear"
 import type { BuildPreset, BuildPresetGear, GearSlot } from "@/gear"
@@ -42,7 +42,7 @@ describe("preset-eligibility", () => {
 
     const paths = typedPathDefinitions
     const lockedMartialArts = new Set<string>()
-    const allowedStatuses = new Set(["available", "wip", "devOnly", "plannerOnly"])
+    const allowedStatuses = new Set(["available", "preview", "wip", "devOnly", "plannerOnly"])
     const pathByBuildGroup = new Map<string, { pathId: PathId; definition: PathDefinition }>()
     for (const [pathId, definition] of Object.entries(paths) as Array<[PathId, PathDefinition]>) {
       assert(allowedStatuses.has(definition.status), `Path ${pathId} must declare a recognized status.`)
@@ -186,7 +186,7 @@ describe("preset-eligibility", () => {
           [...rotation.definition.martialArts].sort().join("|") === [...definition.lockedWeapons].sort().join("|"),
           `Path ${pathId}'s default rotation must use its locked martial-art pair.`,
         )
-      if (definition.status === "available") {
+      if (!pathRequiresDev(definition)) {
         assert(build.definition.test !== true, `Available path ${pathId} cannot use a test-only default build.`)
         for (const graduateBuild of graduateBuilds)
           assert(

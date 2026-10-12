@@ -1,0 +1,204 @@
+{
+  "TangledGauze": {
+    "name": "羅纏",
+    "description": "Roots the target and prevents most skills. Drum Q2 deals 20% additional damage to affected bosses.",
+    "duration": 2,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": []
+  },
+  "InkRhyme": {
+    "name": "墨韻",
+    "description": "Increases Fan and Drum Series damage against the target by 5% and reduces its outgoing damage by 5%. Feng Zhiyi T4 increases both effects to 10% against non-player targets.",
+    "duration": 8,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": [
+      {
+        "requirement": [
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "skillTag", "value": "XingyouCaoye" },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ]
+          }
+        ],
+        "effect": { "dmgBonus": 0.05 }
+      }
+    ]
+  },
+  "Cuncao": {
+    "name": "寸草",
+    "description": "寸草心 stacks require an eligible varied attack, including 鼓樂和 or 煞盡東風, to hit at least 3 enemies simultaneously (2 at T4; 3 grants 2 stacks). Lasts 5s, or 8s at T1; up to 5 stacks. Eligible attacks deal 2% more damage per stack, increased to 4% at T3. T6 adds 5% damage against targets at 5 stacks. Cannot build stacks against a single target.",
+    "duration": 5,
+    "maxStack": 5,
+    "refresh": true,
+    "showCoverage": true,
+    "stackEffects": [
+      [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            }
+          ],
+          "effect": { "globalDmgBonus": 0.02 }
+        },
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            { "target": "self", "value": "CuncaoXinT3" }
+          ],
+          "effect": { "globalDmgBonus": 0.02 }
+        }
+      ],
+      [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            }
+          ],
+          "effect": { "globalDmgBonus": 0.04 }
+        },
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            { "target": "self", "value": "CuncaoXinT3" }
+          ],
+          "effect": { "globalDmgBonus": 0.04 }
+        }
+      ],
+      [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            }
+          ],
+          "effect": { "globalDmgBonus": 0.06 }
+        },
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            { "target": "self", "value": "CuncaoXinT3" }
+          ],
+          "effect": { "globalDmgBonus": 0.06 }
+        }
+      ],
+      [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            }
+          ],
+          "effect": { "globalDmgBonus": 0.08 }
+        },
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            { "target": "self", "value": "CuncaoXinT3" }
+          ],
+          "effect": { "globalDmgBonus": 0.08 }
+        }
+      ],
+      [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            }
+          ],
+          "effect": { "globalDmgBonus": 0.1 }
+        },
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            { "target": "self", "value": "CuncaoXinT3" }
+          ],
+          "effect": { "globalDmgBonus": 0.1 }
+        }
+      ]
+    ]
+  },
+  "WarriorMark": {
+    "name": "Farewell",
+    "description": "Envigorated Warrior T6: for 5s, attacks from this target do not disable the damage/healing bonus. Incoming attacks are attributed to the simulator’s selected target.",
+    "duration": 5,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": []
+  }
+}

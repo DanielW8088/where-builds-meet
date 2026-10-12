@@ -1,0 +1,202 @@
+{
+  "Rustling": {
+    "name": "一扇生息",
+    "shortName": "Fan Q",
+    "castTime": 0.75,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 1.016904,
+        "phyBonus": 281.6,
+        "attrCoef": 1.5253560000000002,
+        "attrBonus": 153.60000000000002,
+        "time": 0
+      },
+      { "type": "apply", "target": "self", "value": "Tailwind", "stack": 1, "reapply": true, "time": 0 },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Cloudshear",
+        "time": 0,
+        "requirement": [{ "target": "self", "value": "Cloudshear4P" }]
+      }
+    ],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "MartialArt", "Rustling", "Fan"],
+    "martialArt": "xingyouCaoye",
+    "weapon": "Fan",
+    "cooldown": 15,
+    "cooldownGroup": "BoundlessBloom"
+  },
+  "BoundlessBloom": {
+    "name": "不盡春生",
+    "shortName": "Fan Q (Enhanced)",
+    "castTime": 1,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 1.016904,
+        "phyBonus": 281.6,
+        "attrCoef": 1.5253560000000002,
+        "attrBonus": 153.60000000000002,
+        "time": 0.5
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.7586416,
+        "phyBonus": 209.91999999999996,
+        "attrCoef": 1.1379624,
+        "attrBonus": 113.91999999999996,
+        "time": 1
+      },
+      { "type": "apply", "target": "self", "value": "Tailwind", "stack": 1, "reapply": true, "time": 0 },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Cloudshear",
+        "time": 0,
+        "requirement": [{ "target": "self", "value": "Cloudshear4P" }]
+      }
+    ],
+    "modifier": [{ "effect": { "hpDMGBonus": 0.25 } }],
+    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "MartialArt", "BoundlessBloom", "Fan"],
+    "martialArt": "xingyouCaoye",
+    "weapon": "Fan",
+    "cooldown": 15,
+    "cooldownGroup": "BoundlessBloom"
+  },
+  "NorthwindSweep": {
+    "name": "北風捲地",
+    "shortName": "Fan Special",
+    "castTime": 0.6923076923076923,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.278136,
+        "phyBonus": 77.1,
+        "attrCoef": 0.417204,
+        "attrBonus": 42,
+        "time": 0.3769230769230769
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.278136,
+        "phyBonus": 77.1,
+        "attrCoef": 0.417204,
+        "attrBonus": 42,
+        "time": 0.5269230769230768
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.370848,
+        "phyBonus": 102.8,
+        "attrCoef": 0.556272,
+        "attrBonus": 56,
+        "time": 0.676923076923077
+      },
+      { "type": "apply", "target": "self", "value": "FlowingWind", "stack": 1, "reapply": true, "time": 0 }
+    ],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "Special", "NorthwindSweep", "Fan"],
+    "martialArt": "xingyouCaoye",
+    "weapon": "Fan",
+    "cooldown": 8
+  },
+  "FiendishSquall": {
+    "name": "煞盡東風",
+    "shortName": "Fan Q Perception",
+    "castTime": 1.933,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.918624,
+        "phyBonus": 254.1,
+        "attrCoef": 1.377936,
+        "attrBonus": 138.6,
+        "time": 0.566
+      },
+      {
+        "type": "damage",
+        "phyCoef": 2.143456,
+        "phyBonus": 592.9,
+        "attrCoef": 3.215184,
+        "attrBonus": 323.4,
+        "time": 1.816
+      },
+      {
+        "type": "trigger",
+        "value": "FengNobleRecovery",
+        "time": 0.566,
+        "requirement": [{ "target": "self", "value": "FengZhiyiT3" }]
+      },
+      {
+        "type": "apply",
+        "target": "target",
+        "value": "InkRhyme",
+        "time": 1.816,
+        "requirement": [{ "target": "self", "value": "FengZhiyiT1" }]
+      },
+      {
+        "type": "trigger",
+        "value": "FengNobleRecovery",
+        "time": 0.966,
+        "requirement": [
+          { "target": "self", "value": "FengZhiyiT3" },
+          { "target": "enemyCount", "comparison": ">=", "amount": 2 }
+        ]
+      },
+      {
+        "type": "trigger",
+        "value": "FengNobleRecovery",
+        "time": 1.366,
+        "requirement": [
+          { "target": "self", "value": "FengZhiyiT3" },
+          { "target": "enemyCount", "comparison": ">=", "amount": 3 }
+        ]
+      },
+      {
+        "type": "trigger",
+        "value": "FengNobleRecovery",
+        "time": 1.766,
+        "requirement": [
+          { "target": "self", "value": "FengZhiyiT3" },
+          { "target": "enemyCount", "comparison": ">=", "amount": 4 }
+        ]
+      }
+    ],
+    "modifier": [
+      { "requirement": [{ "target": "self", "value": "FengZhiyiT3" }], "effect": { "baseDMGBonus": 0.2 } },
+      {
+        "requirement": [{ "target": "enemyCount", "comparison": ">=", "amount": 2 }],
+        "effect": {
+          "castTimeModifier": { "function": "segment", "param1": "actionTime", "param2": [1.816], "param3": [0, 0.4] }
+        }
+      },
+      {
+        "requirement": [{ "target": "enemyCount", "comparison": ">=", "amount": 3 }],
+        "effect": {
+          "castTimeModifier": { "function": "segment", "param1": "actionTime", "param2": [1.816], "param3": [0, 0.4] }
+        }
+      },
+      {
+        "requirement": [{ "target": "enemyCount", "comparison": ">=", "amount": 4 }],
+        "effect": {
+          "castTimeModifier": { "function": "segment", "param1": "actionTime", "param2": [1.816], "param3": [0, 0.4] }
+        }
+      }
+    ],
+    "tags": ["DirectDamage", "MartialArts", "XingyouCaoye", "Perception", "FiendishSquall", "Fan"],
+    "martialArt": "xingyouCaoye",
+    "weapon": "Fan",
+    "requirement": [{ "target": "self", "value": "FengZhiyiT0" }]
+  },
+  "FengNobleRecovery": {
+    "name": "風知意·雅意回復",
+    "castTime": 0,
+    "ignorePing": true,
+    "cooldown": 15,
+    "cooldownUses": 2,
+    "tags": ["Triggered"],
+    "action": [{ "type": "addResource", "value": "NobleWill", "amount": 30, "time": 0 }]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "id": "splendor-full",
-  "name": "Graduate",
+  "name": "Full Max Build",
   "order": 2,
   "martialArts": ["namelessSword", "namelessSpear"],
   "setup": {

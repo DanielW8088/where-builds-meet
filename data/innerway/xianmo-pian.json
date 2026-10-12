@@ -3,7 +3,26 @@
   "altersTimeline": false,
   "tags": ["SilkbindWing"],
   "effect": {
-    "XianmoPianT0": {},
+    "XianmoPianT0": {
+      "effect": [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "self", "value": "Tailwind" },
+                { "target": "self", "value": "RadiantDrum" },
+                { "target": "self", "value": "FloatingGrace" },
+                { "target": "self", "value": "FloatingGraceDeluge" }
+              ]
+            },
+            { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
+            { "operator": "not", "operand": [{ "target": "self", "value": "XianmoPianT4" }] }
+          ],
+          "effect": { "stat": { "formlessPenetration": 5 } }
+        }
+      ]
+    },
     "XianmoPianT1": {},
     "XianmoPianT2": {
       "effect": [
@@ -73,9 +92,78 @@
         }
       ]
     },
-    "XianmoPianT3": {},
-    "XianmoPianT4": {},
+    "XianmoPianT3": {
+      "effect": [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "self", "value": "Tailwind" },
+                { "target": "self", "value": "RadiantDrum" },
+                { "target": "self", "value": "FloatingGrace" },
+                { "target": "self", "value": "FloatingGraceDeluge" }
+              ]
+            },
+            { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
+            { "operator": "not", "operand": [{ "target": "self", "value": "XianmoPianT4" }] }
+          ],
+          "effect": { "stat": { "formlessPenetration": 3 } }
+        }
+      ]
+    },
+    "XianmoPianT4": {
+      "effect": [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "self", "value": "Tailwind" },
+                { "target": "self", "value": "RadiantDrum" },
+                { "target": "self", "value": "FloatingGrace" },
+                { "target": "self", "value": "FloatingGraceDeluge" }
+              ]
+            },
+            { "operator": "not", "operand": [{ "target": "self", "value": "XianmoPianT6" }] }
+          ],
+          "effect": { "stat": { "formlessPenetration": 8 } }
+        }
+      ]
+    },
     "XianmoPianT5": { "effect": [{ "rawStat": { "physDmgBonus": 0.025 } }] },
-    "XianmoPianT6": {}
+    "XianmoPianT6": {
+      "effect": [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "self", "value": "Tailwind" },
+                { "target": "self", "value": "RadiantDrum" },
+                { "target": "self", "value": "FloatingGrace" },
+                { "target": "self", "value": "FloatingGraceDeluge" }
+              ]
+            }
+          ],
+          "effect": { "stat": { "physicalPenetration": 8, "formlessPenetration": 8 } }
+        },
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "self", "value": "Tailwind" },
+                { "target": "self", "value": "RadiantDrum" },
+                { "target": "self", "value": "FloatingGrace" },
+                { "target": "self", "value": "FloatingGraceDeluge" }
+              ]
+            },
+            { "target": "skillTag", "value": "DrumSeries" }
+          ],
+          "effect": { "stat": { "physicalPenetration": 12, "formlessPenetration": 12 } }
+        }
+      ]
+    }
   }
 }

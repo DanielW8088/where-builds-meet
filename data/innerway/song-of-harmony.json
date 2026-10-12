@@ -1,10 +1,10 @@
 {
   "name": "Song of Harmony",
-  "altersTimeline": false,
+  "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {
     "SongOfHarmonyT0": {},
-    "SongOfHarmonyT1": {},
+    "SongOfHarmonyT1": { "effect": [{ "target": "RadiantDrum", "modify": { "duration": 6.5 } }] },
     "SongOfHarmonyT2": {
       "effect": [
         {
@@ -43,9 +43,66 @@
         }
       ]
     },
-    "SongOfHarmonyT3": {},
-    "SongOfHarmonyT4": {},
+    "SongOfHarmonyT3": {
+      "effect": [
+        {
+          "requirement": [
+            { "target": "skillTag", "value": "JadebreakerNormal" },
+            { "target": "self", "value": "RadiantDrum" }
+          ],
+          "effect": { "critDmgBonus": 0.1 }
+        }
+      ]
+    },
+    "SongOfHarmonyT4": {
+      "trigger": [
+        {
+          "event": "damage",
+          "cooldown": 60,
+          "requirement": [
+            { "target": "target", "value": "Exhausted" },
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "CraneCry" },
+                { "target": "skillTag", "value": "HarmoniousDrum" }
+              ]
+            }
+          ],
+          "action": [
+            { "type": "clearCD", "value": "RippleJadebreaker" },
+            { "type": "setResource", "value": "NobleWill", "amount": 100 }
+          ]
+        }
+      ]
+    },
     "SongOfHarmonyT5": { "effect": [{ "rawStat": { "directCrit": 0.046 } }] },
-    "SongOfHarmonyT6": {}
+    "SongOfHarmonyT6": {
+      "effect": [
+        {
+          "target": "RadiantDrum",
+          "modify": {
+            "effect": [
+              {
+                "effect": {
+                  "physicalAttackBonus": 0.06,
+                  "bellstrikeAttackBonus": 0.06,
+                  "stonesplitAttackBonus": 0.06,
+                  "silkbindAttackBonus": 0.06,
+                  "bamboocutAttackBonus": 0.06
+                }
+              }
+            ]
+          }
+        },
+        {
+          "requirement": [
+            { "target": "skillTag", "value": "JadebreakerEnhanced" },
+            { "target": "self", "value": "RadiantDrum" }
+          ],
+          "effect": { "critDmgBonus": 0.1 }
+        }
+      ]
+    }
   }
 }

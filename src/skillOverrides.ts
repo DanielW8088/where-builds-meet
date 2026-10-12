@@ -1,12 +1,14 @@
 import umbrellaSkills from "@gamedata/skill/everspring-umbrella.json"
 
-import type { EditableObject, EffectDefinition, SkillRecord } from "./calculations/rotationTimeline"
-import { validateUnknown } from "./schemas/json"
-import { skillOverridesInputSchema } from "./schemas/skillOverrides"
-import { migrateSkillId } from "./skillIdMigrations"
+import type { EditableObject, EffectDefinition, SkillRecord } from "@/calculations/rotationTimeline"
+import { validateUnknown } from "@/schemas/json"
+import { skillOverridesInputSchema } from "@/schemas/skillOverrides"
+import { migrateSkillId } from "@/skillIdMigrations"
 
 export type SkillMap = Record<string, SkillRecord>
 export type SkillCategory =
+  | "WendongNichang"
+  | "XingyouCaoye"
   | "Snowparting"
   | "Phalanxbane"
   | "Thundercry"

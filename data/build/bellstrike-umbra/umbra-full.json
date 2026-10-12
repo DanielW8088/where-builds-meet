@@ -1,6 +1,6 @@
 {
   "id": "umbra-full",
-  "name": "Graduate",
+  "name": "Full Max Build",
   "order": 2,
   "martialArts": ["strategicSword", "heavenquakerSpear"],
   "setup": {

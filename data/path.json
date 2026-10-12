@@ -68,11 +68,11 @@
   "silkbindWing": {
     "name": "Wings",
     "tag": "SilkbindWing",
-    "status": "wip",
+    "status": "preview",
     "buildGroup": "silkbind-wing",
-    "defaultBuild": "empty",
-    "graduated": ["empty"],
-    "defaultRotation": "empty",
+    "defaultBuild": "wings-fully-relayed-min",
+    "graduated": ["wings-graduate"],
+    "defaultRotation": "wings-dummy-1-min-jadebreaker",
     "lockedWeapons": ["wendongNichang", "xingyouCaoye"],
     "arsenal": "Silkbind"
   },

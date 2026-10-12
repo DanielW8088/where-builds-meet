@@ -10,7 +10,8 @@
     "BellstrikeUmbra",
     "SilkbindJade",
     "BamboocutWind",
-    "BamboocutDust"
+    "BamboocutDust",
+    "SilkbindWing"
   ],
   "effect": {
     "MoraleChantT0": {
@@ -34,6 +35,26 @@
               "reapply": true
             }
           ]
+        },
+        {
+          "target": "self",
+          "action": [
+            {
+              "type": "apply",
+              "target": "self",
+              "value": "YiRiver",
+              "stack": 1,
+              "additionalStack": {
+                "requirement": [
+                  { "target": "target", "value": "Controlled" },
+                  { "target": "self", "value": "MoraleChantT3" }
+                ],
+                "stack": 1
+              },
+              "reapply": true
+            }
+          ],
+          "event": "heal"
         }
       ]
     },
@@ -110,6 +131,11 @@
             { "target": "self", "value": "YiRiver", "stack": 5 }
           ],
           "action": [{ "type": "trigger", "value": "MoraleChant" }]
+        },
+        {
+          "event": "heal",
+          "requirement": [{ "target": "self", "value": "YiRiver", "stack": 5 }],
+          "action": [{ "type": "trigger", "value": "MoraleChantHealing" }]
         }
       ]
     }

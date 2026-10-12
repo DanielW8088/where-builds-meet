@@ -1,10 +1,54 @@
 {
   "name": "寸草心",
-  "altersTimeline": false,
+  "description": "An Inner Way for multiple targets. Its damage stacks require an eligible attack to hit at least 3 enemies simultaneously, reduced to 2 at T4. Drum Specials do not qualify. Against one target, only the T2 Void Attack and T5 Formless Penetration stats contribute; the stacking damage bonuses cannot activate.",
+  "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {
-    "CuncaoXinT0": {},
-    "CuncaoXinT1": {},
+    "CuncaoXinT0": {
+      "trigger": [
+        {
+          "target": "target",
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "HarmoniousDrum" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "enemyCount", "comparison": ">=", "amount": 3 },
+                [
+                  { "target": "self", "value": "CuncaoXinT4" },
+                  { "target": "enemyCount", "comparison": ">=", "amount": 2 }
+                ]
+              ]
+            }
+          ],
+          "action": [
+            {
+              "type": "apply",
+              "target": "target",
+              "value": "Cuncao",
+              "stack": 1,
+              "reapply": true,
+              "additionalStack": {
+                "requirement": [
+                  { "target": "self", "value": "CuncaoXinT4" },
+                  { "target": "enemyCount", "comparison": ">=", "amount": 3 }
+                ],
+                "stack": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "CuncaoXinT1": { "effect": [{ "target": "Cuncao", "modify": { "duration": 8 } }] },
     "CuncaoXinT2": {
       "effect": [
         {
@@ -76,6 +120,24 @@
     "CuncaoXinT3": {},
     "CuncaoXinT4": {},
     "CuncaoXinT5": { "effect": [{ "rawStat": { "formlessPenetration": 6 } }] },
-    "CuncaoXinT6": {}
+    "CuncaoXinT6": {
+      "effect": [
+        {
+          "requirement": [
+            {
+              "operator": "or",
+              "operand": [
+                { "target": "skillTag", "value": "LightVariedCombo" },
+                { "target": "skillTag", "value": "HeavyVariedCombo" },
+                { "target": "skillTag", "value": "DrumSeries" },
+                { "target": "skillTag", "value": "FiendishSquall" }
+              ]
+            },
+            { "target": "target", "value": "Cuncao", "stack": 5 }
+          ],
+          "effect": { "dmgBonus": 0.05 }
+        }
+      ]
+    }
   }
 }

@@ -230,3 +230,24 @@ total damage is DPS multiplied by 60. Exact DPS values follow.
 | `stonesplitStrength/mixed-dummy-infinite-vitality-1-min` |  67828.67270050912 |  67806.2615959671 |
 | `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67675.19144487414 | 67656.17965543146 |
 | `stonesplitStrength/pure-dummy-1-min`                    |  66073.89334400739 |  66033.8658054791 |
+
+## Wings Preview and Morale Chant healing review (2026-10-12)
+
+The user confirmed that Morale Chant's T6 healing proc puts its damage proc on
+the same 10-second cooldown, and accepted these four Deluge changes. Healing
+also builds Yi River stacks. In WTS Team, healing takes the shared cooldown
+before all five former damage procs; the lost 41,625 damage is partly offset by
+earlier stack bonuses, producing a net loss of 38,012 damage over 60 seconds.
+
+| Deluge rotation |      Previous DPS |       Accepted DPS |
+| --------------- | ----------------: | -----------------: |
+| Regular Fire    | 29803.73756241419 | 29795.703973489002 |
+| Smolder         | 36628.55379060283 | 36504.170596575765 |
+| WTS             | 35847.48213895326 | 35571.006125529166 |
+| WTS Team        | 39472.94285759795 |   38839.4023092996 |
+
+The user also accepted the initial Wings Preview snapshots: Jadebreaker at
+50343.070273433346 DPS and Dawnsun at 35943.38925113531 DPS. Both use the
+Fully Relayed Min Build and a 60-second encounter. Remaining Wings limitations
+are tracked in `wings-implementation-audit.md`. All other accepted snapshots
+remain unchanged.

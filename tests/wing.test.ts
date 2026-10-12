@@ -1,14 +1,41 @@
 import { describe, expect, it } from "vitest"
 
 import { martialArtDefinitions } from "@/application/gameData/martialArts"
-import { typedPathDefinitions } from "@/application/gameData/paths"
+import {
+  pathRequiresDev,
+  pathStatusLabel,
+  productionWeaponIds,
+  typedPathDefinitions,
+} from "@/application/gameData/paths"
+import { allSkillDefinitions } from "@/application/gameData/skills"
 import { weaponArtBonus } from "@/calculations/damage"
 import { mainAttributeForWeapons } from "@/calculations/effectiveStats"
 import { emptyStats } from "@/data/statDefinitions"
 import { buildEntryAvailableForMartialArts, defaultBuildPresets, gearDefinitionForSlot } from "@/gear"
 import { normalizeStoredWeaponIds, weaponIds } from "@/types"
 
-describe("Wings placeholder integration", () => {
+describe("Wings integration", () => {
+  it("allows Wings without Dev mode and labels it as Preview", () => {
+    expect(pathRequiresDev(typedPathDefinitions.silkbindWing)).toBe(false)
+    expect(pathStatusLabel(typedPathDefinitions.silkbindWing)).not.toBe("")
+    for (const weapon of typedPathDefinitions.silkbindWing.lockedWeapons!)
+      expect(productionWeaponIds.has(weapon)).toBe(true)
+  })
+  it.each([
+    ["xingyouCaoye", 0.1],
+    ["wendongNichang", 0.25],
+  ])("applies the matching Art affix to every %s damage skill and component", (martialArt, expected) => {
+    const skills = Object.values(allSkillDefinitions).filter(
+      skill =>
+        skill.martialArt === martialArt &&
+        skill.action?.some(action => (action as { type?: string }).type === "damage"),
+    )
+    expect(skills.length).toBeGreaterThan(0)
+    for (const skill of skills)
+      expect(weaponArtBonus({ ...emptyStats, fanDmgBoost: 0.1, ribbonAndDrumDmgBoost: 0.25 }, skill.tags ?? [])).toBe(
+        expected,
+      )
+  })
   it("resolves both weapons through the shared stat, gear, and empty-build pipelines", () => {
     const weapons = typedPathDefinitions.silkbindWing.lockedWeapons!
     expect(mainAttributeForWeapons([weapons[0]])).toBe("silkbind")

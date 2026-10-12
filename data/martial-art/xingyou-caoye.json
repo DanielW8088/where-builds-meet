@@ -3,19 +3,791 @@
   "weapon": "Fan",
   "tag": "XingyouCaoye",
   "talent": [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.004256 } } } }
+        ]
+      }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          {
+            "stat": {
+              "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.007600000000000001 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          {
+            "stat": {
+              "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.015200000000000002 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 4 } }
+            },
+            "rawStat": { "maxSilkbind": 38, "minSilkbind": 19 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0228 } } } }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 5.6 } }
+            },
+            "rawStat": { "maxSilkbind": 52, "minSilkbind": 26 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          {
+            "stat": {
+              "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.030400000000000003 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.04 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 7.6 } }
+            },
+            "rawStat": { "maxSilkbind": 68, "minSilkbind": 34 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [{ "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.038 } } } }]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.08 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.08 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 9.6 } }
+            },
+            "rawStat": { "maxSilkbind": 86, "minSilkbind": 43 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0456 } } } }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.08 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.08 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 11.2 } }
+            },
+            "rawStat": { "maxSilkbind": 100, "minSilkbind": 50 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0456 } } } }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 11.2 } }
+            },
+            "rawStat": { "maxSilkbind": 100, "minSilkbind": 50 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0456 } } } }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 11.2 } }
+            },
+            "rawStat": { "maxSilkbind": 100, "minSilkbind": 50 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          {
+            "stat": {
+              "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.053200000000000004 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 13.2 } }
+            },
+            "rawStat": { "maxSilkbind": 118, "minSilkbind": 59 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          {
+            "stat": {
+              "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.06080000000000001 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 15.2 } }
+            },
+            "rawStat": { "maxSilkbind": 138, "minSilkbind": 69 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "扶風增益強化",
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "wendongNichang" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Critical Rate Up",
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0684 } } } }
+        ]
+      },
+      {
+        "name": "扶風傷害強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 18 } }
+            },
+            "rawStat": { "maxSilkbind": 160, "minSilkbind": 80 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
     [
       {
         "name": "扶風增益強化",
@@ -73,10 +845,10 @@
         "name": "Silkbind Attribute Up",
         "effect": [
           {
-            "rawStat": { "minSilkbind": 98, "maxSilkbind": 196 },
             "stat": {
               "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 22 } }
-            }
+            },
+            "rawStat": { "maxSilkbind": 196, "minSilkbind": 98 }
           }
         ]
       },
@@ -139,10 +911,10 @@
         "name": "Silkbind Attribute Up",
         "effect": [
           {
-            "rawStat": { "minSilkbind": 106, "maxSilkbind": 212 },
             "stat": {
               "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 23.6 } }
-            }
+            },
+            "rawStat": { "maxSilkbind": 212, "minSilkbind": 106 }
           }
         ]
       },

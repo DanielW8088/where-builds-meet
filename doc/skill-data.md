@@ -1139,7 +1139,7 @@ thresholds are authored at 40% and 60% of that time. Exhausted lasts ten seconds
 and its expiry restores Qi; the next ramp starts after the additional four-second
 immunity window. Only its 60% threshold falls before the 60-second Battle End.
 
-Umbra is available without Dev mode. Its Fully Relayed and Graduate presets copy Splendor's gear,
+Umbra is available without Dev mode. Its Fully Relayed Max Build and Full Max Build presets copy Splendor's gear,
 replace the four armor attunements with Strategic Sword - Bleeding DMG Boost,
 and use Hawkwing with Sword Horizon, Morale Chant, Insightful Strike, and
 Wolfchaser's Art at T6. `dummy-1-min-38-bb` is registered as a draft, with the
@@ -1323,53 +1323,123 @@ release ending at 0.831138954 seconds. Its release preserves all damage and
 Bleed applications. The one-minute Umbra preset uses this cancel twice;
 its timed Qi ramps are recalibrated around the earlier attached Qi break.
 
-### Silkbind Wings placeholder
+### Silkbind Wings Preview combat
 
-Wings follows Deluge in the path selector and is WIP (Dev mode required). Its
-martial arts are 文動霓裳 (Ribbon & Drum) and 杏遊草野 (Fan); English martial-art
-names are not yet available. Rank 13/14 talents are implemented; castable skills remain absent.
-Wings uses empty build and rotation presets. Ribbon & Drum is a distinct weapon
-family; its gear record has no base stats or affix choices until verified data
-is supplied. Existing Fan gear remains available to 杏遊草野. No Wings combat
-mechanics or damage coefficients are inferred from other paths.
+Wings follows Deluge in the selector and is available without Dev mode with a Preview badge. Its martial arts are
+文動霓裳 (Ribbon & Drum) and 杏遊草野 (Fan). Their rotation skills use the
+normal layer-zero, level-100 numerical records from `wwm-skills-normal-all.json`.
+Alternative hit IDs with identical numerical ownership are not extra hits.
+Fan Q uses the tooltip's 0.8 multiplier; special variants use their exported
+0.85 or 0.7225 multipliers. The rank's 1.5 attribute coefficient is included
+once in `attrCoef`.
 
-### Wings talent and Inner Way stat coverage
+The updated export supplies provisional animation clocks. Wings imports the
+interrupt clock as the cancelable cast duration when the route identifies the
+matching skill animation. Equivalent branches with identical clocks share that
+timing. This covers both Drum Q casts, the drum light variant, all three matching
+drum heavy casts, and both Fan Q casts. The Pre-VC third-heavy component
+interrupts 0.25 seconds earlier (0.5833333333 seconds) when followed by VC. Hit clocks are imported for heavy stages
+two and three and the drum light variant; its on-hit 雅意 gain uses that same
+clock. These source routes remain marked `audit-provisional`.
 
-The 2026-10-11 CN normal martial-art export supplies rank 13/14 conversions.
-文動霓裳 converts Agility to minimum Physical Attack and minimum Silkbind
-Attack to Silkbind damage bonus. 杏遊草野 converts Agility to Critical and
-minimum Silkbind Attack to Silkbind Penetration (22/23.6 caps). Both gain
-98–196 or 106–212 raw Silkbind Attack and rank 14 adds 7.25% additional attack
-to that martial art only. The 1.5 Silkbind coefficient belongs in skill data,
-as with other martial arts; it is not a second talent damage multiplier.
+Unresolved event timings remain zero. The first Drum Q's collider marker is not
+projectile contact, and the second Drum Q and ordinary Fan Q lack hit clocks. The
+first heavy uses its own animation's interrupt clock, never the unrelated
+`skill_20901001_2` route; its hit clock stays zero. Northwind Sweep uses the shorter `skill_20303105_2` animation route by
+explicit selection: its cast duration and three hit clocks are imported. Enhanced Fan Q uses two attack requests at 0.5 and 1.0 seconds, splitting the
+existing combined coefficients into the first and second wind fields. Its
+connection to Perception is at 1.0 seconds. The one-dash Fan Perception route
+uses a 1.933-second cast with slash and final damage requests at 0.566 and
+1.816 seconds relative to Perception start: 1.566, 2.816, and 2.933 seconds
+from enhanced Fan Q start for slash, final damage, and ordinary interrupt.
+After each slash, another eligible target allows another dash, up to four
+executed dashes. Each additional dash adds 0.4 seconds to the final damage
+request and ordinary interrupt gate; the first slash clock is unchanged.
+For one through four dashes, final damage / interrupt times from Perception
+start are 1.816 / 1.933, 2.216 / 2.333, 2.616 / 2.733, and 3.016 / 3.133
+seconds respectively. The rotation editor’s enemy count selects the dash count,
+capped at four, through existing enemy-count requirements and segmented timing
+modifiers. Extra dashes strike other targets, so they extend timing without
+adding slash damage to the selected target. The first slash and unspecified
+resource/buff clocks are unchanged.
+These are nominal callback/request times; unspecified buff and resource event
+clocks remain unchanged. Jadebreaker uses user-supplied nominal timings from skill start: ordinary hits
+at 0.982, 3.033, and 4.089 seconds; the enhanced wave at 5.235 seconds; and
+the Harmony T6 extra wave at 5.435 seconds. Its earliest normal cancel is
+5.852 seconds. The enhanced component starts at 5.235 seconds and places its
+extra wave 0.2 seconds later. These timings assume immediate melody selection,
+an immediately starting rhythm clock, and earliest perfect inputs. Position
+synchronization and ring contact may delay actual landing; selection UI handoff
+delay remains unverified. Dawnsun uses the same immediate-selection and earliest-perfect-input assumptions:
+melody selection becomes available at 0.566 seconds, ordinary hits land at
+0.982 and 2.963 seconds, the enhanced hit lands at 5.165 seconds, and normal
+cancel is available at 5.920 seconds. The selection milestone is documentation,
+not an additional delay on these skill-start-relative times. Buff applications and other
+mechanic-event clocks are unchanged where unresolved.
 
-`DrumSeries` selects 文動霓裳 drum attacks: +40% base damage while `Tailwind`
-or `RadiantDrum` is active, and Critical damage scales by half sheet Critical
-up to 30%. 杏遊草野 adds Physical and Silkbind damage bonuses under either
-buff, scaling by minimum Physical Attack at 0.00016 up to 12%. Its Tailwind
-modifier sets 24 seconds; while 文動霓裳 is equipped, Tailwind grants 6%
-attribute attack through the shared stat pipeline. Buff application, third-heavy
-follow-up grants, and Tenacity await Wings skills and buff definitions. These
-conditional rules are authored but do not create those combat events.
+Both presets use heavy 1–3 / VC for every drum combo; charged light
+羅袖動香 followed by VC remains selectable. Charged light uses numerical skill `2100100101`: five
+0.135 hits and one 0.19 final hit, following the explicit damage table rather
+than the conflicting maximum-eight-hit tooltip. Its user-confirmed time to connect to VC
+is 2.033 seconds: 0.2 seconds of pre-charge plus 1.833 seconds after pre-charge.
+Individual hit clocks remain zero because they are unresolved. It carries both `Light` and
+`Charged` tags.
 
-相和歌 (Song of Harmony), 風知意, 弦墨篇, and 寸草心 currently implement
-only cumulative T2/T5 stats. Other tiers are intentionally empty. Solo Level
-arrays prepend the app’s index-zero slot to the export’s zero-based levels;
-duplicate references are not summed. 寸草心 uses the first Void Attack table,
-matching Celestial Vigor (19.9–39.9 at Solo Level 21), rather than the alternative
-17.9–35.9 table. These stat-only definitions do not alter combat timelines.
+`RibbonLightChargedVC` and `RibbonHeavyComboVC` are selectable composite skills
+using the shared `subAction` mechanism. The heavy composite uses
+`RibbonHeavy3PreVC`; ordinary `RibbonHeavy3` keeps its original timing for stored
+references. Heavy stages and charged light carry `SubAction` and are hidden from
+rotation selection. The composite wrappers ignore ping; each component retains
+its own input latency, preserving the original separate-input timing. Both
+presets use these composites. Wings damage skills and components carry their weapon-family tag (`Fan` or
+`RibbonAndDrum`) for Art affix matching, independently of their `weapon` context.
+Wings skills omit descriptions; unresolved timing
+details are maintained here.
 
-### Wings weapon sets
+These presets remain drafts; their DPS is not an accepted timing benchmark.
+Both use the non-attacking dummy. Each applies Exhausted at the third Drum Special first hit.
+Its following Drum Q2 triggers 相和歌 T4, restoring 100 雅意 and clearing the
+shared Drum Special cooldown, once per 60 seconds. Both then use another
+Drum Special, Soaring Spin and two-shot Bursting Nine before the unchanged
+60-second BattleEnd;
+only hits within that battle window contribute. The opening Fan Q precedes Flute cancel and Deflect; the battle-start
+anchor is the first damage action of the first Drum Special. The editor displays 雅意
+from worker state on rows and actions. Cooldowns and the imported cast clocks
+advance the timeline even where a hit still has a zero placeholder.
 
-Wings offers Cloudshear and Etherwrath for 文動霓裳 and 杏遊草野. Etherwrath
-uses its existing effects. Cloudshear (set 71 in `wwm-item-sets.json`) currently
-applies only its two-piece minimum Physical Attack bonus, retained at four
-pieces, following the existing WIP set pattern. The authored 77.8 value matches
-the level-96 baseline used by existing weapon-set definitions. Cloudshear’s four-piece buff application is pending:
-applying a qualifying attack buff grants up to 15 seconds of +2% all damage
-and healing to an ally, replaced by +6% when applied to self. Qualifying effects
-are 烁鼓, 扶風, and 千香引魂蠱’s damage buffs. Wings skill/buff application
-is still absent, so this set does not assume permanent coverage.
+雅意 is represented by `NobleWill`, initially 100 with a cap of 100. Drum
+specials consume all of it. The requested single-target loops restore 30 from
+鸞鶴引聲, 20 from each 鼓樂和, and 30 from 煞盡東風 with 風知意 T3.
+No preset resource-refill event is used. Each Fan Perception dash attempts 30 雅意 recovery through a triggered skill
+with two shared cooldown uses per 15-second window. The editor enemy count
+selects up to four dashes; the third and fourth recovery attempts are rejected.
+
+扶風 and 爍鼓 activate the rank-13/14 talents and 弦墨篇 penetration rules.
+Paired 扶風 grants 6% attribute attack, rising to 12% with 風知意 T6;
+爍鼓 grants 6% all attack, rising to 12% with 相和歌 T6 and 18% with
+風知意 T6. 相和歌 T3 enhances normal Jadebreaker Critical damage only while 爍鼓 is active; T6
+adds the second enhanced beat and its Critical bonus. 墨韻 lasts 18 seconds
+at 風知意 T4. Dawnsun shield-active markers and damage reduction are modeled; shield absorption
+amounts and interruption refunds remain unmodeled. The exhaustion
+reset applies on 鼓樂和 or 鸞鶴引聲 damage against an Exhausted target.
+
+The Cloudshear build copies Deluge's Etherwrath minimum-attack gear at tiers
+96 and 100, replacing Fan boost with Ribbon & Drum boost and armor attunement
+with 文動霓裳 Special damage. It equips 相和歌, 風知意, 弦墨篇, and
+Morale Chant at T6. The Full Min Build preset retains this setup and affix choices, with every base and
+additional affix at its tier maximum and the existing maximum attunements.
+Ribbon & Drum gear uses the template Fan's base values and
+affix availability pending a dedicated equipment export.
+
+Cloudshear and Etherwrath are available for Wings. Cloudshear retains the
+77.8 minimum Physical Attack two-piece bonus at four pieces. Its self buff,
+裁雲·翊 (`buff.json` 109804), grants 6% all-type damage and healing for 15 seconds, capped at
+one stack and refreshing its duration on reapplication, when
+扶風 or 爍鼓 is applied. Ally application is not part of the dummy presets.
+
+寸草心 T2 uses the first Void Attack table, matching Celestial Vigor
+(19.9–39.9 at Solo Level 21). Its alternative table is not added. Solo Level
+arrays prepend the application's index-zero slot to the source levels.
 
 ### Wings attunements
 
@@ -1378,3 +1448,76 @@ The tier-96 and tier-100 item exports share five Wings attunement categories.
 杏遊草野 covers Martial Art and Heavy/Varied Combo damage. Derived attacks
 use the existing VariedCombo tag. Armor rolls use the shared level-based limits
 (6% at tier 96 and 7% at tier 100); the two tiers import into the same keys.
+
+寸草心 models PvE 寸草 stacks using the editor target count: three targets
+(two at T4) unlock eligible-hit applications; T4 gives two stacks at three
+targets. Stacks cap at five, last five seconds (eight at T1), and increase
+eligible damage by 2% per stack (4% at T3), with the T6 five-stack bonus.
+Target count is a proxy for simultaneous hits, including the Fan perception
+route; per-target hit tracking and PvP effects remain unimplemented. See
+[wings-implementation-audit.md](wings-implementation-audit.md) for remaining gaps.
+
+The Wings Fully Relayed Max Build uses relayed gear maximums, changes the original
+Min Physical Attack rolls to Max Physical Attack, retains three Agility rolls,
+and uses Max Silkbind Attack on seven additional attack rolls. Two spare rolls become
+Critical Rate, reaching 80% effective crit at breakthrough 17 and 79.21% at 18
+with Simmering Fish Slices. Pendant uses Max Silkbind Attack instead of its former
+additional Min Physical Attack roll. Setup, weapon set, and attunements match the Full Min Build preset.
+
+Official item imports map Ribbon & Drum Art affixes 9793032/9794032 (tier 96)
+and 10193032/10194032 (tier 100) to `ribbonAndDrumDmgBoost`. The item exports omit these affixes' name fields; the user-provided
+Traditional Chinese label is 舞綾鼓武學增傷.
+
+相和歌 T6 昭陽 enhanced wave extends existing 爍鼓 by four seconds at
+5.165 seconds, so the initial 6.5-second buff expires at 10.5 seconds from
+cast start. With only 扶風 active, it grants four seconds of 爍鼓 instead.
+The game caps this extension at ten seconds remaining; that cap is documented
+but not enforced because the modeled route cannot exceed it.
+
+Wings has four fully relayed attack layouts: Double Min (Min Physical and Min
+Void/Silkbind), Min (12 Min Physical and 8 Max Void/Silkbind), Min Attribute
+(10 Max Physical and 10 Min Void/Silkbind), and Max (Max Physical and Max
+Void/Silkbind). Counts include base affixes. Double Min and Max compare Physical,
+Void, and relay-only Silkbind weapon bases; Disc and Pendant bases remain Physical.
+
+Affix optimization uses the average DPS of the Jadebreaker and Dawnsun presets,
+Simmering Fish Slices, Fire, no script, and the default global debuffs at
+breakthroughs 17/18. Min and Min Attribute have twenty attack rolls; the search
+preserves their specified Physical/attribute splits.
+It repeatedly accepts the best eligible single-affix replacement, also testing
+paired attack-roll replacements for weapon bases when needed to preserve the
+split. Remaining rolls are optimized with at least 79% effective critical rate.
+Weapons, sets, inner ways, and attunements remain fixed. These are constrained
+local optima rather than a global search.
+
+Double Min subsequently compares Physical and Formless Penetration with all
+four weapon/accessory attunements switched together. Formless wins both preset
+rotations at both gear tiers and is used for that layout.
+
+A weapon cannot combine Void and Silkbind rolls of the same attack bound.
+The corrected presets retain Silkbind on relayed weapons and replace the
+conflicting Void rolls with eligible non-attack affixes selected by DPS.
+Min and Min Attribute move the displaced attribute rolls to Disc and Pendant
+to retain their requested totals. Double Min and Max instead add Physical rolls
+to those accessories, so all four relayed layouts retain twenty attack rolls.
+
+Graduate compares the four layouts independently at each gear tier with maximum
+non-relayed rolls, replacing relay-only affixes with eligible alternatives and
+optimizing remaining rolls under the same objective. Its persisted preset ID
+remains `wings-graduate` even if the winning attack layout changes.
+
+### Wings supported-effect corrections
+
+墨韻 applies after the final Perception hit, including enemy-count dash delays.
+Its T4 upgrade adds 5% to the original 5% while preserving Fan/Drum Series scope.
+弦墨篇 T6 replaces previous penetration and limits its extra 12 penetration to
+Drum Series. Its qualifying attack buffs include both Floating Grace variants.
+裁雲·翊 uses damage/healing bonuses rather than attack-range bonuses.
+
+Envigorated Warrior uses existing incoming/outgoing triggers and timed buffs for
+its disable, Cage, escape and T6 mark. Incoming damage belongs to the modeled
+target; no separate attacker identities are inferred. Morale Chant healing
+applications share Yi River’s two-second application cooldown, and T6 damage and
+healing payloads share their ten-second cooldown. Below-T4 random self stacks
+remain unsupported. See [the Wings audit](wings-implementation-audit.md) for
+remaining mechanisms and draft Flourishing Notes timing limits.

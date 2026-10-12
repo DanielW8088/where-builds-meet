@@ -32,6 +32,37 @@ describe("official weapon damage affixes", () => {
       additionalAffixes: [{ key: "swordDmgBoost", value: 0.05828 }],
     })
   })
+  it.each([
+    [96, 9793032],
+    [96, 9794032],
+    [100, 10193032],
+    [100, 10194032],
+  ])("imports Art of Ribbon & Drum at tier %s from ID %s", (level, id) => {
+    const parsed = parseOfficialGearExport(
+      {
+        wearEquipsDetailed: {
+          1: {
+            exVo: {
+              level,
+              rarity: "Gold",
+              baseAffixes: [
+                [level === 96 ? 9713001 : 10113001, 53],
+                [id, 0.05828],
+              ],
+            },
+          },
+        },
+      },
+      ["wendongNichang", "xingyouCaoye"],
+    )
+    expect(parsed.warnings).toEqual([])
+    const merged = mergeImportedBuildState({ entries: [], activeBuildId: "", gearItems: [] }, parsed.exportValue)
+    expect(merged.importedGearCount).toBe(1)
+    expect(merged.state.gearItems[0]).toMatchObject({
+      definitionId: "ribbonAndDrum",
+      additionalAffixes: [{ key: "ribbonAndDrumDmgBoost", value: 0.05828 }],
+    })
+  })
   const cases: Array<[WeaponId, string, number, number]> = [
     ["namelessSword", "swordDmgBoost", 9793015, 9293021],
     ["stormbreaker", "spearDmgBoost", 9793016, 9293022],

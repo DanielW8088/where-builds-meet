@@ -33,7 +33,8 @@
       "dualBladesDmgBoost": 0.052,
       "vsBossDmg": 0.026,
       "singleTargetMysticDmgBoost": 0.08,
-      "areaMysticDmgBoost": 0.08
+      "areaMysticDmgBoost": 0.08,
+      "ribbonAndDrumDmgBoost": 0.052
     },
     "attunement": { "physicalPenetration": 9, "formlessPenetration": 10.8, "physicalResistance": 9, "armor": 0.05 }
   },
@@ -73,7 +74,8 @@
       "singleTargetMysticDmgBoost": 0.098,
       "areaMysticDmgBoost": 0.098,
       "maxHp": 2960,
-      "physicalDefense": 39
+      "physicalDefense": 39,
+      "ribbonAndDrumDmgBoost": 0.062
     },
     "attunement": { "physicalPenetration": 11, "formlessPenetration": 13, "physicalResistance": 11, "armor": 0.06 }
   },
@@ -113,7 +115,8 @@
       "moBladeDmgBoost": 0.074,
       "umbrellaDmgBoost": 0.074,
       "ropeDartDmgBoost": 0.074,
-      "hengBladeDmgBoost": 0.074
+      "hengBladeDmgBoost": 0.074,
+      "ribbonAndDrumDmgBoost": 0.074
     },
     "attunement": {
       "physicalPenetration": 12.8,

@@ -1,12 +1,13 @@
-import pathDefinitions from "../../../data/path.json"
-import { t } from "../../i18n"
-import type { WeaponId } from "../../types"
-import type { PathId } from "../contracts"
+import pathDefinitions from "@gamedata/path.json"
+
+import type { PathId } from "@/application/contracts"
+import { t } from "@/i18n"
+import type { WeaponId } from "@/types"
 
 export type PathDefinition = {
   name: string
   tag?: string
-  status: "available" | "wip" | "devOnly" | "plannerOnly"
+  status: "available" | "preview" | "wip" | "devOnly" | "plannerOnly"
   buildGroup: string
   defaultBuild: string
   graduated: string[]
@@ -28,12 +29,12 @@ export function defaultRotationIdForPath(pathId: PathId) {
 
 export const productionWeaponIds = new Set<WeaponId>(
   (Object.entries(typedPathDefinitions) as Array<[PathId, PathDefinition]>).flatMap(([id, definition]) =>
-    id !== "mixed" && definition.status === "available" ? (definition.lockedWeapons ?? []) : [],
+    id !== "mixed" && !pathRequiresDev(definition) ? (definition.lockedWeapons ?? []) : [],
   ),
 )
 
 export function pathRequiresDev(definition: PathDefinition) {
-  return definition.status !== "available"
+  return definition.status !== "available" && definition.status !== "preview"
 }
 
 export function pathStatusLabel(definition: PathDefinition) {
@@ -42,6 +43,8 @@ export function pathStatusLabel(definition: PathDefinition) {
       return t("ui.app.plannerOnly")
     case "devOnly":
       return t("ui.app.dev")
+    case "preview":
+      return t("ui.app.preview")
     case "wip":
       return t("ui.app.wip")
     case "available":

@@ -117,7 +117,8 @@
       }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "General", "MoraleChant", "Triggered"]
+    "tags": ["DirectDamage", "General", "MoraleChant", "Triggered"],
+    "cooldownGroup": "MoraleChant"
   },
   "BreakingPointT6Dodge": {
     "name": "Disintegration",
@@ -355,5 +356,14 @@
       }
     ],
     "tags": ["General", "Triggered"]
+  },
+  "MoraleChantHealing": {
+    "name": "Morale Chant Healing",
+    "damageGroup": { "id": "MoraleChant", "name": "Morale Chant" },
+    "castTime": 0,
+    "cooldown": 10,
+    "cooldownGroup": "MoraleChant",
+    "action": [{ "type": "heal", "phyCoef": 1, "silkbindCoef": 1, "phyBonus": 0, "attrBonus": 0, "time": 0 }],
+    "tags": ["Heal", "General", "MoraleChant", "Triggered"]
   }
 }

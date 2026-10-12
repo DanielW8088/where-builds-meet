@@ -1,0 +1,233 @@
+{
+  "id": "wings-fully-relayed-double-min",
+  "name": "Fully Relayed Double Min Build",
+  "order": 1,
+  "martialArts": ["wendongNichang", "xingyouCaoye"],
+  "relayed": true,
+  "setup": {
+    "innerWays": [
+      { "innerWay": "SongOfHarmony", "tier": "T6" },
+      { "innerWay": "FengZhiyi", "tier": "T6" },
+      { "innerWay": "XianmoPian", "tier": "T6" },
+      { "innerWay": "MoraleChant", "tier": "T6" }
+    ],
+    "weaponSets": { "Cloudshear": 4 },
+    "armorSets": { "Moonflare": 0 },
+    "bowRingSet": "Precision",
+    "arsenal": "Silkbind"
+  },
+  "gearByTier": {
+    "96": {
+      "leftWeapon": {
+        "definitionId": "ribbonAndDrum",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minSilkbind", "value": 41.548 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
+          { "key": "agility", "value": 46.43599999999999 },
+          { "key": "ribbonAndDrumDmgBoost", "value": 0.05828 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 13 }
+      },
+      "rightWeapon": {
+        "definitionId": "fan",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minSilkbind", "value": 41.548 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
+          { "key": "agility", "value": 46.43599999999999 },
+          { "key": "crit", "value": 0.0846 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 13 }
+      },
+      "disc": {
+        "definitionId": "disc",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minPhys", "value": 73.13199999999999 },
+        "additionalAffixes": [
+          { "key": "minSilkbind", "value": 41.548 },
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "precision", "value": 0.0752 },
+          { "key": "allMartialArts", "value": 0.03008 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 13 }
+      },
+      "pendant": {
+        "definitionId": "pendant",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minPhys", "value": 73.13199999999999 },
+        "additionalAffixes": [
+          { "key": "minSilkbind", "value": 41.548 },
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "precision", "value": 0.0752 },
+          { "key": "allMartialArts", "value": 0.03008 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 13 }
+      },
+      "helmet": {
+        "definitionId": "helmet",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.0846 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "agility", "value": 46.43599999999999 },
+          { "key": "crit", "value": 0.0846 },
+          { "key": "minSilkbind", "value": 41.548 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+      },
+      "chestpiece": {
+        "definitionId": "chestpiece",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.0846 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "agility", "value": 46.43599999999999 },
+          { "key": "crit", "value": 0.0846 },
+          { "key": "minSilkbind", "value": 41.548 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+      },
+      "greaves": {
+        "definitionId": "greaves",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.0846 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "agility", "value": 46.43599999999999 },
+          { "key": "vsBossDmg", "value": 0.03008 },
+          { "key": "minSilkbind", "value": 41.548 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+      },
+      "bracer": {
+        "definitionId": "bracer",
+        "level": 96,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.0846 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "agility", "value": 46.43599999999999 },
+          { "key": "vsBossDmg", "value": 0.03008 },
+          { "key": "minSilkbind", "value": 41.548 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.06 }
+      }
+    },
+    "100": {
+      "leftWeapon": {
+        "definitionId": "ribbonAndDrum",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minSilkbind", "value": 48.315999999999995 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 },
+          { "key": "crit", "value": 0.09775999999999999 },
+          { "key": "ribbonAndDrumDmgBoost", "value": 0.06956 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+      },
+      "rightWeapon": {
+        "definitionId": "fan",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minSilkbind", "value": 48.315999999999995 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 },
+          { "key": "precision", "value": 0.08836 },
+          { "key": "crit", "value": 0.09775999999999999 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+      },
+      "disc": {
+        "definitionId": "disc",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minPhys", "value": 85.16399999999999 },
+        "additionalAffixes": [
+          { "key": "minSilkbind", "value": 48.315999999999995 },
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "precision", "value": 0.08836 },
+          { "key": "allMartialArts", "value": 0.033839999999999995 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+      },
+      "pendant": {
+        "definitionId": "pendant",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "minPhys", "value": 85.16399999999999 },
+        "additionalAffixes": [
+          { "key": "minSilkbind", "value": 48.315999999999995 },
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "precision", "value": 0.08836 },
+          { "key": "allMartialArts", "value": 0.033839999999999995 }
+        ],
+        "attunement": { "key": "formlessPenetration", "value": 15.2 }
+      },
+      "helmet": {
+        "definitionId": "helmet",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "agility", "value": 53.955999999999996 },
+          { "key": "crit", "value": 0.09775999999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+      },
+      "chestpiece": {
+        "definitionId": "chestpiece",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "agility", "value": 53.955999999999996 },
+          { "key": "crit", "value": 0.09775999999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+      },
+      "greaves": {
+        "definitionId": "greaves",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "agility", "value": 53.955999999999996 },
+          { "key": "vsBossDmg", "value": 0.035719999999999995 },
+          { "key": "minSilkbind", "value": 48.315999999999995 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+      },
+      "bracer": {
+        "definitionId": "bracer",
+        "level": 100,
+        "rarity": "Gold",
+        "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
+        "additionalAffixes": [
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "agility", "value": 53.955999999999996 },
+          { "key": "vsBossDmg", "value": 0.035719999999999995 },
+          { "key": "minSilkbind", "value": 48.315999999999995 }
+        ],
+        "attunement": { "key": "wendongNichangSpecialBoost", "value": 0.07 }
+      }
+    }
+  }
+}

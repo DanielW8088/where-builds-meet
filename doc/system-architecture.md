@@ -1898,9 +1898,12 @@ step picker.
 
 ### Buff, debuff, or DOT
 
-Add the definition to the appropriate JSON file and ensure that file is included
-in `effectDefinitions`. DOTs must also be present in the `dots` map. Follow
-`skill-data.md` for stacking and duration semantics.
+Add the definition to the appropriate JSON file and register that file once in
+`buffDefinitions`, `debuffDefinitions`, or `dotDefinitions` in
+`src/application/gameData/skills.ts`. Both the combat worker’s `effectDefinitions`
+and the Skills editor derive from those shared maps. The editor filters global
+buffs from its Buff category; it does not maintain a second registration list.
+Follow `skill-data.md` for stacking and duration semantics.
 
 ### Inner Way
 
@@ -1959,8 +1962,10 @@ allow either martial art in either slot. New weapons still require changes to
 `mainAttributeForWeapons()` in `effectiveStats.ts`. Each martial-art JSON definition declares its
 physical weapon family and a shared `tag`; Art-of field visibility is derived
 from the weapon family, while attunement and set eligibility use the tag.
-The `status` value is one of `available`, `wip`, `devOnly`, or `plannerOnly`.
-Only `available` paths are enabled without the header-level Dev toggle. WIP paths
+The `status` value is one of `available`, `preview`, `wip`, `devOnly`, or `plannerOnly`.
+`available` and `preview` paths are enabled without the header-level Dev toggle.
+Preview paths carry a Preview badge and contribute their weapons to production catalogs.
+Wings uses Preview while its remaining limitations are documented in `wings-implementation-audit.md`. WIP paths
 remain visible with a WIP badge. Dev-only paths carry a Dev badge and support
 unrestricted test combinations. Planner-only paths indicate that their
 martial-art pair and build-planner surfaces are registered but their combat mechanics

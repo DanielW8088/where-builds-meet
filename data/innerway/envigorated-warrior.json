@@ -1,16 +1,32 @@
 {
   "name": "Envigorated Warrior",
-  "altersTimeline": false,
+  "altersTimeline": true,
   "tags": [
     "StonesplitStrength",
     "BamboocutKite",
     "SilkbindDeluge",
     "BamboocutWind",
     "BamboocutDust",
-    "BamboocutDraught"
+    "BamboocutDraught",
+    "SilkbindWing"
   ],
   "effect": {
-    "EnvigoratedWarriorT0": {},
+    "EnvigoratedWarriorT0": {
+      "effect": [
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "EnvigoratedDisabled" }] }],
+          "effect": { "dmgBonus": 0.05, "healingBonus": 0.05 }
+        }
+      ],
+      "trigger": [
+        {
+          "event": "takeDamage",
+          "requirement": [{ "operator": "not", "operand": [{ "target": "target", "value": "WarriorMark" }] }],
+          "action": [{ "type": "apply", "target": "self", "value": "EnvigoratedDisabled", "time": 0 }]
+        },
+        { "event": "takeDamage", "action": [{ "type": "apply", "target": "self", "value": "WarriorCage", "time": 0 }] }
+      ]
+    },
     "EnvigoratedWarriorT1": {},
     "EnvigoratedWarriorT2": {
       "effect": [
@@ -46,9 +62,35 @@
         }
       ]
     },
-    "EnvigoratedWarriorT3": {},
-    "EnvigoratedWarriorT4": {},
+    "EnvigoratedWarriorT3": {
+      "trigger": [
+        {
+          "event": "damage",
+          "requirement": [{ "target": "skillTag", "value": "DirectDamage" }],
+          "action": [{ "type": "apply", "target": "self", "value": "WarriorEscape", "time": 0 }]
+        }
+      ]
+    },
+    "EnvigoratedWarriorT4": {
+      "effect": [
+        {
+          "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "EnvigoratedDisabled" }] }],
+          "effect": { "dmgBonus": 0.03, "healingBonus": 0.03 }
+        }
+      ]
+    },
     "EnvigoratedWarriorT5": { "effect": [{ "rawStat": { "physicalPenetration": 5.1 } }] },
-    "EnvigoratedWarriorT6": { "effect": [{ "effect": { "dmgBonus": 0.08, "healingBonus": 0.08 } }] }
+    "EnvigoratedWarriorT6": {
+      "trigger": [
+        {
+          "event": "damage",
+          "requirement": [
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "operator": "not", "operand": [{ "target": "self", "value": "EnvigoratedDisabled" }] }
+          ],
+          "action": [{ "type": "apply", "target": "target", "value": "WarriorMark", "duration": 5 }]
+        }
+      ]
+    }
   }
 }

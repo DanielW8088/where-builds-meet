@@ -1,0 +1,663 @@
+{
+  "CraneWings": {
+    "name": "鸞鶴舞翅",
+    "shortName": "Drum Q1",
+    "castTime": 1,
+    "action": [
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
+      { "type": "damage", "phyCoef": 0.6285, "phyBonus": 174, "attrCoef": 0.94275, "attrBonus": 94.75, "time": 0 },
+      { "type": "apply", "target": "target", "value": "TangledGauze", "stack": 1, "reapply": true, "time": 0 }
+    ],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "MartialArt", "CraneWings", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "cooldown": 15
+  },
+  "CraneCry": {
+    "name": "鸞鶴引聲",
+    "shortName": "Drum Q2",
+    "castTime": 0.9523809523809523,
+    "action": [
+      { "type": "addResource", "value": "NobleWill", "amount": 20, "time": 0 },
+      {
+        "type": "damage",
+        "phyCoef": 2.5212,
+        "phyBonus": 698,
+        "attrCoef": 3.7817999999999996,
+        "attrBonus": 380,
+        "time": 0
+      },
+      { "type": "addResource", "value": "NobleWill", "amount": 10, "time": 0 }
+    ],
+    "modifier": [
+      { "requirement": [{ "target": "target", "value": "TangledGauze" }], "effect": { "baseDMGBonus": 0.2 } }
+    ],
+    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "MartialArt", "DrumSeries", "CraneCry", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum"
+  },
+  "HarmoniousDrum": {
+    "name": "鼓樂和",
+    "shortName": "Drum VC",
+    "castTime": 1.1785714285714286,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 2.33473,
+        "phyBonus": 646,
+        "attrCoef": 3.5020949999999997,
+        "attrBonus": 352,
+        "time": 0.5471428571428572
+      },
+      { "type": "addResource", "value": "NobleWill", "amount": 20, "time": 0.5471428571428572 }
+    ],
+    "modifier": [],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Light",
+      "LightVariedCombo",
+      "DrumSeries",
+      "HarmoniousDrum",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "skillBreakdownCategory": "鼓樂和"
+  },
+  "RibbonHeavy1": {
+    "name": "舞綾鼓·重擊1",
+    "shortName": "Drum Heavy 1",
+    "castTime": 0.6941666666666667,
+    "action": [
+      { "type": "damage", "phyCoef": 0.49166, "phyBonus": 137, "attrCoef": 0.73749, "attrBonus": 74, "time": 0 }
+    ],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "Heavy", "RibbonHeavy1", "SubAction", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "skillBreakdownCategory": "舞綾鼓·重擊"
+  },
+  "RibbonHeavy2": {
+    "name": "舞綾鼓·重擊2",
+    "shortName": "Drum Heavy 2",
+    "castTime": 0.4615384615384615,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.3517,
+        "phyBonus": 98,
+        "attrCoef": 0.52755,
+        "attrBonus": 53,
+        "time": 0.19156950769230768
+      }
+    ],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "Heavy", "RibbonHeavy2", "SubAction", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "skillBreakdownCategory": "舞綾鼓·重擊"
+  },
+  "RibbonHeavy3": {
+    "name": "舞綾鼓·重擊3",
+    "shortName": "Drum Heavy 3",
+    "castTime": 0.8333333333333334,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.74244,
+        "phyBonus": 206,
+        "attrCoef": 1.1136599999999999,
+        "attrBonus": 112,
+        "time": 0.4166666666666667
+      }
+    ],
+    "modifier": [],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Heavy",
+      "DrumSeries",
+      "RibbonHeavy3",
+      "SubAction",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "skillBreakdownCategory": "舞綾鼓·重擊"
+  },
+  "RippleJadebreaker": {
+    "name": "凌波·撼玉",
+    "shortName": "Drum Special (Jadebreaker)",
+    "castTime": 5.852,
+    "action": [
+      { "type": "consumeResource", "value": "NobleWill", "amount": "all", "time": 0 },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "RadiantDrum",
+        "stack": 1,
+        "reapply": true,
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT0" },
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "self", "value": "RadiantDrum" }
+            ]
+          }
+        ]
+      },
+      { "type": "consume", "target": "self", "value": "Tailwind", "time": 0 },
+      {
+        "type": "damage",
+        "phyCoef": 1.81254,
+        "phyBonus": 501.5,
+        "attrCoef": 2.71881,
+        "attrBonus": 273.7,
+        "time": 0.982
+      },
+      {
+        "type": "damage",
+        "phyCoef": 1.81254,
+        "phyBonus": 501.5,
+        "attrCoef": 2.71881,
+        "attrBonus": 273.7,
+        "time": 3.033
+      },
+      {
+        "type": "damage",
+        "phyCoef": 1.81254,
+        "phyBonus": 501.5,
+        "attrCoef": 2.71881,
+        "attrBonus": 273.7,
+        "time": 4.089
+      },
+      { "type": "trigger", "value": "JadebreakerEnhanced", "time": 5.235 },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Cloudshear",
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "Cloudshear4P" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "DrumSpecialDefense",
+        "time": 0,
+        "duration": 5.852,
+        "requirement": [{ "target": "self", "value": "SongOfHarmonyT1" }]
+      }
+    ],
+    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Special",
+      "DrumSeries",
+      "RippleJadebreaker",
+      "JadebreakerNormal",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "cooldown": 20,
+    "cooldownGroup": "RipplingDew",
+    "skillBreakdownCategory": "凌波·撼玉"
+  },
+  "RippleDawnsun": {
+    "name": "凌波·昭陽",
+    "shortName": "Drum Special (Dawnsun)",
+    "castTime": 5.92,
+    "action": [
+      { "type": "consumeResource", "value": "NobleWill", "amount": "all", "time": 0 },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "RadiantDrum",
+        "stack": 1,
+        "reapply": true,
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT0" },
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "self", "value": "RadiantDrum" }
+            ]
+          }
+        ]
+      },
+      { "type": "consume", "target": "self", "value": "Tailwind", "time": 0 },
+      {
+        "type": "damage",
+        "phyCoef": 1.540659,
+        "phyBonus": 426.275,
+        "attrCoef": 2.3109885,
+        "attrBonus": 232.645,
+        "time": 0.982
+      },
+      {
+        "type": "damage",
+        "phyCoef": 1.540659,
+        "phyBonus": 426.275,
+        "attrCoef": 2.3109885,
+        "attrBonus": 232.645,
+        "time": 2.963
+      },
+      {
+        "type": "damage",
+        "phyCoef": 1.8777486,
+        "phyBonus": 519.4775,
+        "attrCoef": 2.8166229,
+        "attrBonus": 283.22,
+        "time": 5.165
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Cloudshear",
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "Cloudshear4P" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      },
+      {
+        "type": "extend",
+        "target": "self",
+        "value": "RadiantDrum",
+        "duration": 4,
+        "time": 5.165,
+        "requirement": [{ "target": "self", "value": "SongOfHarmonyT6" }]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "RadiantDrum",
+        "duration": 4,
+        "time": 5.165,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "Tailwind" },
+          { "operator": "not", "operand": [{ "target": "self", "value": "RadiantDrum" }] }
+        ]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "DrumSpecialDefense",
+        "time": 0,
+        "duration": 5.92,
+        "requirement": [{ "target": "self", "value": "SongOfHarmonyT1" }]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "DawnsunDefense",
+        "time": 5.165,
+        "duration": 4,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Shield",
+        "time": 0.982,
+        "duration": 2,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT3" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Shield",
+        "time": 2.963,
+        "duration": 2,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT3" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Shield",
+        "time": 5.165,
+        "duration": 4,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      }
+    ],
+    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Special",
+      "DrumSeries",
+      "RippleDawnsun",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "cooldown": 20,
+    "cooldownGroup": "RipplingDew"
+  },
+  "JadebreakerEnhanced": {
+    "name": "凌波·撼玉·強化音浪",
+    "silent": true,
+    "ignorePing": true,
+    "castTime": 0,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 2.209116,
+        "phyBonus": 611.15,
+        "attrCoef": 3.313674,
+        "attrBonus": 333.2,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 2.209116,
+        "phyBonus": 611.15,
+        "attrCoef": 3.313674,
+        "attrBonus": 333.2,
+        "time": 0.2,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      }
+    ],
+    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Special",
+      "DrumSeries",
+      "JadebreakerEnhanced",
+      "Triggered",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "skillBreakdownCategory": "凌波·撼玉"
+  },
+  "RibbonLightCharged": {
+    "name": "羅袖動香",
+    "shortName": "Drum Light Charged",
+    "castTime": 2.033,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.25913115000000003,
+        "phyBonus": 71.82000000000001,
+        "attrCoef": 0.3886967250000001,
+        "attrBonus": 58.72500000000001,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.25913115000000003,
+        "phyBonus": 71.82000000000001,
+        "attrCoef": 0.3886967250000001,
+        "attrBonus": 58.72500000000001,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.25913115000000003,
+        "phyBonus": 71.82000000000001,
+        "attrCoef": 0.3886967250000001,
+        "attrBonus": 58.72500000000001,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.25913115000000003,
+        "phyBonus": 71.82000000000001,
+        "attrCoef": 0.3886967250000001,
+        "attrBonus": 58.72500000000001,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.25913115000000003,
+        "phyBonus": 71.82000000000001,
+        "attrCoef": 0.3886967250000001,
+        "attrBonus": 58.72500000000001,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.3647031,
+        "phyBonus": 101.08,
+        "attrCoef": 0.54705465,
+        "attrBonus": 82.65,
+        "time": 0
+      }
+    ],
+    "modifier": [],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Light",
+      "Charged",
+      "RibbonLightCharged",
+      "SubAction",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum"
+  },
+  "RibbonHeavy3PreVC": {
+    "name": "舞綾鼓·重擊3·派生前置",
+    "shortName": "Drum Heavy 3 Pre-VC",
+    "castTime": 0.5833333333333334,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.74244,
+        "phyBonus": 206,
+        "attrCoef": 1.1136599999999999,
+        "attrBonus": 112,
+        "time": 0.4166666666666667
+      }
+    ],
+    "modifier": [],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Heavy",
+      "DrumSeries",
+      "RibbonHeavy3",
+      "SubAction",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "skillBreakdownCategory": "舞綾鼓·重擊"
+  },
+  "RibbonLightChargedVC": {
+    "name": "羅袖動香 → 鼓樂和",
+    "shortName": "Drum Light Charged → VC",
+    "ignorePing": true,
+    "castTime": 0,
+    "action": [],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "RibbonLightChargedVC", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "subAction": [{ "value": "RibbonLightCharged" }, { "value": "HarmoniousDrum" }]
+  },
+  "RibbonHeavyComboVC": {
+    "name": "舞綾鼓·重擊123 → 鼓樂和",
+    "shortName": "Drum Heavy 123 → VC",
+    "ignorePing": true,
+    "castTime": 0,
+    "action": [],
+    "modifier": [],
+    "tags": ["DirectDamage", "MartialArts", "WendongNichang", "RibbonHeavyComboVC", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "subAction": [
+      { "value": "RibbonHeavy1" },
+      { "value": "RibbonHeavy2" },
+      { "value": "RibbonHeavy3PreVC" },
+      { "value": "HarmoniousDrum" }
+    ],
+    "skillBreakdownCategory": "舞綾鼓·重擊"
+  },
+  "RippleFlourishingNotes": {
+    "name": "凌波·繁音",
+    "shortName": "Drum Special (Flourishing Notes)",
+    "castTime": 0,
+    "action": [
+      { "type": "consumeResource", "value": "NobleWill", "amount": "all", "time": 0 },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "RadiantDrum",
+        "stack": 1,
+        "reapply": true,
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT0" },
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "self", "value": "RadiantDrum" }
+            ]
+          }
+        ]
+      },
+      { "type": "consume", "target": "self", "value": "Tailwind", "time": 0 },
+      {
+        "type": "damage",
+        "phyCoef": 1.540659,
+        "phyBonus": 426.275,
+        "attrCoef": 2.3109885,
+        "attrBonus": 232.645,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 1.540659,
+        "phyBonus": 426.275,
+        "attrCoef": 2.3109885,
+        "attrBonus": 232.645,
+        "time": 0
+      },
+      {
+        "type": "damage",
+        "phyCoef": 1.8777486,
+        "phyBonus": 519.4775,
+        "attrCoef": 2.8166229,
+        "attrBonus": 283.22,
+        "time": 0
+      },
+      {
+        "type": "apply",
+        "target": "self",
+        "value": "Cloudshear",
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "Cloudshear4P" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      },
+      {
+        "type": "trigger",
+        "value": "FlourishingNotesField",
+        "time": 0,
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT6" },
+          { "target": "self", "value": "RadiantDrum" }
+        ]
+      }
+    ],
+    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "WendongNichang",
+      "Special",
+      "DrumSeries",
+      "RippleFlourishingNotes",
+      "RibbonAndDrum"
+    ],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum",
+    "cooldown": 20,
+    "cooldownGroup": "RipplingDew"
+  },
+  "FlourishingNotesField": {
+    "name": "凌波·繁音·音域",
+    "castTime": 0,
+    "ignorePing": true,
+    "action": [
+      {
+        "type": "damage",
+        "phyCoef": 0.08836464000000001,
+        "phyBonus": 24.445999999999998,
+        "attrCoef": 0.13254696,
+        "attrBonus": 13.328000000000001,
+        "time": 0.45
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.08836464000000001,
+        "phyBonus": 24.445999999999998,
+        "attrCoef": 0.13254696,
+        "attrBonus": 13.328000000000001,
+        "time": 0.95
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.08836464000000001,
+        "phyBonus": 24.445999999999998,
+        "attrCoef": 0.13254696,
+        "attrBonus": 13.328000000000001,
+        "time": 1.45
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.08836464000000001,
+        "phyBonus": 24.445999999999998,
+        "attrCoef": 0.13254696,
+        "attrBonus": 13.328000000000001,
+        "time": 1.95
+      }
+    ],
+    "modifier": [],
+    "tags": ["DOT", "MartialArts", "WendongNichang", "Special", "DrumSeries", "Triggered", "RibbonAndDrum"],
+    "martialArt": "wendongNichang",
+    "weapon": "RibbonAndDrum"
+  }
+}

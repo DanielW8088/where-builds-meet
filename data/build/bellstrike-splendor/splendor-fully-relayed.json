@@ -1,6 +1,6 @@
 {
   "id": "splendor-fully-relayed",
-  "name": "Fully Relayed",
+  "name": "Fully Relayed Max Build",
   "order": 1,
   "martialArts": ["namelessSword", "namelessSpear"],
   "relayed": true,

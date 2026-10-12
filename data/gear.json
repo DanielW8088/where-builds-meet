@@ -1555,9 +1555,106 @@
       "name": "Ribbon & Drum",
       "slots": ["leftWeapon", "rightWeapon"],
       "weapon": "wendongNichang",
-      "baseStats": {},
-      "baseAffixes": {},
-      "additionalAffixes": {}
+      "baseStats": {
+        "91": { "Gold": { "minPhys": 53, "maxPhys": 124 }, "Purple": { "minPhys": 48, "maxPhys": 112 } },
+        "96": { "Gold": { "minPhys": 65, "maxPhys": 151 }, "Purple": { "minPhys": 59, "maxPhys": 136 } },
+        "100": { "Gold": { "minPhys": 75, "maxPhys": 175 }, "Purple": { "minPhys": 68, "maxPhys": 158 } }
+      },
+      "baseAffixes": {
+        "91": ["minPhys", "maxPhys", "agility", "momentum", "minStonesplit", "maxStonesplit"],
+        "96": ["minPhys", "maxPhys", "minVoidAttack", "maxVoidAttack", "agility", "momentum"],
+        "100": ["minPhys", "maxPhys", "minVoidAttack", "maxVoidAttack", "agility", "momentum"],
+        "96Relayed": [
+          "minBellstrike",
+          "maxBellstrike",
+          "minStonesplit",
+          "maxStonesplit",
+          "minSilkbind",
+          "maxSilkbind",
+          "minBamboocut",
+          "maxBamboocut"
+        ],
+        "100Relayed": [
+          "minBellstrike",
+          "maxBellstrike",
+          "minStonesplit",
+          "maxStonesplit",
+          "minSilkbind",
+          "maxSilkbind",
+          "minBamboocut",
+          "maxBamboocut"
+        ]
+      },
+      "additionalAffixes": {
+        "91": [
+          "minPhys",
+          "maxPhys",
+          "agility",
+          "momentum",
+          "minBellstrike",
+          "maxBellstrike",
+          "minStonesplit",
+          "maxStonesplit",
+          "minSilkbind",
+          "maxSilkbind",
+          "minBamboocut",
+          "maxBamboocut",
+          "power",
+          "precision",
+          "crit",
+          "affinity",
+          "ribbonAndDrumDmgBoost"
+        ],
+        "96": [
+          "minPhys",
+          "maxPhys",
+          "minVoidAttack",
+          "maxVoidAttack",
+          "minStonesplit",
+          "maxStonesplit",
+          "agility",
+          "momentum",
+          "power",
+          "precision",
+          "crit",
+          "affinity",
+          "ribbonAndDrumDmgBoost"
+        ],
+        "100": [
+          "power",
+          "agility",
+          "momentum",
+          "minPhys",
+          "maxPhys",
+          "minVoidAttack",
+          "maxVoidAttack",
+          "precision",
+          "crit",
+          "affinity",
+          "ribbonAndDrumDmgBoost"
+        ],
+        "96Relayed": [
+          "minBellstrike",
+          "maxBellstrike",
+          "minStonesplit",
+          "maxStonesplit",
+          "minSilkbind",
+          "maxSilkbind",
+          "minBamboocut",
+          "maxBamboocut"
+        ],
+        "100Relayed": [
+          "minBellstrike",
+          "maxBellstrike",
+          "minStonesplit",
+          "maxStonesplit",
+          "minSilkbind",
+          "maxSilkbind",
+          "minBamboocut",
+          "maxBamboocut"
+        ]
+      },
+      "attunements": ["Weapon"]
     }
   }
 }

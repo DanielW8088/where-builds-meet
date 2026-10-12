@@ -197,8 +197,8 @@
           "floatingGrace": "none"
         }
       },
-      "dps": 29803.73756241419,
-      "totalDamage": 1788224.2537448513,
+      "dps": 29795.703973489002,
+      "totalDamage": 1787742.2384093401,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-smolder": {
@@ -222,8 +222,8 @@
           "floatingGrace": "none"
         }
       },
-      "dps": 36628.55379060283,
-      "totalDamage": 2197713.22743617,
+      "dps": 36504.170596575765,
+      "totalDamage": 2190250.235794546,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts": {
@@ -247,8 +247,8 @@
           "floatingGrace": "none"
         }
       },
-      "dps": 35847.48213895326,
-      "totalDamage": 2150848.9283371954,
+      "dps": 35571.006125529166,
+      "totalDamage": 2134260.36753175,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts-team": {
@@ -272,8 +272,58 @@
           "floatingGrace": "none"
         }
       },
-      "dps": 39472.94285759795,
-      "totalDamage": 2368376.571455877,
+      "dps": 38839.4023092996,
+      "totalDamage": 2330364.138557976,
+      "duration": 60
+    },
+    "silkbindWing/wings-dummy-1-min-dawnsun": {
+      "fixture": {
+        "build": "wings-fully-relayed-min",
+        "rotation": "wings-dummy-1-min-dawnsun",
+        "martialArts": ["wendongNichang", "xingyouCaoye"],
+        "breakthrough": "17",
+        "ping": 40,
+        "food": "SimmeringFishSlices",
+        "divinecraft": "Fire",
+        "script": "None",
+        "globalDebuffs": {
+          "draught": "none",
+          "phantomChime": false,
+          "qiImbalance": false,
+          "soulShaken": false,
+          "vulnerable": false,
+          "fearfulBlade": false,
+          "qingyisCharm": "none",
+          "floatingGrace": "none"
+        }
+      },
+      "dps": 35943.38925113531,
+      "totalDamage": 2156603.355068119,
+      "duration": 60
+    },
+    "silkbindWing/wings-dummy-1-min-jadebreaker": {
+      "fixture": {
+        "build": "wings-fully-relayed-min",
+        "rotation": "wings-dummy-1-min-jadebreaker",
+        "martialArts": ["wendongNichang", "xingyouCaoye"],
+        "breakthrough": "17",
+        "ping": 40,
+        "food": "SimmeringFishSlices",
+        "divinecraft": "Fire",
+        "script": "None",
+        "globalDebuffs": {
+          "draught": "none",
+          "phantomChime": false,
+          "qiImbalance": false,
+          "soulShaken": false,
+          "vulnerable": false,
+          "fearfulBlade": false,
+          "qingyisCharm": "none",
+          "floatingGrace": "none"
+        }
+      },
+      "dps": 50343.070273433346,
+      "totalDamage": 3020584.216406001,
       "duration": 60
     },
     "stonesplitMight/dummy-1-min": {

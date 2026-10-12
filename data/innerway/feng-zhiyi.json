@@ -1,10 +1,20 @@
 {
   "name": "風知意",
-  "altersTimeline": false,
+  "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {
     "FengZhiyiT0": {},
-    "FengZhiyiT1": {},
+    "FengZhiyiT1": {
+      "effect": [
+        {
+          "requirement": [
+            { "target": "target", "value": "InkRhyme" },
+            { "operator": "not", "operand": [{ "target": "self", "value": "FengZhiyiT4" }] }
+          ],
+          "effect": { "directDamageReduction": 0.05 }
+        }
+      ]
+    },
     "FengZhiyiT2": {
       "effect": [
         {
@@ -44,8 +54,72 @@
       ]
     },
     "FengZhiyiT3": {},
-    "FengZhiyiT4": {},
+    "FengZhiyiT4": {
+      "effect": [
+        {
+          "target": "InkRhyme",
+          "modify": {
+            "duration": 18,
+            "effect": [
+              {
+                "requirement": [
+                  {
+                    "operator": "or",
+                    "operand": [
+                      { "target": "skillTag", "value": "XingyouCaoye" },
+                      { "target": "skillTag", "value": "DrumSeries" }
+                    ]
+                  }
+                ],
+                "effect": { "dmgBonus": 0.05 }
+              }
+            ]
+          }
+        },
+        { "requirement": [{ "target": "target", "value": "InkRhyme" }], "effect": { "directDamageReduction": 0.1 } }
+      ]
+    },
     "FengZhiyiT5": { "effect": [{ "rawStat": { "critDmgBonus": 0.04 } }] },
-    "FengZhiyiT6": {}
+    "FengZhiyiT6": {
+      "effect": [
+        {
+          "target": "Tailwind",
+          "modify": {
+            "effect": [
+              {
+                "effect": {
+                  "stat": {
+                    "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                    "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                    "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                    "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                    "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                    "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                    "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                    "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "target": "RadiantDrum",
+          "modify": {
+            "effect": [
+              {
+                "effect": {
+                  "physicalAttackBonus": 0.06,
+                  "bellstrikeAttackBonus": 0.06,
+                  "stonesplitAttackBonus": 0.06,
+                  "silkbindAttackBonus": 0.06,
+                  "bamboocutAttackBonus": 0.06
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
   }
 }

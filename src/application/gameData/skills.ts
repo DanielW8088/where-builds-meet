@@ -8,6 +8,7 @@ import generalBuffs from "@gamedata/buff/general.json"
 import mechanismBuffs from "@gamedata/buff/mechanism.json"
 import mysticBuffs from "@gamedata/buff/mystic.json"
 import silkbindDelugeBuffs from "@gamedata/buff/silkbind-deluge.json"
+import wingBuffs from "@gamedata/buff/silkbind-wing.json"
 import stonesplitMightBuffs from "@gamedata/buff/stonesplit-might.json"
 import stonesplitStrengthBuffs from "@gamedata/buff/stonesplit-strength.json"
 import bamboocutDraughtDebuffs from "@gamedata/debuff/bamboocut-draught.json"
@@ -18,7 +19,9 @@ import bellstrikeSplendorDebuffs from "@gamedata/debuff/bellstrike-splendor.json
 import bellstrikeUmbraDebuffs from "@gamedata/debuff/bellstrike-umbra.json"
 import generalDebuffs from "@gamedata/debuff/general.json"
 import innerWayDebuffs from "@gamedata/debuff/innerway.json"
+import mechanismDebuffs from "@gamedata/debuff/mechanism.json"
 import mysticDebuffs from "@gamedata/debuff/mystic.json"
+import wingDebuffs from "@gamedata/debuff/silkbind-wing.json"
 import stonesplitMightDebuffs from "@gamedata/debuff/stonesplit-might.json"
 import stonesplitStrengthDebuffs from "@gamedata/debuff/stonesplit-strength.json"
 import umbraDots from "@gamedata/dot/bellstrike-umbra.json"
@@ -44,12 +47,16 @@ import stormbreakerSkills from "@gamedata/skill/stormbreaker-spear.json"
 import strategicSwordSkills from "@gamedata/skill/strategic-sword.json"
 import thundercrySkills from "@gamedata/skill/thundercry-blade.json"
 import unfetteredSkills from "@gamedata/skill/unfettered-rope-dart.json"
+import drumSkills from "@gamedata/skill/wendong-nichang.json"
+import wingFanSkills from "@gamedata/skill/xingyou-caoye.json"
 
 import type { EffectDefinition, SkillRecord, TrackedEffect } from "@/calculations/rotationTimeline"
 import type { EditorCategory, SkillCategory, SkillMap } from "@/skillOverrides"
 import type { WeaponId } from "@/types"
 
 export const defaultSkillMaps: Record<SkillCategory, SkillMap> = {
+  WendongNichang: drumSkills as SkillMap,
+  XingyouCaoye: wingFanSkills as SkillMap,
   Snowparting: snowpartingSkills as SkillMap,
   Phalanxbane: phalanxbaneSkills as SkillMap,
   Thundercry: thundercrySkills as SkillMap,
@@ -70,37 +77,51 @@ export const defaultSkillMaps: Record<SkillCategory, SkillMap> = {
   General: generalSkills as SkillMap,
   Mechanism: mechanismSkills as SkillMap,
 }
+export const buffDefinitions = {
+  ...wingBuffs,
+  ...bellstrikeSplendorBuffs,
+  ...bamboocutDustBuffs,
+  ...mysticBuffs,
+  ...generalBuffs,
+  ...stonesplitStrengthBuffs,
+  ...stonesplitMightBuffs,
+  ...bamboocutWindBuffs,
+  ...bamboocutDraughtBuffs,
+  ...bamboocutKiteBuffs,
+  ...silkbindDelugeBuffs,
+  ...bellstrikeUmbraBuffs,
+  ...mechanismBuffs,
+} as Record<string, EffectDefinition>
+export const debuffDefinitions = {
+  ...mechanismDebuffs,
+  ...wingDebuffs,
+  ...mysticDebuffs,
+  ...stonesplitStrengthDebuffs,
+  ...stonesplitMightDebuffs,
+  ...bellstrikeSplendorDebuffs,
+  ...bellstrikeUmbraDebuffs,
+  ...bamboocutDustDebuffs,
+  ...bamboocutDraughtDebuffs,
+  ...bamboocutWindDebuffs,
+  ...bamboocutKiteDebuffs,
+  ...innerWayDebuffs,
+  ...generalDebuffs,
+} as Record<string, EffectDefinition>
+export const dotDefinitions = { ...mysticDots, ...innerWayDots, ...divinecraftDots, ...umbraDots } as Record<
+  string,
+  SkillRecord
+>
+export const dotEffectIds = new Set(Object.keys(dotDefinitions))
+export const effectDefinitions: Record<string, EffectDefinition> = {
+  ...buffDefinitions,
+  ...debuffDefinitions,
+  ...dotDefinitions,
+}
 export const defaultEditorMaps: Record<EditorCategory, SkillMap> = {
   ...defaultSkillMaps,
-  Buff: Object.fromEntries(
-    Object.entries({
-      ...mysticBuffs,
-      ...generalBuffs,
-      ...stonesplitStrengthBuffs,
-      ...stonesplitMightBuffs,
-      ...bamboocutWindBuffs,
-      ...bamboocutDraughtBuffs,
-      ...bamboocutDustBuffs,
-      ...bamboocutKiteBuffs,
-      ...silkbindDelugeBuffs,
-      ...bellstrikeSplendorBuffs,
-      ...bellstrikeUmbraBuffs,
-      ...mechanismBuffs,
-    } as Record<string, EffectDefinition>).filter(([, definition]) => !definition.global),
-  ) as SkillMap,
-  Debuff: {
-    ...stonesplitStrengthDebuffs,
-    ...stonesplitMightDebuffs,
-    ...bellstrikeSplendorDebuffs,
-    ...bellstrikeUmbraDebuffs,
-    ...bamboocutDustDebuffs,
-    ...bamboocutDraughtDebuffs,
-    ...bamboocutWindDebuffs,
-    ...bamboocutKiteDebuffs,
-    ...innerWayDebuffs,
-    ...generalDebuffs,
-  } as SkillMap,
-  DOT: { ...mysticDots, ...innerWayDots, ...divinecraftDots } as SkillMap,
+  Buff: Object.fromEntries(Object.entries(buffDefinitions).filter(([, definition]) => !definition.global)) as SkillMap,
+  Debuff: debuffDefinitions as SkillMap,
+  DOT: dotDefinitions,
 }
 export const skillCategoryByWeapon: Partial<Record<WeaponId, SkillCategory>> = {
   snowparting: "Snowparting",
@@ -108,6 +129,8 @@ export const skillCategoryByWeapon: Partial<Record<WeaponId, SkillCategory>> = {
   thundercry: "Thundercry",
   stormbreaker: "Stormbreaker",
   heavenwill: "Heavenwill",
+  wendongNichang: "WendongNichang",
+  xingyouCaoye: "XingyouCaoye",
   skygrasp: "Skygrasp",
   panaceaFan: "Panacea",
   soulshadeUmbrella: "Soulshade",
@@ -122,6 +145,8 @@ export const skillCategoryByWeapon: Partial<Record<WeaponId, SkillCategory>> = {
 }
 export const allSkillDefinitions = Object.assign({}, ...Object.values(defaultSkillMaps)) as SkillMap
 export const skillDataNamespaceByCategory: Record<SkillCategory, string> = {
+  WendongNichang: "wendongNichang",
+  XingyouCaoye: "xingyouCaoye",
   Snowparting: "snowpartingBlade",
   Phalanxbane: "phalanxbaneBlade",
   Thundercry: "thundercryBlade",
@@ -179,37 +204,6 @@ export const rotationEventOptionIds = [
   "__event:Buff",
   "__event:Debuff",
 ]
-export const dotDefinitions = { ...mysticDots, ...innerWayDots, ...divinecraftDots, ...umbraDots } as Record<
-  string,
-  SkillRecord
->
-export const dotEffectIds = new Set(Object.keys(dotDefinitions))
-export const effectDefinitions = {
-  ...bellstrikeSplendorBuffs,
-  ...bamboocutDustBuffs,
-  ...mysticBuffs,
-  ...generalBuffs,
-  ...stonesplitStrengthBuffs,
-  ...stonesplitMightBuffs,
-  ...bamboocutWindBuffs,
-  ...bamboocutDraughtBuffs,
-  ...bamboocutKiteBuffs,
-  ...silkbindDelugeBuffs,
-  ...bellstrikeUmbraBuffs,
-  ...mysticDebuffs,
-  ...stonesplitStrengthDebuffs,
-  ...stonesplitMightDebuffs,
-  ...bellstrikeSplendorDebuffs,
-  ...bellstrikeUmbraDebuffs,
-  ...bamboocutDustDebuffs,
-  ...bamboocutDraughtDebuffs,
-  ...bamboocutWindDebuffs,
-  ...bamboocutKiteDebuffs,
-  ...innerWayDebuffs,
-  ...generalDebuffs,
-  ...mechanismBuffs,
-  ...dotDefinitions,
-} as Record<string, EffectDefinition>
 export const expectedOutcomeBuffPlateDefinitions = [
   { name: "Hawkwing", maxStack: 5 },
   { name: "Concentration", maxStack: 1 },

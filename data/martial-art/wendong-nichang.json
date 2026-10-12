@@ -4,18 +4,496 @@
   "tag": "WendongNichang",
   "talent": [
     [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    [
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 3.696 } } } }]
+      }
+    ],
+    [
+      {
+        "name": "Physical Attack Up",
+        "effect": [
+          {
+            "stat": {
+              "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 6.6000000000000005 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "name": "Physical Attack Up",
+        "effect": [
+          {
+            "stat": {
+              "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 13.200000000000001 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.02 } }
+            },
+            "rawStat": { "maxSilkbind": 38, "minSilkbind": 19 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 19.8 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.028 } }
+            },
+            "rawStat": { "maxSilkbind": 52, "minSilkbind": 26 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [
+          {
+            "stat": {
+              "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 26.400000000000002 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.038 } }
+            },
+            "rawStat": { "maxSilkbind": 68, "minSilkbind": 34 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 33.0 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.2 } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.048 } }
+            },
+            "rawStat": { "maxSilkbind": 86, "minSilkbind": 43 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 39.6 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.2 } }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.056 } }
+            },
+            "rawStat": { "maxSilkbind": 100, "minSilkbind": 50 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 39.6 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.056 } }
+            },
+            "rawStat": { "maxSilkbind": 100, "minSilkbind": 50 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 39.6 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.056 } }
+            },
+            "rawStat": { "maxSilkbind": 100, "minSilkbind": 50 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 46.2 } } } }]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.066 } }
+            },
+            "rawStat": { "maxSilkbind": 118, "minSilkbind": 59 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [
+          {
+            "stat": {
+              "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 52.800000000000004 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.076 } }
+            },
+            "rawStat": { "maxSilkbind": 138, "minSilkbind": 69 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
+    [
+      {
+        "name": "擊鼓系列技能強化",
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              },
+              { "target": "skillTag", "value": "DrumSeries" }
+            ],
+            "effect": { "baseDMGBonus": 0.4 }
+          }
+        ]
+      },
+      {
+        "name": "Physical Attack Up",
+        "effect": [
+          {
+            "stat": {
+              "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 59.400000000000006 } }
+            }
+          }
+        ]
+      },
+      {
+        "name": "擊鼓會心強化",
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Silkbind Attribute Up",
+        "effect": [
+          {
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.09 } }
+            },
+            "rawStat": { "maxSilkbind": 160, "minSilkbind": 80 }
+          }
+        ]
+      },
+      { "name": "Attr. Attack DMG Up", "effect": [] }
+    ],
     [
       {
         "name": "擊鼓系列技能強化",
@@ -44,7 +522,12 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 } } }
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
           }
         ]
       },
@@ -52,10 +535,10 @@
         "name": "Silkbind Attribute Up",
         "effect": [
           {
-            "rawStat": { "minSilkbind": 98, "maxSilkbind": 196 },
             "stat": {
               "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.11 } }
-            }
+            },
+            "rawStat": { "maxSilkbind": 196, "minSilkbind": 98 }
           }
         ]
       },
@@ -89,7 +572,12 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 } } }
+            "effect": {
+              "critDmgBonus": {
+                "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 },
+                "max": 0.30000000000000004
+              }
+            }
           }
         ]
       },
@@ -97,10 +585,10 @@
         "name": "Silkbind Attribute Up",
         "effect": [
           {
-            "rawStat": { "minSilkbind": 106, "maxSilkbind": 212 },
             "stat": {
               "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.118 } }
-            }
+            },
+            "rawStat": { "maxSilkbind": 212, "minSilkbind": 106 }
           }
         ]
       },

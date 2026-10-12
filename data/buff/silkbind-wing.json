@@ -1,0 +1,111 @@
+{
+  "Tailwind": {
+    "name": "扶風",
+    "duration": 12,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": [
+      {
+        "requirement": [
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+        ],
+        "effect": {
+          "stat": {
+            "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.03 } },
+            "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.03 } },
+            "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.03 } },
+            "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.03 } },
+            "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.03 } },
+            "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.03 } },
+            "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.03 } },
+            "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.03 } }
+          }
+        }
+      }
+    ],
+    "showCoverage": true,
+    "description": "Increases all attribute attacks by 3% (6% when paired with Ribbon & Drum). With Ribbon & Drum talents, also increases Drum Series base damage by 40%."
+  },
+  "RadiantDrum": {
+    "name": "爍鼓",
+    "description": "Increases Physical Attack and all attribute attacks by 6%. With Ribbon & Drum talents, also increases Drum Series base damage by 40%.",
+    "duration": 4,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": [
+      {
+        "effect": {
+          "physicalAttackBonus": 0.06,
+          "bellstrikeAttackBonus": 0.06,
+          "stonesplitAttackBonus": 0.06,
+          "silkbindAttackBonus": 0.06,
+          "bamboocutAttackBonus": 0.06
+        }
+      }
+    ],
+    "action": [{ "type": "apply", "target": "self", "value": "Tailwind", "time": "expire" }],
+    "showCoverage": true
+  },
+  "Cloudshear": {
+    "name": "裁雲·翊",
+    "description": "Increases all damage and healing by 6%.",
+    "duration": 15,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": [{ "effect": { "dmgBonus": 0.06, "healingBonus": 0.06 } }],
+    "showCoverage": true
+  },
+  "FlowingWind": {
+    "name": "流風",
+    "description": "Enhances Fan Q into 不盡春生, adding a second wind field and 25% additional HP damage against non-player targets.",
+    "duration": 20,
+    "maxStack": 1,
+    "refresh": true,
+    "showCoverage": true
+  },
+  "DrumSpecialDefense": {
+    "name": "凌波減傷",
+    "duration": 1,
+    "maxStack": 1,
+    "refresh": true,
+    "hidden": true,
+    "effect": [{ "effect": { "directDamageReduction": 0.3 } }]
+  },
+  "DawnsunDefense": {
+    "name": "昭陽減傷",
+    "duration": 4,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": [{ "effect": { "directDamageReduction": 0.1 } }]
+  },
+  "EnvigoratedDisabled": {
+    "name": "Envigorated Warrior Disabled",
+    "duration": 5,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": []
+  },
+  "WarriorCage": {
+    "name": "Cage",
+    "duration": 5,
+    "maxStack": 1,
+    "refresh": true,
+    "effect": [
+      {
+        "requirement": [
+          { "operator": "not", "operand": [{ "target": "self", "value": "WarriorEscape" }] },
+          { "operator": "not", "operand": [{ "target": "self", "value": "EnvigoratedWarriorT1" }] }
+        ],
+        "effect": { "directDamageReduction": -0.05 }
+      },
+      {
+        "requirement": [
+          { "operator": "not", "operand": [{ "target": "self", "value": "WarriorEscape" }] },
+          { "target": "self", "value": "EnvigoratedWarriorT1" }
+        ],
+        "effect": { "directDamageReduction": -0.03 }
+      }
+    ]
+  },
+  "WarriorEscape": { "name": "Escape From Cage", "duration": 5, "maxStack": 1, "refresh": true, "effect": [] }
+}

@@ -1224,6 +1224,7 @@ export function RotationEditorTab({
   const showHellfireColumn =
     settings.weapons.includes("infernalTwinblades") ||
     rotation.steps.some(step => step.type === "event" && step.event === "Hellfire")
+  const showNobleWillColumn = pathId === "silkbindWing" || settings.weapons.includes("wendongNichang")
   const showHeavensWillColumn = settings.weapons.includes("heavenwill") && settings.weapons.includes("skygrasp")
   const showEnduranceColumn = rotationUsesEndurance(timeline)
   const showVitalityColumn = useMemo(
@@ -1241,6 +1242,7 @@ export function RotationEditorTab({
     showTargetHPColumn ? "minmax(0, 0.65fr)" : "",
     showQiColumn ? "minmax(0, 0.65fr)" : "",
     showHellfireColumn ? "minmax(0, 0.7fr)" : "",
+    showNobleWillColumn ? "minmax(0, 0.7fr)" : "",
     showHeavensWillColumn ? "minmax(0, 0.9fr)" : "",
     showVitalityColumn ? "minmax(0, 0.7fr)" : "",
     showEnduranceColumn ? "minmax(0, 0.7fr)" : "",
@@ -2044,6 +2046,7 @@ export function RotationEditorTab({
                   {showTargetHPColumn && <span>{t("ui.app.hp")}</span>}
                   {showQiColumn && <span>{t("ui.app.qi")}</span>}
                   {showHellfireColumn && <span>{t("system.resource.hellfire")}</span>}
+                  {showNobleWillColumn && <span>{t("system.resource.nobleWill")}</span>}
                   {showHeavensWillColumn && <span>{t("system.resource.heavensWill")}</span>}
                   {showVitalityColumn && <span>{t("system.resource.vitality")}</span>}
                   {showEnduranceColumn && <span>{t("system.resource.endurance")}</span>}
@@ -2080,6 +2083,7 @@ export function RotationEditorTab({
                             {showTargetHPColumn && <span aria-hidden="true" />}
                             {showQiColumn && <span aria-hidden="true" />}
                             {showHellfireColumn && <span aria-hidden="true" />}
+                            {showNobleWillColumn && <span aria-hidden="true" />}
                             {showHeavensWillColumn && <span aria-hidden="true" />}
                             {showVitalityColumn && <span aria-hidden="true" />}
                             {showEnduranceColumn && <span aria-hidden="true" />}
@@ -2722,6 +2726,11 @@ export function RotationEditorTab({
                                 )}
                               </span>
                             )}
+                            {showNobleWillColumn && (
+                              <span data-mobile-label={t("system.resource.nobleWill")}>
+                                {formatNumber(row.resources.NobleWill ?? 0)}
+                              </span>
+                            )}
                             {showHeavensWillColumn && (
                               <span data-mobile-label={t("system.resource.heavensWill")}>
                                 {formatNumber(row.resources.HeavensWill ?? 0)}
@@ -3060,6 +3069,11 @@ export function RotationEditorTab({
                                     data-mobile-label={t("system.resource.hellfire")}
                                   >
                                     {formatNumber(actionState?.resources.Hellfire ?? row.resources.Hellfire ?? 0)}
+                                  </span>
+                                )}
+                                {showNobleWillColumn && (
+                                  <span data-mobile-label={t("system.resource.nobleWill")}>
+                                    {formatNumber(actionState?.resources.NobleWill ?? row.resources.NobleWill ?? 0)}
                                   </span>
                                 )}
                                 {showHeavensWillColumn && (
