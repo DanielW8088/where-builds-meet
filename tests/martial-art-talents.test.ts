@@ -120,11 +120,14 @@ describe("martial-art-talents", () => {
         }
       }
     }
-    const talentEffects = (weapon: WeaponId, name: string) =>
+    const talentEffects = (weapon: WeaponId, slots: number | number[]) =>
       martialArtEffectsForRank(
         {
           [weapon]: {
-            talent: [...Array.from({ length: 13 }, () => []), arts[weapon].talent[13].filter(t => t.name === name)],
+            talent: [
+              ...Array.from({ length: 13 }, () => []),
+              arts[weapon].talent[13].filter((_, index) => (Array.isArray(slots) ? slots : [slots]).includes(index)),
+            ],
           },
         },
         [weapon],
@@ -148,7 +151,7 @@ describe("martial-art-talents", () => {
     }
     const run = (
       weapon: WeaponId,
-      name: string,
+      slots: number | number[],
       tags: string[],
       options: {
         stats?: Partial<CharacterStats>
@@ -166,7 +169,7 @@ describe("martial-art-talents", () => {
           dots: {},
           innerWayConditions: [],
           innerWayRules: [],
-          setupEffects: talentEffects(weapon, name),
+          setupEffects: talentEffects(weapon, slots),
           weapons: [weapon],
           initialResources: system.initialResources,
           ...options.timeline,
@@ -184,51 +187,51 @@ describe("martial-art-talents", () => {
       })
       return { result, damage: Object.values(result.actionBreakdowns)[0] }
     }
-    for (const [weapon, name, resource] of [
-      ["skygrasp", "Heaven's Will DMG Boost", "HeavensWill"],
-      ["snowparting", "Critical DMG Up", "BladeMomentum"],
-    ] as Array<[WeaponId, string, string]>) {
+    for (const [weapon, slots, resource] of [
+      ["skygrasp", 2, "HeavensWill"],
+      ["snowparting", 2, "BladeMomentum"],
+    ] as Array<[WeaponId, number, string]>) {
       for (const amount of [0, 1, 1.01]) {
         const stats = { crit: 0.6 }
-        const { damage } = run(weapon, name, [], { stats, timeline: { initialResources: { [resource]: amount } } })
+        const { damage } = run(weapon, slots, [], { stats, timeline: { initialResources: { [resource]: amount } } })
         let expected = 1000
         if (amount > 1) expected *= weapon === "skygrasp" ? 1.09 : 1 + criticalRate(damage) * 0.21
         close(damage.physical, expected, `${weapon} strict one-bar threshold`)
       }
     }
-    const snowpartingStart = run("snowparting", "Critical DMG Up", [], { stats: { crit: 0.6 } })
+    const snowpartingStart = run("snowparting", 2, [], { stats: { crit: 0.6 } })
     close(
       snowpartingStart.damage.physical,
       1126,
       "System starting Blade Momentum enables Snowparting's 21% Critical DMG bonus at 60% Critical Rate",
     )
     for (const minPhys of [49, 50, 749, 750, 1000]) {
-      for (const [weapon, name, tags] of [
-        ["inkwellFan", "Heavy Attack Pursuit Enhancement", ["MoonShatterSpring"]],
-        ["vernalUmbrella", "Trajectory Calculation Enhancement", ["VernalUmbrella", "Ballistic"]],
-      ] as Array<[WeaponId, string, string[]]>) {
-        const { damage } = run(weapon, name, tags, { stats: { minPhys, crit: 1 } })
+      for (const [weapon, slots, tags] of [
+        ["inkwellFan", 2, ["MoonShatterSpring"]],
+        ["vernalUmbrella", 2, ["VernalUmbrella", "Ballistic"]],
+      ] as Array<[WeaponId, number, string[]]>) {
+        const { damage } = run(weapon, slots, tags, { stats: { minPhys, crit: 1 } })
         close(
           damage.physical,
           ((minPhys + 1000) / 2) * (1 + criticalRate(damage) * Math.min(15, Math.floor(minPhys / 50)) * 0.024),
           `${weapon} 50-point damage steps`,
         )
         close(
-          run(weapon, name, ["Other"], { stats: { minPhys, crit: 1 } }).damage.physical,
+          run(weapon, slots, ["Other"], { stats: { minPhys, crit: 1 } }).damage.physical,
           (minPhys + 1000) / 2,
           `${weapon} unrelated attacks`,
         )
       }
     }
     for (const status of [undefined, "Immobilized", "Airborne"]) {
-      const { damage } = run("vernalUmbrella", "Trajectory Skill Enhancement", ["VernalUmbrella", "Ballistic"], {
+      const { damage } = run("vernalUmbrella", 0, ["VernalUmbrella", "Ballistic"], {
         enemy: { physicalResistance: 20 },
         timeline: { initialDebuffs: status ? [{ name: status, stack: 1 }] : [] },
       })
       close(damage.physical, status ? 950 : 850, "Ballistic resistance ignores 5 or 15 points")
     }
     for (const qi of [29.99, 30]) {
-      const { damage } = run("inkwellFan", "Low Qi Follow-up Enhancement", ["MoonShatterSpring"], {
+      const { damage } = run("inkwellFan", 0, ["MoonShatterSpring"], {
         timeline: {
           rotation: {
             name: "Low Qi",
@@ -243,39 +246,33 @@ describe("martial-art-talents", () => {
       close(criticalRate(damage), qi < 30 ? 0.3 : 0, "Low-Qi critical chance threshold")
       close(damage.physical, qi < 30 ? 1080 : 1000, "Low-Qi HP damage threshold")
     }
-    for (const [weapon, name, tags] of [
-      ["thundercry", "Charge Calculation Enhancement", ["ThundercryBlade", "Charged"]],
-      ["heavenwill", "Perfect Dodge Enhancement", ["VileCondemned"]],
-    ] as Array<[WeaponId, string, string[]]>) {
+    for (const [weapon, slots, tags] of [
+      ["thundercry", 0, ["ThundercryBlade", "Charged"]],
+      ["heavenwill", 0, ["VileCondemned"]],
+    ] as Array<[WeaponId, number, string[]]>) {
       close(
-        outcomeRate(run(weapon, name, tags, { stats: { precision: 0.7 } }).damage, "abrasion"),
+        outcomeRate(run(weapon, slots, tags, { stats: { precision: 0.7 } }).damage, "abrasion"),
         0,
         `${weapon} supported no-Abrasion conversion`,
       )
       close(
-        outcomeRate(run(weapon, name, ["Other", "Charged"], { stats: { precision: 0.7 } }).damage, "abrasion"),
+        outcomeRate(run(weapon, slots, ["Other", "Charged"], { stats: { precision: 0.7 } }).damage, "abrasion"),
         0.3,
         `${weapon} no cross-weapon conversion`,
       )
     }
     close(
-      criticalRate(
-        run("thundercry", "Charge Critical Hit Enhancement", ["ThundercryBlade", "Charged"], {
-          stats: { maxHp: 90000 },
-        }).damage,
-      ),
+      criticalRate(run("thundercry", 2, ["ThundercryBlade", "Charged"], { stats: { maxHp: 90000 } }).damage),
       0.24,
       "Thundercry fixed and scaling Critical Rate",
     )
     close(
-      run("thundercry", "Charge Calculation Enhancement", ["ThundercryBlade", "Charged"], {
-        stats: { maxHp: 150000, crit: 1 },
-      }).damage.physical,
+      run("thundercry", 0, ["ThundercryBlade", "Charged"], { stats: { maxHp: 150000, crit: 1 } }).damage.physical,
       1144.8,
       "Thundercry effective attack and Critical DMG",
     )
     close(
-      run("unfettered", "Soulbreak Critical Boost", [], {
+      run("unfettered", 2, [], {
         stats: { crit: 0.6 },
         timeline: { initialDebuffs: [{ name: "Soulbreak", stack: 1 }] },
       }).damage.physical,
@@ -283,17 +280,11 @@ describe("martial-art-talents", () => {
       "Soulbreak conditional critical damage and applier damage amplification",
     )
     close(
-      run("phalanxbane", "Iron Guards Penetration Up", [], {
-        timeline: { initialBuffs: [{ name: "IronGuard", stack: 1 }] },
-      }).damage.physical,
+      run("phalanxbane", 2, [], { timeline: { initialBuffs: [{ name: "IronGuard", stack: 1 }] } }).damage.physical,
       1144.8,
       "Iron Guard penetration stacks with its existing 8% damage bonus",
     )
-    close(
-      run("phalanxbane", "Iron Guards Penetration Up", []).damage.physical,
-      1000,
-      "Iron Guard absence removes bonus",
-    )
+    close(run("phalanxbane", 2, []).damage.physical, 1000, "Iron Guard absence removes bonus")
     const timeline = (
       setupEffects: EditableObject[],
       steps: RotationStep[],
@@ -324,10 +315,7 @@ describe("martial-art-talents", () => {
       close(row.actionStates[0].resources.BattleWill, 4, "Battle Will stays at four without resource actions")
     }
     const rows = timeline(
-      [
-        ...talentEffects("rivenTwinblades", "Increased Binge Point Gain"),
-        ...talentEffects("skystrikeGauntlets", "Inebriate Dodge Enhancement"),
-      ],
+      [...talentEffects("rivenTwinblades", 0), ...talentEffects("skystrikeGauntlets", 0)],
       [castStep("Carouse"), castStep("Dodge"), castStep("Dodge"), delayStep(1), castStep("Dodge"), castStep("Observe")],
       {
         Carouse: { castTime: 0, tags: ["HeroesBlood"], action: [] },
@@ -342,7 +330,7 @@ describe("martial-art-talents", () => {
     close(final.resources.Binge, 10, "Carouse dodge gain has a shared one-second cooldown")
     close(carouse.expiresAt, 20, "Carouse lasts twenty seconds")
     const soulRows = timeline(
-      talentEffects("heavenquakerSpear", "Damage Over Time Enhancement"),
+      talentEffects("heavenquakerSpear", [0, 2]),
       [...Array.from({ length: 6 }, () => castStep("Charged")), castStep("Observe")],
       { Charged: { ...observe, tags: ["HeavenQuakerSpear", "Charged"] }, Observe: observe },
     )
@@ -392,11 +380,11 @@ describe("martial-art-talents", () => {
         castStep("Observe"),
       ]
       const graceRun = (enabled: boolean, extra: Partial<TimelineBuildInput> = {}): RotationSimulationBaseline =>
-        run("soulshadeUmbrella", "Buff Enhancement", [], {
+        run("soulshadeUmbrella", 0, [], {
           timeline: {
             rotation: { name: "Floating Grace exhaustion conditions", steps: graceSteps },
             skills: graceSkills,
-            setupEffects: enabled ? talentEffects("soulshadeUmbrella", "Buff Enhancement") : [],
+            setupEffects: enabled ? talentEffects("soulshadeUmbrella", 0) : [],
             ...extra,
           },
         }).result

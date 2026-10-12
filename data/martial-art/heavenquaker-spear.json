@@ -18,7 +18,6 @@
     [],
     [
       {
-        "name": "Damage Over Time Enhancement",
         "effect": [
           {
             "trigger": {
@@ -33,11 +32,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "maxPhys": { "formula": { "source": "power", "multiplier": 0.264, "max": 73.92 } } } }]
       },
       {
-        "name": "Damage Over Time Enhancement",
         "effect": [
           {
             "requirement": [
@@ -54,7 +51,6 @@
         ]
       },
       {
-        "name": "Bellstrike Attribute Up",
         "effect": [
           {
             "rawStat": { "maxBellstrike": 196, "minBellstrike": 98 },
@@ -64,11 +60,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "Damage Over Time Enhancement",
         "effect": [
           {
             "trigger": {
@@ -82,12 +77,8 @@
           }
         ]
       },
+      { "effect": [{ "stat": { "maxPhys": { "formula": { "source": "power", "multiplier": 0.264, "max": 79.2 } } } }] },
       {
-        "name": "Physical Attack Up",
-        "effect": [{ "stat": { "maxPhys": { "formula": { "source": "power", "multiplier": 0.264, "max": 79.2 } } } }]
-      },
-      {
-        "name": "Damage Over Time Enhancement",
         "effect": [
           {
             "requirement": [
@@ -104,7 +95,6 @@
         ]
       },
       {
-        "name": "Bellstrike Attribute Up",
         "effect": [
           {
             "rawStat": { "maxBellstrike": 212, "minBellstrike": 106 },
@@ -114,9 +104,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "HeavenQuakerSpear" }],

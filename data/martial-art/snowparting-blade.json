@@ -17,13 +17,11 @@
     [],
     [],
     [
-      { "name": "Special Skill Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 73.92 } } } }]
       },
       {
-        "name": "Critical DMG Up",
         "effect": [
           {
             "requirement": [{ "target": "resource", "value": "BladeMomentum", "comparison": ">", "amount": 1 }],
@@ -32,7 +30,6 @@
         ]
       },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 196, "minStonesplit": 98 },
@@ -42,16 +39,14 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
-      { "name": "Special Skill Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 79.2 } } } }]
       },
       {
-        "name": "Critical DMG Up",
         "effect": [
           {
             "requirement": [{ "target": "resource", "value": "BladeMomentum", "comparison": ">", "amount": 1 }],
@@ -60,7 +55,6 @@
         ]
       },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 212, "minStonesplit": 106 },
@@ -70,9 +64,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "SnowpartingBlade" }],

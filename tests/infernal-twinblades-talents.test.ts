@@ -21,16 +21,12 @@ import { castStep, delayStep } from "./helpers/rotationSteps"
 import { rowCasting } from "./helpers/timelineRows"
 
 /** The shipped talent table, narrowed to the rank the spec drives. */
-type MartialArtTalentInput = {
-  name: string
-  weapon: string
-  talent: Array<Array<{ name: string; effect?: EditableObject[] }>>
-}
+type MartialArtTalentInput = { name: string; weapon: string; talent: Array<Array<{ effect?: EditableObject[] }>> }
 
-/** The effect the named rank-13 talent declares. */
-function talentEffect(talent: MartialArtTalentInput, name: string): EditableObject[] {
-  const entry = talent.talent[13]?.find(candidate => candidate.name === name)
-  assert(entry?.effect, `Expected rank 13 to declare the ${name} talent.`)
+/** The effect at the selected rank-13 talent slot. */
+function talentEffect(talent: MartialArtTalentInput, index: number): EditableObject[] {
+  const entry = talent.talent[13]?.[index]
+  assert(entry?.effect, `Expected rank 13 to declare talent slot ${index}.`)
   return entry.effect
 }
 
@@ -55,13 +51,13 @@ describe("infernal-twinblades-talents", () => {
     const close = (actual: number | undefined, expected: number, message: string) =>
       assertClose(actual, expected, 1e-8, message)
 
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { martialArtEffectsForRank } = await import("../src/data/martialArtTalents.ts")
-    const { calculateStatsWithEffects } = await import("../src/calculations/statEffects.ts")
-    const { calculateRotationBaseline } = await import("../src/calculations/rotationCalculator.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { calculateDamageBreakdown } = await import("../src/calculations/damage.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { martialArtEffectsForRank } = await import("@/data/martialArtTalents.ts")
+    const { calculateStatsWithEffects } = await import("@/calculations/statEffects.ts")
+    const { calculateRotationBaseline } = await import("@/calculations/rotationCalculator.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { calculateDamageBreakdown } = await import("@/calculations/damage.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
     const general = await readJson<Record<string, SkillRecord>>("data/skill/general.json")
     const talent = await readJson<MartialArtTalentInput>("data/martial-art/infernal-twinblades.json")
     const effects: Record<string, EffectDefinition> = {
@@ -436,7 +432,7 @@ describe("infernal-twinblades-talents", () => {
         skillTags: ["MartialArts", "InfernalTwinblades"],
         weapons: ["infernalTwinblades"],
         buffs: [],
-        effects: talentEffect(talent, "Attr. Attack DMG Up"),
+        effects: talentEffect(talent, 4),
       },
     )
     close(attributeDamage.bellstrike, 100, "Non-primary attribute damage is retained")

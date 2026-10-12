@@ -17,15 +17,13 @@
     [],
     [],
     [
-      { "name": "Water Clone Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.08512 } } } }
         ]
       },
       {
-        "name": "Heavy Attack Healing Boost",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "Heavy" }], "effect": { "healingBonus": 0.05 } },
           {
@@ -37,7 +35,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "rawStat": { "maxSilkbind": 196, "minSilkbind": 98 },
@@ -48,9 +45,8 @@
           }
         ]
       },
-      { "name": "Attribute Attack Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Mystic Precision Enhancement",
         "effect": [
           {
             "requirement": [
@@ -63,15 +59,13 @@
       }
     ],
     [
-      { "name": "Water Clone Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0912 } } } }
         ]
       },
       {
-        "name": "Heavy Attack Healing Boost",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "Heavy" }], "effect": { "healingBonus": 0.05 } },
           {
@@ -83,7 +77,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "rawStat": { "maxSilkbind": 212, "minSilkbind": 106 },
@@ -94,9 +87,8 @@
           }
         ]
       },
-      { "name": "Attribute Attack Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Mystic Precision Enhancement",
         "effect": [
           {
             "requirement": [
@@ -108,7 +100,6 @@
         ]
       },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "PanaceaFan" }], "effect": { "flatAttackBonus": 0.0725 } }
         ]

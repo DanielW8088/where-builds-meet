@@ -5,7 +5,6 @@
   "talent": [
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           {
             "requirement": [
@@ -30,7 +29,6 @@
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           {
             "requirement": [
@@ -53,7 +51,6 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.004256 } } } }
         ]
@@ -61,7 +58,6 @@
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           {
             "requirement": [
@@ -84,7 +80,6 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           {
             "stat": {
@@ -94,7 +89,6 @@
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -118,7 +112,6 @@
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           {
             "requirement": [
@@ -141,7 +134,6 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           {
             "stat": {
@@ -151,7 +143,6 @@
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -173,7 +164,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -183,11 +173,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           {
             "requirement": [
@@ -210,13 +199,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0228 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -238,7 +225,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -248,11 +234,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -276,7 +261,6 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           {
             "stat": {
@@ -286,7 +270,6 @@
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -308,7 +291,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -318,11 +300,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -346,11 +327,9 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [{ "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.038 } } } }]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -372,7 +351,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -382,11 +360,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -410,13 +387,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0456 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -438,7 +413,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -448,11 +422,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -476,13 +449,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0456 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -504,7 +475,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -514,11 +484,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -542,13 +511,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0456 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -570,7 +537,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -580,11 +546,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -608,7 +573,6 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           {
             "stat": {
@@ -618,7 +582,6 @@
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -640,7 +603,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -650,11 +612,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -678,7 +639,6 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           {
             "stat": {
@@ -688,7 +648,6 @@
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -710,7 +669,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -720,11 +678,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -748,13 +705,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0684 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -776,7 +731,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -786,11 +740,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -814,13 +767,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.08512 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -842,7 +793,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -852,11 +802,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "扶風增益強化",
         "effect": [
           { "target": "Tailwind", "modify": { "duration": 24 } },
           {
@@ -880,13 +829,11 @@
         ]
       },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0912 } } } }
         ]
       },
       {
-        "name": "扶風傷害強化",
         "effect": [
           {
             "requirement": [
@@ -908,7 +855,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -918,9 +864,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "WillowbendFan" }],

@@ -6,13 +6,11 @@
     [],
     [
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 3.696 } } } }]
       }
     ],
     [
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -22,7 +20,6 @@
         ]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -33,7 +30,6 @@
     ],
     [
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -43,7 +39,6 @@
         ]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -52,7 +47,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -62,15 +56,13 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 19.8 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -79,7 +71,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -89,11 +80,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -111,7 +101,6 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -121,7 +110,6 @@
         ]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -130,7 +118,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -140,11 +127,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -161,12 +147,8 @@
           }
         ]
       },
+      { "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 33 } } } }] },
       {
-        "name": "Physical Attack Up",
-        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 33.0 } } } }]
-      },
-      {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -175,7 +157,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -185,11 +166,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -207,11 +187,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 39.6 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -220,7 +198,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -230,11 +207,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -252,11 +228,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 39.6 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -270,7 +244,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -280,11 +253,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -302,11 +274,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 39.6 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -320,7 +290,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -330,11 +299,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -352,11 +320,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 46.2 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -370,7 +336,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -380,11 +345,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -402,7 +366,6 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -412,7 +375,6 @@
         ]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -426,7 +388,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -436,11 +397,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -458,7 +418,6 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -468,7 +427,6 @@
         ]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -482,7 +440,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -492,11 +449,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -514,11 +470,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 73.92 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -532,7 +486,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -542,11 +495,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "擊鼓系列技能強化",
         "effect": [
           {
             "requirement": [
@@ -564,11 +516,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 79.2 } } } }]
       },
       {
-        "name": "擊鼓會心強化",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
@@ -582,7 +532,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "stat": {
@@ -592,9 +541,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "MuseflowWaistDrum" }],

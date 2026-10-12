@@ -54,8 +54,6 @@
       ]
     },
     "PhantomRallyT5": { "effect": [{ "rawStat": { "physDmgBonus": 0.028 } }] },
-    "PhantomRallyT6": {
-      "description": "Each returning umbrella thrown summons a Phantom Umbrella and triggers Resonance immediately, replacing the first-then-every-third cadence of the lower tiers."
-    }
+    "PhantomRallyT6": {}
   }
 }

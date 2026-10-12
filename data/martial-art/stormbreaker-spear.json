@@ -17,9 +17,8 @@
     [],
     [],
     [
-      { "name": "Max Battle Will Increase", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Max HP Up",
         "effect": [
           {
             "stat": {
@@ -28,9 +27,8 @@
           }
         ]
       },
-      { "name": "DMG Reduction Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 196, "minStonesplit": 98 },
@@ -40,12 +38,11 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
-      { "name": "Max Battle Will Increase", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Max HP Up",
         "effect": [
           {
             "stat": {
@@ -54,9 +51,8 @@
           }
         ]
       },
-      { "name": "DMG Reduction Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 212, "minStonesplit": 106 },
@@ -66,9 +62,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "StormbreakerSpear" }],

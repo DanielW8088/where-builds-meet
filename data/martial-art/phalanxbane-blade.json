@@ -17,15 +17,13 @@
     [],
     [],
     [
-      { "name": "Max Blade Momentum Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.08512 } } } }
         ]
       },
       {
-        "name": "Iron Guards Penetration Up",
         "effect": [
           {
             "requirement": [{ "target": "self", "value": "IronGuard" }],
@@ -37,7 +35,6 @@
         ]
       },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 196, "minStonesplit": 98 },
@@ -47,18 +44,16 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
-      { "name": "Max Blade Momentum Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Critical Rate Up",
         "effect": [
           { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0912 } } } }
         ]
       },
       {
-        "name": "Iron Guards Penetration Up",
         "effect": [
           {
             "requirement": [{ "target": "self", "value": "IronGuard" }],
@@ -70,7 +65,6 @@
         ]
       },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 212, "minStonesplit": 106 },
@@ -80,9 +74,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "PhalanxbaneBlade" }],

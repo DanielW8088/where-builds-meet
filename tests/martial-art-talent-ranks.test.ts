@@ -10,7 +10,7 @@ import type { EditableObject } from "@/calculations/rotationTimeline"
 type BreakthroughProfiles = Record<string, { name: string; martialArtTalentRank: number }>
 
 /** One shipped martial-art file, as the coverage check reads it. */
-type MartialArtOnDisk = { name: string; talent: Array<Array<{ name: string; effect?: EditableObject[] }>> }
+type MartialArtOnDisk = { name: string; talent: Array<Array<{ effect?: EditableObject[] }>> }
 
 // Ported from script/probe/check-martial-art-talent-ranks.mjs.
 describe("martial-art-talent-ranks", () => {
@@ -60,7 +60,7 @@ describe("martial-art-talent-ranks", () => {
               ],
             },
           ],
-          [{ name: "Attack rank", effect: [{ stat: { minPhys: 20, maxPhys: 20 } }] }],
+          [{ effect: [{ stat: { minPhys: 20, maxPhys: 20 } }] }],
         ],
       },
     }

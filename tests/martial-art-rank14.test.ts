@@ -14,6 +14,8 @@ import { splitStaticDamageEffect } from "@/calculations/unconditionalDamageEffec
 import { martialArtEffectsForRank } from "@/data/martialArtTalents"
 import { emptyStats } from "@/data/statDefinitions"
 
+import { asTalentEffects } from "./helpers/shippedData"
+
 const enemy = {
   name: "Probe",
   level: 96,
@@ -115,7 +117,11 @@ describe("rank-14 martial-art talents", () => {
           key,
           {
             ...art,
-            talent: art.talent.map(talents => talents.filter(talent => /Additional Attack/i.test(talent.name))),
+            talent: art.talent.map(talents =>
+              talents.filter(talent =>
+                asTalentEffects(talent.effect ?? []).some(effect => effect.effect?.flatAttackBonus !== undefined),
+              ),
+            ),
           },
         ]),
       )

@@ -1,6 +1,6 @@
-import type { WeaponId } from "../types"
+import type { WeaponId } from "@/types"
 
-export type MartialArtTalent<Effect> = { name: string; effect?: Effect[] }
+export type MartialArtTalent<Effect> = { effect?: Effect[] }
 
 /** Select only the configured rank; each rank is a complete, independent talent list. */
 export function martialArtEffectsForRank<Effect extends object>(

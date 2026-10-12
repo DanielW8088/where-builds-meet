@@ -14,10 +14,7 @@ import { castStep } from "./helpers/rotationSteps"
 import { asSkillRecords } from "./helpers/shippedData"
 
 /** Every effect the given talent rank declares, flattened across its entries. */
-function rankEffects(
-  talent: { talent: Array<Array<{ name: string; effect?: EditableObject[] }>> },
-  rank: number,
-): EditableObject[] {
+function rankEffects(talent: { talent: Array<Array<{ effect?: EditableObject[] }>> }, rank: number): EditableObject[] {
   return (talent.talent[rank] ?? []).flatMap(entry => entry.effect ?? [])
 }
 
@@ -31,11 +28,11 @@ describe("echoes-t4", () => {
       ...extra,
     })
     const noEffect: EditableObject = {}
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { calculateEditorTimeline } = await import("../src/calculations/editorTimeline.ts")
-    const infernal = asSkillRecords((await import("../data/skill/infernal-twinblades.json")).default)
-    const echoes = (await import("../data/innerway/echoes-of-oblivion.json")).default
-    const talent = (await import("../data/martial-art/infernal-twinblades.json")).default
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { calculateEditorTimeline } = await import("@/calculations/editorTimeline.ts")
+    const infernal = asSkillRecords((await import("@gamedata/skill/infernal-twinblades.json")).default)
+    const echoes = (await import("@gamedata/innerway/echoes-of-oblivion.json")).default
+    const talent = (await import("@gamedata/martial-art/infernal-twinblades.json")).default
     const trigger = echoes.effect.EchoesOfOblivionT4.trigger?.[0]
     assert(trigger, "Echoes of Oblivion T4 must declare its trigger.")
     // An empty literal is not assignable to Record<string, unknown>, so the no-op effect is named.

@@ -18,7 +18,6 @@
     [],
     [
       {
-        "name": "Max Endurance Up",
         "effect": [
           { "stat": { "maxEndurance": 10 } },
           { "resourceRegenerationBonus": { "resource": "Endurance", "belowRatio": 0.3, "bonus": 0.2 } },
@@ -35,13 +34,11 @@
         ]
       },
       {
-        "name": "Affinity Rate Up",
         "effect": [
           { "stat": { "affinity": { "formula": { "source": "momentum", "multiplier": 0.000152, "max": 0.04256 } } } }
         ]
       },
       {
-        "name": "Affinity DMG Up",
         "effect": [
           {
             "requirement": [
@@ -58,7 +55,6 @@
         ]
       },
       {
-        "name": "Bellstrike Attribute Up",
         "effect": [
           {
             "rawStat": { "maxBellstrike": 196, "minBellstrike": 98 },
@@ -68,11 +64,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "Max Endurance Up",
         "effect": [
           { "stat": { "maxEndurance": 10 } },
           { "resourceRegenerationBonus": { "resource": "Endurance", "belowRatio": 0.3, "bonus": 0.2 } },
@@ -89,13 +84,11 @@
         ]
       },
       {
-        "name": "Affinity Rate Up",
         "effect": [
           { "stat": { "affinity": { "formula": { "source": "momentum", "multiplier": 0.000152, "max": 0.0456 } } } }
         ]
       },
       {
-        "name": "Affinity DMG Up",
         "effect": [
           {
             "requirement": [
@@ -112,7 +105,6 @@
         ]
       },
       {
-        "name": "Bellstrike Attribute Up",
         "effect": [
           {
             "rawStat": { "maxBellstrike": 212, "minBellstrike": 106 },
@@ -122,9 +114,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "NamelessSpear" }],

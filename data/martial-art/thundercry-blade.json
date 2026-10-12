@@ -18,7 +18,6 @@
     [],
     [
       {
-        "name": "Charge Calculation Enhancement",
         "effect": [
           {
             "requirement": [
@@ -64,7 +63,6 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -74,7 +72,6 @@
         ]
       },
       {
-        "name": "Charge Critical Hit Enhancement",
         "effect": [
           {
             "requirement": [
@@ -114,7 +111,6 @@
         ]
       },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 196, "minStonesplit": 98 },
@@ -124,11 +120,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "Charge Calculation Enhancement",
         "effect": [
           {
             "requirement": [
@@ -174,7 +169,6 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [
           {
             "stat": {
@@ -184,7 +178,6 @@
         ]
       },
       {
-        "name": "Charge Critical Hit Enhancement",
         "effect": [
           {
             "requirement": [
@@ -224,7 +217,6 @@
         ]
       },
       {
-        "name": "Stonesplit Attribute Up",
         "effect": [
           {
             "rawStat": { "maxStonesplit": 212, "minStonesplit": 106 },
@@ -234,9 +226,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "ThundercryBlade" }],

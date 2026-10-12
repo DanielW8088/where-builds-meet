@@ -18,7 +18,6 @@
     [],
     [
       {
-        "name": "Perfect Dodge Enhancement",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "PerfectDodge" }], "buffDurationBonus": 0.4 },
           {
@@ -32,11 +31,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 73.92 } } } }]
       },
       {
-        "name": "Flamelash Damage Enhancement",
         "effect": [
           { "requirement": [{ "target": "self", "value": "Flamelash" }], "effect": { "critDmgBonus": 0.05 } },
           {
@@ -48,7 +45,6 @@
         ]
       },
       {
-        "name": "Bamboocut Attribute Up",
         "effect": [
           {
             "rawStat": { "maxBamboocut": 196, "minBamboocut": 98 },
@@ -58,11 +54,10 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "Perfect Dodge Enhancement",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "PerfectDodge" }], "buffDurationBonus": 0.4 },
           {
@@ -76,11 +71,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 79.2 } } } }]
       },
       {
-        "name": "Flamelash Damage Enhancement",
         "effect": [
           { "requirement": [{ "target": "self", "value": "Flamelash" }], "effect": { "critDmgBonus": 0.05 } },
           {
@@ -92,7 +85,6 @@
         ]
       },
       {
-        "name": "Bamboocut Attribute Up",
         "effect": [
           {
             "rawStat": { "maxBamboocut": 212, "minBamboocut": 106 },
@@ -102,9 +94,8 @@
           }
         ]
       },
-      { "name": "Attr. Attack DMG Up", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "InfernalTwinblades" }],

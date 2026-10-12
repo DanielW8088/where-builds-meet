@@ -18,7 +18,6 @@
     [],
     [
       {
-        "name": "Buff Enhancement",
         "effect": [
           {
             "requirement": [
@@ -46,11 +45,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 73.92 } } } }]
       },
       {
-        "name": "Critical Heal Enhancement",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "Special" }], "effect": { "criticalHealingBonus": 0.05 } },
           {
@@ -64,7 +61,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "rawStat": { "maxSilkbind": 196, "minSilkbind": 98 },
@@ -74,11 +70,10 @@
           }
         ]
       },
-      { "name": "Attribute Attack Enhancement", "effect": [] }
+      { "effect": [] }
     ],
     [
       {
-        "name": "Buff Enhancement",
         "effect": [
           {
             "requirement": [
@@ -106,11 +101,9 @@
         ]
       },
       {
-        "name": "Physical Attack Up",
         "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 79.2 } } } }]
       },
       {
-        "name": "Critical Heal Enhancement",
         "effect": [
           { "requirement": [{ "target": "skillTag", "value": "Special" }], "effect": { "criticalHealingBonus": 0.05 } },
           {
@@ -124,7 +117,6 @@
         ]
       },
       {
-        "name": "Silkbind Attribute Up",
         "effect": [
           {
             "rawStat": { "maxSilkbind": 212, "minSilkbind": 106 },
@@ -134,9 +126,8 @@
           }
         ]
       },
-      { "name": "Attribute Attack Enhancement", "effect": [] },
+      { "effect": [] },
       {
-        "name": "Increases Additional Attack",
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "SoulshadeUmbrella" }],
