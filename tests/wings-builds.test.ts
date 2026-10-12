@@ -112,6 +112,10 @@ describe("Wings builds", () => {
       defaultBuildPresets.find(row => row.id === "wings-max")!,
       tier,
     )
+    for (const item of maximum.items) {
+      expect(item.additionalAffixes.filter(affix => affix.key === "power")).toHaveLength(1)
+      expect(item.additionalAffixes.some(affix => affix.key === "maxSilkbind")).toBe(false)
+    }
     for (const item of maximum.items.filter(row => row.slot === "leftWeapon" || row.slot === "rightWeapon"))
       expect(item.baseAffix.key).toBe("maxPhys")
   })

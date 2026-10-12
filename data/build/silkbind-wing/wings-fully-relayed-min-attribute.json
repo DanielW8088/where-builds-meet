@@ -25,8 +25,8 @@
         "baseAffix": { "key": "minSilkbind", "value": 41.548 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.13199999999999 },
-          { "key": "minSilkbind", "value": 41.548 },
           { "key": "agility", "value": 46.43599999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
           { "key": "ribbonAndDrumDmgBoost", "value": 0.05828 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 11 }
@@ -38,9 +38,9 @@
         "baseAffix": { "key": "minSilkbind", "value": 41.548 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.13199999999999 },
+          { "key": "agility", "value": 46.43599999999999 },
           { "key": "minSilkbind", "value": 41.548 },
-          { "key": "precision", "value": 0.0752 },
-          { "key": "agility", "value": 46.43599999999999 }
+          { "key": "precision", "value": 0.0752 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 11 }
       },
@@ -50,8 +50,8 @@
         "rarity": "Gold",
         "baseAffix": { "key": "maxPhys", "value": 73.13199999999999 },
         "additionalAffixes": [
-          { "key": "minSilkbind", "value": 41.548 },
           { "key": "maxPhys", "value": 73.13199999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
           { "key": "precision", "value": 0.0752 },
           { "key": "allMartialArts", "value": 0.03008 }
         ],
@@ -63,8 +63,8 @@
         "rarity": "Gold",
         "baseAffix": { "key": "maxPhys", "value": 73.13199999999999 },
         "additionalAffixes": [
-          { "key": "minSilkbind", "value": 41.548 },
           { "key": "maxPhys", "value": 73.13199999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
           { "key": "precision", "value": 0.0752 },
           { "key": "allMartialArts", "value": 0.03008 }
         ],
@@ -78,8 +78,8 @@
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.13199999999999 },
           { "key": "agility", "value": 46.43599999999999 },
-          { "key": "crit", "value": 0.0846 },
-          { "key": "minSilkbind", "value": 41.548 }
+          { "key": "minSilkbind", "value": 41.548 },
+          { "key": "crit", "value": 0.0846 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       },
@@ -90,9 +90,9 @@
         "baseAffix": { "key": "crit", "value": 0.0846 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.13199999999999 },
-          { "key": "crit", "value": 0.0846 },
           { "key": "power", "value": 46.43599999999999 },
-          { "key": "minSilkbind", "value": 41.548 }
+          { "key": "minSilkbind", "value": 41.548 },
+          { "key": "crit", "value": 0.0846 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       },
@@ -103,9 +103,9 @@
         "baseAffix": { "key": "crit", "value": 0.0846 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.13199999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
           { "key": "crit", "value": 0.0846 },
-          { "key": "vsBossDmg", "value": 0.03008 },
-          { "key": "minSilkbind", "value": 41.548 }
+          { "key": "vsBossDmg", "value": 0.03008 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       },
@@ -116,9 +116,9 @@
         "baseAffix": { "key": "crit", "value": 0.0846 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.13199999999999 },
+          { "key": "minSilkbind", "value": 41.548 },
           { "key": "crit", "value": 0.0846 },
-          { "key": "vsBossDmg", "value": 0.03008 },
-          { "key": "minSilkbind", "value": 41.548 }
+          { "key": "vsBossDmg", "value": 0.03008 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.06 }
       }
@@ -144,8 +144,8 @@
         "baseAffix": { "key": "minSilkbind", "value": 48.315999999999995 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
-          { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "agility", "value": 53.955999999999996 },
+          { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "precision", "value": 0.08836 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 12.8 }
@@ -157,9 +157,9 @@
         "baseAffix": { "key": "maxPhys", "value": 85.16399999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
+          { "key": "agility", "value": 53.955999999999996 },
           { "key": "minSilkbind", "value": 48.315999999999995 },
-          { "key": "precision", "value": 0.08836 },
-          { "key": "agility", "value": 53.955999999999996 }
+          { "key": "precision", "value": 0.08836 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
@@ -169,8 +169,8 @@
         "rarity": "Gold",
         "baseAffix": { "key": "maxPhys", "value": 85.16399999999999 },
         "additionalAffixes": [
-          { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "maxPhys", "value": 85.16399999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "precision", "value": 0.08836 },
           { "key": "allMartialArts", "value": 0.033839999999999995 }
         ],
@@ -183,9 +183,9 @@
         "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
-          { "key": "crit", "value": 0.09775999999999999 },
           { "key": "power", "value": 53.955999999999996 },
-          { "key": "minSilkbind", "value": 48.315999999999995 }
+          { "key": "minSilkbind", "value": 48.315999999999995 },
+          { "key": "crit", "value": 0.09775999999999999 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       },
@@ -196,9 +196,9 @@
         "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
-          { "key": "crit", "value": 0.09775999999999999 },
           { "key": "power", "value": 53.955999999999996 },
-          { "key": "minSilkbind", "value": 48.315999999999995 }
+          { "key": "minSilkbind", "value": 48.315999999999995 },
+          { "key": "crit", "value": 0.09775999999999999 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       },
@@ -209,9 +209,9 @@
         "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "crit", "value": 0.09775999999999999 },
-          { "key": "vsBossDmg", "value": 0.035719999999999995 },
-          { "key": "minSilkbind", "value": 48.315999999999995 }
+          { "key": "vsBossDmg", "value": 0.035719999999999995 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       },
@@ -222,9 +222,9 @@
         "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
+          { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "crit", "value": 0.09775999999999999 },
-          { "key": "vsBossDmg", "value": 0.035719999999999995 },
-          { "key": "minSilkbind", "value": 48.315999999999995 }
+          { "key": "vsBossDmg", "value": 0.035719999999999995 }
         ],
         "attunement": { "key": "museflowWaistDrumSpecialBoost", "value": 0.07 }
       }

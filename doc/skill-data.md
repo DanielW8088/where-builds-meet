@@ -1462,7 +1462,7 @@ Target count is a proxy for simultaneous hits, including the Fan perception
 route; per-target hit tracking and PvP effects remain unimplemented. See
 [wings-implementation-audit.md](wings-implementation-audit.md) for remaining gaps.
 
-The Wings Fully Relayed Max Build uses Max Physical Attack weapon base affixes. Its additional affixes are optimized independently at each gear tier; setup and attunements remain fixed.
+The Wings Fully Relayed Max Build uses Max Physical Attack weapon base affixes and eight Power rolls, one additional affix per piece, in place of Max Silkbind. The tier-96 Drum already has Power, so its displaced Max Silkbind roll uses Momentum, the best eligible offensive alternative by average preset DPS. Its additional affixes are optimized independently at each gear tier; setup and attunements remain fixed.
 
 Official item imports map Ribbon & Drum Art affixes 9793032/9794032 (tier 96)
 and 10193032/10194032 (tier 100) to `ribbonAndDrumDmgBoost`. The item exports omit these affixes' name fields; the user-provided
@@ -1476,8 +1476,7 @@ but not enforced because the modeled route cannot exceed it.
 
 Wings has four fully relayed attack layouts: Double Min (Min Physical and Min
 Void/Silkbind), Min (Min Physical and Max Void/Silkbind), Min Attribute
-(Max Physical and Min Void/Silkbind), and Max (Max Physical and Max
-Void/Silkbind). Graduate retains its non-relayed Min layout and maximum rolls.
+(Max Physical and Min Void/Silkbind), and Max (Max Physical and Power). Graduate retains its non-relayed Min layout and maximum rolls.
 Double Min, Min, and Graduate require eight Agility rolls, one
 additional affix on every equipped piece, at both tiers. Missing Agility replaces
 Critical Rate or attribute attack, choosing the higher average preset DPS.
