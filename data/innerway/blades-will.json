@@ -1,6 +1,5 @@
 {
   "name": "Blade's Will",
-  "description": "An Inner Way for multiple targets. Its damage stacks require an eligible attack to hit at least 3 enemies simultaneously, reduced to 2 at T4. Drum Specials do not qualify. Against one target, only the T2 Void Attack and T5 Formless Penetration stats contribute; the stacking damage bonuses cannot activate.",
   "altersTimeline": true,
   "tags": ["SilkbindWing"],
   "effect": {

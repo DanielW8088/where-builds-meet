@@ -397,7 +397,6 @@
   "data.gearSet.SwayingHeights.name": "Swaying Heights",
   "data.gearSet.SwiftGale.name": "Swift Gale",
   "data.gearSet.Tiltrim.name": "Tiltrim",
-  "data.innerway.bladesWill.description": "An Inner Way for multiple targets. Its damage stacks require an eligible attack to hit at least 3 enemies simultaneously, reduced to 2 at T4. Drum Specials do not qualify. Against one target, only the T2 Void Attack and T5 Formless Penetration stats contribute; the stacking damage bonuses cannot activate.",
   "data.innerway.insightfulStrike.effect.InsightfulStrikeT0.trigger.0.resource.name": "Focus",
   "data.innerway.phantomRally.effect.PhantomRallyT6.description": "Each returning umbrella thrown summons a Phantom Umbrella and triggers Resonance immediately, replacing the first-then-every-third cadence of the lower tiers.",
   "data.martialArt.everspringUmbrella.talent.13.0.name": "Perfect Catch Enhancement",
