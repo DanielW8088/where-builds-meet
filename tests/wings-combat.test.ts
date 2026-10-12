@@ -276,6 +276,47 @@ describe("Wings preset combat", () => {
     expect(Number(light.actions[Number(hit[0])].time)).toBeCloseTo(0.5471428571428572)
     expect(hit[1].resources.NobleWill).toBe(0)
   })
+  it("does not refresh Cloudshear when Radiant Drum expires into Tailwind", () => {
+    const rows = timeline(
+      {
+        name: "Expiry Tailwind",
+        ping: 0,
+        start: { step: 0 },
+        steps: [
+          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "RippleJadebreaker" },
+          { type: "event", event: "Delay", duration: 10 },
+          { type: "skill", skill: "Observe" },
+        ],
+      },
+      "T6",
+      { ...allSkillDefinitions, Observe: { castTime: 0, action: [] } },
+    )
+    const observed = rows.find(row => row.step.skill === "Observe")!
+    expect(observed.buffs.has("RadiantDrum")).toBe(false)
+    expect(observed.buffs.has("Tailwind")).toBe(true)
+    expect(observed.buffs.has("Cloudshear")).toBe(false)
+  })
+  it.each([jadebreaker, dawnsun])("keeps Cloudshear active throughout $name", rotation => {
+    const rows = timeline(rotation)
+    const start = rows[0].battleStartTime!
+    const expiries = Array.from(
+      new Set(
+        rows.flatMap(row =>
+          [row.buffs, ...Object.values(row.actionStates).map(state => state.buffs)].flatMap(buffs => {
+            const expiry = buffs.get("Cloudshear")?.expiresAt
+            return typeof expiry === "number" ? [expiry] : []
+          }),
+        ),
+      ),
+    ).sort((a, b) => a - b)
+    let coveredUntil = start
+    for (const expiry of expiries) {
+      expect(expiry - 15).toBeLessThanOrEqual(coveredUntil)
+      coveredUntil = Math.max(coveredUntil, expiry)
+    }
+    expect(coveredUntil).toBeGreaterThanOrEqual(start + 60)
+  })
   it("caps repeated Cloudshear applications at one stack and expires 15 seconds after refresh", () => {
     const rows = timeline(
       {

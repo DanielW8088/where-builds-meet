@@ -1378,7 +1378,10 @@ cancel is available at 5.920 seconds. The selection milestone is documentation,
 not an additional delay on these skill-start-relative times. Buff applications and other
 mechanic-event clocks are unchanged where unresolved.
 
-Both presets use heavy 1–3 / VC for every drum combo; charged light
+Both presets use heavy 1–3 / VC for every drum combo. The first loop places
+one combo after Drum Q2 and the other after the Fan moves. The second loop
+places both combos before the Fan moves, refreshing Ink Rhyme later for the
+final Drum Special while maintaining continuous Cloudshear coverage. Charged light
 羅袖動香 followed by VC remains selectable. Charged light uses numerical skill `2100100101`: five
 0.135 hits and one 0.19 final hit, following the explicit damage table rather
 than the conflicting maximum-eight-hit tooltip. Its user-confirmed time to connect to VC
@@ -1435,8 +1438,9 @@ affix availability pending a dedicated equipment export.
 Cloudshear and Etherwrath are available for Wings. Cloudshear retains the
 77.8 minimum Physical Attack two-piece bonus at four pieces. Its self buff,
 裁雲·翊 (`buff.json` 109804), grants 6% all-type damage and healing for 15 seconds, capped at
-one stack and refreshing its duration on reapplication, when
-扶風 or 爍鼓 is applied. Ally application is not part of the dummy presets.
+one stack and refreshing its duration on reapplication, when Fan Q applies
+扶風 or Drum Special applies 爍鼓. The automatic 扶風 application when 爍鼓
+expires does not trigger Cloudshear. Ally application is not part of the dummy presets.
 
 寸草心 T2 uses the first Void Attack table, matching Celestial Vigor
 (19.9–39.9 at Solo Level 21). Its alternative table is not added. Solo Level
