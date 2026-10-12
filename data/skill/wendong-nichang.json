@@ -282,7 +282,21 @@
         "value": "RadiantDrum",
         "duration": 4,
         "time": 5.165,
-        "requirement": [{ "target": "self", "value": "SongOfHarmonyT6" }]
+        "requirement": [
+          { "target": "self", "value": "SongOfHarmonyT6" },
+          {
+            "operator": "not",
+            "operand": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "WingsSupportBlue" },
+                  { "target": "self", "value": "WingsSupportFull" }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "type": "apply",
@@ -293,7 +307,19 @@
         "requirement": [
           { "target": "self", "value": "SongOfHarmonyT6" },
           { "target": "self", "value": "Tailwind" },
-          { "operator": "not", "operand": [{ "target": "self", "value": "RadiantDrum" }] }
+          { "operator": "not", "operand": [{ "target": "self", "value": "RadiantDrum" }] },
+          {
+            "operator": "not",
+            "operand": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "WingsSupportBlue" },
+                  { "target": "self", "value": "WingsSupportFull" }
+                ]
+              }
+            ]
+          }
         ]
       },
       {

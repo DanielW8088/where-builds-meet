@@ -1271,7 +1271,11 @@ use ordinary effect-definition and requirement resolution, appear in timeline
 state, and share the same unique tracked entry with any matching application
 from the rotation. Floating Grace selects either its base Mixed definition or
 its stronger Deluge definition through `initialBuffs`. Reapplication cannot
-expire or duplicate a permanent seeded effect.
+expire or duplicate a permanent seeded effect. Wings support likewise seeds a
+permanent selection marker: other paths receive weighted attack and Cloudshear
+bonuses; Wings instead changes local Radiant Drum duration through existing
+effect-definition modifiers. The selection is persisted with the other global
+controls and comparison variants rebuild their timelines.
 Effect definitions with `global: true` instead enter through setup effects.
 `global: { equippedMartialArt: "infernalTwinblades" }` includes a rule only
 when that martial art is equipped in either slot, before sending setup effects

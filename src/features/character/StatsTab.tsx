@@ -914,6 +914,30 @@ export function StatsTab({
                   </ButtonGroup>
                 </div>
                 <div className="setup-category-row">
+                  <span>{t("ui.app.silkbindWings")}</span>
+                  <ButtonGroup columns={2}>
+                    {(["none", "yellow", "blue", "full"] as const).map(value => {
+                      const active = globalDebuffs.silkbindWings === value
+                      const labels = {
+                        none: t("ui.app.none"),
+                        yellow: t("ui.app.wingsYellow"),
+                        blue: t("ui.app.wingsBlue"),
+                        full: t("ui.app.wingsFull"),
+                      }
+                      return (
+                        <ButtonGroupOption
+                          key={value}
+                          label={labels[value]}
+                          selected={active}
+                          onClick={() => updateGlobalDebuff("silkbindWings", value)}
+                        >
+                          {setupStatus("buff:silkbindWings", value, active)}
+                        </ButtonGroupOption>
+                      )
+                    })}
+                  </ButtonGroup>
+                </div>
+                <div className="setup-category-row">
                   <span>{t("system.innerWay.bitterSeasons")}</span>
                   <ButtonGroup columns={3}>
                     {(["none", "T1", "T6"] as const).map(value => {

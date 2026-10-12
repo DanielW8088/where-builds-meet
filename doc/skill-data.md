@@ -1521,3 +1521,19 @@ applications share Yi River’s two-second application cooldown, and T6 damage a
 healing payloads share their ten-second cooldown. Below-T4 random self stacks
 remain unsupported. See [the Wings audit](wings-implementation-audit.md) for
 remaining mechanisms and draft Flourishing Notes timing limits.
+
+### Global Wings support
+
+The Global Buffs Wings selector uses permanent expected bonuses for other paths:
+Cloudshear contributes 6% damage and healing; Yellow weights Tailwind's 3%
+attribute attack bonus by 13.5/20 and Radiant Drum's 6% Physical/all-attribute
+attack bonus by 6.5/20. Blue uses 9.5/20 and 10.5/20 respectively. Full uses
+Cloudshear and Radiant Drum at full coverage. These weighted effects do not
+activate local Tailwind/Radiant Drum states or grant Wings talent bonuses.
+
+For the locked Wings weapon pair, None and Yellow add no effects. Blue overrides
+local Radiant Drum applications to 10.5 seconds; Full uses 20.5 seconds. Both
+disable Dawnsun's extra four-second extension and its fallback application.
+The existing global effect-definition modifiers express the duration overrides,
+and persistent support markers select them. Comparisons rebuild the timeline
+because changing this selector changes Wings buff expiry events.

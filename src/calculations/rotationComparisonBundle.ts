@@ -275,6 +275,15 @@ export function buildRotationComparisonBundle(
                 }),
               }
             }),
+          "buff:silkbindWings": (["none", "yellow", "blue", "full"] as const)
+            .filter(value => value !== currentGlobalDebuffs.silkbindWings)
+            .map(value => ({
+              label: value,
+              timeline: makeTimelineInput(subject.rotation, {
+                setupEffects: baselineSetupEffects,
+                globalDebuffs: { ...currentGlobalDebuffs, silkbindWings: value },
+              }),
+            })),
           ...setComparisonGroups,
         }
       : ({} as Record<string, RotationSimulationVariant[]>),

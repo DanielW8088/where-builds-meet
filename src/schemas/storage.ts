@@ -34,4 +34,5 @@ export const globalDebuffStateSchema = v.looseObject({
   fearfulBlade: v.optional(v.boolean()),
   qingyisCharm: v.optional(v.string()),
   floatingGrace: v.optional(v.string()),
+  silkbindWings: v.optional(v.string()),
 })

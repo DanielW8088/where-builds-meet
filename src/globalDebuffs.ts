@@ -22,6 +22,7 @@ export type GlobalDebuffState = {
   fearfulBlade: boolean
   qingyisCharm: "none" | "T1" | "T6"
   floatingGrace: "none" | "mixed" | "deluge"
+  silkbindWings: "none" | "yellow" | "blue" | "full"
 }
 
 export const defaultGlobalDebuffs: GlobalDebuffState = {
@@ -33,6 +34,7 @@ export const defaultGlobalDebuffs: GlobalDebuffState = {
   fearfulBlade: false,
   qingyisCharm: "none",
   floatingGrace: "none",
+  silkbindWings: "none",
 }
 
 export const globalDebuffRows = [
@@ -84,6 +86,7 @@ export function normalizeGlobalDebuffs(value: unknown): GlobalDebuffState {
     fearfulBlade: source.fearfulBlade === true,
     qingyisCharm,
     floatingGrace,
+    silkbindWings: normalizeWingsSupport(source.silkbindWings),
   }
 }
 
@@ -122,13 +125,42 @@ function permanentEffect(name: string, definition: { maxStack?: number }): Track
   return { name, stack: definition.maxStack ?? 1, maxStack: definition.maxStack, persistent: true }
 }
 
+function normalizeWingsSupport(value: unknown): GlobalDebuffState["silkbindWings"] {
+  switch (value) {
+    case "yellow":
+    case "blue":
+    case "full":
+      return value
+    default:
+      return "none"
+  }
+}
+
+function wingsSupportEffects(state: GlobalDebuffState): TrackedEffect[] {
+  switch (state.silkbindWings) {
+    case "yellow":
+      return [permanentEffect("WingsSupportYellow", { maxStack: 1 })]
+    case "blue":
+      return [permanentEffect("WingsSupportBlue", { maxStack: 1 })]
+    case "full":
+      return [permanentEffect("WingsSupportFull", { maxStack: 1 })]
+    default:
+      return []
+  }
+}
+
 export function globalBuffTimelineEffects(state: GlobalDebuffState): TrackedEffect[] {
+  return [...floatingGraceTimelineEffects(state), ...wingsSupportEffects(state)]
+}
+
+function floatingGraceTimelineEffects(state: GlobalDebuffState): TrackedEffect[] {
   switch (state.floatingGrace) {
     case "mixed":
       return [permanentEffect("FloatingGrace", definitions.FloatingGrace)]
     case "deluge":
       return [permanentEffect("FloatingGraceDeluge", definitions.FloatingGraceDeluge)]
     case "none":
+    default:
       return []
   }
 }

@@ -326,7 +326,9 @@ describe("Wings preset combat", () => {
     const third = specials[2]
     const fourth = specials[3]
     const firstHit = third.actions.findIndex(action => action.type === "damage")
-    const exhausted = rows.find(row => row.step.type === "event" && row.step.event === "Qi")!
+    const exhausted = rows.find(
+      row => row.step.type === "event" && row.step.event === "Qi" && row.step.targetQiRatio === 0,
+    )!
     expect(exhausted.startTime).toBeCloseTo(third.startTime + Number(third.actions[firstHit].time))
     const q2 = rows.find(row => row.step.skill === "CraneCry" && row.startTime > third.startTime)!
     expect(fourth.startTime).toBeGreaterThan(q2.startTime)

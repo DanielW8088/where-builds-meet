@@ -4,7 +4,28 @@
   "tags": ["SilkbindWing"],
   "effect": {
     "SongOfHarmonyT0": {},
-    "SongOfHarmonyT1": { "effect": [{ "target": "RadiantDrum", "modify": { "duration": 6.5 } }] },
+    "SongOfHarmonyT1": {
+      "effect": [
+        {
+          "target": "RadiantDrum",
+          "modify": { "duration": 6.5 },
+          "requirement": [
+            {
+              "operator": "not",
+              "operand": [
+                {
+                  "operator": "or",
+                  "operand": [
+                    { "target": "self", "value": "WingsSupportBlue" },
+                    { "target": "self", "value": "WingsSupportFull" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     "SongOfHarmonyT2": {
       "effect": [
         {

@@ -107,5 +107,87 @@
       }
     ]
   },
-  "WarriorEscape": { "name": "Escape From Cage", "duration": 5, "maxStack": 1, "refresh": true, "effect": [] }
+  "WarriorEscape": { "name": "Escape From Cage", "duration": 5, "maxStack": 1, "refresh": true, "effect": [] },
+  "WingsSupportYellow": {
+    "name": "Silkbind - Wings (Yellow)",
+    "duration": 0,
+    "maxStack": 1,
+    "hidden": true,
+    "effect": [
+      {
+        "requirement": [
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+        ],
+        "effect": {
+          "dmgBonus": 0.06,
+          "healingBonus": 0.06,
+          "physicalAttackBonus": 0.0195,
+          "bellstrikeAttackBonus": 0.03975,
+          "stonesplitAttackBonus": 0.03975,
+          "silkbindAttackBonus": 0.03975,
+          "bamboocutAttackBonus": 0.03975
+        }
+      }
+    ]
+  },
+  "WingsSupportBlue": {
+    "name": "Silkbind - Wings (Blue)",
+    "duration": 0,
+    "maxStack": 1,
+    "hidden": true,
+    "effect": [
+      {
+        "requirement": [
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+        ],
+        "effect": {
+          "dmgBonus": 0.06,
+          "healingBonus": 0.06,
+          "physicalAttackBonus": 0.0315,
+          "bellstrikeAttackBonus": 0.04575,
+          "stonesplitAttackBonus": 0.04575,
+          "silkbindAttackBonus": 0.04575,
+          "bamboocutAttackBonus": 0.04575
+        }
+      }
+    ]
+  },
+  "WingsSupportFull": {
+    "name": "Silkbind - Wings (Full)",
+    "duration": 0,
+    "maxStack": 1,
+    "hidden": true,
+    "effect": [
+      {
+        "requirement": [
+          { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "wendongNichang" }] }
+        ],
+        "effect": {
+          "dmgBonus": 0.06,
+          "healingBonus": 0.06,
+          "physicalAttackBonus": 0.06,
+          "bellstrikeAttackBonus": 0.06,
+          "stonesplitAttackBonus": 0.06,
+          "silkbindAttackBonus": 0.06,
+          "bamboocutAttackBonus": 0.06
+        }
+      }
+    ]
+  },
+  "WingsSupportDuration": {
+    "name": "Wings Support Duration",
+    "global": { "equippedMartialArt": "wendongNichang" },
+    "effect": [
+      {
+        "requirement": [{ "target": "self", "value": "WingsSupportBlue" }],
+        "target": "RadiantDrum",
+        "modify": { "duration": 10.5 }
+      },
+      {
+        "requirement": [{ "target": "self", "value": "WingsSupportFull" }],
+        "target": "RadiantDrum",
+        "modify": { "duration": 20.5 }
+      }
+    ]
+  }
 }
