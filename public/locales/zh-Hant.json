@@ -108,6 +108,8 @@
   "data.buff.stonesplitStrength.Forgetfulness.description": "略過斬雪輕擊的蓄力時間。",
   "data.buff.stonesplitStrength.Forgetfulness.name": "忘機",
   "data.buff.stonesplitStrength.Forgetfulness.shortName": "忘",
+  "data.buff.stonesplitStrength.ForgetfulnessCooldown.name": "忘機調息",
+  "data.buff.stonesplitStrength.ForgetfulnessCooldown.shortName": "忘機調息",
   "data.buff.stonesplitStrength.InnerPassion.description": "加速焚心並提高其傷害。",
   "data.buff.stonesplitStrength.InnerPassion.name": "熱血難涼",
   "data.buff.stonesplitStrength.InnerPassion.shortName": "熱",

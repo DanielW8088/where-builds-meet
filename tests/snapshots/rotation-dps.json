@@ -491,9 +491,35 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 63675.50823519309,
-      "totalDamage": 3820530.4941115854,
+      "dps": 62302.13462491019,
+      "totalDamage": 3738128.0774946115,
       "duration": 60
+    },
+    "stonesplitStrength/pure-dummy-1-min-infinite-vitality": {
+      "fixture": {
+        "build": "pure-fully-relayed-min",
+        "rotation": "pure-dummy-1-min-infinite-vitality",
+        "martialArts": ["snowparting", "phalanxbane"],
+        "breakthrough": "17",
+        "ping": 40,
+        "food": "SimmeringFishSlices",
+        "divinecraft": "Fire",
+        "script": "None",
+        "globalDebuffs": {
+          "draught": "none",
+          "phantomChime": false,
+          "qiImbalance": false,
+          "soulShaken": false,
+          "vulnerable": false,
+          "fearfulBlade": false,
+          "qingyisCharm": "none",
+          "floatingGrace": "none",
+          "silkbindWings": "none"
+        }
+      },
+      "dps": 64326.782954570765,
+      "totalDamage": 3859606.9772742465,
+      "duration": 60.00000000000001
     }
   }
 }

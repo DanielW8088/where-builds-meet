@@ -1533,3 +1533,13 @@ disable Dawnsun's extra four-second extension and its fallback application.
 The existing global effect-definition modifiers express the duration overrides,
 and persistent support markers select them. Comparisons rebuild the timeline
 because changing this selector changes Wings buff expiry events.
+
+### Forgetfulness cooldown
+
+Forgetfulness's application has no internal cooldown. Grave Frost consumes the
+active Forgetfulness at cast start and applies the six-second Forgetfulness
+Cooldown (忘機調息) only when that cast used Forgetfulness. Snowbreak Spring at
+Frost-Clad Night T6 removes this cooldown buff on an Exhausted target, then
+checks the live buff state before granting Forgetfulness. Other targets cannot
+receive a new grant while the cooldown buff is active. An unused Forgetfulness
+expiring does not start cooldown. The CN preview uses the same rules.

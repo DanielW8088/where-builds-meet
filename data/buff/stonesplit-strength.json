@@ -61,7 +61,6 @@
     "shortName": "For",
     "description": "Skip Snowparting LC charge time.",
     "duration": 4,
-    "cooldown": 6,
     "maxStack": 1,
     "refresh": true
   },
@@ -365,6 +364,13 @@
         "effect": { "SteadfastGuaranteedCrit": true, "critDmgBonus": 0.1 }
       }
     ],
+    "refresh": true
+  },
+  "ForgetfulnessCooldown": {
+    "name": "Forgetfulness Cooldown",
+    "shortName": "For CD",
+    "duration": 6,
+    "maxStack": 1,
     "refresh": true
   }
 }

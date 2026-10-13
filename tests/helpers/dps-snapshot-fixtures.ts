@@ -1,10 +1,9 @@
 import { readdir, readFile } from "node:fs/promises"
 
+import type { buildPresetRotationBundle } from "@/application/graduation"
+import { resolvePing } from "@/calculations/combatDefaults"
+import type { RotationRecord } from "@/calculations/rotationTimeline"
 import { defaultGlobalDebuffs } from "@/globalDebuffs"
-
-import type { buildPresetRotationBundle } from "../../src/application/graduation"
-import { resolvePing } from "../../src/calculations/combatDefaults"
-import type { RotationRecord } from "../../src/calculations/rotationTimeline"
 type Environment = Parameters<typeof buildPresetRotationBundle>[0]
 
 const dataRoot = new URL("../../data/", import.meta.url)
@@ -12,6 +11,7 @@ const dataRoot = new URL("../../data/", import.meta.url)
 export const snapshotBuildOverrides: Record<string, string> = {
   "bamboocutKite/dummy-1-min-infinite-vitality": "kite-fully-relayed-min",
   "stonesplitStrength/pure-dummy-1-min": "pure-fully-relayed-min",
+  "stonesplitStrength/pure-dummy-1-min-infinite-vitality": "pure-fully-relayed-min",
   "stonesplitStrength/mixed-dummy-1-min-double-stab": "mixed-fully-relayed-double-min",
 }
 export const dpsSnapshotEnvironment = {

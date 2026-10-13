@@ -1,8 +1,7 @@
 {
-  "name": "Pure Dummy 1 min",
+  "name": "Pure Dummy 1 Min",
   "martialArts": ["snowparting", "phalanxbane"],
   "eventTimeReference": "battleStart",
-  "infiniteVitality": true,
   "start": { "step": 4, "action": 0 },
   "steps": [
     { "type": "skill", "skill": "PhalanxbaneSpecial" },
@@ -73,7 +72,6 @@
     { "type": "skill", "skill": "SnowpartingConversion" },
     { "type": "skill", "skill": "SnowpartingHeavyVC" },
     { "type": "skill", "skill": "SnowpartingLightCharged" },
-    { "type": "skill", "skill": "SnowpartingHeavyVC" },
     { "type": "event", "event": "BattleEnd", "startTime": 60 }
   ],
   "ping": 40

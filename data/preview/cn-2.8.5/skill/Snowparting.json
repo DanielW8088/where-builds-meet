@@ -44,18 +44,22 @@
         "time": 0.565
       },
       {
-        "type": "clearCD",
+        "type": "consume",
         "requirement": [
           { "target": "self", "value": "FrostCladNightT6" },
           { "target": "target", "value": "Exhausted" }
         ],
         "target": "self",
-        "value": "Forgetfulness",
-        "time": 0.565
+        "value": "ForgetfulnessCooldown",
+        "time": 0.565,
+        "stack": "all"
       },
       {
         "type": "apply",
-        "requirement": [{ "target": "self", "value": "FrostCladNightT6" }],
+        "requirement": [
+          { "target": "self", "value": "FrostCladNightT6" },
+          { "operator": "not", "operand": [{ "target": "self", "value": "ForgetfulnessCooldown" }] }
+        ],
         "target": "self",
         "value": "Forgetfulness",
         "stack": 1,
