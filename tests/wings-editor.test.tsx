@@ -15,7 +15,7 @@ vi.mock("@/stores/dpsStore", async () => {
   return mockDpsStore()
 })
 
-it("shows worker 雅意 values for Wings", async () => {
+it("shows worker Noble Will values for Wings", async () => {
   globalThis.IS_REACT_ACT_ENVIRONMENT = true
   resetDpsMock()
   localStorage.clear()
@@ -58,7 +58,7 @@ it("shows worker 雅意 values for Wings", async () => {
     await act(async () => {
       await vi.advanceTimersByTimeAsync(300)
     })
-    const cells = [...container.querySelectorAll('[data-mobile-label="雅意"]')]
+    const cells = [...container.querySelectorAll('[data-mobile-label="Noble Will"]')]
     expect(cells.length).toBeGreaterThan(0)
     expect(cells.some(cell => cell.textContent === "57.25")).toBe(true)
   } finally {

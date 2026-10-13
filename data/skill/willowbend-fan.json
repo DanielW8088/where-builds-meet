@@ -29,7 +29,7 @@
     "cooldownGroup": "BoundlessBloom"
   },
   "BoundlessBloom": {
-    "name": "不盡春生",
+    "name": "Boundless Blossom",
     "shortName": "Fan Q (Enhanced)",
     "castTime": 1,
     "action": [
@@ -102,8 +102,8 @@
     "weapon": "Fan",
     "cooldown": 8
   },
-  "FiendishSquall": {
-    "name": "煞盡東風",
+  "EndOfGale": {
+    "name": "End of Gale",
     "shortName": "Fan Q Perception",
     "castTime": 1.933,
     "action": [
@@ -162,7 +162,8 @@
           { "target": "self", "value": "ZephyrWhispersT3" },
           { "target": "enemyCount", "comparison": ">=", "amount": 4 }
         ]
-      }
+      },
+      { "type": "apply", "target": "self", "value": "FlowingWind", "stack": 1, "reapply": true, "time": 0.566 }
     ],
     "modifier": [
       { "requirement": [{ "target": "self", "value": "ZephyrWhispersT3" }], "effect": { "baseDMGBonus": 0.2 } },
@@ -185,7 +186,7 @@
         }
       }
     ],
-    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "Perception", "FiendishSquall", "Fan"],
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "Perception", "EndOfGale", "Fan"],
     "martialArt": "willowbendFan",
     "weapon": "Fan",
     "requirement": [{ "target": "self", "value": "ZephyrWhispersT0" }]

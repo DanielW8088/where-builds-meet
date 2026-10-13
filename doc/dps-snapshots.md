@@ -270,3 +270,22 @@ The corrected comparisons retain Min as the best of the four Wings layouts at
 both gear tiers. Double Min returns to Physical penetration, and Graduate uses
 the winning non-relayed Min layout at both tiers. These preset changes do not
 change the snapshot fixture, which continues to use Fully Relayed Min.
+
+## Wings rotation and translation review (2026-10-13)
+
+The user accepted the revised Wings presets after reviewing the opener, first-round
+ordering, Qi break on the second Ripple's final hit, Smolder 2-hit cancel at skill
+25, and infinite Vitality. Qi restores after ten seconds of Exhausted; the next
+59.99% and 39.99% markers repeat the original depletion rate from that recovery.
+The current first-round order retains the documented brief Cloudshear gap;
+Smolder at skill 25 adds roughly 0.56 seconds without Cloudshear before the final Ripple.
+End of Gale reapplies Driftbreeze. Skill translations and the EndOfGale and
+RhythmOfAccord ID migrations preserve saved rotations and overrides.
+
+| Preset      |       Previous DPS |      Accepted DPS | Previous total damage | Accepted total damage |
+| ----------- | -----------------: | ----------------: | --------------------: | --------------------: |
+| Jadebreaker | 46137.050187336594 | 49308.01325488668 |    2768223.0112401955 |    2958480.7952932008 |
+| Dawnsun     |  33754.85510594089 | 36207.09043887357 |    2025291.3063564536 |     2172425.426332414 |
+
+Both encounters remain 60 seconds and use the existing Fully Relayed Min fixture.
+Only the two reviewed Wings snapshots were refreshed.

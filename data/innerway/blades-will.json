@@ -13,8 +13,8 @@
               "operand": [
                 { "target": "skillTag", "value": "LightVariedCombo" },
                 { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "HarmoniousDrum" },
-                { "target": "skillTag", "value": "FiendishSquall" }
+                { "target": "skillTag", "value": "RhythmOfAccord" },
+                { "target": "skillTag", "value": "EndOfGale" }
               ]
             },
             {
@@ -129,7 +129,7 @@
                 { "target": "skillTag", "value": "LightVariedCombo" },
                 { "target": "skillTag", "value": "HeavyVariedCombo" },
                 { "target": "skillTag", "value": "DrumSeries" },
-                { "target": "skillTag", "value": "FiendishSquall" }
+                { "target": "skillTag", "value": "EndOfGale" }
               ]
             },
             { "target": "target", "value": "Cuncao", "stack": 5 }

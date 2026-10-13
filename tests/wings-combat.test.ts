@@ -89,7 +89,7 @@ describe("Wings preset combat", () => {
           { type: "skill", skill: "Rustling" },
           { type: "skill", skill: "Observe" },
           ...Array.from({ length: 6 }, () => [
-            { type: "skill", skill: "HarmoniousDrum" },
+            { type: "skill", skill: "RhythmOfAccord" },
             { type: "skill", skill: "Observe" },
           ]).flat(),
           { type: "event", event: "Delay", duration: 8.1 },
@@ -114,11 +114,11 @@ describe("Wings preset combat", () => {
         ping: 0,
         start: { step: 0 },
         steps: [
-          { type: "skill", skill: "FiendishSquall" },
+          { type: "skill", skill: "EndOfGale" },
           { type: "skill", skill: "CraneWings" },
         ],
       })
-      const perception = rows.find(row => row.step.skill === "FiendishSquall")!
+      const perception = rows.find(row => row.step.skill === "EndOfGale")!
       const hits = perception.actions.filter(
         (action, index) => action.type === "damage" && perception.actionStates[index]?.combatOrder !== undefined,
       )
@@ -138,12 +138,12 @@ describe("Wings preset combat", () => {
       start: { step: 0 },
       steps: [
         { type: "skill", skill: "BoundlessBloom" },
-        { type: "skill", skill: "FiendishSquall" },
+        { type: "skill", skill: "EndOfGale" },
         { type: "skill", skill: "CraneWings" },
       ],
     })
     const fan = rows.find(row => row.step.skill === "BoundlessBloom")!
-    const perception = rows.find(row => row.step.skill === "FiendishSquall")!
+    const perception = rows.find(row => row.step.skill === "EndOfGale")!
     expect(
       fan.actions
         .filter((action, index) => action.type === "damage" && fan.actionStates[index]?.combatOrder !== undefined)
@@ -223,7 +223,7 @@ describe("Wings preset combat", () => {
   it.each([0, 40])("combines heavy attacks and VC with the earlier Pre-VC interruption at %sms ping", ping => {
     const run = (ids: string[]) =>
       timeline({ name: "Wings combo", ping, start: { step: 0 }, steps: ids.map(skill => ({ type: "skill", skill })) })
-    const separate = run(["RibbonHeavy1", "RibbonHeavy2", "RibbonHeavy3", "HarmoniousDrum", "CraneWings"])
+    const separate = run(["RibbonHeavy1", "RibbonHeavy2", "RibbonHeavy3", "RhythmOfAccord", "CraneWings"])
     const combined = run(["RibbonHeavyComboVC", "CraneWings"])
     const end = (rows: ReturnType<typeof run>) => rows.find(row => row.step.skill === "CraneWings")!
     expect(end(separate).startTime - end(combined).startTime).toBeCloseTo(0.25)
@@ -253,7 +253,7 @@ describe("Wings preset combat", () => {
           { type: "skill", skill: "RibbonHeavy1" },
           { type: "skill", skill: "RibbonHeavy2" },
           { type: "skill", skill: "RibbonHeavy3" },
-          { type: "skill", skill: "HarmoniousDrum" },
+          { type: "skill", skill: "RhythmOfAccord" },
           { type: "skill", skill: "Observe" },
         ],
       },
@@ -269,7 +269,7 @@ describe("Wings preset combat", () => {
       0.6941666666666667 + 0.4615384615384615 + 0.8333333333333334 + 1.1785714285714286,
     )
     expect(observed.resources.NobleWill).toBe(20)
-    const light = rows.find(row => row.step.skill === "HarmoniousDrum")!
+    const light = rows.find(row => row.step.skill === "RhythmOfAccord")!
     const hit = Object.entries(light.actionStates).find(
       ([index, state]) => light.actions[Number(index)].type === "damage" && state.combatOrder !== undefined,
     )!
@@ -297,26 +297,55 @@ describe("Wings preset combat", () => {
     expect(observed.buffs.has("Tailwind")).toBe(true)
     expect(observed.buffs.has("Cloudshear")).toBe(false)
   })
-  it.each([jadebreaker, dawnsun])("keeps Cloudshear active throughout $name", rotation => {
+  it.each([jadebreaker, dawnsun])("refreshes Cloudshear on each enhanced Fan Q in $name", rotation => {
     const rows = timeline(rotation)
-    const start = rows[0].battleStartTime!
-    const expiries = Array.from(
-      new Set(
-        rows.flatMap(row =>
-          [row.buffs, ...Object.values(row.actionStates).map(state => state.buffs)].flatMap(buffs => {
-            const expiry = buffs.get("Cloudshear")?.expiresAt
-            return typeof expiry === "number" ? [expiry] : []
-          }),
-        ),
-      ),
-    ).sort((a, b) => a - b)
-    let coveredUntil = start
-    for (const expiry of expiries) {
-      expect(expiry - 15).toBeLessThanOrEqual(coveredUntil)
-      coveredUntil = Math.max(coveredUntil, expiry)
+    const fans = rows.filter(row => row.kind === "rotation" && row.step.skill === "BoundlessBloom")
+    expect(fans).toHaveLength(3)
+    for (const fan of fans) {
+      const perception = rows.find(
+        row => row.kind === "rotation" && row.step.skill === "EndOfGale" && row.startTime > fan.startTime,
+      )!
+      expect(perception.buffs.get("Cloudshear")!.expiresAt).toBeCloseTo(fan.startTime + 15)
     }
-    expect(coveredUntil).toBeGreaterThanOrEqual(start + 60)
+    const skills = rows.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const followingHeavy = skills.flatMap((row, index) =>
+      row.step.skill === "RibbonHeavyComboVC" ? [skills[index + 1]] : [],
+    )
+    expect(followingHeavy).toHaveLength(4)
+    expect(followingHeavy.every(row => row.distance === 1)).toBe(true)
   })
+  it.each([jadebreaker, dawnsun])(
+    "limits Cloudshear gaps to the delayed Fan Q and final Ripple refreshes in $name",
+    rotation => {
+      const rows = timeline(rotation)
+      const start = rows[0].battleStartTime!
+      const expiries = [
+        ...new Set(
+          rows.flatMap(row =>
+            [row.buffs, ...Object.values(row.actionStates).map(state => state.buffs)]
+              .map(buffs => buffs.get("Cloudshear")?.expiresAt)
+              .filter((expiry): expiry is number => typeof expiry === "number"),
+          ),
+        ),
+      ].sort((a, b) => a - b)
+      let coveredUntil = start
+      const gaps: Array<[number, number]> = []
+      for (const expiry of expiries) {
+        if (expiry - 15 > coveredUntil) gaps.push([coveredUntil, expiry - 15])
+        coveredUntil = Math.max(coveredUntil, expiry)
+      }
+      const openingRipple = rows.find(row => row.kind === "rotation" && row.step.skill?.startsWith("Ripple"))!
+      const fanRefresh = rows.filter(row => row.kind === "rotation" && row.step.skill === "BoundlessBloom")[1]
+      const lastFan = rows.findLast(row => row.kind === "rotation" && row.step.skill === "BoundlessBloom")!
+      const lastRipple = rows.findLast(row => row.kind === "rotation" && row.step.skill?.startsWith("Ripple"))!
+      expect(gaps).toHaveLength(2)
+      expect(gaps[0][0]).toBeCloseTo(openingRipple.startTime + 15)
+      expect(gaps[0][1]).toBeCloseTo(fanRefresh.startTime)
+      expect(gaps[1][0]).toBeCloseTo(lastFan.startTime + 15)
+      expect(gaps[1][1]).toBeCloseTo(lastRipple.startTime)
+      expect(coveredUntil).toBeGreaterThanOrEqual(start + 60)
+    },
+  )
   it("caps repeated Cloudshear applications at one stack and expires 15 seconds after refresh", () => {
     const rows = timeline(
       {
@@ -361,39 +390,50 @@ describe("Wings preset combat", () => {
   it.each([
     ["RippleJadebreaker", jadebreaker],
     ["RippleDawnsun", dawnsun],
-  ])("resets %s after the third special's exhausted Q2 hit", (variant, rotation) => {
+  ])("resets %s after the second special's final hit and exhausted Q2", (variant, rotation) => {
     const rows = timeline(rotation)
     const specials = rows.filter(row => row.kind === "rotation" && row.step.skill === variant)
+    const second = specials[1]
     const third = specials[2]
-    const fourth = specials[3]
-    const firstHit = third.actions.findIndex(action => action.type === "damage")
+    const lastHitRow =
+      variant === "RippleJadebreaker"
+        ? rows.find(row => row.step.skill === "JadebreakerEnhanced" && row.sourceRowId === second.id)!
+        : second
+    const lastHit = lastHitRow.actions.findLastIndex(action => action.type === "damage")
     const exhausted = rows.find(
       row => row.step.type === "event" && row.step.event === "Qi" && row.step.targetQiRatio === 0,
     )!
-    expect(exhausted.startTime).toBeCloseTo(third.startTime + Number(third.actions[firstHit].time))
-    const q2 = rows.find(row => row.step.skill === "CraneCry" && row.startTime > third.startTime)!
-    expect(fourth.startTime).toBeGreaterThan(q2.startTime)
-    expect(fourth.startTime - third.startTime).toBeLessThan(20)
+    expect(exhausted.startTime).toBeCloseTo(lastHitRow.startTime + Number(lastHitRow.actions[lastHit].time))
+    expect(lastHitRow.actionStates[lastHit].debuffs.has("Exhausted")).toBe(false)
+    const q2 = rows.find(row => row.step.skill === "CraneCry" && row.startTime > second.startTime)!
+    expect(q2.debuffs.has("Exhausted")).toBe(true)
+    expect(third.startTime).toBeGreaterThan(q2.startTime)
+    expect(third.startTime - second.startTime).toBeLessThan(20)
   })
-  it("uses the third Dawnsun's Radiant Drum for Soaring Spin before the final special", () => {
+  it("uses the third Dawnsun's Radiant Drum for the second Smolder before the final round", () => {
     const rows = timeline(dawnsun)
     const specials = rows.filter(row => row.kind === "rotation" && row.step.skill === "RippleDawnsun")
-    const soaring = rows.find(row => row.kind === "rotation" && row.step.skill === "SoaringSpin2")!
-    expect(soaring.startTime).toBeGreaterThan(specials[2].startTime)
-    expect(soaring.startTime).toBeLessThan(specials[3].startTime)
-    expect(soaring.buffs.has("RadiantDrum")).toBe(true)
+    const smolder = rows.findLast(row => row.kind === "rotation" && row.step.skill === "DragonsBreathSmolder2")!
+    expect(smolder.startTime).toBeGreaterThan(specials[2].startTime)
+    expect(smolder.startTime).toBeLessThan(specials[3].startTime)
+    expect(smolder.buffs.has("RadiantDrum")).toBe(true)
   })
   it.each([jadebreaker, dawnsun])(
-    "starts combat on the first drum special hit after precombat Fan Q and Flute",
+    "starts combat on Boundless Blossom and carries refreshed Driftbreeze into Drum Special",
     rotation => {
       const rows = timeline(rotation)
-      const flute = rows.find(row => row.kind === "rotation" && row.step.skill === "FluteOfTheTidesCancel")!
-      const fan = rows.find(row => row.kind === "rotation" && row.step.skill === "Rustling")!
+      const fan = rows.find(row => row.kind === "rotation" && row.step.skill === "BoundlessBloom")!
+      const perception = rows.find(row => row.kind === "rotation" && row.step.skill === "EndOfGale")!
       const special = rows.find(row => row.kind === "rotation" && row.step.skill?.startsWith("Ripple"))!
-      const firstHit = special.actions.find(action => action.type === "damage")!
-      expect(fan.startTime).toBeLessThan(flute.startTime)
-      expect(rows[0].battleStartTime).toBe(special.startTime + Number(firstHit.time))
-      expect(flute.startTime).toBeLessThan(rows[0].battleStartTime!)
+      const firstHit = fan.actions.find(action => action.type === "damage")!
+      expect(fan.startTime).toBeLessThan(perception.startTime)
+      expect(perception.buffs.has("Tailwind")).toBe(true)
+      expect(rows[0].battleStartTime).toBe(fan.startTime + Number(firstHit.time))
+      expect(special.distance).toBe(6)
+      expect(special.buffs.get("FlowingWind")!.expiresAt).toBeCloseTo(
+        perception.startTime + Number(perception.actions.find(action => action.type === "damage")!.time) + 20,
+      )
+      expect(rows.filter(row => row.kind === "rotation" && row.step.skill === "NorthwindSweep")).toHaveLength(1)
     },
   )
   it("adds the second enhanced Jadebreaker beat only at Harmony T6", () => {
@@ -409,11 +449,20 @@ describe("Wings preset combat", () => {
     expect(beats("T3")).toHaveLength(3)
     expect(beats("T6")).toHaveLength(8)
   })
-  it("shares the sequence apart from the drum special variant and Soaring Spin placement", () => {
-    const normalize = (rotation: typeof jadebreaker) =>
+  it("shares the full sequence and movement apart from Ripple and its Qi timing", () => {
+    const normalize = (rotation: { steps: Array<{ skill?: string; event?: string }> }) =>
       rotation.steps
-        .filter(step => step.skill !== "SoaringSpin2")
-        .map(step => step.skill?.replace(/Ripple(Jadebreaker|Dawnsun)/, "Ripple"))
+        .filter(step => step.event !== "Qi")
+        .map(step =>
+          Object.assign(
+            {},
+            step,
+            step.skill ? { skill: step.skill.replace(/Ripple(Jadebreaker|Dawnsun)/, "Ripple") } : {},
+          ),
+        )
     expect(normalize(jadebreaker)).toEqual(normalize(dawnsun))
+    expect(jadebreaker.start).toEqual(dawnsun.start)
+    expect(jadebreaker.infiniteVitality).toBe(dawnsun.infiniteVitality)
+    expect(jadebreaker.ping).toBe(dawnsun.ping)
   })
 })

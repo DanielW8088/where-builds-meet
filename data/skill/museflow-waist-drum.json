@@ -17,7 +17,7 @@
     "cooldown": 15
   },
   "CraneCry": {
-    "name": "鸞鶴引聲",
+    "name": "Crane's Cry",
     "shortName": "Drum Q2",
     "castTime": 0.9523809523809523,
     "action": [
@@ -40,8 +40,8 @@
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum"
   },
-  "HarmoniousDrum": {
-    "name": "鼓樂和",
+  "RhythmOfAccord": {
+    "name": "Rhythm of Accord",
     "shortName": "Drum VC",
     "castTime": 1.1785714285714286,
     "action": [
@@ -63,12 +63,12 @@
       "Light",
       "LightVariedCombo",
       "DrumSeries",
-      "HarmoniousDrum",
+      "RhythmOfAccord",
       "RibbonAndDrum"
     ],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "skillBreakdownCategory": "鼓樂和"
+    "skillBreakdownCategory": "Rhythm of Accord"
   },
   "RibbonHeavy1": {
     "name": "舞綾鼓·重擊1",
@@ -133,7 +133,7 @@
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },
   "RippleJadebreaker": {
-    "name": "凌波·撼玉",
+    "name": "Ripple: Jadebreaker",
     "shortName": "Drum Special (Jadebreaker)",
     "castTime": 5.852,
     "action": [
@@ -216,10 +216,10 @@
     "weapon": "RibbonAndDrum",
     "cooldown": 20,
     "cooldownGroup": "RipplingDew",
-    "skillBreakdownCategory": "凌波·撼玉"
+    "skillBreakdownCategory": "Ripple: Jadebreaker"
   },
   "RippleDawnsun": {
-    "name": "凌波·昭陽",
+    "name": "Ripple: Dawnsun",
     "shortName": "Drum Special (Dawnsun)",
     "castTime": 5.92,
     "action": [
@@ -392,7 +392,7 @@
     "cooldownGroup": "RipplingDew"
   },
   "JadebreakerEnhanced": {
-    "name": "凌波·撼玉·強化音浪",
+    "name": "Ripple: Jadebreaker · Enhanced Sound Wave",
     "silent": true,
     "ignorePing": true,
     "castTime": 0,
@@ -431,7 +431,7 @@
     ],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "skillBreakdownCategory": "凌波·撼玉"
+    "skillBreakdownCategory": "Ripple: Jadebreaker"
   },
   "RibbonLightCharged": {
     "name": "羅袖動香",
@@ -531,7 +531,7 @@
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },
   "RibbonLightChargedVC": {
-    "name": "羅袖動香 → 鼓樂和",
+    "name": "羅袖動香 → Rhythm of Accord",
     "shortName": "Drum Light Charged → VC",
     "ignorePing": true,
     "castTime": 0,
@@ -540,10 +540,10 @@
     "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "RibbonLightChargedVC", "RibbonAndDrum"],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "subAction": [{ "value": "RibbonLightCharged" }, { "value": "HarmoniousDrum" }]
+    "subAction": [{ "value": "RibbonLightCharged" }, { "value": "RhythmOfAccord" }]
   },
   "RibbonHeavyComboVC": {
-    "name": "舞綾鼓·重擊123 → 鼓樂和",
+    "name": "舞綾鼓·重擊123 → Rhythm of Accord",
     "shortName": "Drum Heavy 123 → VC",
     "ignorePing": true,
     "castTime": 0,
@@ -556,7 +556,7 @@
       { "value": "RibbonHeavy1" },
       { "value": "RibbonHeavy2" },
       { "value": "RibbonHeavy3PreVC" },
-      { "value": "HarmoniousDrum" }
+      { "value": "RhythmOfAccord" }
     ],
     "skillBreakdownCategory": "舞綾鼓·重擊"
   },

@@ -1,6 +1,6 @@
 {
   "Tailwind": {
-    "name": "扶風",
+    "name": "Rustling",
     "duration": 12,
     "maxStack": 1,
     "refresh": true,
@@ -27,7 +27,7 @@
     "description": "Increases all attribute attacks by 3% (6% when paired with Ribbon & Drum). With Ribbon & Drum talents, also increases Drum Series base damage by 40%."
   },
   "RadiantDrum": {
-    "name": "爍鼓",
+    "name": "Radiant Drum",
     "description": "Increases Physical Attack and all attribute attacks by 6%. With Ribbon & Drum talents, also increases Drum Series base damage by 40%.",
     "duration": 4,
     "maxStack": 1,
@@ -47,7 +47,7 @@
     "showCoverage": true
   },
   "Cloudshear": {
-    "name": "裁雲·翊",
+    "name": "Cloudshear: Wings",
     "description": "Increases all damage and healing by 6%.",
     "duration": 15,
     "maxStack": 1,
@@ -56,8 +56,8 @@
     "showCoverage": true
   },
   "FlowingWind": {
-    "name": "流風",
-    "description": "Enhances Fan Q into 不盡春生, adding a second wind field and 25% additional HP damage against non-player targets.",
+    "name": "Driftbreeze",
+    "description": "Enhances Fan Q into Boundless Blossom.",
     "duration": 20,
     "maxStack": 1,
     "refresh": true,

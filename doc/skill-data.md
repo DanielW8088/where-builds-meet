@@ -1380,10 +1380,23 @@ cancel is available at 5.920 seconds. The selection milestone is documentation,
 not an additional delay on these skill-start-relative times. Buff applications and other
 mechanic-event clocks are unchanged where unresolved.
 
-Both presets use heavy 1–3 / VC for every drum combo. The first loop places
-one combo after Drum Q2 and the other after the Fan moves. The second loop
-places both combos before the Fan moves, refreshing Ink Rhyme later for the
-final Drum Special while maintaining continuous Cloudshear coverage. Charged light
+Both presets use heavy 1–3 / VC for every drum combo, followed by movement to 1m,
+and enable infinite Vitality. After the opening Ripple, the first round uses
+Drum Q1/Q2, two heavy/VC combos, Leaping Toad / Deflect, Boundless Blossom,
+End of Gale, Smolder 2-hit cancel / Deflect, and the second Ripple. This ordering
+leaves a roughly 0.67-second Jadebreaker / 0.74-second Dawnsun Cloudshear gap
+before Boundless Blossom. Smolder at skill 25 also leaves roughly 0.56 seconds
+without Cloudshear before the fourth Ripple refresh. Qi breaks after the second Ripple's last hit: the second
+enhanced Jadebreaker beat at T6, or Dawnsun's final wave. The following Drum
+Q1/Q2 restores 100 Noble Will and resets the shared Ripple cooldown through
+Harmony Song T4. Flute cancel / Deflect then precedes the third Ripple, followed
+by Boundless Blossom, Smolder 2-hit cancel, End of Gale, heavy/VC, Leaping Toad / Deflect,
+Drum Q1/Q2, heavy/VC, and the fourth Ripple. Both presets share this sequence,
+with only the Ripple skill and its last-hit Qi anchor/times differing.
+The proportional Qi markers use 40% and 60% of the second Ripple's last-hit time.
+After the ten-second Exhausted window restores Qi, another pair of 59.99% and
+39.99% markers uses that same depletion rate, measured from Qi recovery.
+Charged light
 羅袖動香 followed by VC remains selectable. Charged light uses numerical skill `2100100101`: five
 0.135 hits and one 0.19 final hit, following the explicit damage table rather
 than the conflicting maximum-eight-hit tooltip. Its user-confirmed time to connect to VC
@@ -1403,13 +1416,21 @@ Wings skills omit descriptions; unresolved timing
 details are maintained here.
 
 These presets remain drafts; their DPS is not an accepted timing benchmark.
-Both use the non-attacking dummy. Each applies Exhausted at the third Drum Special first hit.
-Its following Drum Q2 triggers 相和歌 T4, restoring 100 雅意 and clearing the
-shared Drum Special cooldown, once per 60 seconds. Both then use another
-Drum Special, Soaring Spin and two-shot Bursting Nine before the unchanged
-60-second BattleEnd;
-only hits within that battle window contribute. The opening Fan Q precedes Flute cancel and Deflect; the battle-start
-anchor is the first damage action of the first Drum Special. The editor displays 雅意
+Both use the non-attacking dummy. Exhausted is attached after the second Ripple's
+last damage action, including the triggered enhanced beat for Jadebreaker.
+The reset occurs once per 60 seconds on the following Q2 hit. The final Ripple
+finishes before the unchanged 60-second BattleEnd;
+only hits within that battle window contribute. The opener uses Drink cancel, Deflect, Fan Special, Flute cancel, Deflect, Boundless Blossom (granting
+Rustling), and End of Gale. Combat starts on Boundless Blossom's first hit,
+which enables End of Gale. The first Drum Special starts at 6m.
+`EndOfGale` is the internal ID for End of Gale (formerly `FiendishSquall`).
+`RhythmOfAccord` is the internal ID for Rhythm of Accord (鼓樂和), formerly
+`HarmoniousDrum`; composite skill components and eligible-hit rules use the new ID.
+The shared skill-ID migration preserves saved rotations and skill overrides,
+including skill tags and nested references.
+End of Gale reapplies the 20-second Driftbreeze buff on its first hit, so later
+loops omit Fan Special. Its application action is appended to preserve stored
+action indexes. The editor displays 雅意
 from worker state on rows and actions. Cooldowns and the imported cast clocks
 advance the timeline even where a hit still has a zero placeholder.
 

@@ -9,18 +9,12 @@ import { defaultGlobalDebuffs } from "@/globalDebuffs"
 
 describe("Wings rotation finishers", () => {
   it.each(["17", "18"].flatMap(breakthrough => [jadebreaker, dawnsun].map(rotation => ({ breakthrough, rotation }))))(
-    "adds damage within one minute for $rotation.name at breakthrough $breakthrough",
+    "cuts off the finishing sequence at one minute for $rotation.name at breakthrough $breakthrough",
     ({ breakthrough, rotation }) => {
       const current = rotation as RotationRecord
-      const previous = structuredClone(current)
-      const bursting = previous.steps.findIndex(step => step.type === "skill" && step.skill === "BurstingNine2Shots")
-      previous.steps.splice(bursting + 1, previous.steps.length - bursting - 2)
-      if (rotation === dawnsun) {
-        const soaringIndex = previous.steps.findIndex(step => step.type === "skill" && step.skill === "SoaringSpin2")
-        const soaring = previous.steps.splice(soaringIndex, 1)[0]
-        const special = previous.steps.findLastIndex(step => step.type === "skill" && step.skill === "RippleDawnsun")
-        previous.steps.splice(special + 1, 0, soaring)
-      }
+      const extended = structuredClone(current)
+      const end = extended.steps.find(step => step.type === "event" && step.event === "BattleEnd")!
+      Object.assign(end, { startTime: 65 })
       const calculate = (candidate: RotationRecord) => {
         const bundle = buildPresetRotationBundle(
           {
@@ -39,11 +33,11 @@ describe("Wings rotation finishers", () => {
         )!
         return calculateRotationBaseline(bundle)
       }
-      const before = calculate(previous)
+      const afterWindow = calculate(extended)
       const after = calculate(current)
       expect(after.duration).toBe(60)
-      expect(before.duration).toBe(after.duration)
-      expect(after.metrics.totalDamage).toBeGreaterThan(before.metrics.totalDamage)
+      expect(afterWindow.duration).toBe(65)
+      expect(afterWindow.metrics.totalDamage).toBeGreaterThan(after.metrics.totalDamage)
     },
   )
 })

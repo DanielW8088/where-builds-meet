@@ -91,9 +91,9 @@ const grant = (value: string) => ({ type: "apply", target: "self", value, time: 
 describe("Wings supported Inner Way effects", () => {
   it.each([1, 2, 4])("applies Ink Rhyme after the final hit with %s targets", enemyCount => {
     const result = calculate([{ innerWay: "ZephyrWhispers", tier: "T4" }], [], {
-      rotation: { name: "Ink timing", enemyCount, ping: 0, steps: [{ type: "skill", skill: "FiendishSquall" }] },
+      rotation: { name: "Ink timing", enemyCount, ping: 0, steps: [{ type: "skill", skill: "EndOfGale" }] },
     })
-    const row = result.timeline.find(row => row.step.skill === "FiendishSquall")!
+    const row = result.timeline.find(row => row.step.skill === "EndOfGale")!
     const hits = Object.entries(row.actionStates).filter(
       ([index, state]) => row.actions[Number(index)].type === "damage" && state.combatOrder !== undefined,
     )
@@ -106,7 +106,7 @@ describe("Wings supported Inner Way effects", () => {
         enemyCount,
         ping: 0,
         steps: [
-          { type: "skill", skill: "FiendishSquall" },
+          { type: "skill", skill: "EndOfGale" },
           { type: "skill", skill: "Probe" },
         ],
       },
@@ -126,8 +126,8 @@ describe("Wings supported Inner Way effects", () => {
         enemyCount,
         ping: 0,
         steps: [
-          { type: "skill", skill: "FiendishSquall" },
-          { type: "skill", skill: "FiendishSquall" },
+          { type: "skill", skill: "EndOfGale" },
+          { type: "skill", skill: "EndOfGale" },
           { type: "skill", skill: "Probe" },
         ],
       },

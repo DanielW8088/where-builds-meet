@@ -1,4 +1,6 @@
 const renamedSkillIds: Record<string, string> = {
+  FiendishSquall: "EndOfGale",
+  HarmoniousDrum: "RhythmOfAccord",
   InnerBalanceStrike1: "InnerBalanceStrikeIII1",
   InnerBalanceStrikeBoth: "InnerBalanceStrikeIII2",
   InnerBalanceStrike1ThreeHits: "InnerBalanceStrikeIII1ThreeHits",
