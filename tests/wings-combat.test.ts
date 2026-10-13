@@ -59,7 +59,7 @@ describe("Wings preset combat", () => {
         ping: 0,
         start: { step: 0 },
         steps: [
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "skill", skill: "RippleDawnsun" },
           { type: "skill", skill: "Observe" },
         ],
@@ -86,7 +86,7 @@ describe("Wings preset combat", () => {
         ping: 0,
         start: { step: 0 },
         steps: [
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "skill", skill: "Observe" },
           ...Array.from({ length: 6 }, () => [
             { type: "skill", skill: "RhythmOfAccord" },
@@ -199,7 +199,7 @@ describe("Wings preset combat", () => {
         ping: 0,
         start: { step: 1, action: 3 },
         steps: [
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "skill", skill: "RippleJadebreaker" },
           { type: "skill", skill: "CraneWings" },
         ],
@@ -283,7 +283,7 @@ describe("Wings preset combat", () => {
         ping: 0,
         start: { step: 0 },
         steps: [
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "skill", skill: "RippleJadebreaker" },
           { type: "event", event: "Delay", duration: 10 },
           { type: "skill", skill: "Observe" },
@@ -353,9 +353,9 @@ describe("Wings preset combat", () => {
         ping: 0,
         start: { step: 0, action: 0 },
         steps: [
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "event", event: "Delay", duration: 1 },
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "event", event: "Delay", duration: 14.9 },
           { type: "skill", skill: "Observe" },
           { type: "event", event: "Delay", duration: 0.2 },
@@ -365,7 +365,7 @@ describe("Wings preset combat", () => {
       "T6",
       {
         ...allSkillDefinitions,
-        Rustling: { ...allSkillDefinitions.Rustling, cooldown: 0, castTime: 0 },
+        VerdantGust: { ...allSkillDefinitions.VerdantGust, cooldown: 0, castTime: 0 },
         Observe: { castTime: 0, action: [] },
       },
     )
@@ -405,7 +405,7 @@ describe("Wings preset combat", () => {
     )!
     expect(exhausted.startTime).toBeCloseTo(lastHitRow.startTime + Number(lastHitRow.actions[lastHit].time))
     expect(lastHitRow.actionStates[lastHit].debuffs.has("Exhausted")).toBe(false)
-    const q2 = rows.find(row => row.step.skill === "CraneCry" && row.startTime > second.startTime)!
+    const q2 = rows.find(row => row.step.skill === "CranesCry" && row.startTime > second.startTime)!
     expect(q2.debuffs.has("Exhausted")).toBe(true)
     expect(third.startTime).toBeGreaterThan(q2.startTime)
     expect(third.startTime - second.startTime).toBeLessThan(20)

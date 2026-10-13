@@ -18,7 +18,7 @@ function bundle(selection: Selection, wings = true, special = "RippleDawnsun", t
         ping: 0,
         start: { step: 0 },
         steps: [
-          { type: "skill", skill: "Rustling" },
+          { type: "skill", skill: "VerdantGust" },
           { type: "skill", skill: special },
           { type: "skill", skill: "Observe" },
         ],

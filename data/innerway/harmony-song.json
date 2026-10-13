@@ -85,7 +85,7 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "CraneCry" },
+                { "target": "skillTag", "value": "CranesCry" },
                 { "target": "skillTag", "value": "RhythmOfAccord" }
               ]
             }

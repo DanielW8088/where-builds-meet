@@ -11,10 +11,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             },
             {
@@ -126,10 +130,15 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "DrumSeries" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                { "target": "skillTag", "value": "DrumSeries" }
               ]
             },
             { "target": "target", "value": "Cuncao", "stack": 5 }

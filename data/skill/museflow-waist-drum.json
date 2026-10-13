@@ -16,7 +16,7 @@
     "weapon": "RibbonAndDrum",
     "cooldown": 15
   },
-  "CraneCry": {
+  "CranesCry": {
     "name": "Crane's Cry",
     "shortName": "Drum Q2",
     "castTime": 0.9523809523809523,
@@ -34,7 +34,7 @@
       "MuseflowWaistDrum",
       "MartialArt",
       "DrumSeries",
-      "CraneCry",
+      "CranesCry",
       "RibbonAndDrum"
     ],
     "martialArt": "museflowWaistDrum",
@@ -61,7 +61,7 @@
       "MartialArts",
       "MuseflowWaistDrum",
       "Light",
-      "LightVariedCombo",
+      "VariedCombo",
       "DrumSeries",
       "RhythmOfAccord",
       "RibbonAndDrum"

@@ -224,7 +224,7 @@ describe("Wings supported Inner Way effects", () => {
           name: "Dawnsun defense",
           ping: 0,
           steps: [
-            { type: "skill", skill: "Rustling" },
+            { type: "skill", skill: "VerdantGust" },
             { type: "skill", skill: "RippleDawnsun" },
             { type: "skill", skill: "Probe" },
           ],
@@ -235,7 +235,38 @@ describe("Wings supported Inner Way effects", () => {
     expect(probe.buffs.has("Shield")).toBe(true)
     expect(probe.actionStates[1].currentHP).toBe(9910)
   })
-  it("excludes Drum Specials from Cuncao's explicit eligible attack list", () => {
+  it.each([
+    [["Light", "VariedCombo"], true],
+    [["Heavy", "VariedCombo"], true],
+    [["Light"], false],
+    [["Heavy"], false],
+    [["VariedCombo"], false],
+    [["RhythmOfAccord"], false],
+    [["EndOfGale"], false],
+    [["LightVariedCombo"], false],
+    [["HeavyVariedCombo"], false],
+  ] as const)("matches Blade's Will by category tags %j: %s", (tags, eligible) => {
+    const result = calculate(
+      [{ innerWay: "BladesWill", tier: "T6" }],
+      [
+        { type: "damage", phyCoef: 1, time: 0 },
+        { type: "damage", phyCoef: 1, time: 1 },
+      ],
+      { tags: ["DirectDamage", ...tags], enemyCount: 3 },
+    )
+    const actions = result.timeline[0].actionStates
+    expect(actions[1].debuffs.has("Cuncao")).toBe(eligible)
+    const damageActions = [
+      { type: "damage", phyCoef: 1, time: 0 },
+      { type: "damage", phyCoef: 1, time: 1 },
+    ]
+    const options = { tags: ["DirectDamage", ...tags], enemyCount: 3 }
+    const withStacks = calculate([{ innerWay: "BladesWill", tier: "T0" }], damageActions, options)
+    const withoutStacks = calculate([], damageActions, options)
+    expect(withStacks.metrics.totalDamage).toBeGreaterThanOrEqual(withoutStacks.metrics.totalDamage)
+    expect(withStacks.metrics.totalDamage > withoutStacks.metrics.totalDamage).toBe(eligible)
+  })
+  it("excludes Drum Specials from Cuncao's eligible attack categories", () => {
     const result = calculate([{ innerWay: "BladesWill", tier: "T6" }], [], {
       rotation: {
         name: "Cuncao special",
@@ -253,7 +284,7 @@ describe("Wings supported Inner Way effects", () => {
     const run = (rank: number) =>
       calculate([], [], {
         rank,
-        rotation: { name: "Talent rank", ping: 0, steps: [{ type: "skill", skill: "Rustling" }] },
+        rotation: { name: "Talent rank", ping: 0, steps: [{ type: "skill", skill: "VerdantGust" }] },
       })
     expect(run(1).metrics.totalDamage).toBeGreaterThan(run(0).metrics.totalDamage)
   })

@@ -8,7 +8,7 @@
     "effect": []
   },
   "InkRhyme": {
-    "name": "墨韻",
+    "name": "Ink Rhythm",
     "description": "Increases Fan and Drum Series damage against the target by 5% and reduces its outgoing damage by 5%. Zephyr Whispers T4 increases both effects to 10% against non-player targets.",
     "duration": 8,
     "maxStack": 1,
@@ -29,7 +29,7 @@
     ]
   },
   "Cuncao": {
-    "name": "寸草",
+    "name": "Blade of Grass",
     "description": "Blade's Will stacks require an eligible varied attack, including Rhythm of Accord or 煞盡東風, to hit at least 3 enemies simultaneously (2 at T4; 3 grants 2 stacks). Lasts 5s, or 8s at T1; up to 5 stacks. Eligible attacks deal 2% more damage per stack, increased to 4% at T3. T6 adds 5% damage against targets at 5 stacks. Cannot build stacks against a single target.",
     "duration": 5,
     "maxStack": 5,
@@ -42,10 +42,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             }
           ],
@@ -56,10 +60,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             },
             { "target": "self", "value": "BladesWillT3" }
@@ -73,10 +81,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             }
           ],
@@ -87,10 +99,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             },
             { "target": "self", "value": "BladesWillT3" }
@@ -104,10 +120,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             }
           ],
@@ -118,10 +138,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             },
             { "target": "self", "value": "BladesWillT3" }
@@ -135,10 +159,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             }
           ],
@@ -149,10 +177,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             },
             { "target": "self", "value": "BladesWillT3" }
@@ -166,10 +198,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             }
           ],
@@ -180,10 +216,14 @@
             {
               "operator": "or",
               "operand": [
-                { "target": "skillTag", "value": "LightVariedCombo" },
-                { "target": "skillTag", "value": "HeavyVariedCombo" },
-                { "target": "skillTag", "value": "RhythmOfAccord" },
-                { "target": "skillTag", "value": "EndOfGale" }
+                [
+                  { "target": "skillTag", "value": "Light" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ],
+                [
+                  { "target": "skillTag", "value": "Heavy" },
+                  { "target": "skillTag", "value": "VariedCombo" }
+                ]
               ]
             },
             { "target": "self", "value": "BladesWillT3" }

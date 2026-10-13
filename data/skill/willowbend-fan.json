@@ -1,6 +1,6 @@
 {
-  "Rustling": {
-    "name": "一扇生息",
+  "VerdantGust": {
+    "name": "Verdant Gust",
     "shortName": "Fan Q",
     "castTime": 0.75,
     "action": [
@@ -22,7 +22,7 @@
       }
     ],
     "modifier": [],
-    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "MartialArt", "Rustling", "Fan"],
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "MartialArt", "VerdantGust", "Fan"],
     "martialArt": "willowbendFan",
     "weapon": "Fan",
     "cooldown": 15,
@@ -186,7 +186,7 @@
         }
       }
     ],
-    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "Perception", "EndOfGale", "Fan"],
+    "tags": ["DirectDamage", "MartialArts", "WillowbendFan", "Heavy", "VariedCombo", "Perception", "EndOfGale", "Fan"],
     "martialArt": "willowbendFan",
     "weapon": "Fan",
     "requirement": [{ "target": "self", "value": "ZephyrWhispersT0" }]

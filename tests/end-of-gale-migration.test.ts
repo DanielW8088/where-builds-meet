@@ -8,6 +8,37 @@ import type { RotationRecord } from "@/calculations/rotationTimeline"
 import { defaultGlobalDebuffs } from "@/globalDebuffs"
 import { deserializeSkillOverrides, serializeSkillOverrides } from "@/skillOverrides"
 
+it.each([
+  ["Rustling", "VerdantGust", "WillowbendFan"],
+  ["CraneCry", "CranesCry", "MuseflowWaistDrum"],
+] as const)("preserves saved %s casts and customized references as %s", (oldId, newId, category) => {
+  const saved: RotationRecord = {
+    name: "Saved Wings cast",
+    start: { step: 0, action: 0 },
+    steps: [{ type: "skill", skill: oldId }],
+  }
+  const restored = migrateRotation(saved)
+  expect(restored.steps[0].skill).toBe(newId)
+  expect(restored.start).toEqual(saved.start)
+  const overrides = deserializeSkillOverrides({
+    version: 4,
+    overrides: {
+      [category]: {
+        [oldId]: { castTime: 2, tags: [oldId], action: [{ type: "damage", phyCoef: 7, time: 1 }] },
+        CustomComposite: { subAction: [{ value: oldId }] },
+      },
+    },
+  })
+  expect(overrides[category]?.[newId]).toEqual({
+    castTime: 2,
+    tags: [newId],
+    action: [{ type: "damage", phyCoef: 7, time: 1 }],
+  })
+  expect(overrides[category]).not.toHaveProperty(oldId)
+  expect(overrides[category]?.CustomComposite.subAction).toEqual([{ value: newId }])
+  expect(deserializeSkillOverrides(JSON.parse(serializeSkillOverrides(overrides)))).toEqual(overrides)
+})
+
 it("restores saved End of Gale rotations without changing their damage or anchors", () => {
   const current = jadebreaker as RotationRecord
   const saved = structuredClone(current)

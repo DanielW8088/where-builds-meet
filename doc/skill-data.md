@@ -1424,8 +1424,16 @@ only hits within that battle window contribute. The opener uses Drink cancel, De
 Rustling), and End of Gale. Combat starts on Boundless Blossom's first hit,
 which enables End of Gale. The first Drum Special starts at 6m.
 `EndOfGale` is the internal ID for End of Gale (formerly `FiendishSquall`).
+End of Gale is a Heavy Varied Combo and carries both `Heavy` and `VariedCombo`
+for damage-bonus matching. 墨韻 is displayed in English as Ink Rhythm; its
+internal ID remains `InkRhyme`.
 `RhythmOfAccord` is the internal ID for Rhythm of Accord (鼓樂和), formerly
 `HarmoniousDrum`; composite skill components and eligible-hit rules use the new ID.
+Rhythm of Accord is a Light Varied Combo and carries both `Light` and `VariedCombo`
+for damage-bonus matching.
+`VerdantGust` is the internal ID for Verdant Gust (一扇生息), formerly `Rustling`.
+Saved casts, skill overrides, and nested skill references migrate to the new ID.
+Crane's Cry uses `CranesCry`, migrated from `CraneCry`, through the same mechanism.
 The shared skill-ID migration preserves saved rotations and skill overrides,
 including skill tags and nested references.
 End of Gale reapplies the 20-second Driftbreeze buff on its first hit, so later
@@ -1477,6 +1485,9 @@ The tier-96 and tier-100 item exports share five Wings attunement categories.
 use the existing VariedCombo tag. Armor rolls use the shared level-based limits
 (6% at tier 96 and 7% at tier 100); the two tiers import into the same keys.
 
+Blade's Will triggers and 寸草 damage bonuses match `Light` plus `VariedCombo`
+or `Heavy` plus `VariedCombo`, without skill-ID exceptions or combined category
+tags. Its T6 bonus additionally retains the Drum Series scope.
 寸草心 models PvE 寸草 stacks using the editor target count: three targets
 (two at T4) unlock eligible-hit applications; T4 gives two stacks at three
 targets. Stacks cap at five, last five seconds (eight at T1), and increase
