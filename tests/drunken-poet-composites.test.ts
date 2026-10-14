@@ -1,10 +1,10 @@
+import mysticBuffs from "@gamedata/buff/mystic.json"
+import mysticSkills from "@gamedata/skill/mystic.json"
 import { describe, expect, it } from "vitest"
 
 import type { RotationRecord, RotationStep, TrackedEffect } from "@/calculations/rotationTimeline"
 import { buildRotationTimeline } from "@/calculations/rotationTimeline"
 
-import mysticBuffs from "../data/buff/mystic.json"
-import mysticSkills from "../data/skill/mystic.json"
 import { isClose } from "./helpers/floatEquality"
 
 /** The action an attached event names, when the step is one. */
@@ -15,11 +15,11 @@ function attachedActionOf(step: RotationStep | undefined) {
 // Ported from script/probe/check-drunken-poet-composites.mjs.
 describe("drunken-poet-composites", () => {
   it("Drunken Poet composite behavior and persisted-chain migration checks passed", async () => {
-    const skills = (await import("../data/skill/mystic.json")).default
-    const buffs = (await import("../data/buff/mystic.json")).default
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { migrateDrunkenPoetSequences } = await import("../src/rotationEditing.ts")
-    const { normalizeStartAction } = await import("../src/application/rotationCatalog.ts")
+    const skills = (await import("@gamedata/skill/mystic.json")).default
+    const buffs = (await import("@gamedata/buff/mystic.json")).default
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { migrateDrunkenPoetSequences } = await import("@/rotationEditing.ts")
+    const { normalizeStartAction } = await import("@/application/rotationCatalog.ts")
     const closeTo = (actual: number, expected: number) => isClose(actual, expected, 1e-9)
     const componentTimes = [0.58, 0.436, 0.55, 0.6, 0.5382]
     const compositeIds = [
@@ -133,7 +133,7 @@ describe("drunken-poet-composites", () => {
   })
 })
 
-it("cancels Poet on its fifth hit while preserving earlier hits and per-component ping", () => {
+it("cancels Poet on its fifth hit while preserving earlier hits without component latency", () => {
   const rows = buildRotationTimeline({
     rotation: {
       name: "Poet interrupts",
@@ -158,12 +158,12 @@ it("cancels Poet on its fifth hit while preserving earlier hits and per-componen
   expect(poet, "The composite must own the first rotation row.").toBeTruthy()
   const hits = (poet?.actions ?? []).filter(action => action.type === "damage")
   expect(hits).toHaveLength(5)
-  expect(Number(hits[0].time)).toBeCloseTo(1.1499, 8)
-  expect(Number(hits[1].time)).toBeCloseTo(1.6055, 8)
-  expect(Number(hits[2].time)).toBeCloseTo(2.1803, 8)
-  expect(Number(hits[3].time)).toBeCloseTo(2.83909, 8)
-  expect(Number(hits[4].time)).toBeCloseTo(3.5702, 8)
-  expect(poet?.effectiveCastTime).toBeCloseTo(3.5702, 8)
+  expect(Number(hits[0].time)).toBeCloseTo(1.0699, 8)
+  expect(Number(hits[1].time)).toBeCloseTo(1.4855, 8)
+  expect(Number(hits[2].time)).toBeCloseTo(2.0203, 8)
+  expect(Number(hits[3].time)).toBeCloseTo(2.63909, 8)
+  expect(Number(hits[4].time)).toBeCloseTo(3.3302, 8)
+  expect(poet?.effectiveCastTime).toBeCloseTo(3.3302, 8)
   const following = rows.find(row => row.rotationIndex === 1)
-  expect(following?.startTime).toBeCloseTo(3.6102, 8)
+  expect(following?.startTime).toBeCloseTo(3.3702, 8)
 })

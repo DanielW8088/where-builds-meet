@@ -103,6 +103,14 @@
     "maxStack": 1,
     "refresh": true
   },
+  "BreakingPointCooldown": {
+    "name": "Breakpoint Cooldown",
+    "shortName": "BP CD",
+    "description": "Breaking Point's Tier VI dodge effect is on cooldown. Ordinary Disintegration stacks remain available.",
+    "duration": 15,
+    "maxStack": 1,
+    "refresh": false
+  },
   "SeasonalEdgeCooldown": {
     "name": "Seasonal Edge Cooldown",
     "shortName": "SE CD",

@@ -27,6 +27,7 @@
   },
   "ScarletSpin": {
     "name": "Scarlet Spin",
+    "ignorePing": true,
     "shortName": "Umbrella Q",
     "castTime": 12,
     "editableCastTime": { "effect": "FlowerBurial", "max": 12, "required": true },
@@ -136,7 +137,6 @@
     "name": "Scarlet Spin Stage 2",
     "shortName": "Umbrella Q2",
     "castTime": 1.6675,
-    "triggerPing": true,
     "action": [
       { "type": "consume", "target": "self", "value": "FragrantSongResonance", "stack": "all", "time": 0 },
       {
@@ -218,7 +218,6 @@
     "name": "Scarlet Spin Stage 3",
     "shortName": "Umbrella Q3",
     "castTime": 1.909090909090909,
-    "triggerPing": true,
     "action": [
       { "type": "consume", "target": "self", "value": "FragrantSongResonance", "stack": "all", "time": 0 },
       {
@@ -300,7 +299,6 @@
     "name": "Scarlet Spin Stage 4",
     "shortName": "Umbrella Q4",
     "castTime": 1.5763636363636362,
-    "triggerPing": true,
     "action": [
       { "type": "consume", "target": "self", "value": "FragrantSongResonance", "stack": "all", "time": 0 },
       {

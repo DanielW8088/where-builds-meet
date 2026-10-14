@@ -625,7 +625,7 @@ describe("Umbra draft behavior", () => {
     const firstQ = result.timeline.find(row => row.kind === "rotation" && row.step.skill === "InnerTrackSlashCancel")!
     const ghostly = result.timeline.find(row => row.kind === "rotation" && row.step.skill === "GhostlyStepsUmbra")!
     expect(ghostly.rotationIndex).toBe(firstQ.rotationIndex! + 1)
-    expect(ghostly.startTime - firstQ.startTime).toBeCloseTo(firstQ.effectiveCastTime + 0.04, 8)
+    expect(ghostly.startTime - firstQ.startTime).toBeCloseTo(firstQ.effectiveCastTime, 8)
     expect(secondSweepBurst.buffs.get("SwordsZenith")?.stack).toBe(4)
     const thirdSweepBurst = bursts.find(row => row.sourceRowId === sweeps[2].id)!
     const fourthSweepBurst = bursts.find(row => row.sourceRowId === sweeps[3].id)!

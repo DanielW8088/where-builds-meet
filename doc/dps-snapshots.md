@@ -211,25 +211,25 @@ The user accepted all 17 preset changes on 2026-10-11, and their snapshots
 were refreshed after review. Every affected duration remains 60 seconds;
 total damage is DPS multiplied by 60. Exact DPS values follow.
 
-| Rotation path                                            |       Previous DPS |      Accepted DPS |
-| -------------------------------------------------------- | -----------------: | ----------------: |
-| `bamboocutDust/dust-dummy-1-min-100pc`                   | 59185.751681597285 | 59162.81970722088 |
-| `bamboocutDust/dust-dummy-1-min`                         |  59450.01720629205 | 59428.59338014854 |
-| `bamboocutKite/dummy-1-min-infinite-vitality`            |  55755.35695102388 |   55737.139443286 |
-| `bamboocutKite/dummy-1-min-iv-bp`                        |  61484.24028064938 | 61467.81864820691 |
-| `bamboocutWind/wind-dummy-1-min-infinite-vitality`       |  69121.77274118822 | 69171.64928913544 |
-| `bellstrikeSplendor/dummy-1-min-81-waves`                |  65364.94121485134 | 65349.68233467729 |
-| `bellstrikeUmbra/dummy-1-min-38-bb`                      |  80863.81713022864 | 79816.92602300833 |
-| `silkbindDeluge/dummy-1-min-regular-fire`                | 30235.360820053047 | 29803.73756241419 |
-| `silkbindDeluge/dummy-1-min-smolder`                     | 36873.458832420496 | 36628.55379060283 |
-| `silkbindDeluge/dummy-1-min-wts-team`                    |  39724.57025069542 | 39472.94285759795 |
-| `silkbindDeluge/dummy-1-min-wts`                         | 36078.207131889874 | 35847.48213895326 |
-| `stonesplitMight/dummy-1-min`                            |  79503.85066834385 | 79486.75718449506 |
-| `stonesplitStrength/mixed-dummy-1-min-double-stab`       |  66771.02076597798 | 66752.02424355024 |
-| `stonesplitStrength/mixed-dummy-1-min`                   |  67509.52357894306 |  67492.2679958544 |
-| `stonesplitStrength/mixed-dummy-infinite-vitality-1-min` |  67828.67270050912 |  67806.2615959671 |
-| `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67675.19144487414 | 67656.17965543146 |
-| `stonesplitStrength/pure-dummy-1-min`                    |  66073.89334400739 |  66033.8658054791 |
+| Rotation path                                            |       Previous DPS |       Accepted DPS |
+| -------------------------------------------------------- | -----------------: | -----------------: |
+| `bamboocutDust/dust-dummy-1-min-100pc`                   |  59162.81970722088 | 63125.513140949406 | 3549769.1824332527 | 3787530.7884569643 |
+| `bamboocutDust/dust-dummy-1-min`                         |  59428.59338014854 |  63328.31151211581 | 3565715.6028089123 | 3799698.690726949  |
+| `bamboocutKite/dummy-1-min-infinite-vitality`            |    55737.139443286 |  57451.30293458791 | 3344228.36659716   | 3447078.1760752746 |
+| `bamboocutKite/dummy-1-min-iv-bp`                        |  61467.81864820691 | 62596.641810462184 | 3688069.1188924145 | 3755798.508627731  |
+| `bamboocutWind/wind-dummy-1-min-infinite-vitality`       |  69171.64928913544 |  69226.94478501238 | 4150298.9573481265 | 4153616.687100744  |
+| `bellstrikeSplendor/dummy-1-min-81-waves`                |  65349.68233467729 |  65623.09394740312 | 3920980.940080637  | 3937385.636844187  |
+| `bellstrikeUmbra/dummy-1-min-38-bb`                      |  79816.92602300833 |  79820.02675353442 | 4789015.5613805    | 4789201.605212065  |
+| `silkbindDeluge/dummy-1-min-regular-fire`                | 29795.703973489002 |  29793.61498851086 | 1787742.2384093401 | 1787616.8993106517 |
+| `silkbindDeluge/dummy-1-min-smolder`                     | 36504.170596575765 |  36123.50704105259 | 2190250.235794546  | 2167410.4224631554 |
+| `silkbindDeluge/dummy-1-min-wts-team`                    |   38839.4023092996 |  38486.36615934393 | 2330364.138557976  | 2309181.9695606357 |
+| `silkbindDeluge/dummy-1-min-wts`                         | 35571.006125529166 | 35965.542258448586 | 2134260.36753175   | 2157932.5355069153 |
+| `stonesplitMight/dummy-1-min`                            |  79503.85066834385 |  79486.75718449506 |
+| `stonesplitStrength/mixed-dummy-1-min-double-stab`       |  66771.02076597798 |  66752.02424355024 |
+| `stonesplitStrength/mixed-dummy-1-min`                   |  67395.84544895132 |  67395.58756016383 | 4043750.72693708   | 4043735.2536098287 |
+| `stonesplitStrength/mixed-dummy-infinite-vitality-1-min` |  67757.04178633557 |   67759.9259617702 | 4065422.5071801343 | 4065595.5577062126 |
+| `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67656.17965543146 |  67943.77984410097 | 4059370.779325888  | 4076626.7906460576 |
+| `stonesplitStrength/pure-dummy-1-min`                    |  62302.13462491019 |  62120.66959661327 | 3738128.0774946115 | 3727240.175796796  |
 
 ## Wings Preview and Morale Chant healing review (2026-10-12)
 
@@ -289,3 +289,47 @@ RhythmOfAccord ID migrations preserve saved rotations and overrides.
 
 Both encounters remain 60 seconds and use the existing Fully Relayed Min fixture.
 Only the two reviewed Wings snapshots were refreshed.
+
+## Pending review: numerical balance patch and ping-independent skills
+
+Scarlet Spin's parent ignores ping and its queued stages no longer request
+trigger ping. All Mystic records, including composite components and cancel
+variants, ignore ping. Both castable Deflect variants already ignored ping.
+Dragonquench - Inebriate is deferred until its skill record exists.
+
+The ordinary tests and production build pass. The following results exceed the
+4-ULP release guard and are **not accepted snapshots**. Keep the accepted
+snapshot file unchanged until the user reviews these changes.
+
+Every affected rotation retains its 60-second combat duration. Mystic latency changes affect event timing, buff coverage, periodic damage,
+cooldown availability, and which attacks fit before Battle End. Dust additionally
+starts 14 rather than 13 throws per full Scarlet Spin cast. Its 100% Phantom Chime
+preset gains three Stage 2 throws and six Resonance rows. The regular Dust preset replaces the middle Soaring Spin with Dreamwrought Bubbles to preserve all 14 throws and all four Burn and Bury hits within Battle End. Soulbreak T6 settlement increases from 10% to 12% in both Dust presets. Kite additionally gains 12% Falcon base damage and the Bursting Nine decay floor increases from 10% to 20%; the latter also affects Pure Strength with infinite Vitality. Splendor gains the two Exhausted Qi Imbalance bonuses increasing from 8% to 10%. The BP CD marker has no damage effects.
+
+The authored Qi ramps for Dust, Splendor, Umbra, and Wings have been recalibrated
+to retain their documented hit anchors and depletion proportions. Might's first
+three Defense durations gain 0.06, 0.03, and 0.03 seconds to retain the intended
+dummy attack pairs; its accepted DPS remains unchanged. Deluge WTS's earlier
+Mystic inputs can now reach the second manual Umbrella Special before its own
+cooldown is ready; ordinary cooldown waiting keeps that cast valid.
+
+| Rotation                                                 |       Accepted DPS |       Proposed DPS | Accepted total damage | Proposed total damage |
+| -------------------------------------------------------- | -----------------: | -----------------: | --------------------: | --------------------: |
+| `bamboocutDust/dust-dummy-1-min`                         |  59428.59338014854 |  63328.31151211581 |    3565715.6028089123 |     3799698.690726949 |
+| `bamboocutDust/dust-dummy-1-min-100pc`                   |  59162.81970722088 | 63125.513140949406 |    3549769.1824332527 |    3787530.7884569643 |
+| `bamboocutKite/dummy-1-min-infinite-vitality`            |    55737.139443286 |  57451.30293458791 |      3344228.36659716 |    3447078.1760752746 |
+| `bamboocutKite/dummy-1-min-iv-bp`                        |  61467.81864820691 | 62596.641810462184 |    3688069.1188924145 |     3755798.508627731 |
+| `bamboocutWind/wind-dummy-1-min-infinite-vitality`       |  69171.64928913544 |  69226.94478501238 |    4150298.9573481265 |     4153616.687100744 |
+| `bellstrikeSplendor/dummy-1-min-81-waves`                |  65349.68233467729 |  65623.09394740312 |     3920980.940080637 |     3937385.636844187 |
+| `bellstrikeUmbra/dummy-1-min-38-bb`                      |  79816.92602300833 |  79820.02675353442 |       4789015.5613805 |     4789201.605212065 |
+| `silkbindDeluge/dummy-1-min-regular-fire`                | 29795.703973489002 |  29793.61498851086 |    1787742.2384093401 |    1787616.8993106517 |
+| `silkbindDeluge/dummy-1-min-smolder`                     | 36504.170596575765 |  36123.50704105259 |     2190250.235794546 |    2167410.4224631554 |
+| `silkbindDeluge/dummy-1-min-wts`                         | 35571.006125529166 | 35965.542258448586 |      2134260.36753175 |    2157932.5355069153 |
+| `silkbindDeluge/dummy-1-min-wts-team`                    |   38839.4023092996 |  38486.36615934393 |     2330364.138557976 |    2309181.9695606357 |
+| `silkbindWing/wings-dummy-1-min-dawnsun`                 |  36207.09043887357 | 36219.849963928216 |     2172425.426332414 |     2173190.997835693 |
+| `silkbindWing/wings-dummy-1-min-jadebreaker`             |  49308.01325488668 |  49326.60872559312 |    2958480.7952932008 |    2959596.5235355874 |
+| `stonesplitStrength/mixed-dummy-1-min`                   |  67395.84544895132 |  67395.58756016383 |      4043750.72693708 |    4043735.2536098287 |
+| `stonesplitStrength/mixed-dummy-infinite-vitality-1-min` |  67757.04178633557 |   67759.9259617702 |    4065422.5071801343 |    4065595.5577062126 |
+| `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67656.17965543146 |  67943.77984410097 |     4059370.779325888 |    4076626.7906460576 |
+| `stonesplitStrength/pure-dummy-1-min`                    |  62302.13462491019 |  62120.66959661327 |    3738128.0774946115 |     3727240.175796796 |
+| `stonesplitStrength/pure-dummy-1-min-infinite-vitality`  | 64326.782954570765 | 64908.049594465505 |    3859606.9772742465 |      3894482.97566793 |

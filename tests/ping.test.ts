@@ -161,7 +161,7 @@ describe("ping scheduling", () => {
     expect(buildRotationTimeline(data)[0].timelineEndTime).toBeCloseTo(0.54)
   })
 
-  it.each([false, true])("charges Poet per selected action (initial Intoxicated: %s)", intoxicated => {
+  it.each([false, true])("keeps Poet independent of ping (initial Intoxicated: %s)", intoxicated => {
     const data = input(mystic, [step("DrunkenPoet5HitsCancel")])
     data.effectDefinitions = asEffectDefinitions(mysticBuffs)
     data.initialResources = { Vitality: 100 }
@@ -170,7 +170,7 @@ describe("ping scheduling", () => {
     const withPing = buildRotationTimeline(data)[0]
     const withoutPing = buildRotationTimeline({ ...data, rotation: { ...data.rotation, ping: 0 } })[0]
     expect(withPing.startTime).toBe(0)
-    expect(withPing.effectiveCastTime - withoutPing.effectiveCastTime).toBeCloseTo((intoxicated ? 5 : 6) * 0.04)
+    expect(withPing.effectiveCastTime - withoutPing.effectiveCastTime).toBe(0)
   })
 
   it("exempts the requested Infernal attacks in actual scheduling", () => {

@@ -154,6 +154,8 @@ cast completion. Effect actions may use `time: "expire"`; refresh invalidates
 old expiry actions, and consumption does not count as natural expiration.
 
 Cast time excludes ping. `ignorePing: true` suppresses latency for that skill.
+All Mystic skills, including their composite components, and both castable
+Deflect variants ignore ping.
 `triggerPing: true` opts a triggered skill into paying the rotation ping when
 it is dispatched; ordinary triggered effects remain latency-free unless they
 declare it. Composite parents and components must declare exemptions
@@ -1017,8 +1019,21 @@ moved the whole downstream timeline 0.2209835277 s earlier, so the first ramp
 shifted by that much and the second by twice it. The 100% Phantom Chime variant
 places its own exhaust on the fifth forward hit of its second Scarlet Spin and
 stops there; it keeps the same two ramp gaps so the exhaust lands on that hit.
-The regular variant now crosses 60% Qi at 51.2362s after recovery immunity;
-its shifted 40% threshold would fall at 60.722s and is omitted after Battle End.
+The regular variant crosses 60% Qi at 51.44970650513562s after recovery immunity;
+its shifted 40% threshold falls after Battle End and is omitted.
+
+The regular preset keeps all three Scarlet Spin windows at 12s, producing
+14 throws per cast at rank 13. After the second Scarlet Spin, it uses two
+Dreamwrought Bubbles casts followed by full Flute of the Tides, replacing
+the former Bubbles / two-hit Soaring Spin / Flute sequence. The additional
+Bubbles stays at 9m; the obsolete movement to 1m is removed. This saves
+0.78992899s and preserves Soulbreak for the third Burn and Bury.
+At 35ms ping, that Burn and Bury starts at battle time 42.7375606916s,
+with its hit at 43.2675606916s before Soulbreak expires at 43.2942448408s.
+The fourth Burn and Bury hit lands at 59.9958055324s, leaving only about
+4ms before Battle End; this tight timing was explicitly accepted by the user.
+The first cast and the sixth throw of the second cast retain their timing,
+so the authored Qi ramp and Exhausted anchor remain unchanged.
 
 Out of scope by user instruction: Fading Crimson, Tokens of Gratitude, Song of
 Tang HP drain, and Tenacity damage. These are exclusions rather than gaps, so
@@ -1106,10 +1121,9 @@ execution still waits for the source next-start marker. A queued throw can
 therefore start after `FlowerBurial` expires, and the parent effective cast
 extends through that throw's returned hit. Fragrant Song accelerates the next
 throw using the source `1 / 1.3` ratio, so Stage 4 is the accelerated stage.
-At zero ping, the rank-13 route starts 14 throws; positive ping shifts each
-throw's execution and can move the final queue acceptance beyond the 12-second
-state. The initial stage inherits the parent input's ping; later queued stages
-opt into `triggerPing`. The parent clears accumulated catch stacks at the start
+The rank-13 route starts 14 throws independently of ping. The parent sets
+`ignorePing: true`, and queued stages do not opt into `triggerPing`, so input
+latency does not shift throw execution or final queue acceptance. The parent clears accumulated catch stacks at the start
 of a new segment. Local hit markers from every started stage remain two separate
 outgoing/returning damage actions.
 
@@ -1136,10 +1150,10 @@ cooldown boundary and the rotation's 38 total Blood Bursts.
 
 Umbra's dummy Qi break is attached after the final direct hit of editor cast #34
 (zero-based skill numbering), Inner Balance Strike III [2 Casts][Cancel]. At the
-preset's 40ms ping it lands at battle time 30.54962591963635s. Pre-break Qi
+preset's 40ms ping it lands at battle time 30.197903827636353s. Pre-break Qi
 thresholds are authored at 40% and 60% of that time. Exhausted lasts ten seconds
 and its expiry restores Qi; the next ramp starts after the additional four-second
-immunity window. Only its 60% threshold falls before the 60-second Battle End.
+immunity window. Only its 40% depletion milestone falls before the 60-second Battle End.
 
 Umbra is available without Dev mode. Its Fully Relayed Max Build and Full Max Build presets copy Splendor's gear,
 replace the four armor attunements with Strategic Sword - Bleeding DMG Boost,
@@ -1565,6 +1579,14 @@ disable Dawnsun's extra four-second extension and its fallback application.
 The existing global effect-definition modifiers express the duration overrides,
 and persistent support markers select them. Comparisons rebuild the timeline
 because changing this selector changes Wings buff expiry events.
+
+### Breaking Point cooldown indicator
+
+Breaking Point's T6 dodge proc applies the visible `BreakingPointCooldown`
+marker (BP CD) for its existing 15-second triggered-skill cooldown. The marker
+has no stat effects and does not gate ordinary Disintegration stacks or Vitality
+recovery. Only an accepted proc applies it; blocked dodges cannot extend it.
+The triggered skill remains the authority for cooldown eligibility.
 
 ### Forgetfulness cooldown
 

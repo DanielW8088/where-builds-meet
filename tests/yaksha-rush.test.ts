@@ -1,15 +1,15 @@
+import generalBuffs from "@gamedata/buff/general.json"
+import mystic from "@gamedata/skill/mystic.json"
 import { describe, expect, it } from "vitest"
 
 import { emptyAttunementStats } from "@/calculations/attunementStats"
+import { calculateDamageBreakdown } from "@/calculations/damage"
+import type { DamageAction, DamageContext } from "@/calculations/damage"
 import { calculateDerivedStats } from "@/calculations/effectiveStats"
+import { buildRotationTimeline, type RotationStep, type TimelineBuildInput } from "@/calculations/rotationTimeline"
+import { emptyStats } from "@/data/statDefinitions"
 import type { CharacterStats } from "@/types"
 
-import generalBuffs from "../data/buff/general.json"
-import mystic from "../data/skill/mystic.json"
-import { calculateDamageBreakdown } from "../src/calculations/damage"
-import type { DamageAction, DamageContext } from "../src/calculations/damage"
-import { buildRotationTimeline, type RotationStep, type TimelineBuildInput } from "../src/calculations/rotationTimeline"
-import { emptyStats } from "../src/data/statDefinitions"
 import { asEffectDefinitions, asSkillRecords, skillActions } from "./helpers/shippedData"
 
 /** The base-animation route of skill 2300061: two collider markers inside one cast. */
@@ -45,7 +45,7 @@ describe("Yaksha Rush", () => {
   it("occupies the base route and lands both hits before the cast ends", () => {
     const rows = buildRotationTimeline(input([{ type: "skill", skill: "YakshaRush" }]))
     const cast = rows.find(row => row.rotationIndex === 0)!
-    expect(cast.startTime).toBeCloseTo(0.04, 10)
+    expect(cast.startTime).toBe(0)
     expect(cast.effectiveCastTime).toBeCloseTo(CAST_TIME, 10)
     const hits = cast.actions.flatMap((action, index) => (action.type === "damage" ? [{ action, index }] : []))
     expect(hits.map(({ action }) => action.time)).toEqual([LUNGE_TIME, KICK_TIME])

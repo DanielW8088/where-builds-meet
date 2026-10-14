@@ -8,13 +8,13 @@
       { "type": "apply", "target": "self", "value": "HeavensUnity", "stack": 1, "reapply": true, "time": 0.666 },
       {
         "type": "damage",
-        "phyCoef": 1.87,
+        "phyCoef": 2.0944,
         "time": 1.1,
         "requirement": [
           { "target": "self", "value": "SkyGrippedT3" },
           { "target": "equippedMartialArt", "value": "heavenwill" }
         ],
-        "attrCoef": 1.87
+        "attrCoef": 2.0944
       },
       {
         "type": "addResource",
@@ -82,9 +82,9 @@
     "name": "Snaring Lash Falcon",
     "castTime": 0,
     "action": [
-      { "type": "damage", "phyCoef": 0.748, "phyBonus": 0, "attrBonus": 0, "time": 0.2875, "attrCoef": 0.748 },
-      { "type": "damage", "phyCoef": 0.748, "phyBonus": 0, "attrBonus": 0, "time": 0.4125, "attrCoef": 0.748 },
-      { "type": "damage", "phyCoef": 0.748, "phyBonus": 0, "attrBonus": 0, "time": 0.55, "attrCoef": 0.748 },
+      { "type": "damage", "phyCoef": 0.83776, "phyBonus": 0.0, "attrBonus": 0.0, "time": 0.2875, "attrCoef": 0.83776 },
+      { "type": "damage", "phyCoef": 0.83776, "phyBonus": 0.0, "attrBonus": 0.0, "time": 0.4125, "attrCoef": 0.83776 },
+      { "type": "damage", "phyCoef": 0.83776, "phyBonus": 0.0, "attrBonus": 0.0, "time": 0.55, "attrCoef": 0.83776 },
       { "type": "addResource", "value": "HeavensWill", "amount": 0.1, "time": 0.55 },
       {
         "type": "addResource",

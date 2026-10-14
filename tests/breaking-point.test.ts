@@ -8,10 +8,11 @@ import { asEffectDefinitions, asSkillRecords } from "./helpers/shippedData"
 // Ported from script/probe/check-breaking-point.mjs.
 describe("breaking-point", () => {
   it("Breaking Point stacking and dodge proc cooldown checks passed", async () => {
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const buffs = (await import("../data/buff/bamboocut-wind.json")).default
-    const breakingPoint = (await import("../data/innerway/breaking-point.json")).default
-    const generalSkills = (await import("../data/skill/general.json")).default
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline")
+    const buffs = (await import("@gamedata/buff/bamboocut-wind.json")).default
+    const generalBuffs = (await import("@gamedata/buff/general.json")).default
+    const breakingPoint = (await import("@gamedata/innerway/breaking-point.json")).default
+    const generalSkills = (await import("@gamedata/skill/general.json")).default
 
     const hit: SkillRecord = {
       name: "Breaking Point probe hit",
@@ -104,7 +105,7 @@ describe("breaking-point", () => {
           }),
           eventDefinitions: { Exhausted: exhausted },
           dots: {},
-          effectDefinitions: asEffectDefinitions({ ...buffs, Exhausted: exhaustion }),
+          effectDefinitions: asEffectDefinitions({ ...generalBuffs, ...buffs, Exhausted: exhaustion }),
           innerWayConditions: Array.from({ length: tier + 1 }, (_, index) => `BreakingPointT${index}`),
           innerWayRules: [triggerRule, maxStackRule],
           setupEffects: [],
@@ -113,6 +114,11 @@ describe("breaking-point", () => {
           resourceMaximums: { Vitality: 40 },
         })
       const timeline = runDodgeProbe(6)
+      const observations = timeline.filter(row => row.step.skill === "Observe")
+      expect(observations.map(row => row.buffs.get("BreakingPointCooldown")?.expiresAt)).toEqual([15, 15, 15, 30])
+      const procRows = timeline.filter(row => row.step.skill === "BreakingPointT6Dodge")
+      expect(procRows.map(row => row.startTime)).toEqual([0, 15])
+      expect(procRows[1].actionStates[0].buffs.has("BreakingPointCooldown")).toBe(false)
       const finalObservation = timeline.findLast(row => row.step.skill === "Observe")
       assert(finalObservation, "The dodge probe must observe the buff plate after its final dodge.")
       assert(
@@ -133,7 +139,9 @@ describe("breaking-point", () => {
         JSON.stringify(dodges.map(row => row.startTime)) === JSON.stringify([0, 4, 15]),
         "The BP T6 proc cooldown must not delay either dodge variant.",
       ).toBeTruthy()
-      const belowT6 = runDodgeProbe(5)
+      const lowerTierTimeline = runDodgeProbe(5)
+      expect(lowerTierTimeline.every(row => !row.buffs.has("BreakingPointCooldown"))).toBe(true)
+      const belowT6 = lowerTierTimeline
         .filter(row => row.step.skill === "Observe")
         .map(row => row.buffs.get("Disintegration")?.stack ?? 0)
       expect(

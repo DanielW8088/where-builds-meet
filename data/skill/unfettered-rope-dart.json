@@ -398,7 +398,7 @@
         "coef": 0.05,
         "requirement": [{ "operator": "not", "operand": [{ "target": "self", "value": "TowlineSweepT6" }] }]
       },
-      { "type": "replay", "time": 0, "coef": 0.1, "requirement": [{ "target": "self", "value": "TowlineSweepT6" }] }
+      { "type": "replay", "time": 0, "coef": 0.12, "requirement": [{ "target": "self", "value": "TowlineSweepT6" }] }
     ],
     "modifier": [],
     "tags": ["Triggered", "Replayed"]

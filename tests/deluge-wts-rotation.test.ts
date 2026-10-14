@@ -10,23 +10,23 @@ import { rowWithId } from "./helpers/timelineRows"
 // Ported from script/probe/check-deluge-wts-rotation.mjs.
 describe("deluge-wts-rotation", () => {
   it("Deluge WTS sequence and standard dummy-attack schedule verified", async () => {
-    const rotation = (await import("../data/rotation/silkbind-deluge/dummy-1-min-wts.json")).default as RotationRecord
-    const panacea = (await import("../data/skill/panacea-fan.json")).default
-    const soulshade = (await import("../data/skill/soulshade-umbrella.json")).default
-    const mystic = (await import("../data/skill/mystic.json")).default
-    const general = (await import("../data/skill/general.json")).default
-    const mysticBuffs = (await import("../data/buff/mystic.json")).default
-    const generalBuffs = (await import("../data/buff/general.json")).default
-    const delugeBuffs = (await import("../data/buff/silkbind-deluge.json")).default
-    const mysticDebuffs = (await import("../data/debuff/mystic.json")).default
-    const generalDebuffs = (await import("../data/debuff/general.json")).default
-    const dots = (await import("../data/dot/mystic.json")).default
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { mergeCalculatedTimelineState } = await import("../src/calculations/rotationTimeline.ts")
-    const { calculateRotationBaseline } = await import("../src/calculations/rotationCalculator.ts")
-    const { calculateHealingAttackSnapshot } = await import("../src/calculations/healing.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const rotation = (await import("@gamedata/rotation/silkbind-deluge/dummy-1-min-wts.json")).default as RotationRecord
+    const panacea = (await import("@gamedata/skill/panacea-fan.json")).default
+    const soulshade = (await import("@gamedata/skill/soulshade-umbrella.json")).default
+    const mystic = (await import("@gamedata/skill/mystic.json")).default
+    const general = (await import("@gamedata/skill/general.json")).default
+    const mysticBuffs = (await import("@gamedata/buff/mystic.json")).default
+    const generalBuffs = (await import("@gamedata/buff/general.json")).default
+    const delugeBuffs = (await import("@gamedata/buff/silkbind-deluge.json")).default
+    const mysticDebuffs = (await import("@gamedata/debuff/mystic.json")).default
+    const generalDebuffs = (await import("@gamedata/debuff/general.json")).default
+    const dots = (await import("@gamedata/dot/mystic.json")).default
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { mergeCalculatedTimelineState } = await import("@/calculations/rotationTimeline.ts")
+    const { calculateRotationBaseline } = await import("@/calculations/rotationCalculator.ts")
+    const { calculateHealingAttackSnapshot } = await import("@/calculations/healing.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
     const timelineInput: TimelineBuildInput = {
       rotation,
       skills: asSkillRecords({ ...panacea, ...soulshade, ...mystic, ...general }),
@@ -55,19 +55,21 @@ describe("deluge-wts-rotation", () => {
     const anchorTime = anchorRow.startTime
     for (const preset of [
       rotation,
-      (await import("../data/rotation/silkbind-deluge/dummy-1-min-wts-team.json")).default as RotationRecord,
+      (await import("@gamedata/rotation/silkbind-deluge/dummy-1-min-wts-team.json")).default as RotationRecord,
     ]) {
       const rows = buildRotationTimeline({ ...timelineInput, rotation: preset })
       assert(
         !rows.some(row => row.step.skill === "EchoesOfAThousandPlantsFanQQ"),
         "Cancelled Fan QQ must not trigger Echoes in either WTS preset.",
       )
-      assert(
-        rows
-          .filter(row => row.kind === "rotation" && row.step.skill === "EchoesOfAThousandPlants")
-          .every(row => !row.cooldownWait),
-        "Cancelled Fan QQ must leave the preset's manual Umbrella Special available.",
-      )
+      const echoes = rows.filter(row => row.kind === "rotation" && row.step.skill === "EchoesOfAThousandPlants")
+      assert(echoes.length > 1, "Both manual Umbrella Special casts must execute.")
+      for (let index = 1; index < echoes.length; index++) {
+        assert(
+          echoes[index].startTime - echoes[index - 1].startTime >= soulshade.EchoesOfAThousandPlants.cooldown,
+          "Manual Umbrella Special casts must respect their own cooldown after faster Mystic inputs.",
+        )
+      }
     }
     const deflectRows = timeline.filter(
       row => row.kind === "rotation" && row.step.type === "skill" && row.step.skill === "DeflectSuccessful",

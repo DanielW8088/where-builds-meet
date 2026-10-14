@@ -47,9 +47,9 @@ describe("Mystic cast timing with ping", () => {
     "$skill preserves its hits, finishes at the selected boundary, and then pays the next ping",
     ({ skill, duration, hits }) => {
       const { cast, next } = castWithFollowup(skill)
-      expect(cast.startTime).toBeCloseTo(0.04, 10)
+      expect(cast.startTime).toBe(0)
       expect(cast.effectiveCastTime).toBeCloseTo(duration, 10)
-      expect(next.startTime).toBeCloseTo(0.04 + duration + 0.04, 10)
+      expect(next.startTime).toBeCloseTo(duration + 0.04, 10)
       const damage = cast.actions.flatMap((action, index) => (action.type === "damage" ? [{ action, index }] : []))
       expect(damage).toHaveLength(hits.length)
       damage.forEach(({ action, index }, i) => {

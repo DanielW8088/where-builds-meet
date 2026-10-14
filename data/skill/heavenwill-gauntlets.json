@@ -33,43 +33,43 @@
     "action": [
       {
         "type": "damage",
-        "phyCoef": 0.229311,
-        "phyBonus": 63.6,
-        "attrBonus": 34.65,
+        "phyCoef": 0.25682832,
+        "phyBonus": 71.232,
+        "attrBonus": 38.808,
         "time": 0.45,
-        "attrCoef": 0.229311
+        "attrCoef": 0.25682832
       },
       {
         "type": "damage",
-        "phyCoef": 0.229311,
-        "phyBonus": 63.6,
-        "attrBonus": 34.65,
+        "phyCoef": 0.25682832,
+        "phyBonus": 71.232,
+        "attrBonus": 38.808,
         "time": 0.6,
-        "attrCoef": 0.229311
+        "attrCoef": 0.25682832
       },
       {
         "type": "damage",
-        "phyCoef": 0.229311,
-        "phyBonus": 63.6,
-        "attrBonus": 34.65,
+        "phyCoef": 0.25682832,
+        "phyBonus": 71.232,
+        "attrBonus": 38.808,
         "time": 0.683,
-        "attrCoef": 0.229311
+        "attrCoef": 0.25682832
       },
       {
         "type": "damage",
-        "phyCoef": 0.229311,
-        "phyBonus": 63.6,
-        "attrBonus": 34.65,
+        "phyCoef": 0.25682832,
+        "phyBonus": 71.232,
+        "attrBonus": 38.808,
         "time": 0.833,
-        "attrCoef": 0.229311
+        "attrCoef": 0.25682832
       },
       {
         "type": "damage",
-        "phyCoef": 0.611496,
-        "phyBonus": 169.6,
-        "attrBonus": 92.4,
+        "phyCoef": 0.68487552,
+        "phyBonus": 189.952,
+        "attrBonus": 103.488,
         "time": 1.2,
-        "attrCoef": 0.611496
+        "attrCoef": 0.68487552
       },
       { "type": "addResource", "value": "HeavensWill", "amount": 0.1, "time": 1.2 },
       {
@@ -252,9 +252,30 @@
     "name": "Light Attack Falcon",
     "castTime": 0,
     "action": [
-      { "type": "damage", "phyCoef": 0.7479252, "phyBonus": 0, "attrBonus": 0, "time": 0.3, "attrCoef": 0.7479252 },
-      { "type": "damage", "phyCoef": 0.7479252, "phyBonus": 0, "attrBonus": 0, "time": 0.45, "attrCoef": 0.7479252 },
-      { "type": "damage", "phyCoef": 0.7479252, "phyBonus": 0, "attrBonus": 0, "time": 0.5875, "attrCoef": 0.7479252 },
+      {
+        "type": "damage",
+        "phyCoef": 0.837676224,
+        "phyBonus": 0.0,
+        "attrBonus": 0.0,
+        "time": 0.3,
+        "attrCoef": 0.837676224
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.837676224,
+        "phyBonus": 0.0,
+        "attrBonus": 0.0,
+        "time": 0.45,
+        "attrCoef": 0.837676224
+      },
+      {
+        "type": "damage",
+        "phyCoef": 0.837676224,
+        "phyBonus": 0.0,
+        "attrBonus": 0.0,
+        "time": 0.5875,
+        "attrCoef": 0.837676224
+      },
       { "type": "addResource", "value": "HeavensWill", "amount": 0.1, "time": 0.5875 },
       {
         "type": "addResource",

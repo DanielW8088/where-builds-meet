@@ -125,7 +125,8 @@
     "castTime": 0,
     "cooldown": 15,
     "action": [
-      { "type": "apply", "target": "self", "value": "Disintegration", "stack": 5, "reapply": true, "time": 0 }
+      { "type": "apply", "target": "self", "value": "Disintegration", "stack": 5, "reapply": true, "time": 0 },
+      { "type": "apply", "target": "self", "value": "BreakingPointCooldown", "time": 0 }
     ],
     "tags": ["Triggered"]
   },

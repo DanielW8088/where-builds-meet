@@ -409,7 +409,7 @@ describe("Dust mechanics", () => {
     ).toBe(true)
     expect(result.timeline.find(row => row.step.type === "skill" && row.step.skill === "BurnAndBury")!.distance).toBe(9)
     const fullFlute = result.timeline.find(row => row.step.type === "skill" && row.step.skill === "FluteOfTheTides")!
-    expect(fullFlute.actionStates[2].distance).toBe(1)
+    expect(fullFlute.actionStates[2].distance).toBe(9)
     expect(fullFlute.actionStates[3].distance).toBe(9)
     for (const row of result.timeline.filter(
       row => row.step.type === "skill" && row.step.skill === "SoaringSpin2" && row.actionStates[3],
@@ -417,6 +417,51 @@ describe("Dust mechanics", () => {
       expect(row.actionStates[3].distance).toBe(1)
     }
   })
+  it("preserves every Burn and Bury connection and lands the closing hit before Battle End", () => {
+    const path = typedPathDefinitions.bamboocutDust
+    const input = buildPresetRotationBundle(
+      {
+        pathId: "bamboocutDust",
+        martialArts: path.lockedWeapons!,
+        rotation: rotationRecord,
+        breakthrough: "17",
+        food: "SimmeringFishSlices",
+        divinecraft: "Fire",
+        script: "None",
+        skillOverrides: {},
+        previewId: null,
+        globalDebuffs: { ...defaultGlobalDebuffs },
+      },
+      path.defaultBuild,
+    )!
+    const result = calculateRotationBaseline(input)
+    const burns = result.timeline.filter(row => row.kind === "rotation" && row.step.skill === "BurnAndBury")
+    expect(burns).toHaveLength(4)
+    for (const row of burns) {
+      expect(row.actionStates[0].debuffs.has("Soulbreak")).toBe(true)
+      const hitIndex = row.actions.findIndex(action => action.type === "damage" && action.phyCoef === 2.298686)
+      expect(result.actionBreakdowns[`${row.id}:${hitIndex}`]?.total).toBeGreaterThan(0)
+      expect(row.startTime + Number(row.actions[hitIndex].time) - result.anchorTime).toBeLessThan(60)
+    }
+    const spins = result.timeline.filter(row => row.kind === "rotation" && row.step.skill === "ScarletSpin")
+    expect(
+      spins.map(parent => result.timeline.filter(row => isThrow(row) && row.sourceRowId === parent.id).length),
+    ).toEqual([14, 14, 14])
+    const uncorrected = structuredClone(input)
+    const fluteIndex = uncorrected.timeline.rotation.steps.findIndex(step => step.skill === "FluteOfTheTides")
+    uncorrected.timeline.rotation.steps[fluteIndex - 2].skill = "SoaringSpin2"
+    uncorrected.timeline.rotation.steps.splice(fluteIndex - 2, 0, {
+      type: "event",
+      event: "Move",
+      before: { action: 2 },
+      distance: 1,
+    })
+    const broken = calculateRotationBaseline(uncorrected)
+    const missed = broken.timeline.filter(row => row.kind === "rotation" && row.step.skill === "BurnAndBury")[2]
+    expect(missed.actionStates[0].debuffs.has("Soulbreak")).toBe(false)
+    expect(result.metrics.dps).toBeGreaterThan(broken.metrics.dps)
+  })
+
   it("exhausts on the sixth Scarlet Spin throw of the second cast, with a proportional second ramp", () => {
     // Qi steps are authored at absolute times, so the engine honouring them proves
     // nothing about the values. What has to hold is the moment they were authored
@@ -733,32 +778,40 @@ describe("Dust mechanics", () => {
       expect(stages.at(-1)!.actions.filter(action => action.type === "damage")).toHaveLength(2)
     }
   })
-  it("applies ping to each queued Scarlet Spin throw", () => {
-    const input = bundle()
-    input.timeline.setupEffects = martialArtEffectsForRank(
-      { everspring: martialArtDefinitions.everspring },
-      ["everspring"],
-      13,
-    )
-    input.timeline.rotation.ping = 40
-    input.timeline.rotation.steps = [{ type: "skill", skill: "ScarletSpin", duration: 12 }]
-    const result = calculateRotationBaseline(input)
-    const parent = result.timeline.find(
-      row => row.kind === "rotation" && row.step.type === "skill" && row.step.skill === "ScarletSpin",
-    )!
-    const stages = result.timeline.filter(
-      row => row.kind === "trigger" && row.sourceRowId === parent.id && isThrow(row),
-    )
-    expect(stages).toHaveLength(13)
-    expect(stages[0].startTime).toBeCloseTo(0.04, 8)
-    expect(stages.every(row => row.actions.filter(action => action.type === "damage").length === 2)).toBe(true)
-    const intervals = [
-      1.0769230769230769, 0.9583333333333333, 1.0909090909090908, 0.7692307692307692, 0.9583333333333333,
-      1.0909090909090908, 0.7692307692307692, 0.9583333333333333, 1.0909090909090908, 0.7692307692307692,
-      0.9583333333333333, 1.0909090909090908,
-    ]
-    for (let index = 1; index < stages.length; index++)
-      expect(stages[index].startTime - stages[index - 1].startTime).toBeCloseTo(intervals[index - 1] + 0.04, 8)
+  it.each([...Object.keys(mystic), "Deflect", "DeflectSuccessful"])("keeps %s independent of ping", skill => {
+    const simulate = (ping: number) => {
+      const input = bundle()
+      input.timeline.rotation.ping = ping
+      input.timeline.rotation.steps = [castStep(skill)]
+      return calculateRotationBaseline(input)
+    }
+    const baseline = simulate(0)
+    expect(baseline.timeline.some(row => row.step.skill === skill)).toBe(true)
+    for (const ping of [40, 200]) {
+      const result = simulate(ping)
+      expect(result.timeline).toEqual(baseline.timeline)
+      expect(result.baseline).toEqual(baseline.baseline)
+    }
+  })
+  it("keeps Scarlet Spin throws, catches, damage, and duration independent of ping", () => {
+    const spin = (ping: number) => {
+      const input = bundle()
+      input.timeline.setupEffects = martialArtEffectsForRank(
+        { everspring: martialArtDefinitions.everspring },
+        ["everspring"],
+        13,
+      )
+      input.timeline.rotation.ping = ping
+      input.timeline.rotation.steps = [{ type: "skill", skill: "ScarletSpin", duration: 12 }]
+      return calculateRotationBaseline(input)
+    }
+    const baseline = spin(0)
+    expect(baseline.timeline.filter(isThrow)).toHaveLength(14)
+    for (const ping of [15, 40, 200]) {
+      const result = spin(ping)
+      expect(result.timeline).toEqual(baseline.timeline)
+      expect(result.baseline).toEqual(baseline.baseline)
+    }
   })
   it("caps Flower Burial at twelve seconds while queued throws extend Scarlet Spin", () => {
     const input = bundle()
@@ -886,7 +939,7 @@ describe("Dust mechanics", () => {
             : [["rotation-1:0", "rotation-2:0"], ["rotation-3:0"]]
         const sourceIds = windows[index]
         const expected =
-          sourceIds.reduce((sum, id) => sum + result.actionBreakdowns[id].total, 0) * (tier === 6 ? 0.1 : 0.05)
+          sourceIds.reduce((sum, id) => sum + result.actionBreakdowns[id].total, 0) * (tier === 6 ? 0.12 : 0.05)
         expect(result.actionBreakdowns[entry.id!].total).toBeCloseTo(expected)
       }
       expect(payouts.at(-1)!.timelineTime).toBe(tier === 6 ? 22 : 21)

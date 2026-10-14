@@ -77,7 +77,7 @@ it("Kite BP uses Perfect Dodge to cancel A6 and align with the first dummy attac
       row.step.automatic === "attack",
   )
   expect(waits).toHaveLength(1)
-  expect(waits[0].effectiveCastTime).toBeCloseTo(0.0965)
+  expect(waits[0].effectiveCastTime).toBeCloseTo(0.1365)
 })
 
 it("Kite BP's final Qi break follows Soaring Spin and enables the last VC reset", () => {

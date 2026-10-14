@@ -1337,6 +1337,11 @@ resource regeneration continue during the gap, and Battle End can prevent the
 cast from starting. Cooldown Delay rows report only cooldown waiting; latency
 is an additional gap.
 
+All Mystic skills and their components, both castable Deflect variants, and
+Scarlet Spin ignore input latency through the existing `ignorePing` flag.
+Scarlet Spin queued stages do not request trigger latency. Other ordered inputs
+retain their configured ping.
+
 A selected sub-action dispatches with its own skill definition's latency. Its
 primary/fallback choice is locked at dispatch; cast-start values and modifiers
 resolve when it starts after the latency gap. Skipped components consume no ping.

@@ -10,21 +10,21 @@ import { asEffectDefinitions } from "./helpers/shippedData"
 // Ported from script/probe/check-global-debuff-controls.mjs.
 describe("global-debuff-controls", () => {
   it("Global debuff control and conditional-effect checks passed", async () => {
-    const { calculateRotationBaseline } = await import("../src/calculations/rotationCalculator.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const { calculateRotationBaseline } = await import("@/calculations/rotationCalculator.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
     const { defaultGlobalDebuffs, globalBuffTimelineEffects, globalDebuffTimelineEffects, normalizeGlobalDebuffs } =
-      await import("../src/globalDebuffs.ts")
-    const delugeBuffs = (await import("../data/buff/silkbind-deluge.json")).default
-    const generalDebuffs = (await import("../data/debuff/general.json")).default
-    const strengthDebuffs = (await import("../data/debuff/stonesplit-strength.json")).default
-    const mightDebuffs = (await import("../data/debuff/stonesplit-might.json")).default
-    const splendorDebuffs = (await import("../data/debuff/bellstrike-splendor.json")).default
-    const umbraDebuffs = (await import("../data/debuff/bellstrike-umbra.json")).default
-    const dustDebuffs = (await import("../data/debuff/bamboocut-dust.json")).default
-    const innerWayDebuffs = (await import("../data/debuff/innerway.json")).default
-    const draughtDebuffs = (await import("../data/debuff/bamboocut-draught.json")).default
-    const scripts = (await import("../data/script.json")).default
+      await import("@/globalDebuffs.ts")
+    const delugeBuffs = (await import("@gamedata/buff/silkbind-deluge.json")).default
+    const generalDebuffs = (await import("@gamedata/debuff/general.json")).default
+    const strengthDebuffs = (await import("@gamedata/debuff/stonesplit-strength.json")).default
+    const mightDebuffs = (await import("@gamedata/debuff/stonesplit-might.json")).default
+    const splendorDebuffs = (await import("@gamedata/debuff/bellstrike-splendor.json")).default
+    const umbraDebuffs = (await import("@gamedata/debuff/bellstrike-umbra.json")).default
+    const dustDebuffs = (await import("@gamedata/debuff/bamboocut-dust.json")).default
+    const innerWayDebuffs = (await import("@gamedata/debuff/innerway.json")).default
+    const draughtDebuffs = (await import("@gamedata/debuff/bamboocut-draught.json")).default
+    const scripts = (await import("@gamedata/script.json")).default
     const effectDefinitions = asEffectDefinitions({
       ...draughtDebuffs,
       ...delugeBuffs,
@@ -225,7 +225,7 @@ describe("global-debuff-controls", () => {
         assert(
           closeTo(
             result([...strayhunt, ...qiEffects], [], true, false, [], channelStats) / exhaustedChannel,
-            (1.3 / 1.2) * (1.18 / 1.1),
+            (1.32 / 1.2) * (1.2 / 1.1),
           ),
           "Qi Imbalance adds Bellstrike bonus separately from its global HP bonus.",
         )
@@ -234,8 +234,8 @@ describe("global-debuff-controls", () => {
     const exhaustedBaseline = result([], [], true)
     const exhaustedQi = result(qiEffects, [], true)
     assert(
-      closeTo(exhaustedQi / exhaustedBaseline, 1.18 / 1.1),
-      "Qi Imbalance must add 8% to the global category during Exhausted.",
+      closeTo(exhaustedQi / exhaustedBaseline, 1.2 / 1.1),
+      "Qi Imbalance must add 10% to the global category during Exhausted.",
     )
   })
 })
