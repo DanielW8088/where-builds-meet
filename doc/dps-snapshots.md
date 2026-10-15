@@ -337,7 +337,7 @@ cooldown is ready; ordinary cooldown waiting keeps that cast valid.
 
 Deluge Smolder waits 0.35s before its third Dragon’s Breath so Intoxicated expires before the cast. This avoids the subsequent Poet drink, restoring total Vitality consumption from 390 to 380 and raising DPS from 36123.50704105259 to 36654.94652217669. This corrected result is accepted for release.
 
-## Pending review: Hawkwing and follow-up numerical corrections (2026-10-15)
+## Reviewed intermediate results: Hawkwing and follow-up numerical corrections (2026-10-15)
 
 Hawkwing changes from 2% Physical Attack to 1.8% Physical and Bellstrike Attack per stack. Bursting Nine’s second volley now uses the intended 20% decay floor at half strength. The rank-14 Phalanxbane/Mortal no-flat-attack compensation is 0.725%; Adaptive Steel’s stat bonus moves to T5; Seasonal Edge T0 lasts ten seconds. The latter changes do not alter the existing breakthrough-17/T6 preset fixtures.
 
@@ -347,11 +347,11 @@ Hawkwing changes from 2% Physical Attack to 1.8% Physical and Bellstrike Attack 
 | `bellstrikeUmbra/dummy-1-min-38-bb`                     |  79820.02675353442 |  80563.87172526262 |  4789201.605212065 | 4833832.303515757 |      60s |
 | `stonesplitStrength/pure-dummy-1-min-infinite-vitality` | 64908.049594465505 |  65079.61639668009 |   3894482.97566793 | 3904776.983800805 |      60s |
 
-All combat durations remain sixty seconds. Umbra changes through Hawkwing; Kite and Pure Strength infinite Vitality change through Bursting Nine. The other seventeen preset results remain bit-identical. These are proposed results; snapshots are not updated without user review.
+All combat durations remain sixty seconds. Umbra changes through Hawkwing; Kite and Pure Strength infinite Vitality change through Bursting Nine. The other seventeen preset results remain bit-identical. These intermediate results isolate the combat corrections before the food replacement below.
 
-## Pending review: Clay Oven Flatbread replacement (2026-10-15)
+## Accepted: Clay Oven Flatbread and numerical corrections (2026-10-15)
 
-Clay Oven Flatbread replaces the previous attack food, increasing effective Physical Attack from 120–240 to 140–280. All presets use this selection. The following comparison includes the pending Hawkwing and Bursting Nine corrections above; Wings display translation changes do not alter combat. Every duration remains 60 seconds, so total damage changes by sixty times the DPS difference. Accepted snapshots remain unchanged pending user review.
+Clay Oven Flatbread replaces the previous attack food, increasing effective Physical Attack from 120–240 to 140–280. All presets use this selection. The following comparison includes the reviewed Hawkwing and Bursting Nine corrections above; Wings display translation changes do not alter combat. Every duration remains 60 seconds, so total damage changes by sixty times the DPS difference. The user approved all twenty results for release on October 15, 2026; the accepted snapshots now use these values.
 
 | Rotation                                                 |       Accepted DPS |        Current DPS |   Change |
 | -------------------------------------------------------- | -----------------: | -----------------: | -------: |

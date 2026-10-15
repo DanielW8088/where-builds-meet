@@ -164,7 +164,7 @@ feedback, Adaptive Steel T4/T5/T6 stat selection, and Seasonal Edge duration.
 | `bellstrikeUmbra/dummy-1-min-38-bb`                     |  79820.02675353442 |  80563.87172526262 |  4789201.605212065 | 4833832.303515757 |      60s |
 | `stonesplitStrength/pure-dummy-1-min-infinite-vitality` | 64908.049594465505 |  65079.61639668009 |   3894482.97566793 | 3904776.983800805 |      60s |
 
-Umbra gains Bellstrike Attack from Hawkwing, partly offset by the smaller Physical Attack bonus. Kite and Pure Strength infinite-Vitality presets gain from the corrected second Bursting Nine volley. The other 17 preset results are unchanged. Existing release fixtures are breakthrough 17, so rank-14 Phalanxbane/Mortal compensation is covered by focused calculation tests rather than these baselines. Adaptive Steel T5+ and Seasonal Edge T1+ preset behavior is unchanged. Accepted snapshots remain unchanged pending review.
+Umbra gains Bellstrike Attack from Hawkwing, partly offset by the smaller Physical Attack bonus. Kite and Pure Strength infinite-Vitality presets gain from the corrected second Bursting Nine volley. The other 17 preset results are unchanged. Existing release fixtures are breakthrough 17, so rank-14 Phalanxbane/Mortal compensation is covered by focused calculation tests rather than these baselines. Adaptive Steel T5+ and Seasonal Edge T1+ preset behavior is unchanged. The user subsequently approved the combined numerical corrections and Clay Oven Flatbread results for release; see doc/dps-snapshots.md.
 
 The following appendices inventory all source skills and the Inner Way review
 coverage. A candidate link is a discovery aid, not proof of a unique hit route.
