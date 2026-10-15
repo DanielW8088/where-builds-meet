@@ -23,8 +23,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 63703.630174113605,
-      "totalDamage": 3822217.8104468165,
+      "dps": 64339.4070867324,
+      "totalDamage": 3860364.4252039436,
       "duration": 60
     },
     "bamboocutDust/dust-dummy-1-min-100pc": {
@@ -49,8 +49,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 63499.66835014831,
-      "totalDamage": 3809980.1010088986,
+      "dps": 64132.747779063146,
+      "totalDamage": 3847964.8667437886,
       "duration": 60
     },
     "bamboocutKite/dummy-1-min-infinite-vitality": {
@@ -75,8 +75,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 58069.99291541508,
-      "totalDamage": 3484199.574924905,
+      "dps": 58661.018408877804,
+      "totalDamage": 3519661.1045326684,
       "duration": 60
     },
     "bamboocutKite/dummy-1-min-iv-bp": {
@@ -101,8 +101,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 62952.31877288379,
-      "totalDamage": 3777139.1263730275,
+      "dps": 63580.78529882886,
+      "totalDamage": 3814847.1179297315,
       "duration": 60
     },
     "bamboocutWind/wind-dummy-1-min-infinite-vitality": {
@@ -127,8 +127,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 69642.61567669724,
-      "totalDamage": 4178556.940601835,
+      "dps": 70364.27708536509,
+      "totalDamage": 4221856.6251219055,
       "duration": 60.00000000000001
     },
     "bellstrikeSplendor/dummy-1-min-81-waves": {
@@ -153,8 +153,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 66123.69995113375,
-      "totalDamage": 3967421.9970680247,
+      "dps": 66765.03228676677,
+      "totalDamage": 4005901.937206006,
       "duration": 60
     },
     "bellstrikeUmbra/dummy-1-min-38-bb": {
@@ -179,8 +179,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 81247.4031684037,
-      "totalDamage": 4874844.190104222,
+      "dps": 82054.94788575095,
+      "totalDamage": 4923296.873145057,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-regular-fire": {
@@ -205,8 +205,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 29977.584872077234,
-      "totalDamage": 1798655.092324634,
+      "dps": 30305.53361364531,
+      "totalDamage": 1818332.0168187188,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-smolder": {
@@ -231,8 +231,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 36880.48631845998,
-      "totalDamage": 2212829.179107599,
+      "dps": 37286.60947114474,
+      "totalDamage": 2237196.568268684,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts": {
@@ -257,8 +257,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 36186.63847937145,
-      "totalDamage": 2171198.3087622873,
+      "dps": 36584.0573371089,
+      "totalDamage": 2195043.440226534,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts-team": {
@@ -283,8 +283,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 38722.801991740074,
-      "totalDamage": 2323368.1195044043,
+      "dps": 39149.1318370525,
+      "totalDamage": 2348947.9102231497,
       "duration": 60
     },
     "silkbindWing/wings-dummy-1-min-dawnsun": {
@@ -309,8 +309,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 36423.74732400038,
-      "totalDamage": 2185424.839440023,
+      "dps": 36801.11222528141,
+      "totalDamage": 2208066.7335168845,
       "duration": 60
     },
     "silkbindWing/wings-dummy-1-min-jadebreaker": {
@@ -335,8 +335,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 49600.968893796395,
-      "totalDamage": 2976058.1336277835,
+      "dps": 50117.644204073214,
+      "totalDamage": 3007058.652244393,
       "duration": 60
     },
     "stonesplitMight/dummy-1-min": {
@@ -361,8 +361,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 80140.3390419006,
-      "totalDamage": 4808420.342514036,
+      "dps": 80942.31111106317,
+      "totalDamage": 4856538.66666379,
       "duration": 60
     },
     "stonesplitStrength/mixed-dummy-1-min": {
@@ -387,8 +387,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 67762.68828283051,
-      "totalDamage": 4065761.29696983,
+      "dps": 68450.20165536168,
+      "totalDamage": 4107012.0993217006,
       "duration": 59.99999999999999
     },
     "stonesplitStrength/mixed-dummy-1-min-double-stab": {
@@ -413,8 +413,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 67017.06987142487,
-      "totalDamage": 4021024.192285492,
+      "dps": 67697.63371836559,
+      "totalDamage": 4061858.0231019347,
       "duration": 59.99999999999999
     },
     "stonesplitStrength/mixed-dummy-infinite-vitality-1-min": {
@@ -439,8 +439,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 68130.15507253766,
-      "totalDamage": 4087809.3043522593,
+      "dps": 68825.87877398261,
+      "totalDamage": 4129552.726438957,
       "duration": 60
     },
     "stonesplitStrength/mixed-dummy-smolder-poet-1-min": {
@@ -465,8 +465,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 68316.11098675086,
-      "totalDamage": 4098966.659205051,
+      "dps": 69015.3929252431,
+      "totalDamage": 4140923.5755145852,
       "duration": 59.99999999999999
     },
     "stonesplitStrength/pure-dummy-1-min": {
@@ -491,8 +491,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 62468.47502452412,
-      "totalDamage": 3748108.5014714473,
+      "dps": 63110.35654269702,
+      "totalDamage": 3786621.3925618213,
       "duration": 60
     },
     "stonesplitStrength/pure-dummy-1-min-infinite-vitality": {
@@ -517,8 +517,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 65445.18119214224,
-      "totalDamage": 3926710.8715285347,
+      "dps": 66124.73807374043,
+      "totalDamage": 3967484.284424426,
       "duration": 60
     }
   }

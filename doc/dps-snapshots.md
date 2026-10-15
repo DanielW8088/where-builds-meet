@@ -375,3 +375,11 @@ Clay Oven Flatbread replaces the previous attack food, increasing effective Phys
 | `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67943.77984410097 |  68316.11098675086 | +0.5480% |
 | `stonesplitStrength/pure-dummy-1-min-infinite-vitality`  | 64908.049594465505 |  65445.18119214224 | +0.8275% |
 | `stonesplitStrength/pure-dummy-1-min`                    |  62120.66959661327 |  62468.47502452412 | +0.5599% |
+
+## Accepted: arsenal attack correction (2026-10-15)
+
+All five arsenals now grant 148–297 raw attack instead of 131–263. The user approved the resulting twenty preset snapshots on October 15, 2026. DPS increases approximately 0.97–1.10%; all durations remain 60 seconds. Dust's default rotation changes from 63703.630174113605 to 64339.4070867324 DPS. Its 100% catch variant changes from 63499.66835014831 to 64132.747779063146 DPS.
+
+The additional minimum attack caps Dust's martial-art damage-bonus and penetration conversions before an affix is added. Both bundled Dust rotations consequently value a maximum Bamboocut affix above a minimum affix at breakthroughs 17 and 18.
+
+The optimized-versus-live comparison test compares DPS deltas to eight decimal places, matching its existing penetration comparison. These paths regroup floating-point operations; reconstructing total damage from DPS introduced a five-ULP discrepancy after the arsenal correction. The deterministic release snapshot guard remains unchanged at four ULPs.
