@@ -119,7 +119,8 @@ Existing deferred higher-of-Body-or-Power conversions remain deferred.
 Additional Attack scales the matching martial art's flat physical and attribute
 bonus attack terms by `1 + flatAttackBonus` (1.0725 at rank 14), before channel
 and outcome multipliers. It does not scale attack stats or final damage.
-The normal Strategic Sword, Heavenwill, and Skystrike talents additionally
+The normal Strategic Sword, Phalanxbane Blade, Mortal Rope Dart, Heavenwill,
+and Skystrike talents additionally
 scale both coefficients by `1 + coefficientBonusWithoutFlatAttack` (1.00725),
 only when both action flat terms are zero. Effects and triggered actions use
 the same martial-art tag requirement; unrelated arts and Mystics do not match.
@@ -298,7 +299,8 @@ five damage channels.
 Hawkwing is an outcome-triggered attack bonus. Deterministic calculations carry
 an expiry-sorted active-state array and scalar inactive probability,
 quantized to integer 0.1 ms ticks. Every hit reads the expected stack count before
-damage, applies `2% × expected stacks` as Physical Attack Bonus, and then branches
+damage, applies `1.8% × expected stacks` as both Physical Attack Bonus and
+Bellstrike Attack Bonus, and then branches
 the distribution using that hit's resolved Affinity rate. Identical stack/expiry
 states are merged during transitions, and compatible tiny expiries use the shared
 weighted timing rule. Expected stacks are cached; reads process only expired
@@ -338,7 +340,7 @@ runs use only their concrete active or inactive state. This avoids feeding an
 average Direct Affinity value back into the Focus distribution.
 
 Seasonal Edge uses deterministic proc times and random branch contents. A
-Conversion skill finishing outside its shared cooldown creates an 8- or
+Conversion skill finishing outside its shared cooldown creates a 10- or
 12-second window according to Inner Way tier. Multi-buff tiers draw without
 replacement: each later draw renormalizes the weights of the remaining buffs,
 and ordered draws that produce the same set are merged. Expected calculations
@@ -1166,4 +1168,4 @@ the rotation response does not prepare dedicated coefficients for these bonuses.
 
 Qi Imbalance grants 10% global HP damage and 10% Bellstrike damage during Exhausted. Towline Sweep T6 settles Soulbreak at 12% of recorded final damage (other tiers retain 5%). Bursting Nine uses 100%, 30%, and seven 20% arrows per volley, totaling 270% of its first-arrow base damage. Both volleys use this distribution. Falcon’s Pursuit base Physical and Attribute coefficients and flat damage increase by 12% for Celestial Mandate, Light Attack Falcon, Snaring Lash Falcon, and the conditional Falcon hit of Sky Grasped; their parent ordinary hits and event clocks are unchanged.
 
-Unspecified coefficients and timings remain unchanged. Mystic gear merging, Hawkwing, Ivorybloom, and calculated Qi damage are outside this numerical update. Drunken Poet’s Tier V refund remains pending explicit Mystic-tier eligibility; the current skills have no tier selector.
+Unspecified coefficients and timings remain unchanged. Mystic gear merging, Ivorybloom, and calculated Qi damage are outside this numerical update. Drunken Poet’s Tier V refund remains pending explicit Mystic-tier eligibility; the current skills have no tier selector.

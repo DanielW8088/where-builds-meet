@@ -57,14 +57,14 @@
   },
   "FlowingWind": {
     "name": "Driftbreeze",
-    "description": "Enhances Fan Q into Boundless Blossom.",
+    "description": "Enhances Fan Q into Boundless Bloom.",
     "duration": 20,
     "maxStack": 1,
     "refresh": true,
     "showCoverage": true
   },
   "DrumSpecialDefense": {
-    "name": "凌波減傷",
+    "name": "Ripple Damage Reduction",
     "duration": 1,
     "maxStack": 1,
     "refresh": true,
@@ -72,7 +72,7 @@
     "effect": [{ "effect": { "directDamageReduction": 0.3 } }]
   },
   "DawnsunDefense": {
-    "name": "昭陽減傷",
+    "name": "Dawnsun Damage Reduction",
     "duration": 4,
     "maxStack": 1,
     "refresh": true,

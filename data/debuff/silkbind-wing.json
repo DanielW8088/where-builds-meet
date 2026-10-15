@@ -1,6 +1,6 @@
 {
   "TangledGauze": {
-    "name": "羅纏",
+    "name": "Tangled Gauze",
     "description": "Roots the target and prevents most skills. Drum Q2 deals 20% additional damage to affected bosses.",
     "duration": 2,
     "maxStack": 1,
@@ -30,7 +30,7 @@
   },
   "Cuncao": {
     "name": "Blade of Grass",
-    "description": "Blade's Will stacks require an eligible varied attack, including Rhythm of Accord or 煞盡東風, to hit at least 3 enemies simultaneously (2 at T4; 3 grants 2 stacks). Lasts 5s, or 8s at T1; up to 5 stacks. Eligible attacks deal 2% more damage per stack, increased to 4% at T3. T6 adds 5% damage against targets at 5 stacks. Cannot build stacks against a single target.",
+    "description": "Blade's Will stacks require an eligible varied attack, including Rhythm of Accord or End of Gale, to hit at least 3 enemies simultaneously (2 at T4; 3 grants 2 stacks). Lasts 5s, or 8s at T1; up to 5 stacks. Eligible attacks deal 2% more damage per stack, increased to 4% at T3. T6 adds 5% damage against targets at 5 stacks. Cannot build stacks against a single target.",
     "duration": 5,
     "maxStack": 5,
     "refresh": true,

@@ -400,6 +400,7 @@ function createRotationDamageResolver(
       expectedBuffStacks.Hawkwing = stack
       outcomeEffects = addUnconditionalDamageEffects(outcomeEffects, {
         physicalAttackBonus: stack * entry.hawkwing.physicalAttackBonusPerStack,
+        bellstrikeAttackBonus: stack * entry.hawkwing.bellstrikeAttackBonusPerStack,
       })
     }
     if (entry.accumulatorSnapshot) {

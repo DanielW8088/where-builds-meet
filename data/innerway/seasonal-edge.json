@@ -8,7 +8,7 @@
         {
           "event": "skillEndRandomBuff",
           "requirement": [{ "target": "skillTag", "value": "Conversion" }],
-          "duration": 8,
+          "duration": 10,
           "cooldown": 30,
           "outcome": [
             { "value": "Bloom", "weight": 0.25 },

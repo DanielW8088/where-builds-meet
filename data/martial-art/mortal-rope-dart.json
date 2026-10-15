@@ -111,7 +111,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "MortalRopeDart" }],
-            "effect": { "flatAttackBonus": 0.0725 }
+            "effect": { "flatAttackBonus": 0.0725, "coefficientBonusWithoutFlatAttack": 0.00725 }
           }
         ]
       }

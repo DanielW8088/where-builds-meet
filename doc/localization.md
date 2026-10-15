@@ -63,6 +63,12 @@ for Inner Ways. Definition filenames and localization keys follow those IDs.
 The former Wings IDs have no compatibility migration; saved builds, rotations,
 and editor overrides referring to them must be recreated.
 
+Wings display text follows the normal-variant names in the October 15, 2026
+local datamine: Plumage Sweep, Sleeve Dance, Boreal Sweep, Boundless Bloom,
+Ripple: Toneflux, and Tangled Gauze. Simulator-only stage numbers, combinations,
+sound-field labels, and damage-reduction labels append descriptive English to
+those terms. Updating display text preserves the current skill and effect IDs.
+
 ## Message conventions
 
 Chinese event labels use an ASCII colon followed by a space (`事件: 名稱`),

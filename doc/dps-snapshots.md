@@ -336,3 +336,42 @@ cooldown is ready; ordinary cooldown waiting keeps that cast valid.
 | `stonesplitStrength/pure-dummy-1-min-infinite-vitality`  | 64326.782954570765 | 64908.049594465505 |    3859606.9772742465 |      3894482.97566793 |
 
 Deluge Smolder waits 0.35s before its third Dragon’s Breath so Intoxicated expires before the cast. This avoids the subsequent Poet drink, restoring total Vitality consumption from 390 to 380 and raising DPS from 36123.50704105259 to 36654.94652217669. This corrected result is accepted for release.
+
+## Pending review: Hawkwing and follow-up numerical corrections (2026-10-15)
+
+Hawkwing changes from 2% Physical Attack to 1.8% Physical and Bellstrike Attack per stack. Bursting Nine’s second volley now uses the intended 20% decay floor at half strength. The rank-14 Phalanxbane/Mortal no-flat-attack compensation is 0.725%; Adaptive Steel’s stat bonus moves to T5; Seasonal Edge T0 lasts ten seconds. The latter changes do not alter the existing breakthrough-17/T6 preset fixtures.
+
+| Rotation                                                |       Accepted DPS |        Current DPS |    Accepted damage |    Current damage | Duration |
+| ------------------------------------------------------- | -----------------: | -----------------: | -----------------: | ----------------: | -------: |
+| `bamboocutKite/dummy-1-min-infinite-vitality`           |  57451.30293458791 | 57742.087938329154 | 3447078.1760752746 | 3464525.276299749 |      60s |
+| `bellstrikeUmbra/dummy-1-min-38-bb`                     |  79820.02675353442 |  80563.87172526262 |  4789201.605212065 | 4833832.303515757 |      60s |
+| `stonesplitStrength/pure-dummy-1-min-infinite-vitality` | 64908.049594465505 |  65079.61639668009 |   3894482.97566793 | 3904776.983800805 |      60s |
+
+All combat durations remain sixty seconds. Umbra changes through Hawkwing; Kite and Pure Strength infinite Vitality change through Bursting Nine. The other seventeen preset results remain bit-identical. These are proposed results; snapshots are not updated without user review.
+
+## Pending review: Clay Oven Flatbread replacement (2026-10-15)
+
+Clay Oven Flatbread replaces the previous attack food, increasing effective Physical Attack from 120–240 to 140–280. All presets use this selection. The following comparison includes the pending Hawkwing and Bursting Nine corrections above; Wings display translation changes do not alter combat. Every duration remains 60 seconds, so total damage changes by sixty times the DPS difference. Accepted snapshots remain unchanged pending user review.
+
+| Rotation                                                 |       Accepted DPS |        Current DPS |   Change |
+| -------------------------------------------------------- | -----------------: | -----------------: | -------: |
+| `bamboocutDust/dust-dummy-1-min-100pc`                   | 63125.513140949406 |  63499.66835014831 | +0.5927% |
+| `bamboocutDust/dust-dummy-1-min`                         |  63328.31151211581 | 63703.630174113605 | +0.5927% |
+| `bamboocutKite/dummy-1-min-infinite-vitality`            |  57451.30293458791 |  58069.99291541508 | +1.0769% |
+| `bamboocutKite/dummy-1-min-iv-bp`                        | 62596.641810462184 |  62952.31877288379 | +0.5682% |
+| `bamboocutWind/wind-dummy-1-min-infinite-vitality`       |  69226.94478501238 |  69642.61567669724 | +0.6004% |
+| `bellstrikeSplendor/dummy-1-min-81-waves`                |  65623.09394740312 |  66123.69995113375 | +0.7629% |
+| `bellstrikeUmbra/dummy-1-min-38-bb`                      |  79820.02675353442 |   81247.4031684037 | +1.7882% |
+| `silkbindDeluge/dummy-1-min-regular-fire`                |  29793.61498851086 | 29977.584872077234 | +0.6175% |
+| `silkbindDeluge/dummy-1-min-smolder`                     |  36654.94652217669 |  36880.48631845998 | +0.6153% |
+| `silkbindDeluge/dummy-1-min-wts-team`                    |  38486.36615934393 | 38722.801991740074 | +0.6143% |
+| `silkbindDeluge/dummy-1-min-wts`                         | 35965.542258448586 |  36186.63847937145 | +0.6147% |
+| `silkbindWing/wings-dummy-1-min-dawnsun`                 | 36219.849963928216 |  36423.74732400038 | +0.5629% |
+| `silkbindWing/wings-dummy-1-min-jadebreaker`             |  49326.60872559312 | 49600.968893796395 | +0.5562% |
+| `stonesplitMight/dummy-1-min`                            |  79486.75718449506 |   80140.3390419006 | +0.8223% |
+| `stonesplitStrength/mixed-dummy-1-min-double-stab`       |  66653.62193112556 |  67017.06987142487 | +0.5453% |
+| `stonesplitStrength/mixed-dummy-1-min`                   |  67395.58756016383 |  67762.68828283051 | +0.5447% |
+| `stonesplitStrength/mixed-dummy-infinite-vitality-1-min` |   67759.9259617702 |  68130.15507253766 | +0.5464% |
+| `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67943.77984410097 |  68316.11098675086 | +0.5480% |
+| `stonesplitStrength/pure-dummy-1-min-infinite-vitality`  | 64908.049594465505 |  65445.18119214224 | +0.8275% |
+| `stonesplitStrength/pure-dummy-1-min`                    |  62120.66959661327 |  62468.47502452412 | +0.5599% |

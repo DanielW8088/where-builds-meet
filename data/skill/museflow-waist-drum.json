@@ -1,6 +1,6 @@
 {
   "CraneWings": {
-    "name": "鸞鶴舞翅",
+    "name": "Plumage Sweep",
     "shortName": "Drum Q1",
     "castTime": 1,
     "action": [
@@ -71,7 +71,7 @@
     "skillBreakdownCategory": "Rhythm of Accord"
   },
   "RibbonHeavy1": {
-    "name": "舞綾鼓·重擊1",
+    "name": "Waist Drum: Heavy Attack 1",
     "shortName": "Drum Heavy 1",
     "castTime": 0.6941666666666667,
     "action": [
@@ -81,10 +81,10 @@
     "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "Heavy", "RibbonHeavy1", "SubAction", "RibbonAndDrum"],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "skillBreakdownCategory": "舞綾鼓·重擊"
+    "skillBreakdownCategory": "Waist Drum: Heavy Attack"
   },
   "RibbonHeavy2": {
-    "name": "舞綾鼓·重擊2",
+    "name": "Waist Drum: Heavy Attack 2",
     "shortName": "Drum Heavy 2",
     "castTime": 0.4615384615384615,
     "action": [
@@ -101,10 +101,10 @@
     "tags": ["DirectDamage", "MartialArts", "MuseflowWaistDrum", "Heavy", "RibbonHeavy2", "SubAction", "RibbonAndDrum"],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "skillBreakdownCategory": "舞綾鼓·重擊"
+    "skillBreakdownCategory": "Waist Drum: Heavy Attack"
   },
   "RibbonHeavy3": {
-    "name": "舞綾鼓·重擊3",
+    "name": "Waist Drum: Heavy Attack 3",
     "shortName": "Drum Heavy 3",
     "castTime": 0.8333333333333334,
     "action": [
@@ -130,7 +130,7 @@
     ],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "skillBreakdownCategory": "舞綾鼓·重擊"
+    "skillBreakdownCategory": "Waist Drum: Heavy Attack"
   },
   "RippleJadebreaker": {
     "name": "Ripple: Jadebreaker",
@@ -434,7 +434,7 @@
     "skillBreakdownCategory": "Ripple: Jadebreaker"
   },
   "RibbonLightCharged": {
-    "name": "羅袖動香",
+    "name": "Sleeve Dance",
     "shortName": "Drum Light Charged",
     "castTime": 2.033,
     "action": [
@@ -502,7 +502,7 @@
     "weapon": "RibbonAndDrum"
   },
   "RibbonHeavy3PreVC": {
-    "name": "舞綾鼓·重擊3·派生前置",
+    "name": "Waist Drum: Heavy Attack 3 · Follow-up Setup",
     "shortName": "Drum Heavy 3 Pre-VC",
     "castTime": 0.5833333333333334,
     "action": [
@@ -528,10 +528,10 @@
     ],
     "martialArt": "museflowWaistDrum",
     "weapon": "RibbonAndDrum",
-    "skillBreakdownCategory": "舞綾鼓·重擊"
+    "skillBreakdownCategory": "Waist Drum: Heavy Attack"
   },
   "RibbonLightChargedVC": {
-    "name": "羅袖動香 → Rhythm of Accord",
+    "name": "Sleeve Dance → Rhythm of Accord",
     "shortName": "Drum Light Charged → VC",
     "ignorePing": true,
     "castTime": 0,
@@ -543,7 +543,7 @@
     "subAction": [{ "value": "RibbonLightCharged" }, { "value": "RhythmOfAccord" }]
   },
   "RibbonHeavyComboVC": {
-    "name": "舞綾鼓·重擊123 → Rhythm of Accord",
+    "name": "Waist Drum: Heavy Attack 1–3 → Rhythm of Accord",
     "shortName": "Drum Heavy 123 → VC",
     "ignorePing": true,
     "castTime": 0,
@@ -558,11 +558,11 @@
       { "value": "RibbonHeavy3PreVC" },
       { "value": "RhythmOfAccord" }
     ],
-    "skillBreakdownCategory": "舞綾鼓·重擊"
+    "skillBreakdownCategory": "Waist Drum: Heavy Attack"
   },
   "RippleFlourishingNotes": {
-    "name": "凌波·繁音",
-    "shortName": "Drum Special (Flourishing Notes)",
+    "name": "Ripple: Toneflux",
+    "shortName": "Drum Special (Toneflux)",
     "castTime": 0,
     "action": [
       { "type": "consumeResource", "value": "NobleWill", "amount": "all", "time": 0 },
@@ -645,7 +645,7 @@
     "cooldownGroup": "RipplingDew"
   },
   "FlourishingNotesField": {
-    "name": "凌波·繁音·音域",
+    "name": "Ripple: Toneflux · Sound Field",
     "castTime": 0,
     "ignorePing": true,
     "action": [

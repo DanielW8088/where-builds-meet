@@ -42,8 +42,8 @@
       ]
     },
     "AdaptiveSteelT3": {},
-    "AdaptiveSteelT4": { "effect": [{ "rawStat": { "bellstrikeDmgBonus": 0.03 } }] },
-    "AdaptiveSteelT5": {},
+    "AdaptiveSteelT4": {},
+    "AdaptiveSteelT5": { "effect": [{ "rawStat": { "bellstrikeDmgBonus": 0.03 } }] },
     "AdaptiveSteelT6": {}
   }
 }

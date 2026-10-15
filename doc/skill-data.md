@@ -75,7 +75,7 @@ resource units, or mode-specific behavior from a damage baseline alone.
   empty ranks contribute nothing. Solo Level and talent rank are separate.
 - Rank-14 Additional Attack uses `effect.flatAttackBonus` to scale `phyBonus`
   and `attrBonus`, scoped by the martial-art skill tag. The normal Strategic
-  Sword, Heavenwill, and Skystrike definitions also use
+  Sword, Phalanxbane Blade, Mortal Rope Dart, Heavenwill, and Skystrike definitions also use
   `effect.coefficientBonusWithoutFlatAttack` when both flat terms are zero.
   Other arts do not inherit this coefficient exception.
 - Preserve internal IDs used by saved data. Display names and translations do
@@ -1328,7 +1328,7 @@ useful DPS recommendation or the intended 38 Blood Bursts.
 ### Food choices
 
 Food has two independent categories, each with its own None option. Physical
-Attack offers Simmering Fish Slices (+120/+240 effective Physical Attack), while
+Attack offers Clay Oven Flatbread (+140/+280 effective Physical Attack), while
 Endurance offers Swallow’s Agility (巧燕). Both can be active together.
 The persisted `food` selection holds Physical Attack; `enduranceFood` holds
 Endurance. Legacy Swallow’s Agility selections migrate to Endurance with Physical
@@ -1603,3 +1603,11 @@ Frost-Clad Night T6 removes this cooldown buff on an Exhausted target, then
 checks the live buff state before granting Forgetfulness. Other targets cannot
 receive a new grant while the cooldown buff is active. An unused Forgetfulness
 expiring does not start cooldown. The CN preview uses the same rules.
+
+### Refreshed export decisions (2026-10-15)
+
+Hawkwing uses 1.8% Physical and Bellstrike Attack per tracked stack, matching normal buff 107031. Adaptive Steel unlocks its 3% Bellstrike damage stat at T5, not T4. Seasonal Edge T0 lasts ten seconds; T1 remains twelve. By explicit user decision, retain the existing T6 one/two/three-effect probabilities and unconditional Winter exclusion despite the export’s different wording. See [datamine-balance-audit.md](datamine-balance-audit.md) for other pending differences.
+
+Bursting Nine’s second volley retains its 50% strength while using the same 30% then 20% repeated-arrow decay as the first volley. Rank-14 Phalanxbane Blade and Mortal Rope Dart use the existing no-flat-attack coefficient exception at 0.725%, scoped to their own martial-art tags. Anxi Soldier variants owned by Snowparting Blade do not inherit Phalanxbane’s talent.
+
+The attack-food key `SimmeringFishSlices` is retained for saved selections and now represents Clay Oven Flatbread (缸爐燒餅). It replaces the previous food rather than adding a second option. Older benchmark notes naming Simmering Fish Slices describe their original setup.

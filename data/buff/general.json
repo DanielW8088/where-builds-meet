@@ -51,15 +51,15 @@
     "name": "Hawkwing",
     "showCoverage": true,
     "shortName": "Hawk",
-    "description": "Increases physical attack by 2% per stack.",
+    "description": "Increases Physical Attack and Bellstrike Attack by 1.8% per stack.",
     "duration": 5,
     "maxStack": 5,
     "stackEffects": [
-      [{ "effect": { "physicalAttackBonus": 0.02 } }],
-      [{ "effect": { "physicalAttackBonus": 0.04 } }],
-      [{ "effect": { "physicalAttackBonus": 0.06 } }],
-      [{ "effect": { "physicalAttackBonus": 0.08 } }],
-      [{ "effect": { "physicalAttackBonus": 0.1 } }]
+      [{ "effect": { "physicalAttackBonus": 0.018, "bellstrikeAttackBonus": 0.018 } }],
+      [{ "effect": { "physicalAttackBonus": 0.036, "bellstrikeAttackBonus": 0.036 } }],
+      [{ "effect": { "physicalAttackBonus": 0.054, "bellstrikeAttackBonus": 0.054 } }],
+      [{ "effect": { "physicalAttackBonus": 0.072, "bellstrikeAttackBonus": 0.072 } }],
+      [{ "effect": { "physicalAttackBonus": 0.09, "bellstrikeAttackBonus": 0.09 } }]
     ],
     "refresh": true
   },

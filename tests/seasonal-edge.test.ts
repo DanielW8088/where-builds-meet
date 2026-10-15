@@ -14,18 +14,18 @@ import { asEffectDefinitions } from "./helpers/shippedData"
 describe("seasonal-edge", () => {
   it("Seasonal Edge chance branches, proc window, damage, simulation, and Vitality range checks passed", async () => {
     const { calculateRotationBaseline, calculateRotationDamageSequence } = await probeLoad<
-      typeof import("../src/calculations/rotationCalculator")
+      typeof import("@/calculations/rotationCalculator")
     >("/src/calculations/rotationCalculator.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
     const { buildRotationTimeline, mergeCalculatedTimelineState } = await probeLoad<
-      typeof import("../src/calculations/rotationTimeline")
+      typeof import("@/calculations/rotationTimeline")
     >("/src/calculations/rotationTimeline.ts")
     const { seasonalEdgeEffectFor, seasonalEdgeWindows } = await probeLoad<
-      typeof import("../src/calculations/seasonalEdge")
+      typeof import("@/calculations/seasonalEdge")
     >("/src/calculations/seasonalEdge.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
-    const generalBuffs = (await import("../data/buff/general.json")).default
-    const seasonalDefinition = (await import("../data/innerway/seasonal-edge.json")).default
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
+    const generalBuffs = (await import("@gamedata/buff/general.json")).default
+    const seasonalDefinition = (await import("@gamedata/innerway/seasonal-edge.json")).default
     const closeTo = (actual: number, expected: number, message: string, tolerance = 1e-8) =>
       assertClose(actual, expected, tolerance, message)
 
@@ -116,8 +116,9 @@ describe("seasonal-edge", () => {
       assert(effect, `Seasonal Edge T${tier} must resolve an effect from its own rules.`)
       return effect
     }
+    closeTo(effectThroughTier(0).duration, 10, "T0 must retain a ten-second season window")
     const t1 = effectThroughTier(1)
-    closeTo(t1.duration, 12, "T1 must extend the shared season duration from eight to twelve seconds")
+    closeTo(t1.duration, 12, "T1 must extend the shared season duration from ten to twelve seconds")
     const t3 = effectThroughTier(3)
     closeTo(
       t3.outcomes.filter(outcome => outcome.buffs.length === 2).reduce((total, outcome) => total + outcome.weight, 0),

@@ -1,8 +1,8 @@
 {
   "None": { "name": "None", "effect": { "stat": {} } },
   "SimmeringFishSlices": {
-    "name": "Simmering Fish Slices",
-    "effect": { "effectiveStat": { "minPhys": 120, "maxPhys": 240 } },
+    "name": "Clay Oven Flatbread",
+    "effect": { "effectiveStat": { "minPhys": 140, "maxPhys": 280 } },
     "title": "Physical Attack",
     "category": "food"
   },

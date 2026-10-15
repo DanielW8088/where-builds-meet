@@ -9,6 +9,7 @@ export type HawkwingEffect = {
   durationTicks: number
   maxStack: number
   physicalAttackBonusPerStack: number
+  bellstrikeAttackBonusPerStack: number
 }
 
 type StackDistribution = Map<number, Map<number, number>>
@@ -56,22 +57,28 @@ export function hawkwingEffectFor(
       !Number.isFinite(definition.maxStack)
     )
       return undefined
-    const physicalAttackBonusPerStack = effectsForTrackedEffect(1, definition).reduce<number>((total, effect) => {
-      if (!effect || typeof effect !== "object" || Array.isArray(effect)) return total
-      const unwrapped = unwrappedEffect(effect as EditableObject)
-      return (
-        total +
-        (typeof unwrapped.physicalAttackBonus === "number" && Number.isFinite(unwrapped.physicalAttackBonus)
-          ? unwrapped.physicalAttackBonus
-          : 0)
-      )
-    }, 0)
+    const attackBonusPerStack = effectsForTrackedEffect(1, definition).reduce<{
+      physicalAttackBonus: number
+      bellstrikeAttackBonus: number
+    }>(
+      (total, effect) => {
+        if (!effect || typeof effect !== "object" || Array.isArray(effect)) return total
+        const unwrapped = unwrappedEffect(effect as EditableObject)
+        for (const field of ["physicalAttackBonus", "bellstrikeAttackBonus"] as const) {
+          const value = unwrapped[field]
+          if (typeof value === "number" && Number.isFinite(value)) total[field] += value
+        }
+        return total
+      },
+      { physicalAttackBonus: 0, bellstrikeAttackBonus: 0 },
+    )
     return {
       name: "Hawkwing",
       outcome: "affinity",
       durationTicks: outcomeBuffTick(definition.duration),
       maxStack: Math.max(1, Math.floor(definition.maxStack)),
-      physicalAttackBonusPerStack,
+      physicalAttackBonusPerStack: attackBonusPerStack.physicalAttackBonus,
+      bellstrikeAttackBonusPerStack: attackBonusPerStack.bellstrikeAttackBonus,
     }
   }
   return undefined

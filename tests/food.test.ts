@@ -10,6 +10,7 @@ import {
 } from "@/calculations/rotationCalculationBundle"
 import { calculateRotationBaseline, calculateRotationComparisons } from "@/calculations/rotationCalculator"
 import { buildRotationComparisonBundle } from "@/calculations/rotationComparisonBundle"
+import type { ResolvedStats } from "@/calculations/statEffects"
 
 import { loadDpsSnapshotFixtures } from "./helpers/dps-snapshot-fixtures"
 
@@ -42,6 +43,16 @@ async function foodSubject(enduranceFood: string, pathId: PathId = "bellstrikeSp
 }
 
 describe("food selection and Endurance", () => {
+  it("applies the replacement attack food through the shared stat pipeline", async () => {
+    const without = await foodSubject("None", "bellstrikeSplendor", "None")
+    const withFood = await foodSubject("None")
+    const foodStats = withFood.build.stats as ResolvedStats
+    const baseStats = without.build.stats as ResolvedStats
+    expect(foodStats.effectiveMinPhys - baseStats.effectiveMinPhys).toBeCloseTo(140, 8)
+    expect(foodStats.effectiveMaxPhys - baseStats.effectiveMaxPhys).toBeCloseTo(280, 8)
+    expect(withFood.build.stats.maxEndurance).toBe(without.build.stats.maxEndurance)
+  })
+
   it.each(Object.keys(typedPathDefinitions) as PathId[])("limits Endurance food availability on %s", async pathId => {
     const allowed = pathId === "bellstrikeSplendor" || pathId === "bellstrikeUmbra"
     expect(foodAvailableForPath("SwallowsAgility", pathId)).toBe(allowed)

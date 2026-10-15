@@ -20,12 +20,12 @@ type SetupEffect = EditableObject & StatEffectContainer & EffectiveStatEffectCon
 describe("hawkwing", () => {
   it("Hawkwing probability, expiry, damage, and display-metric checks passed", async () => {
     const { calculateRotationBaseline, calculateRotationComparisons, calculateRotationDamageSequence } =
-      await import("../src/calculations/rotationCalculator.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { calculateStatsWithEffects } = await import("../src/calculations/statEffects.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
-    const { ExpectedHawkwingTracker } = await import("../src/calculations/hawkwing.ts")
-    const { outcomeBuffTick } = await import("../src/calculations/outcomeTriggeredBuffs.ts")
+      await import("@/calculations/rotationCalculator.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { calculateStatsWithEffects } = await import("@/calculations/statEffects.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
+    const { ExpectedHawkwingTracker } = await import("@/calculations/hawkwing.ts")
+    const { outcomeBuffTick } = await import("@/calculations/outcomeTriggeredBuffs.ts")
     const closeTo = (actual: number | undefined, expected: number, message: string) =>
       assertClose(actual, expected, 1e-9, message)
     const stats = { ...emptyStats, minPhys: 100, maxPhys: 100, precision: 1, affinity: 0.2 }
@@ -142,6 +142,7 @@ describe("hawkwing", () => {
       durationTicks: outcomeBuffTick(5),
       maxStack: 5,
       physicalAttackBonusPerStack: 0.02,
+      bellstrikeAttackBonusPerStack: 0,
     }
     tracker.resolveAffinity(buff, outcomeBuffTick(0), 1)
     closeTo(tracker.expectedStack(buff, outcomeBuffTick(4.9999)), 1, "A stack must remain active before expiry")

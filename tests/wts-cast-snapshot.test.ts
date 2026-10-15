@@ -3,22 +3,22 @@ import assert from "node:assert/strict"
 import { describe, it } from "vitest"
 
 import { emptyAttunementStats } from "@/calculations/attunementStats"
+import type { RotationSimulationBaseline, RotationSimulationBundle } from "@/calculations/rotationCalculator.ts"
+import type { EditableObject, RotationStep } from "@/calculations/rotationTimeline.ts"
 import { weaponSetDefinitions } from "@/gear"
 
-import type { RotationSimulationBaseline, RotationSimulationBundle } from "../src/calculations/rotationCalculator.ts"
-import type { EditableObject, RotationStep } from "../src/calculations/rotationTimeline.ts"
 import { castStep, delayStep } from "./helpers/rotationSteps"
 
 // Ported from script/probe/check-wts-cast-snapshot.mjs.
 describe("wts-cast-snapshot", () => {
   it("WTS cast snapshots: exact cast state, food, buff expiry, recasting, nearby-skill isolation, Hawkwing/Etherwrath feedback, expected and sampled healing verified", async () => {
     const { calculateRotationBaseline, calculateSimulatedRotationRun, calculateRotationComparisons } =
-      await import("../src/calculations/rotationCalculator.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
-    const mystic = (await import("../data/skill/mystic.json")).default
-    const mysticBuffs = (await import("../data/buff/mystic.json")).default
-    const general = (await import("../data/buff/general.json")).default
-    const kite = (await import("../data/buff/bamboocut-kite.json")).default
+      await import("@/calculations/rotationCalculator.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
+    const mystic = (await import("@gamedata/skill/mystic.json")).default
+    const mysticBuffs = (await import("@gamedata/buff/mystic.json")).default
+    const general = (await import("@gamedata/buff/general.json")).default
+    const kite = (await import("@gamedata/buff/bamboocut-kite.json")).default
     const stats = {
       ...emptyStats,
       minPhys: 100,
@@ -179,7 +179,7 @@ describe("wts-cast-snapshot", () => {
     const hawk = setTrigger("Hawkwing")
     const ew = setTrigger("Etherwrath")
     for (const [label, setup, bonus] of [
-      ["Hawkwing", hawk, 24],
+      ["Hawkwing", hawk, 21.6],
       ["Etherwrath", ew, 25.2],
     ] as Array<[string, EditableObject, number]>) {
       const before = calculateRotationBaseline(
@@ -219,7 +219,7 @@ describe("wts-cast-snapshot", () => {
       assert(sampledHealing, "A healing action must report its healing breakdown.")
       near(
         sampledHealing.total,
-        label === "Hawkwing" ? 102 : 101.2,
+        label === "Hawkwing" ? 101.8 : 101.2,
         "Sampled healing includes the attack proc from the earlier Qi Blade",
       )
     }
@@ -246,7 +246,7 @@ describe("wts-cast-snapshot", () => {
     fractionalHawk.stats = { ...stats, directAffinity: 0.5 }
     near(
       observed(calculateRotationBaseline(fractionalHawk))[0],
-      2112,
+      2110.8,
       "Expected mode snapshots expected Hawkwing stacks",
     )
     const compareFixture = fixture([castStep("WorldToSword"), castStep("Heal"), delayStep(0.5)])

@@ -9,6 +9,7 @@ const effect: HawkwingEffect = {
   durationTicks: outcomeBuffTick(5),
   maxStack: 5,
   physicalAttackBonusPerStack: 0.02,
+  bellstrikeAttackBonusPerStack: 0,
 }
 
 describe("Hawkwing cached expiry storage", () => {

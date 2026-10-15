@@ -88,6 +88,7 @@ describe("shared tiny probability-state merging", () => {
       durationTicks: 100000,
       maxStack: 1,
       physicalAttackBonusPerStack: 0.02,
+      bellstrikeAttackBonusPerStack: 0,
     }
     const focusTracker = new ExpectedInsightfulStrikeTracker()
     const hawkwingTracker = new ExpectedHawkwingTracker()
