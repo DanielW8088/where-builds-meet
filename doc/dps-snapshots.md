@@ -290,16 +290,17 @@ RhythmOfAccord ID migrations preserve saved rotations and overrides.
 Both encounters remain 60 seconds and use the existing Fully Relayed Min fixture.
 Only the two reviewed Wings snapshots were refreshed.
 
-## Pending review: numerical balance patch and ping-independent skills
+## Accepted: numerical balance patch and ping-independent skills (2026-10-15)
 
 Scarlet Spin's parent ignores ping and its queued stages no longer request
 trigger ping. All Mystic records, including composite components and cancel
 variants, ignore ping. Both castable Deflect variants already ignored ping.
 Dragonquench - Inebriate is deferred until its skill record exists.
 
-The ordinary tests and production build pass. The following results exceed the
-4-ULP release guard and are **not accepted snapshots**. Keep the accepted
-snapshot file unchanged until the user reviews these changes.
+The user approved these results for release on 2026-10-15 after reviewing the
+numerical changes, Dust rotation repair, Deluge Intoxicated timing, and Pure
+Strength Morale Chant cooldown effect. The affected snapshots are refreshed;
+every encounter remains 60 seconds.
 
 Every affected rotation retains its 60-second combat duration. Mystic latency changes affect event timing, buff coverage, periodic damage,
 cooldown availability, and which attacks fit before Battle End. Dust additionally
@@ -313,7 +314,7 @@ dummy attack pairs; its accepted DPS remains unchanged. Deluge WTS's earlier
 Mystic inputs can now reach the second manual Umbrella Special before its own
 cooldown is ready; ordinary cooldown waiting keeps that cast valid.
 
-| Rotation                                                 |       Accepted DPS |       Proposed DPS | Accepted total damage | Proposed total damage |
+| Rotation                                                 |       Previous DPS |       Accepted DPS | Previous total damage | Accepted total damage |
 | -------------------------------------------------------- | -----------------: | -----------------: | --------------------: | --------------------: |
 | `bamboocutDust/dust-dummy-1-min`                         |  59428.59338014854 |  63328.31151211581 |    3565715.6028089123 |     3799698.690726949 |
 | `bamboocutDust/dust-dummy-1-min-100pc`                   |  59162.81970722088 | 63125.513140949406 |    3549769.1824332527 |    3787530.7884569643 |
@@ -334,4 +335,4 @@ cooldown is ready; ordinary cooldown waiting keeps that cast valid.
 | `stonesplitStrength/pure-dummy-1-min`                    |  62302.13462491019 |  62120.66959661327 |    3738128.0774946115 |     3727240.175796796 |
 | `stonesplitStrength/pure-dummy-1-min-infinite-vitality`  | 64326.782954570765 | 64908.049594465505 |    3859606.9772742465 |      3894482.97566793 |
 
-Deluge Smolder waits 0.35s before its third Dragon’s Breath so Intoxicated expires before the cast. This avoids the subsequent Poet drink, restoring total Vitality consumption from 390 to 380 and raising DPS from 36123.50704105259 to 36654.94652217669. Its accepted snapshot remains unchanged pending review.
+Deluge Smolder waits 0.35s before its third Dragon’s Breath so Intoxicated expires before the cast. This avoids the subsequent Poet drink, restoring total Vitality consumption from 390 to 380 and raising DPS from 36123.50704105259 to 36654.94652217669. This corrected result is accepted for release.
