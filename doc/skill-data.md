@@ -512,6 +512,12 @@ and 7.5 becomes 7.92. The full Dragon's Breath casts retain 23 Smolder or
 22 Combustion ticks. Expected battle-aligned DOTs use the authored effective
 interval for their shared clock too.
 
+The Deluge Smolder preset waits 0.35s before its third Dragon's Breath.
+At its authored 40ms ping, this moves the cast past the original Intoxicated
+expiry so Dragon's Breath grants a fresh buff rather than leaving one that
+expires mid-cast. The following Drunken Poet therefore skips its drink and
+avoids an extra 10 Vitality cost (7 after Turnaround's refund).
+
 Consuming/removing the last stack cancels future periodic actions. A DOT deals
 one copy per active tick, independent of stack count, and ignores flat bonuses.
 Use ordinary expiry actions for delayed non-DOT attacks. Future ticks inherit

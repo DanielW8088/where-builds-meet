@@ -221,7 +221,7 @@ total damage is DPS multiplied by 60. Exact DPS values follow.
 | `bellstrikeSplendor/dummy-1-min-81-waves`                |  65349.68233467729 |  65623.09394740312 | 3920980.940080637  | 3937385.636844187  |
 | `bellstrikeUmbra/dummy-1-min-38-bb`                      |  79816.92602300833 |  79820.02675353442 | 4789015.5613805    | 4789201.605212065  |
 | `silkbindDeluge/dummy-1-min-regular-fire`                | 29795.703973489002 |  29793.61498851086 | 1787742.2384093401 | 1787616.8993106517 |
-| `silkbindDeluge/dummy-1-min-smolder`                     | 36504.170596575765 |  36123.50704105259 | 2190250.235794546  | 2167410.4224631554 |
+| `silkbindDeluge/dummy-1-min-smolder`                     | 36504.170596575765 |  36654.94652217669 | 2190250.235794546  | 2199296.791330601  |
 | `silkbindDeluge/dummy-1-min-wts-team`                    |   38839.4023092996 |  38486.36615934393 | 2330364.138557976  | 2309181.9695606357 |
 | `silkbindDeluge/dummy-1-min-wts`                         | 35571.006125529166 | 35965.542258448586 | 2134260.36753175   | 2157932.5355069153 |
 | `stonesplitMight/dummy-1-min`                            |  79503.85066834385 |  79486.75718449506 |
@@ -323,7 +323,7 @@ cooldown is ready; ordinary cooldown waiting keeps that cast valid.
 | `bellstrikeSplendor/dummy-1-min-81-waves`                |  65349.68233467729 |  65623.09394740312 |     3920980.940080637 |     3937385.636844187 |
 | `bellstrikeUmbra/dummy-1-min-38-bb`                      |  79816.92602300833 |  79820.02675353442 |       4789015.5613805 |     4789201.605212065 |
 | `silkbindDeluge/dummy-1-min-regular-fire`                | 29795.703973489002 |  29793.61498851086 |    1787742.2384093401 |    1787616.8993106517 |
-| `silkbindDeluge/dummy-1-min-smolder`                     | 36504.170596575765 |  36123.50704105259 |     2190250.235794546 |    2167410.4224631554 |
+| `silkbindDeluge/dummy-1-min-smolder`                     | 36504.170596575765 |  36654.94652217669 |     2190250.235794546 |     2199296.791330601 |
 | `silkbindDeluge/dummy-1-min-wts`                         | 35571.006125529166 | 35965.542258448586 |      2134260.36753175 |    2157932.5355069153 |
 | `silkbindDeluge/dummy-1-min-wts-team`                    |   38839.4023092996 |  38486.36615934393 |     2330364.138557976 |    2309181.9695606357 |
 | `silkbindWing/wings-dummy-1-min-dawnsun`                 |  36207.09043887357 | 36219.849963928216 |     2172425.426332414 |     2173190.997835693 |
@@ -333,3 +333,5 @@ cooldown is ready; ordinary cooldown waiting keeps that cast valid.
 | `stonesplitStrength/mixed-dummy-smolder-poet-1-min`      |  67656.17965543146 |  67943.77984410097 |     4059370.779325888 |    4076626.7906460576 |
 | `stonesplitStrength/pure-dummy-1-min`                    |  62302.13462491019 |  62120.66959661327 |    3738128.0774946115 |     3727240.175796796 |
 | `stonesplitStrength/pure-dummy-1-min-infinite-vitality`  | 64326.782954570765 | 64908.049594465505 |    3859606.9772742465 |      3894482.97566793 |
+
+Deluge Smolder waits 0.35s before its third Dragon’s Breath so Intoxicated expires before the cast. This avoids the subsequent Poet drink, restoring total Vitality consumption from 390 to 380 and raising DPS from 36123.50704105259 to 36654.94652217669. Its accepted snapshot remains unchanged pending review.

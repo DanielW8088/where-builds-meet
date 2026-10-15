@@ -33,6 +33,7 @@
     { "type": "skill", "skill": "Deflect" },
     { "type": "skill", "skill": "SereneBreeze" },
     { "type": "skill", "skill": "FloatingGrace" },
+    { "type": "event", "event": "Delay", "duration": 0.35 },
     { "type": "skill", "skill": "DragonsBreathSmolder2" },
     { "type": "skill", "skill": "DrunkenPoet5HitsCancel" },
     { "type": "skill", "skill": "Deflect" },
