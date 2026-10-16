@@ -8,6 +8,7 @@ import { martialArtDefinitions } from "@/application/gameData/martialArts"
 import { typedPathDefinitions } from "@/application/gameData/paths"
 import type { PathDefinition } from "@/application/gameData/paths"
 import { emptyAttunementStats } from "@/calculations/attunementStats"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 import { weaponSetDefinitions } from "@/gear"
 import { defaultGlobalDebuffs } from "@/globalDebuffs"
 const buffs = asEffectDefinitions(buffsJson)
@@ -562,7 +563,9 @@ describe("Dust mechanics", () => {
         TakeDamage: { name: "Take Damage", castTime: 0, action: [{ type: "takeDamage", time: 0 }] },
       }
       const effect = weaponSetDefinitions.Starweave.options[tier].effect
-      const setupEffects = Array.isArray(effect) ? effect : [effect]
+      const setupEffects = (Array.isArray(effect) ? effect : [effect]).map(entry =>
+        effectForSoloLevel(entry, 17, "Starweave"),
+      )
       input.timeline.setupEffects = setupEffects
       input.timeline.innerWayConditions = setupEffects.flatMap(entry =>
         typeof entry.condition === "string" ? [entry.condition] : [],
@@ -613,7 +616,9 @@ describe("Dust mechanics", () => {
         },
       }
       const effect = weaponSetDefinitions.Starweave.options[tier].effect
-      const setupEffects = Array.isArray(effect) ? effect : [effect]
+      const setupEffects = (Array.isArray(effect) ? effect : [effect]).map(entry =>
+        effectForSoloLevel(entry, 17, "Starweave"),
+      )
       input.timeline.setupEffects = setupEffects
       input.timeline.innerWayConditions = setupEffects.flatMap(entry =>
         typeof entry.condition === "string" ? [entry.condition] : [],
@@ -637,7 +642,9 @@ describe("Dust mechanics", () => {
       )
       const measure = (tier: string) => {
         const effect = weaponSetDefinitions.Starweave.options[tier].effect
-        const setupEffects = Array.isArray(effect) ? effect : [effect]
+        const setupEffects = (Array.isArray(effect) ? effect : [effect]).map(entry =>
+          effectForSoloLevel(entry, 17, "Starweave"),
+        )
         input.timeline.setupEffects = [
           ...martialArtEffectsForRank({ everspring: martialArtDefinitions.everspring }, ["everspring"], 13),
           ...setupEffects,

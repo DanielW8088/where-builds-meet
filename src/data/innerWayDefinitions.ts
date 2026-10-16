@@ -59,6 +59,8 @@ import windBeneathWings from "@gamedata/innerway/wind-beneath-wings.json"
 import wolfchasersArt from "@gamedata/innerway/wolfchasers-art.json"
 import zephyrWhispers from "@gamedata/innerway/zephyr-whispers.json"
 
+import { effectForSoloLevel } from "./soloLevelEffects"
+
 /**
  * A tier's authored effect, as the data files carry it. The rule that applies it
  * supplies `source` and `tier` around this, which is what `InnerWayEffectRule`
@@ -163,26 +165,7 @@ export function innerWayDefinitionForSoloLevel(definition: InnerWayDefinition, s
       if (!tier.effect) return [id, tier]
       return [
         id,
-        {
-          ...tier,
-          effect: tier.effect.map(item => {
-            const rawStat = item.rawStat as Record<string, number | { bySoloLevel: (number | null)[] }> | undefined
-            if (!rawStat) return item
-            return Object.assign({}, item, {
-              rawStat: Object.fromEntries(
-                Object.entries(rawStat).map(([stat, amount]) => {
-                  if (typeof amount === "number") return [stat, amount]
-                  const selected = amount.bySoloLevel[soloLevel]
-                  if (selected === undefined)
-                    throw new RangeError(
-                      definition.name + " " + id + " " + stat + " has no value for Solo Level " + soloLevel,
-                    )
-                  return [stat, selected ?? 0]
-                }),
-              ),
-            })
-          }),
-        },
+        { ...tier, effect: tier.effect.map(item => effectForSoloLevel(item, soloLevel, definition.name + " " + id)) },
       ]
     }),
   )

@@ -2,19 +2,22 @@ import { assert, describe, it } from "vitest"
 
 import { emptyAttunementStats } from "@/calculations/attunementStats"
 import type { EditableObject, RotationRecord } from "@/calculations/rotationTimeline"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 
 import { asEffectDefinitions } from "./helpers/shippedData"
 
 // Ported from script/probe/check-rain-whisper.mjs.
 describe("rain-whisper", () => {
   it("Rain Whisper Shield-dependent Critical DMG check passed", async () => {
-    const weaponSets = (await import("../data/gear-set.json")).default
-    const generalBuffs = (await import("../data/buff/general.json")).default
-    const { calculateRotationBaseline } = await import("../src/calculations/rotationCalculator.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const weaponSets = (await import("@gamedata/gear-set.json")).default
+    const generalBuffs = (await import("@gamedata/buff/general.json")).default
+    const { calculateRotationBaseline } = await import("@/calculations/rotationCalculator.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
 
-    const rainWhisperEffects = weaponSets.RainWhisper.options["4"].effect
+    const rainWhisperEffects = weaponSets.RainWhisper.options["4"].effect.map(effect =>
+      effectForSoloLevel(effect, 17, "Rain Whisper"),
+    )
 
     const stats = { ...emptyStats, minPhys: 1000, maxPhys: 1000, precision: 1, crit: 1 }
     const enemy = {

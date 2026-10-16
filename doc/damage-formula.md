@@ -1171,3 +1171,8 @@ the rotation response does not prepare dedicated coefficients for these bonuses.
 Qi Imbalance grants 10% global HP damage and 10% Bellstrike damage during Exhausted. Towline Sweep T6 settles Soulbreak at 12% of recorded final damage (other tiers retain 5%). Bursting Nine uses 100%, 30%, and seven 20% arrows per volley, totaling 270% of its first-arrow base damage. Both volleys use this distribution. Falcon’s Pursuit base Physical and Attribute coefficients and flat damage increase by 12% for Celestial Mandate, Light Attack Falcon, Snaring Lash Falcon, and the conditional Falcon hit of Sky Grasped; their parent ordinary hits and event clocks are unchanged.
 
 Unspecified coefficients and timings remain unchanged. Mystic gear merging, Ivorybloom, and calculated Qi damage are outside this numerical update. Drunken Poet’s Tier V refund remains pending explicit Mystic-tier eligibility; the current skills have no tier selector.
+
+Set base-stat bonuses resolve from the selected breakthrough's equipment tier
+before stat aggregation. Breakthrough 18 uses tier-100 weapon, armor, and
+bow/ring bonuses for both two-piece and four-piece selections; four-piece
+combat mechanics retain their authored behavior.

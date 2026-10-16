@@ -9,6 +9,7 @@ import {
   calculateRotationDamageSequence,
   type RotationSimulationBundle,
 } from "@/calculations/rotationCalculator"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 import { emptyStats } from "@/data/statDefinitions"
 
 import { asEffectDefinitions } from "./helpers/shippedData"
@@ -41,7 +42,7 @@ it("applies shipped Hawkwing stacks to Physical and Bellstrike damage in expecte
         },
       },
       effectDefinitions: asEffectDefinitions(buffs),
-      setupEffects: [sets.Hawkwing.options["4"].effect],
+      setupEffects: [effectForSoloLevel(sets.Hawkwing.options["4"].effect, 17, "Hawkwing")],
       eventDefinitions: {},
       dots: {},
       innerWayRules: [],

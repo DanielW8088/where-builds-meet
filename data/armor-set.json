@@ -12,8 +12,67 @@
     ],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "condition": "FormBend4", "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "condition": "FormBend4",
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Moonflare": {
@@ -22,8 +81,66 @@
     "tags": ["SilkbindDeluge", "PanaceaFan", "SoulshadeUmbrella"],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "maxHp": 2960 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "maxHp": 2960 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Calmwaters": {
@@ -32,8 +149,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Eaglerise": {
@@ -42,8 +217,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "RippleStep": {
@@ -52,8 +285,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "maxHp": 2960 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "maxHp": 2960 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "FlawlessGuardian": {
@@ -62,8 +353,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "BeyondtheChill": {
@@ -72,8 +421,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "maxHp": 2960 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "maxHp": 2960 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Whirlsnow": {
@@ -82,8 +489,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Jadeclasp": {
@@ -92,8 +557,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "maxHp": 2960 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "maxHp": 2960 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "maxHp": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                2960,
+                3440
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Ebonward": {
@@ -102,8 +625,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Honorbound": {
@@ -112,8 +693,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Brimflow": {
@@ -122,8 +761,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "physicalDefense": 39 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "physicalDefense": 39 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "physicalDefense": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                39,
+                45.4
+              ]
+            }
+          }
+        }
+      }
     }
   }
 }

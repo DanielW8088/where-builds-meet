@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import type { RotationRecord, SkillRecord, TimelineBuildInput } from "@/calculations/rotationTimeline"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 
 import { withImmediateAttacks } from "./helpers/attack-response-fixtures"
 import { asEffectDefinitions, asSkillRecords } from "./helpers/shippedData"
@@ -9,11 +10,11 @@ import { actionStateAt, rowCasting } from "./helpers/timelineRows"
 // Ported from script/probe/check-etherwrath.mjs.
 describe("etherwrath", () => {
   it("Etherwrath Direct Damage stacks, DOT/non-direct exclusion, and dodge checks passed", async () => {
-    const weaponSets = (await import("../data/gear-set.json")).default
-    const kiteBuffs = (await import("../data/buff/bamboocut-kite.json")).default
-    const generalSkills = (await import("../data/skill/general.json")).default
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { normalizeBuildSetup, normalizeBuildSetupOverrides } = await import("../src/gear.ts")
+    const weaponSets = (await import("@gamedata/gear-set.json")).default
+    const kiteBuffs = (await import("@gamedata/buff/bamboocut-kite.json")).default
+    const generalSkills = (await import("@gamedata/skill/general.json")).default
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { normalizeBuildSetup, normalizeBuildSetupOverrides } = await import("@/gear.ts")
 
     const fourPiece = weaponSets.Etherwrath.options["4"].effect
     const sparseSetup = normalizeBuildSetup({ weaponSets: { Etherwrath: 4 } })
@@ -58,7 +59,7 @@ describe("etherwrath", () => {
       effectDefinitions: kiteBuffs,
       innerWayConditions: ["Etherwrath4P"],
       innerWayRules: [],
-      setupEffects: [fourPiece],
+      setupEffects: [effectForSoloLevel(fourPiece, 17, "Etherwrath")],
       weapons: ["heavenwill", "skygrasp"],
     })
     const stackingTimeline = buildRotationTimeline(
@@ -87,7 +88,7 @@ describe("etherwrath", () => {
       "Perfect Dodge must apply five Etherwrath stacks directly.",
     ).toBeTruthy()
 
-    const dots = (await import("../data/dot/innerway.json")).default
+    const dots = (await import("@gamedata/dot/innerway.json")).default
     const directAndDot = {
       name: "Direct hit and bleed",
       castTime: 0,

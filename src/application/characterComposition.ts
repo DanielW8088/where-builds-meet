@@ -7,6 +7,7 @@ import {
 } from "@/calculations/statEffects"
 import { innerWayAvailableForTag, innerWayDefinitionForSoloLevel } from "@/data/innerWayDefinitions"
 import { martialArtEffectsForRank } from "@/data/martialArtTalents"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 import { emptyStats } from "@/data/statDefinitions"
 import {
   attunementData,
@@ -211,7 +212,7 @@ export function selectedSetupEffects(
     breakthroughProfile(settings).levelBonusStats,
     ...selectedMartialArtEffects(settings, definitions),
     arsenalEffectFor(selectedBuildSetup.arsenal),
-    bowRingSetEffectFor(selectedBuildSetup.bowRingSet),
+    bowRingSetEffectFor(selectedBuildSetup.bowRingSet, settings),
     ...setEffectsFor(selectedBuildSetup.weaponSets, typedWeaponSetDefinitions, settings, pathId),
     ...setEffectsFor(selectedBuildSetup.armorSets, typedArmorSetDefinitions, settings, pathId),
     ...foodEffects,
@@ -318,7 +319,9 @@ export function setEffectsFor(
     .filter(([setName]) => definitions[setName] && setAvailableForSettings(definitions[setName], settings, pathId))
     .flatMap(([setName, tier]) => {
       const effect = definitions[setName]?.options[String(tier)]?.effect
-      return Array.isArray(effect) ? effect : [effect ?? {}]
+      return (Array.isArray(effect) ? effect : [effect ?? {}]).map(value =>
+        effectForSoloLevel(value, breakthroughProfile(settings).soloLevel, setName),
+      )
     })
 }
 

@@ -5,6 +5,7 @@ import { emptyAttunementStats } from "@/calculations/attunementStats"
 import { calculateRotationBaseline, type RotationSimulationBundle } from "@/calculations/rotationCalculator"
 import type { EditableObject, RotationStep } from "@/calculations/rotationTimeline"
 import { calculateStatsWithEffects } from "@/calculations/statEffects"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 import { emptyStats } from "@/data/statDefinitions"
 import { weaponSetDefinitions } from "@/gear"
 
@@ -17,7 +18,9 @@ function bundle(
   ],
 ): RotationSimulationBundle {
   const setup = weaponSetDefinitions.Jadeware.options[pieces].effect
-  const setupEffects = Array.isArray(setup) ? setup : [setup]
+  const setupEffects = (Array.isArray(setup) ? setup : [setup]).map(effect =>
+    effectForSoloLevel(effect, 17, "Jadeware"),
+  )
   const stats = calculateStatsWithEffects(
     { ...emptyStats, minPhys: 100, maxPhys: 200, precision: 1, affinity: 0.2, affinityDmgBonus: 0.4 },
     setupEffects,

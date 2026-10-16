@@ -1,6 +1,93 @@
 {
   "None": { "name": "None", "effect": { "rawStat": {} } },
-  "Precision": { "name": "Precision", "effect": { "rawStat": { "precision": 0.04 } } },
-  "Critical": { "name": "Critical", "effect": { "rawStat": { "crit": 0.045 } } },
-  "Affinity": { "name": "Affinity", "effect": { "rawStat": { "affinity": 0.022 } } }
+  "Precision": {
+    "name": "Precision",
+    "effect": {
+      "rawStat": {
+        "precision": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.04,
+            0.047
+          ]
+        }
+      }
+    }
+  },
+  "Critical": {
+    "name": "Critical",
+    "effect": {
+      "rawStat": {
+        "crit": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.045,
+            0.052
+          ]
+        }
+      }
+    }
+  },
+  "Affinity": {
+    "name": "Affinity",
+    "effect": {
+      "rawStat": {
+        "affinity": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.022,
+            0.026
+          ]
+        }
+      }
+    }
+  }
 }

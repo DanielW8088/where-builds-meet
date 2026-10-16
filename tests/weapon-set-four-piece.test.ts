@@ -5,6 +5,7 @@ import { describe, it } from "vitest"
 import { emptyAttunementStats } from "@/calculations/attunementStats"
 import type { RotationSimulationBaseline, RotationSimulationBundle } from "@/calculations/rotationCalculator"
 import type { EffectDefinition, EditableObject, RotationStep, SkillRecord } from "@/calculations/rotationTimeline"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 import { weaponSetDefinitions } from "@/gear"
 import type { CharacterStats, WeaponId } from "@/types"
 
@@ -22,18 +23,18 @@ describe("weapon-set-four-piece", () => {
     const generalBuffs = await load<Record<string, EffectDefinition>>("/data/buff/general.json")
     const strengthBuffs = await load<Record<string, EffectDefinition>>("/data/buff/stonesplit-strength.json")
     const { calculateRotationBaseline, calculateSimulatedRotationRun } = await probeLoad<
-      typeof import("../src/calculations/rotationCalculator")
+      typeof import("@/calculations/rotationCalculator")
     >("/src/calculations/rotationCalculator.ts")
-    const { buildRotationTimeline } = await probeLoad<typeof import("../src/calculations/rotationTimeline")>(
+    const { buildRotationTimeline } = await probeLoad<typeof import("@/calculations/rotationTimeline")>(
       "/src/calculations/rotationTimeline.ts",
     )
-    const { calculateStatsWithEffects } = await probeLoad<typeof import("../src/calculations/statEffects")>(
+    const { calculateStatsWithEffects } = await probeLoad<typeof import("@/calculations/statEffects")>(
       "/src/calculations/statEffects.ts",
     )
-    const { calculateDerivedStats } = await probeLoad<typeof import("../src/calculations/effectiveStats")>(
+    const { calculateDerivedStats } = await probeLoad<typeof import("@/calculations/effectiveStats")>(
       "/src/calculations/effectiveStats.ts",
     )
-    const { emptyStats } = await probeLoad<typeof import("../src/data/statDefinitions")>("/src/data/statDefinitions.ts")
+    const { emptyStats } = await probeLoad<typeof import("@/data/statDefinitions")>("/src/data/statDefinitions.ts")
     const weapons: WeaponId[] = ["infernalTwinblades", "mortalRopeDart"]
     const baseStats = {
       ...emptyStats,
@@ -66,7 +67,7 @@ describe("weapon-set-four-piece", () => {
     }
     const effectsFor = (name: string, tier: number) => {
       const value = sets[name].options[tier].effect
-      return Array.isArray(value) ? value : [value]
+      return (Array.isArray(value) ? value : [value]).map(effect => effectForSoloLevel(effect, 17, name))
     }
     const bundle = (
       name: string,

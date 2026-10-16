@@ -12,11 +12,64 @@
     ],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": {
-          "stat": { "minPhys": 77.8 },
+          "stat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          },
           "trigger": {
             "event": "damage",
             "action": { "type": "apply", "target": "self", "value": "Cleftpeak", "stack": 1, "reapply": true }
@@ -45,11 +98,66 @@
     ],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
-      "2": { "name": "2", "effect": { "rawStat": { "precision": 0.08 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "precision": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0.08,
+                0.093
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": [
-          { "stat": { "precision": 0.08 } },
+          {
+            "stat": {
+              "precision": {
+                "bySoloLevel": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  0.08,
+                  0.093
+                ]
+              }
+            }
+          },
           { "requirement": [], "effect": { "critDmgBonus": 0.1, "criticalHealingBonus": 0.1 } },
           {
             "requirement": [{ "target": "self", "value": "Shield" }],
@@ -65,11 +173,66 @@
     "tags": ["SilkbindDeluge", "PanaceaFan", "SoulshadeUmbrella"],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
-      "2": { "name": "2", "effect": { "rawStat": { "crit": 0.09 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "crit": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0.09,
+                0.104
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": [
-          { "stat": { "crit": 0.09 } },
+          {
+            "stat": {
+              "crit": {
+                "bySoloLevel": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  0.09,
+                  0.104
+                ]
+              }
+            }
+          },
           {
             "requirement": [{ "target": "selfHPPercentage", "comparison": ">=", "amount": 100 }],
             "effect": {
@@ -101,11 +264,64 @@
     ],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
-      "2": { "name": "2", "effect": { "rawStat": { "affinity": 0.045 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "affinity": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0.045,
+                0.052
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": {
-          "stat": { "affinity": 0.045 },
+          "stat": {
+            "affinity": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0.045,
+                0.052
+              ]
+            }
+          },
           "trigger": {
             "event": "damageOutcome",
             "outcome": "affinity",
@@ -140,12 +356,65 @@
     ],
     "options": {
       "0": { "name": "0", "effect": { "stat": {} } },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": {
           "condition": "Etherwrath4P",
-          "stat": { "minPhys": 77.8 },
+          "stat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          },
           "trigger": {
             "event": "damage",
             "requirement": [{ "target": "skillTag", "value": "DirectDamage" }],
@@ -168,11 +437,64 @@
     ],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "maxPhys": 77.8 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "maxPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": {
-          "rawStat": { "maxPhys": 77.8 },
+          "rawStat": {
+            "maxPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          },
           "trigger": {
             "event": "skillStart",
             "requirement": [{ "target": "skillTag", "value": "MartialArt" }],
@@ -189,8 +511,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "maxPhys": 77.8 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "maxPhys": 77.8 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "maxPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "maxPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "SwayingHeights": {
@@ -199,11 +579,66 @@
     "tags": [],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": [
-          { "rawStat": { "minPhys": 77.8 } },
+          {
+            "rawStat": {
+              "minPhys": {
+                "bySoloLevel": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  77.8,
+                  90.6
+                ]
+              }
+            }
+          },
           {
             "requirement": [{ "target": "targetHPPercentage", "comparison": ">", "amount": 50 }],
             "effect": { "hpDMGBonus": 0.05 }
@@ -238,11 +673,66 @@
     "tags": ["BamboocutWind", "InfernalTwinblades", "MortalRopeDart"],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": [
-          { "rawStat": { "minPhys": 77.8 } },
+          {
+            "rawStat": {
+              "minPhys": {
+                "bySoloLevel": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  77.8,
+                  90.6
+                ]
+              }
+            }
+          },
           {
             "requirement": [
               {
@@ -285,8 +775,66 @@
     "tags": ["SilkbindJade", "VernalUmbrella", "InkwellFan"],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "precision": 0.08 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "precision": 0.08 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "precision": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0.08,
+                0.093
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "precision": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0.08,
+                0.093
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Starweave": {
@@ -295,11 +843,67 @@
     "tags": ["BamboocutDust", "EverspringUmbrella", "UnfetteredRopeDart"],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
       "4": {
         "name": "4",
         "effect": [
-          { "rawStat": { "minPhys": 77.8 }, "condition": "Starweave4P" },
+          {
+            "rawStat": {
+              "minPhys": {
+                "bySoloLevel": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  77.8,
+                  90.6
+                ]
+              }
+            },
+            "condition": "Starweave4P"
+          },
           {
             "condition": "Starweave4P",
             "trigger": {
@@ -325,8 +929,66 @@
     "tags": ["BamboocutDraught", "SkystrikeGauntlets", "RivenTwinblades"],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "minPhys": 77.8 } } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "Cloudshear": {
@@ -335,8 +997,67 @@
     "tags": ["SilkbindWing", "MuseflowWaistDrum", "WillowbendFan"],
     "options": {
       "0": { "name": "0", "effect": {} },
-      "2": { "name": "2", "effect": { "rawStat": { "minPhys": 77.8 } } },
-      "4": { "name": "4", "effect": { "rawStat": { "minPhys": 77.8 }, "condition": "Cloudshear4P" } }
+      "2": {
+        "name": "2",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          }
+        }
+      },
+      "4": {
+        "name": "4",
+        "effect": {
+          "rawStat": {
+            "minPhys": {
+              "bySoloLevel": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                77.8,
+                90.6
+              ]
+            }
+          },
+          "condition": "Cloudshear4P"
+        }
+      }
     }
   }
 }

@@ -1,18 +1,19 @@
+import windBuffsJson from "@gamedata/buff/bamboocut-wind.json"
 import { describe, expect, it } from "vitest"
 
 import { emptyAttunementStats } from "@/calculations/attunementStats"
-
-import windBuffsJson from "../data/buff/bamboocut-wind.json"
+import { effectForSoloLevel } from "@/data/soloLevelEffects"
 const windBuffs = asEffectDefinitions(windBuffsJson)
-import sets from "../data/gear-set.json"
-import infernalJson from "../data/skill/infernal-twinblades.json"
+import sets from "@gamedata/gear-set.json"
+import infernalJson from "@gamedata/skill/infernal-twinblades.json"
 const infernal = asSkillRecords(infernalJson)
-import mortalJson from "../data/skill/mortal-rope-dart.json"
+import mortalJson from "@gamedata/skill/mortal-rope-dart.json"
 const mortal = asSkillRecords(mortalJson)
 
-import { calculateRotationBaseline, type RotationSimulationBundle } from "../src/calculations/rotationCalculator"
-import type { RotationStep } from "../src/calculations/rotationTimeline"
-import { emptyStats } from "../src/data/statDefinitions"
+import { calculateRotationBaseline, type RotationSimulationBundle } from "@/calculations/rotationCalculator"
+import type { RotationStep } from "@/calculations/rotationTimeline"
+import { emptyStats } from "@/data/statDefinitions"
+
 import { asEffectDefinitions, asSkillRecords } from "./helpers/shippedData"
 
 const cast = (skill: string): RotationStep => ({ type: "skill", skill })
@@ -88,7 +89,9 @@ describe("judgment-bypassing critical bonuses", () => {
     for (const missingHP of [0, 1]) {
       const input = bundle(judgement)
       input.weapons = input.timeline.weapons = ["panaceaFan", "soulshadeUmbrella"]
-      input.timeline.setupEffects = sets.Ivorybloom.options["4"].effect
+      input.timeline.setupEffects = sets.Ivorybloom.options["4"].effect.map(effect =>
+        effectForSoloLevel(effect, 17, "Ivorybloom"),
+      )
       input.timeline.skills.Observe = {
         castTime: 1,
         action: [

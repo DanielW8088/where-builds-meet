@@ -1,7 +1,7 @@
 # Weapon-set four-piece audit
 
-Source: `local/datamine/wwm-item-sets-weapon.json`. Two-piece bonuses remain
-at the exact level-96 values. This pass adds only effects expressible through
+Source: `local/datamine/wwm-item-sets-weapon.json`. Two-piece bonuses resolve from the selected breakthrough equipment tier; their baseline remains
+at the exact level-96 values, with tier-100 values selected through the shared `bySoloLevel` tables. This pass adds only effects expressible through
 existing setup rules, tracked buffs, skill actions, and damage/healing calculations.
 It does not assign additional path eligibility or introduce runtime mechanisms.
 

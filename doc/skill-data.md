@@ -64,10 +64,11 @@ resource units, or mode-specific behavior from a damage baseline alone.
   Derive physical coefficient, attribute coefficient,
   and flat physical bonus independently. Preserve source precision, retaining
   derived values to 12 decimal places rather than tooltip rounding.
-- Runtime Inner Way `bySoloLevel` arrays use **the actual Solo Level**; slot 0
+- Runtime Inner Way and set-bonus `bySoloLevel` arrays use **the actual Solo Level**; slot 0
   is unused. Prepend that slot when importing source arrays. Null means no
   bonus, with no interpolation or talent-rank fallback. Resolve through
-  `innerWayDefinitionForSoloLevel` without mutating the catalog.
+  the shared `effectForSoloLevel` resolver (through
+  `innerWayDefinitionForSoloLevel` for Inner Ways) without mutating the catalog.
 - Find a martial-art source rank by `talents.ranks[].unlockLevel`, not array
   position or world level. Its `talentIds` are a complete selection, not
   additions to prior ranks. Resolve them against `talents.definitions`.
@@ -1611,3 +1612,20 @@ Hawkwing uses 1.8% Physical and Bellstrike Attack per tracked stack, matching no
 Bursting Nine’s second volley retains its 50% strength while using the same 30% then 20% repeated-arrow decay as the first volley. Rank-14 Phalanxbane Blade and Mortal Rope Dart use the existing no-flat-attack coefficient exception at 0.725%, scoped to their own martial-art tags. Anxi Soldier variants owned by Snowparting Blade do not inherit Phalanxbane’s talent.
 
 The attack-food key `SimmeringFishSlices` is retained for saved selections and now represents Clay Oven Flatbread (缸爐燒餅). It replaces the previous food rather than adding a second option. Older benchmark notes naming Simmering Fish Slices describe their original setup.
+
+## Set bonus equipment tiers
+
+Weapon, armor, and bow/ring set base-stat bonuses follow the selected
+breakthrough's Solo Level: 17 selects equipment-tier 96 values and 18 selects
+equipment-tier 100 values.
+Set base-stat values use the same `bySoloLevel` tables and shared
+`effectForSoloLevel` resolver as Inner Ways. Tables use actual Solo Level
+indices 17 and 18 for the corresponding equipment-tier values. The resolver
+handles both `rawStat` and `stat` before character and worker calculations;
+four-piece triggers, conditions, and conditional damage/healing bonuses are
+preserved. Missing table entries throw rather than reusing another level.
+Values come from normal item-set two-piece curves in
+`local/datamine/wwm-item-sets.json`. Starweave and Tiltrim lack exported
+curves and use the shared minimum Physical Attack curve matching their
+existing 77.8 bonus (90.6 at tier 100); Brimflow likewise uses the shared
+Physical Defense curve (39 to 45.4).
