@@ -383,3 +383,39 @@ All five arsenals now grant 148–297 raw attack instead of 131–263. The user 
 The additional minimum attack caps Dust's martial-art damage-bonus and penetration conversions before an affix is added. Both bundled Dust rotations consequently value a maximum Bamboocut affix above a minimum affix at breakthroughs 17 and 18.
 
 The optimized-versus-live comparison test compares DPS deltas to eight decimal places, matching its existing penetration comparison. These paths regroup floating-point operations; reconstructing total damage from DPS introduced a five-ULP discrepancy after the arsenal correction. The deterministic release snapshot guard remains unchanged at four ULPs.
+
+## Accepted: Solo Level Enhancement and Arsenal progression (2026-10-17)
+
+The accepted fixtures all select breakthrough 17. Arsenal now selects 131–263
+raw attack there instead of the previously accepted fixed 148–297, matching the
+normal Solo 17 export. This reverses the attack increase accepted on October 15
+for those fixtures; Solo 18 retains 148–297. Enhancement attack and defense stay
+at 240–480 and 120 at Solo 17; its HP increases from 30,210 to 40,070. Arsenal
+also supplies its previously omitted 27,300 HP (31,700 at Solo 18). These HP
+corrections pass through the common stat pipeline and can affect HP-dependent
+mechanics. All durations remain 60 seconds. Rank-14 talents are unchanged.
+
+The user approved all twenty results on October 17, 2026. The accepted snapshots now use the corrected Solo Level progression.
+
+| Rotation                                               |       Accepted DPS |            New DPS |   Change |    Accepted damage |         New damage | Duration |
+| ------------------------------------------------------ | -----------------: | -----------------: | -------: | -----------------: | -----------------: | -------- |
+| bamboocutDust/dust-dummy-1-min                         |   64339.4070867324 | 63703.630174113605 | -0.9882% | 3860364.4252039436 | 3822217.8104468165 | 60 → 60  |
+| bamboocutDust/dust-dummy-1-min-100pc                   | 64132.747779063146 |  63499.66835014831 | -0.9871% | 3847964.8667437886 | 3809980.1010088986 | 60 → 60  |
+| bamboocutKite/dummy-1-min-infinite-vitality            | 58661.018408877804 |  58069.99291541508 | -1.0075% | 3519661.1045326684 |  3484199.574924905 | 60 → 60  |
+| bamboocutKite/dummy-1-min-iv-bp                        |  63580.78529882886 |  62952.31877288379 | -0.9885% | 3814847.1179297315 | 3777139.1263730275 | 60 → 60  |
+| bamboocutWind/wind-dummy-1-min-infinite-vitality       |  70364.27708536509 |  69642.61567669724 | -1.0256% | 4221856.6251219055 |  4178556.940601835 | 60 → 60  |
+| bellstrikeSplendor/dummy-1-min-81-waves                |  66765.03228676677 |  66123.69995113375 | -0.9606% |  4005901.937206006 | 3967421.9970680247 | 60 → 60  |
+| bellstrikeUmbra/dummy-1-min-38-bb                      |  82054.94788575095 |   81247.4031684037 | -0.9842% |  4923296.873145057 |  4874844.190104222 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-regular-fire                |  30305.53361364531 | 29972.305634679007 | -1.0996% | 1818332.0168187188 | 1798338.3380807405 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-smolder                     |  37286.60947114474 |  36873.94978161095 | -1.1067% |  2237196.568268684 |  2212436.986896657 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-wts                         |   36584.0573371089 | 36180.063544133074 | -1.1043% |  2195043.440226534 | 2170803.8126479844 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-wts-team                    |   39149.1318370525 | 38715.724661035245 | -1.1071% | 2348947.9102231497 | 2322943.4796621148 | 60 → 60  |
+| silkbindWing/wings-dummy-1-min-dawnsun                 |  36801.11222528141 |  36423.74732400038 | -1.0254% | 2208066.7335168845 |  2185424.839440023 | 60 → 60  |
+| silkbindWing/wings-dummy-1-min-jadebreaker             | 50117.644204073214 | 49600.968893796395 | -1.0309% |  3007058.652244393 | 2976058.1336277835 | 60 → 60  |
+| stonesplitMight/dummy-1-min                            |  80942.31111106317 |   80140.3390419006 | -0.9908% |   4856538.66666379 |  4808420.342514036 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-1-min                   |  68450.20165536168 |  67762.68828283051 | -1.0044% | 4107012.0993217006 |   4065761.29696983 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-1-min-double-stab       |  67697.63371836559 |  67017.06987142487 | -1.0053% | 4061858.0231019347 |  4021024.192285492 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-infinite-vitality-1-min |  68825.87877398261 |  68130.15507253766 | -1.0108% |  4129552.726438957 | 4087809.3043522593 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-smolder-poet-1-min      |   69015.3929252431 |  68316.11098675086 | -1.0132% | 4140923.5755145852 |  4098966.659205051 | 60 → 60  |
+| stonesplitStrength/pure-dummy-1-min                    |  63110.35654269702 |  62468.47502452412 | -1.0171% | 3786621.3925618213 | 3748108.5014714473 | 60 → 60  |
+| stonesplitStrength/pure-dummy-1-min-infinite-vitality  |  66124.73807374043 |  65445.18119214224 | -1.0277% |  3967484.284424426 | 3926710.8715285347 | 60 → 60  |

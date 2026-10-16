@@ -1629,3 +1629,13 @@ Values come from normal item-set two-piece curves in
 curves and use the shared minimum Physical Attack curve matching their
 existing 77.8 bonus (90.6 at tier 100); Brimflow likewise uses the shared
 Physical Defense curve (39 to 45.4).
+
+## Enhancement and Arsenal Solo Level progression
+
+`data/system.json` stores cumulative Enhancement totals as one authored effect;
+`data/arsenal.json` stores attack in each Arsenal’s channel plus its HP bonus.
+Both use the shared `bySoloLevel` tables and `effectForSoloLevel` resolver before
+the character sheet and worker bundle consume them. Values are the normal
+variant from `local/datamine/wwm-solo-levels.json`, including the exported HP
+that was missing from Arsenal and understated in the old Enhancement slot list.
+The supported Solo Levels are 17 and 18; no interpolation or fallback is used.

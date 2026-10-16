@@ -55,7 +55,7 @@ export type SystemStatsDefinition = {
   resourceSpendRegenDelay?: Record<string, number>
   resourceEvents: ResourceEventRule[]
   baseStats: SetupEffect
-  enhancementStats: Array<SetupEffect & { id: string }>
+  enhancementStats: Array<AuthoredSoloLevelEffect<SetupEffect> & { id: string }>
   talentStatsBySoloLevel: Record<string, SetupEffect>
   oddityStats: Record<string, SetupEffect & { minBreakthrough?: number }>
   baseAttributes: BaseAttributeData
@@ -67,7 +67,7 @@ export function systemStatEffectsForProgression(soloLevel: number, breakthrough:
   if (!talents) throw new RangeError(`Missing character talent totals for Solo Level ${soloLevel}`)
   return [
     typedSystemStats.baseStats,
-    ...typedSystemStats.enhancementStats,
+    ...typedSystemStats.enhancementStats.map(effect => effectForSoloLevel(effect, soloLevel, "Enhancement")),
     talents,
     ...Object.values(typedSystemStats.oddityStats).filter(
       effect => effect.minBreakthrough === undefined || breakthrough >= effect.minBreakthrough,
@@ -76,7 +76,10 @@ export function systemStatEffectsForProgression(soloLevel: number, breakthrough:
   ]
 }
 export type ArsenalDefinition = { name: string; effect?: SetupEffect }
-export const typedArsenalDefinitions = arsenalDefinitions as Record<string, ArsenalDefinition>
+export const typedArsenalDefinitions = arsenalDefinitions as Record<
+  string,
+  { name: string; effect?: AuthoredSoloLevelEffect<SetupEffect> }
+>
 export const typedBowRingSetDefinitions = bowRingSetDefinitions as Record<
   string,
   { name: string; effect?: AuthoredSoloLevelEffect<SetupEffect> }
@@ -144,8 +147,12 @@ export const divinecraftDisplayOrder = [
   "PoisonWater",
 ] as const
 
-export function arsenalEffectFor(value: string) {
-  return typedArsenalDefinitions[value]?.effect ?? {}
+export function arsenalEffectFor(value: string, settings: CalculatorSettings) {
+  return effectForSoloLevel(
+    typedArsenalDefinitions[value]?.effect ?? {},
+    breakthroughProfile(settings).soloLevel,
+    value,
+  )
 }
 
 export function bowRingSetEffectFor(value: string, settings: CalculatorSettings) {

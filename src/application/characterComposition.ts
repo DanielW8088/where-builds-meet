@@ -211,7 +211,7 @@ export function selectedSetupEffects(
     ),
     breakthroughProfile(settings).levelBonusStats,
     ...selectedMartialArtEffects(settings, definitions),
-    arsenalEffectFor(selectedBuildSetup.arsenal),
+    arsenalEffectFor(selectedBuildSetup.arsenal, settings),
     bowRingSetEffectFor(selectedBuildSetup.bowRingSet, settings),
     ...setEffectsFor(selectedBuildSetup.weaponSets, typedWeaponSetDefinitions, settings, pathId),
     ...setEffectsFor(selectedBuildSetup.armorSets, typedArmorSetDefinitions, settings, pathId),

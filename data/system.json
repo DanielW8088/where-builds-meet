@@ -27,14 +27,103 @@
     }
   },
   "enhancementStats": [
-    { "id": "enhancement-01", "rawStat": { "minPhys": 120, "maxPhys": 80 } },
-    { "id": "enhancement-02", "rawStat": { "minPhys": 120, "maxPhys": 80 } },
-    { "id": "enhancement-03", "rawStat": { "maxPhys": 160 } },
-    { "id": "enhancement-04", "rawStat": { "maxPhys": 160 } },
-    { "id": "enhancement-05", "rawStat": { "maxHp": 8936 } },
-    { "id": "enhancement-06", "rawStat": { "maxHp": 6169, "physicalDefense": 60 } },
-    { "id": "enhancement-06", "rawStat": { "maxHp": 6169, "physicalDefense": 60 } },
-    { "id": "enhancement-05", "rawStat": { "maxHp": 8936 } }
+    {
+      "id": "enhancement-total",
+      "rawStat": {
+        "minPhys": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            240,
+            258
+          ]
+        },
+        "maxPhys": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            480,
+            516
+          ]
+        },
+        "maxHp": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            40070,
+            43147
+          ]
+        },
+        "physicalDefense": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            120,
+            130
+          ]
+        }
+      }
+    }
   ],
   "talentStatsBySoloLevel": {
     "17": {

@@ -1,7 +1,382 @@
 {
-  "General": { "name": "General", "effect": { "rawStat": { "minPhys": 148, "maxPhys": 297 } } },
-  "Bellstrike": { "name": "Bellstrike", "effect": { "rawStat": { "minBellstrike": 148, "maxBellstrike": 297 } } },
-  "Stonesplit": { "name": "Stonesplit", "effect": { "rawStat": { "minStonesplit": 148, "maxStonesplit": 297 } } },
-  "Silkbind": { "name": "Silkbind", "effect": { "rawStat": { "minSilkbind": 148, "maxSilkbind": 297 } } },
-  "Bamboocut": { "name": "Bamboocut", "effect": { "rawStat": { "minBamboocut": 148, "maxBamboocut": 297 } } }
+  "General": {
+    "name": "General",
+    "effect": {
+      "rawStat": {
+        "minPhys": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            131,
+            148
+          ]
+        },
+        "maxPhys": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            263,
+            297
+          ]
+        },
+        "maxHp": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            27300,
+            31700
+          ]
+        }
+      }
+    }
+  },
+  "Bellstrike": {
+    "name": "Bellstrike",
+    "effect": {
+      "rawStat": {
+        "minBellstrike": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            131,
+            148
+          ]
+        },
+        "maxBellstrike": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            263,
+            297
+          ]
+        },
+        "maxHp": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            27300,
+            31700
+          ]
+        }
+      }
+    }
+  },
+  "Stonesplit": {
+    "name": "Stonesplit",
+    "effect": {
+      "rawStat": {
+        "minStonesplit": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            131,
+            148
+          ]
+        },
+        "maxStonesplit": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            263,
+            297
+          ]
+        },
+        "maxHp": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            27300,
+            31700
+          ]
+        }
+      }
+    }
+  },
+  "Silkbind": {
+    "name": "Silkbind",
+    "effect": {
+      "rawStat": {
+        "minSilkbind": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            131,
+            148
+          ]
+        },
+        "maxSilkbind": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            263,
+            297
+          ]
+        },
+        "maxHp": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            27300,
+            31700
+          ]
+        }
+      }
+    }
+  },
+  "Bamboocut": {
+    "name": "Bamboocut",
+    "effect": {
+      "rawStat": {
+        "minBamboocut": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            131,
+            148
+          ]
+        },
+        "maxBamboocut": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            263,
+            297
+          ]
+        },
+        "maxHp": {
+          "bySoloLevel": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            27300,
+            31700
+          ]
+        }
+      }
+    }
+  }
 }

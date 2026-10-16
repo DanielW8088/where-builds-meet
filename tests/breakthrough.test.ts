@@ -42,7 +42,12 @@ describe("breakthrough", () => {
 describe("Solo Level character talents", () => {
   it("replaces the cumulative reward and restores the previous level without stacking", () => {
     const calculate = (soloLevel: number) =>
-      calculateStatsWithEffects(emptyStats, systemStatEffectsForProgression(soloLevel, 17), 0).rawStats
+      calculateStatsWithEffects(
+        emptyStats,
+        // Enhancement has its own level curve; isolate cumulative character rewards here.
+        systemStatEffectsForProgression(soloLevel, 17).filter(effect => !("id" in effect)),
+        0,
+      ).rawStats
     const before = calculate(17)
     const after = calculate(18)
     expect(after.power - before.power).toBe(4)

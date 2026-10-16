@@ -140,7 +140,14 @@ The higher-of-Body-or-Power conversions remain deferred rather than using Power
 alone. See the [rank-13 audit](martial-art-talent-audit.md) for conditional
 effects, existing shared behavior, and all unresolved talent portions.
 
-Each of the five arsenals grants 148 minimum and 297 maximum raw attack in its channel (Physical for General; the named attribute for the other four).
+Each Arsenal resolves its raw attack and HP from the selected Solo Level through
+the shared `bySoloLevel` resolver. Solo 17 grants 131 minimum and 263 maximum
+attack plus 27,300 HP; Solo 18 grants 148 minimum and 297 maximum attack plus
+31,700 HP. The attack channel is Physical for General and the named attribute
+for the other four. Enhancement uses the same resolver on cumulative exported
+totals: Solo 17 grants 240–480 Physical Attack, 40,070 HP, and 120 Physical
+Defense; Solo 18 grants 258–516 Physical Attack, 43,147 HP, and 130 Physical
+Defense. These totals replace the former fixed per-slot Enhancement entries.
 
 The simulation input starts from zero, then the calculator applies innate character stats, the selected breakthrough's level bonuses, Enhancement bonuses, the selected Solo Level's cumulative character talent stats, regional Oddity totals eligible for the selected breakthrough (Qingzhou from breakthrough 18), attribute conversions, equipped gear, selected Inner Ways, martial-art talents, the active build's arsenal, bow/ring set, weapon set, and armor set (with any Main-tab overrides), food, and the selected Divinecraft through these stages. Set options may also contribute named timeline conditions; these use the common requirement pipeline for non-stat mechanics such as Formbend extending Shield and Breakthrough:
 
