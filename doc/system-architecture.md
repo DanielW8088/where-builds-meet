@@ -67,6 +67,45 @@ simulate rotations, compare alternatives, and recommend builds or rotations.
 
 ## Runtime overview
 
+### Gear combination search
+
+Each editable build offers **Find Best Combination** beside **Make Active**.
+One disposable `gearOptimizationWorker` runs at a time, using a structured-cloned
+snapshot of the rotation, environment, visible saved gear, and the build's stored
+setup. Inner Ways, martial arts, weapon and armor sets, bow/ring set, and arsenal
+remain fixed. Unsaved character-sheet setup overrides are not part of that build.
+Default presets must be duplicated before searching.
+
+`calculations/gearOptimization.ts` groups calculation-equivalent items, preserving
+physical weapon multiplicity, and enumerates valid slot assignments. It rejects
+more than 100,000 unique combinations. Empty slots are retained where no eligible
+gear exists. The current equipment is always the initial best result.
+Single-item swap DPS scores order the full search; these scores never prune
+combinations or replace actual damage calculations.
+
+Preflight classifies every assignment against the original baseline's conservative
+timeline signature and samples up to three evaluations per cost class. Pure raw
+stat effects are excluded from the signature because candidate sheets are resolved
+through the shared character pipeline. Resource capacities, HP, setup mechanics,
+and all other timeline inputs remain in the signature. Damage-outcome listeners
+(including Insightful Strike), target-HP cutoffs, resource-regeneration effects,
+and live collectors prevent reuse. The shared rotation variant evaluator resolves
+damage with the complete candidate sheet; other candidates rebuild their baseline.
+The estimate includes preparation and a 50% evaluation-cost margin. Searches whose
+estimated total exceeds two minutes are rejected; an elapsed-time guard also stops
+an underestimated run and retains its latest reported best.
+
+`gearOptimizationStore` holds transient progress and equipment for the Build view.
+Live updates do not write persistent gear or invalidate comparison caches. Normal
+active-rotation calculation publication and gear comparisons pause during a run.
+The searched build and shared inventory are protected against edits, including
+cross-build item mutation. Other builds' setup remains editable. The name in the
+Builds column shows progress; the action becomes Cancel. Completion or cancellation
+terminates the worker and commits the latest reported best equipment once, then
+ordinary measurements resume. Only completed exhaustive runs guarantee the best
+valid combination; interrupted runs display the best found so far. The run survives
+tab navigation but is intentionally not persisted across reloads.
+
 ```text
 JSON game data ─────────────┐
 Browser storage ────────────┼─> React application state

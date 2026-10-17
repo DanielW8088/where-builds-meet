@@ -18,6 +18,7 @@ import {
 import type { PathId } from "@/application/contracts"
 import { formatThroughput, formatThroughputDelta, throughputDeltaClass } from "@/application/formatting"
 import { breakthroughProfile } from "@/application/gameData/setup"
+import { cancelGearOptimization, startGearOptimization } from "@/application/gearOptimization"
 import type { MeasurementContext } from "@/calculations/rotationCalculationBundle"
 import type { RotationRecord } from "@/calculations/rotationTimeline"
 import { innerWayEntriesForTag } from "@/data/innerWayDefinitions"
@@ -55,6 +56,7 @@ import {
 import { dataText, gameText, t } from "@/i18n"
 import { publishNotice, dismissNotice } from "@/notices"
 import { createOfficialGearBookmarklet } from "@/officialGearBookmarklet"
+import { useGearOptimizationStore } from "@/stores/gearOptimizationStore"
 import { useGearStore } from "@/stores/gearStore"
 import type { WeaponId } from "@/types"
 import { Button } from "@/ui/Button"
@@ -76,6 +78,8 @@ import {
 } from "./GearEditor"
 import { useBuildThroughputs } from "./useBuildThroughputs"
 import { useGearComparison } from "./useGearComparison"
+
+import styles from "./optimization.module.css"
 
 function gearSlotLabel(slot: GearSlot) {
   return dataText(`system.gearSlot.${slot}`, gearData.slots[slot])
@@ -115,6 +119,7 @@ type BuildManagementProps = {
   setup: BuildSetup
   usageCounts: ReadonlyMap<string, number>
   locked: boolean
+  inventoryLocked?: boolean
   onInventoryChange: Dispatch<SetStateAction<GearInventory>>
   onSetupChange: (setup: BuildSetup) => void
   /** The build on screen, which a candidate item is measured against the equipped item of. */
@@ -186,6 +191,7 @@ export default function BuildTab({
   const gearTier = breakthroughProfile(measurement.environment.settings).gearTier
   const buildState = useGearStore(state => state.buildState)
   const updateBuildState = useGearStore(state => state.updateBuildState)
+  const optimization = useGearOptimizationStore(state => state.run)
   const [editingBuildId, setEditingBuildId] = useState(buildState.activeBuildId)
   const [editingName, setEditingName] = useState(false)
   const [officialImportText, setOfficialImportText] = useState("")
@@ -215,7 +221,15 @@ export default function BuildTab({
     () => [...builds].sort((left, right) => Number(left.isDefault === true) - Number(right.isDefault === true)),
     [builds],
   )
-  const editingEntry = listedEntries.find(entry => entry.id === editingBuildId) ?? listedEntries[0]
+  const storedEditingEntry = listedEntries.find(entry => entry.id === editingBuildId) ?? listedEntries[0]
+  const optimizingViewed = optimization?.input.build.id === storedEditingEntry?.id && optimization !== undefined
+  const editingEntry = useMemo(
+    () =>
+      optimizingViewed && optimization.progress
+        ? { ...storedEditingEntry!, equipped: optimization.progress.equipped }
+        : storedEditingEntry,
+    [optimizingViewed, optimization, storedEditingEntry],
+  )
   const activeEntry = listedEntries.find(entry => entry.id === buildState.activeBuildId)
   if (editingEntry && editingEntry.id !== editingBuildId) setEditingBuildId(editingEntry.id)
   function addBuild() {
@@ -241,10 +255,10 @@ export default function BuildTab({
   // Measured before the empty-build return below, because a hook cannot sit behind one.
   const buildTargets = useMemo(
     () => [
-      { key: "viewed", build: editingEntry },
+      { key: "viewed", build: storedEditingEntry },
       { key: "active", build: activeEntry },
     ],
-    [editingEntry, activeEntry],
+    [storedEditingEntry, activeEntry],
   )
   const throughputs = useBuildThroughputs({
     targets: buildTargets,
@@ -252,8 +266,9 @@ export default function BuildTab({
     context: measurement,
     rotation: activeRotation,
   })
-  const editedThroughput = throughputs.viewed
-  const activeThroughput = throughputs.active
+  const editedThroughput = optimizingViewed ? optimization.progress?.reading : throughputs.viewed
+  const activeThroughput =
+    optimization?.input.build.id === activeEntry?.id ? optimization?.progress?.reading : throughputs.active
 
   if (!editingEntry)
     return (
@@ -273,7 +288,7 @@ export default function BuildTab({
     )
   const isActiveBuild = editingEntry.id === buildState.activeBuildId
   const comparison =
-    !isActiveBuild && editedThroughput && activeThroughput
+    !optimization && !isActiveBuild && editedThroughput && activeThroughput
       ? { delta: editedThroughput.dps - activeThroughput.dps, reading: editedThroughput }
       : undefined
   const inventory = resolveBuildInventory(editingEntry, visibleItems, weapons, gearTier)
@@ -287,7 +302,7 @@ export default function BuildTab({
   }
 
   function updateInventory(update: SetStateAction<GearInventory>) {
-    if (editingEntry.isDefault) return
+    if (editingEntry.isDefault || optimization) return
     updateBuildState(pathId, current => {
       const currentEntry = current.entries.find(entry => entry.id === editingEntry.id)
       if (!currentEntry || currentEntry.isDefault) return current
@@ -314,6 +329,7 @@ export default function BuildTab({
   }
 
   function renameBuild(name: string) {
+    if (optimizingViewed) return
     updateBuildState(pathId, current => ({
       ...current,
       entries: current.entries.map(entry =>
@@ -335,7 +351,7 @@ export default function BuildTab({
   }
 
   function updateSetup(nextSetup: BuildSetup) {
-    if (editingEntry.isDefault) return
+    if (editingEntry.isDefault || optimizingViewed) return
     updateBuildState(pathId, current => ({
       ...current,
       entries: current.entries.map(entry =>
@@ -348,6 +364,7 @@ export default function BuildTab({
     const entry = buildState.entries.find(candidate => candidate.id === id)
     if (
       !entry ||
+      optimization?.input.build.id === id ||
       entry.isDefault ||
       !window.confirm(t("ui.buildTab.deleteNamedBuildConfirmation", { name: buildEntryDisplayName(entry) }))
     )
@@ -465,7 +482,29 @@ export default function BuildTab({
                             <IconPointFilled size="1em" aria-hidden />
                           </i>
                         )}
-                        {buildEntryDisplayName(entry)}
+                        {optimization?.input.build.id === entry.id ? (
+                          <span className={styles.progress}>
+                            <progress
+                              aria-label={t("ui.buildTab.optimizationProgress", { name: buildEntryDisplayName(entry) })}
+                              max={optimization.progress?.total ?? 1}
+                              value={
+                                optimization.progress?.phase === "preparing"
+                                  ? undefined
+                                  : optimization.progress?.completed
+                              }
+                            />
+                            <small>
+                              {optimization.progress?.phase === "searching"
+                                ? t("ui.buildTab.optimizationCount", {
+                                    completed: optimization.progress.completed,
+                                    total: optimization.progress.total,
+                                  })
+                                : t("ui.buildTab.optimizationPreparing")}
+                            </small>
+                          </span>
+                        ) : (
+                          buildEntryDisplayName(entry)
+                        )}
                       </strong>
                       {entry.isDefault && (
                         <small>
@@ -479,6 +518,7 @@ export default function BuildTab({
                   {!entry.isDefault && (
                     <button
                       className="build-remove-button"
+                      disabled={optimization?.input.build.id === entry.id}
                       type="button"
                       aria-label={t("ui.buildTab.removeNamedBuild", { name: entry.name || t("ui.buildTab.build") })}
                       onClick={event => {
@@ -503,6 +543,7 @@ export default function BuildTab({
                 size="small"
                 type="button"
                 onClick={() => buildImportInputRef.current?.click()}
+                disabled={Boolean(optimization)}
               >
                 {t("ui.buildTab.import")}
               </Button>
@@ -521,6 +562,7 @@ export default function BuildTab({
               size="small"
               type="button"
               onClick={openOfficialImport}
+              disabled={Boolean(optimization)}
             >
               {t("ui.buildTab.importFromOfficial")}
             </Button>
@@ -529,7 +571,7 @@ export default function BuildTab({
         <div className="build-editor-content">
           <div className="build-detail-heading">
             <div className="build-detail-title">
-              {editingName && !editingEntry.isDefault ? (
+              {editingName && !editingEntry.isDefault && !optimizingViewed ? (
                 <input
                   ref={buildNameInputRef}
                   className="build-name-input"
@@ -547,6 +589,7 @@ export default function BuildTab({
                     <button
                       className="icon-button"
                       type="button"
+                      disabled={optimizingViewed}
                       aria-label={t("ui.buildTab.editBuildName")}
                       onClick={() => setEditingName(true)}
                     >
@@ -601,6 +644,7 @@ export default function BuildTab({
                 iconOnly
                 type="button"
                 onClick={duplicateBuild}
+                disabled={optimizingViewed}
               >
                 <IconCopy size="1em" aria-hidden />
               </Button>
@@ -615,8 +659,48 @@ export default function BuildTab({
                   ? t("ui.buildTab.activeBuildAction")
                   : t("ui.buildTab.makeActive")}
               </Button>
+              <Button
+                variant="secondary"
+                size="small"
+                type="button"
+                disabled={
+                  !optimizingViewed &&
+                  (Boolean(optimization) ||
+                    editingEntry.isDefault === true ||
+                    !activeRotation ||
+                    !buildEntryAvailableForMartialArts(editingEntry, weapons))
+                }
+                onClick={() => {
+                  if (optimizingViewed) {
+                    cancelGearOptimization()
+                    return
+                  }
+                  if (activeRotation)
+                    startGearOptimization({
+                      build: editingEntry,
+                      items: visibleItems,
+                      context: measurement,
+                      rotation: activeRotation,
+                    })
+                }}
+              >
+                {optimizingViewed ? t("ui.buildTab.cancel") : t("ui.buildTab.findBestCombination")}
+              </Button>
             </div>
           </div>
+          {optimizingViewed && (
+            <output className={styles.status}>
+              {t("ui.buildTab.optimizationBestSoFar")}{" "}
+              {optimization.progress?.reading ? formatThroughput(optimization.progress.reading.dps, 0) : "…"}{" "}
+              {t("system.dps")}
+              {optimization.progress?.phase === "searching" &&
+                t("ui.buildTab.optimizationEstimate", {
+                  fast: optimization.progress.fast,
+                  rebuild: optimization.progress.rebuild,
+                  seconds: Math.ceil((optimization.progress.estimatedMs ?? 0) / 1000),
+                })}
+            </output>
+          )}
           <BuildManagement
             key={editingEntry.id}
             weapons={weapons}
@@ -625,7 +709,8 @@ export default function BuildTab({
             inventory={inventory}
             setup={setup}
             usageCounts={usageCounts}
-            locked={editingEntry.isDefault === true}
+            locked={editingEntry.isDefault === true || optimizingViewed}
+            inventoryLocked={Boolean(optimization)}
             onInventoryChange={updateInventory}
             onSetupChange={updateSetup}
             build={editingEntry}
@@ -706,7 +791,7 @@ function BuildSetupPanel({
   locked: boolean
   onChange: (setup: BuildSetup) => void
 }) {
-  const lockedTitle = locked ? "Fixed by this default preset" : undefined
+  const lockedTitle = locked ? t("ui.buildTab.buildLocked") : undefined
   const innerWayOptions = innerWayEntriesForTag(pathTag)
   const availableWeaponSets = availableSetEntriesForTags(weaponSetDefinitions, martialArtTags, pathTag)
   const availableArmorSets = availableSetEntriesForTags(armorSetDefinitions, martialArtTags, pathTag)
@@ -884,12 +969,14 @@ function BuildManagement({
   setup,
   usageCounts,
   locked,
+  inventoryLocked,
   onInventoryChange,
   onSetupChange,
   build,
   measurement,
   activeRotation,
 }: BuildManagementProps) {
+  const gearLocked = locked || inventoryLocked === true
   const [selectedSlot, setSelectedSlot] = useState<GearSlot>("leftWeapon")
   const [editing, setEditing] = useState(false)
   const [editingItemId, setEditingItemId] = useState<string | null>(null)
@@ -1105,11 +1192,7 @@ function BuildManagement({
             <PanelHeading>
               <div>
                 <h2>{t("ui.buildTab.equippedGear")}</h2>
-                <p>
-                  {locked
-                    ? t("ui.buildTab.thisDefaultBuildUsesFixedPresetGearUse")
-                    : t("ui.buildTab.selectASlotToEquipGearFromThe")}
-                </p>
+                <p>{gearLocked ? t("ui.buildTab.buildGearLocked") : t("ui.buildTab.selectASlotToEquipGearFromThe")}</p>
               </div>
             </PanelHeading>
             <div className="gear-card-grid">
@@ -1125,8 +1208,8 @@ function BuildManagement({
                     slotLabel={gearSlotLabel(slot)}
                     item={item}
                     name={item ? gameText(definition?.name) : undefined}
-                    selected={!locked && selectedSlot === slot}
-                    disabled={locked}
+                    selected={!gearLocked && selectedSlot === slot}
+                    disabled={gearLocked}
                     onSelect={() => selectSlot(slot)}
                   />
                 )
@@ -1134,7 +1217,7 @@ function BuildManagement({
             </div>
           </Panel>
 
-          {!locked && (
+          {!gearLocked && (
             <Panel className="build-inventory-panel">
               <PanelHeading>
                 <div>
@@ -1184,7 +1267,7 @@ function BuildManagement({
             </Panel>
           )}
 
-          {!locked && selected.definition && (
+          {!gearLocked && selected.definition && (
             <Dialog
               open={editing}
               onClose={cancelEditing}

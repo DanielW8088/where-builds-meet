@@ -709,7 +709,6 @@
   "ui.buildTab.selectThisBuildAndSwitchToItsMartial": "이 빌드를 선택하고 해당 무술로 전환하세요",
   "ui.buildTab.shared": "공유",
   "ui.buildTab.theBookmarkRunsOnlyOnTheOfficialDashboard": "이 북마크는 공식 대시보드에서만 실행됩니다. ‘Where Builds Meet’는 사용자가 여기에 붙여넣은 JSON만 불러옵니다.",
-  "ui.buildTab.thisDefaultBuildUsesFixedPresetGearUse": "이 기본 빌드는 고정된 프리셋 장비를 사용합니다. ‘새 빌드’를 생성해서 나만의 빌드를 생성하세요.",
   "ui.buildTab.toYourBrowserBookmarksBar": "브라우저의 북마크 바에 추가하세요.",
   "ui.buildTab.useAClearUncroppedGearDetailsScreenshotRecognition": "“선명하고 잘리지 않은 기어 세부 정보 스크린샷을 사용해 주세요. 인식 처리는 브라우저 내에서 로컬로 수행됩니다.”",
   "ui.buildTab.usedIn": "사용하다",

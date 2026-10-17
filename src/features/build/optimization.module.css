@@ -1,0 +1,26 @@
+@layer components {
+  .progress {
+    display: grid;
+    gap: var(--space-2xs);
+    min-inline-size: 0;
+    inline-size: 100%;
+
+    progress {
+      inline-size: 100%;
+      block-size: var(--space-md);
+      accent-color: var(--primary);
+    }
+
+    small {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  }
+
+  .status {
+    margin: 0;
+    padding: var(--space-xs) var(--space-md);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+}

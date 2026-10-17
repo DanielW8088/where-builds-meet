@@ -18,6 +18,8 @@ import { loadPathSelectionIds, withPathSelection, type PathSelectionIds } from "
 import { buildListStorageKey, loadBuildState, serializeBuildState, type BuildState } from "@/gear"
 import { setPersistentItem } from "@/persistentStorage"
 
+import { useGearOptimizationStore } from "./gearOptimizationStore"
+
 /**
  * The builds the user has and the gear they are made of, and which path may see each.
  *
@@ -115,7 +117,18 @@ function boot({ set }: StoreApi, pathId: PathId) {
 /** A build list and the scope describing it are one change, so they are written together here. */
 function applyBuildChange({ get, set }: StoreApi, pathId: PathId, update: (state: BuildState) => BuildState) {
   const current = get().buildState
-  const next = update(current)
+  let next = update(current)
+  const run = useGearOptimizationStore.getState().run
+  if (run) {
+    if (next.gearItems !== current.gearItems) return
+    const locked = current.entries.find(entry => entry.id === run.input.build.id)
+    next = {
+      ...next,
+      gearItems: current.gearItems,
+      entries: next.entries.map(entry => (entry.id === locked?.id ? locked : entry)),
+    }
+    if (locked && !next.entries.some(entry => entry.id === locked.id)) next.entries = [...next.entries, locked]
+  }
   // The stored record holds the entries and the inventory, not the active selection, so a change
   // that only moves the selection has nothing to store.
   if (next.entries !== current.entries || next.gearItems !== current.gearItems) {

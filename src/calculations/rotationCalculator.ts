@@ -2465,11 +2465,21 @@ function requiresLiveCollectors(timeline: TimelineRow[], input: TimelineBuildInp
   })
 }
 
-export function calculateRotationComparisons(
+function requiresLiveRotationResolution(input: TimelineBuildInput, liveCollectors: boolean) {
+  return (
+    Boolean(input.rotation.targetHP) ||
+    // Outcome-triggered resource gains can change later spending and combat events.
+    input.innerWayRules.some(rule => rule.listen?.event === "damage" || rule.trigger?.event === "damageOutcome") ||
+    input.setupEffects.some(effect => effect.resourceRegenerationBonus) ||
+    liveCollectors
+  )
+}
+
+function createRotationVariantCalculator(
   bundle: RotationSimulationBundle,
   baselineResult: RotationSimulationBaseline,
   onProgress?: (completed: number, total: number) => void,
-): RotationMetrics {
+) {
   const state = rotationStatState(bundle)
   const preparedDamage = createPreparedDamageCalculator()
   const totalVariants =
@@ -2502,17 +2512,8 @@ export function calculateRotationComparisons(
         variant.setupEffects ||
         variant.innerWayRules ||
         variant.innerWayConditions ||
-        baselineResult.compactedInnerWayResults ||
-        timelineInput.rotation.targetHP,
-      ) ||
-      // Outcome-triggered resource gains change later spending and damage bonuses.
-      // Re-evaluating damage against the baseline meter is not a valid comparison.
-      timelineInput.innerWayRules.some(
-        rule => rule.listen?.event === "damage" || rule.trigger?.event === "damageOutcome",
-      ) ||
-      // Resource caps move natural-regeneration thresholds and later spending.
-      timelineInput.setupEffects.some(effect => effect.resourceRegenerationBonus) ||
-      liveCollectors
+        baselineResult.compactedInnerWayResults,
+      ) || requiresLiveRotationResolution(timelineInput, liveCollectors)
     if (!requiresLiveResolution && variant.attunement && !variant.stats) {
       const changed = (Object.keys(bundle.attunement) as Array<keyof AttunementStats>).filter(
         key => variant.attunement![key] !== bundle.attunement[key],
@@ -2669,6 +2670,37 @@ export function calculateRotationComparisons(
     onProgress?.(completedVariants, totalVariants)
     return calculation
   }
+  return calculationForVariant
+}
+
+/** Gear searches resolve a complete candidate sheet through the ordinary variant pipeline. */
+export function calculateRotationGearCandidate(bundle: RotationSimulationBundle, baseline: RotationSimulationBaseline) {
+  return createRotationVariantCalculator(
+    bundle,
+    baseline,
+  )({ label: "gear", stats: bundle.baseStats ?? bundle.stats, attunement: bundle.attunement })
+}
+
+/** Conservative event-reuse signature; pure raw-stat inputs are re-resolved for every candidate. */
+export function rotationGearTimelineKey(bundle: RotationSimulationBundle, baseline: RotationSimulationBaseline) {
+  const input = bundle.timeline
+  if (
+    baseline.compactedInnerWayResults ||
+    requiresLiveRotationResolution(input, requiresLiveCollectors(baseline.timeline, input))
+  )
+    return undefined
+  return JSON.stringify({
+    ...input,
+    setupEffects: input.setupEffects.filter(effect => Object.keys(effect).some(key => key !== "rawStat")),
+  })
+}
+
+export function calculateRotationComparisons(
+  bundle: RotationSimulationBundle,
+  baselineResult: RotationSimulationBaseline,
+  onProgress?: (completed: number, total: number) => void,
+): RotationMetrics {
+  const calculationForVariant = createRotationVariantCalculator(bundle, baselineResult, onProgress)
   const entryBundle: RotationCalculationBundle = {
     duration: baselineResult.duration,
     baseline: baselineResult.baseline,

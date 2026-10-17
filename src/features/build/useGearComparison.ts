@@ -3,6 +3,7 @@ import { useMemo } from "react"
 import type { MeasurementContext } from "@/calculations/rotationCalculationBundle"
 import type { RotationRecord } from "@/calculations/rotationTimeline"
 import type { BuildEntry, GearItem, GearSlot } from "@/gear"
+import { useGearOptimizationStore } from "@/stores/gearOptimizationStore"
 
 import { useBuildThroughputs, type ThroughputTarget } from "./useBuildThroughputs"
 
@@ -87,16 +88,17 @@ export function useGearComparison(input: {
   rotation: RotationRecord | undefined
 }) {
   const { build, slot, candidates, equippedId, visibleItemIds, gearItems, context, rotation } = input
+  const optimizing = useGearOptimizationStore(state => state.run !== undefined)
 
   const targets = useMemo<ThroughputTarget[]>(() => {
-    if (!build) return []
+    if (!build || optimizing) return []
     return [
       { key: equippedKey, build },
       ...candidates
         .filter(item => item.id !== equippedId && visibleItemIds.has(item.id))
         .map(item => ({ key: item.id, build: swappedBuild(build, slot, item) })),
     ]
-  }, [build, slot, candidates, equippedId, visibleItemIds])
+  }, [build, slot, candidates, equippedId, visibleItemIds, optimizing])
 
   const readings = useBuildThroughputs({ targets, gearItems, context, rotation })
   const reference = readings[equippedKey]
