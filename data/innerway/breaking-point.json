@@ -1,7 +1,17 @@
 {
   "name": "Breaking Point",
   "altersTimeline": true,
-  "tags": ["StonesplitStrength", "StonesplitMight", "BamboocutKite", "SilkbindJade", "BamboocutWind", "BamboocutDust"],
+  "tags": [
+    "StonesplitStrength",
+    "StonesplitMight",
+    "BamboocutKite",
+    "SilkbindJade",
+    "BamboocutWind",
+    "BamboocutDust",
+    "SilkbindDeluge",
+    "SilkbindWing",
+    "BamboocutDraught"
+  ],
   "effect": {
     "BreakingPointT0": {
       "trigger": [
