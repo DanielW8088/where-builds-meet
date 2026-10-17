@@ -1395,6 +1395,8 @@
   "ui.buildTab.officialDashboardGearJson": "官方儀表板裝備 JSON",
   "ui.buildTab.officialWhereWindsMeetDashboard": "《燕雲十六聲》官方儀表板",
   "ui.buildTab.openThe": "開啟",
+  "ui.buildTab.optimizationPreviewHint": "搜尋完成或按下「取消」前，裝備變更僅供預覽。一般計算使用已儲存的裝備。",
+  "ui.buildTab.optimizationRotation": "最佳化目標循環：{name}",
   "ui.buildTab.optionalAttributeError": "請填完整或清除每個選填屬性。",
   "ui.buildTab.pasteTheCopiedDashboardJsonHere": "在此貼上已複製的儀表板 JSON",
   "ui.buildTab.percentageValuesAreEnteredAsPercentagePoints": "百分比數值請以百分點輸入。",

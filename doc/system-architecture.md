@@ -97,12 +97,18 @@ an underestimated run and retains its latest reported best.
 
 `gearOptimizationStore` holds transient progress and equipment for the Build view.
 Live updates do not write persistent gear or invalidate comparison caches. Normal
-active-rotation calculation publication and gear comparisons pause during a run.
+active-rotation calculations, build measurements, and comparisons continue concurrently
+in the existing worker pool; the optimizer uses its own disposable worker. Switching
+builds or rotations updates normal results against stored equipment while the search
+continues against its original snapshot. Only the optimizing build's live preview
+uses the worker's best-so-far reading; it is never used as another build's comparison
+baseline. Per-item comparisons are suppressed only for the optimizing build, so live
+preview updates cannot launch comparison sweeps.
 The searched build and shared inventory are protected against edits, including
 cross-build item mutation. Other builds' setup remains editable. The name in the
 Builds column shows progress; the action becomes Cancel. Completion or cancellation
-terminates the worker and commits the latest reported best equipment once, then
-ordinary measurements resume. Only completed exhaustive runs guarantee the best
+terminates the worker and commits the latest reported best equipment once, refreshing
+ordinary measurements for the saved gear. Only completed exhaustive runs guarantee the best
 valid combination; interrupted runs display the best found so far. The run survives
 tab navigation but is intentionally not persisted across reloads.
 

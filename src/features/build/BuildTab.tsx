@@ -17,6 +17,7 @@ import {
 
 import type { PathId } from "@/application/contracts"
 import { formatThroughput, formatThroughputDelta, throughputDeltaClass } from "@/application/formatting"
+import { typedPathDefinitions } from "@/application/gameData/paths"
 import { breakthroughProfile } from "@/application/gameData/setup"
 import { cancelGearOptimization, startGearOptimization } from "@/application/gearOptimization"
 import type { MeasurementContext } from "@/calculations/rotationCalculationBundle"
@@ -24,6 +25,7 @@ import type { RotationRecord } from "@/calculations/rotationTimeline"
 import { innerWayEntriesForTag } from "@/data/innerWayDefinitions"
 import {
   defaultBuildSetup,
+  defaultBuildPresets,
   duplicateBuildState,
   armorSetDefinitions,
   attunementData,
@@ -61,6 +63,7 @@ import { useGearStore } from "@/stores/gearStore"
 import type { WeaponId } from "@/types"
 import { Button } from "@/ui/Button"
 import { ButtonGroup, ButtonGroupOption } from "@/ui/ButtonGroup"
+import { Chip } from "@/ui/Chip"
 import { Dialog } from "@/ui/Dialog"
 import { Panel, PanelHeading } from "@/ui/Panel"
 import { Tooltip } from "@/ui/Tooltip"
@@ -234,17 +237,21 @@ export default function BuildTab({
   if (editingEntry && editingEntry.id !== editingBuildId) setEditingBuildId(editingEntry.id)
   function addBuild() {
     const id = createBuildId()
+    const path = typedPathDefinitions[pathId]
+    const graduate = defaultBuildPresets.find(preset => preset.id === path.graduated[0])
+    const graduateSetup = normalizeBuildSetup(graduate?.setup)
+    const setup = normalizeBuildSetup({
+      ...defaultBuildSetup,
+      innerWays: graduateSetup.innerWays,
+      weaponSets: graduateSetup.weaponSets,
+      bowRingSet: graduateSetup.bowRingSet,
+      arsenal: path.arsenal ?? defaultBuildSetup.arsenal,
+    })
     updateBuildState(pathId, current => ({
       ...current,
       entries: [
         ...current.entries,
-        {
-          id,
-          name: t("ui.buildTab.newBuild"),
-          martialArts: [...weapons],
-          equipped: {},
-          setup: normalizeBuildSetup(defaultBuildSetup),
-        },
+        { id, name: t("ui.buildTab.newBuild"), martialArts: [...weapons], equipped: {}, setup },
       ],
     }))
     setEditingBuildId(id)
@@ -267,8 +274,7 @@ export default function BuildTab({
     rotation: activeRotation,
   })
   const editedThroughput = optimizingViewed ? optimization.progress?.reading : throughputs.viewed
-  const activeThroughput =
-    optimization?.input.build.id === activeEntry?.id ? optimization?.progress?.reading : throughputs.active
+  const activeThroughput = throughputs.active
 
   if (!editingEntry)
     return (
@@ -288,7 +294,7 @@ export default function BuildTab({
     )
   const isActiveBuild = editingEntry.id === buildState.activeBuildId
   const comparison =
-    !optimization && !isActiveBuild && editedThroughput && activeThroughput
+    !optimizingViewed && !isActiveBuild && editedThroughput && activeThroughput
       ? { delta: editedThroughput.dps - activeThroughput.dps, reading: editedThroughput }
       : undefined
   const inventory = resolveBuildInventory(editingEntry, visibleItems, weapons, gearTier)
@@ -599,11 +605,11 @@ export default function BuildTab({
                 </h3>
               )}
               {isActiveBuild ? (
-                activeThroughput ? (
+                editedThroughput ? (
                   <small className="build-detail-dps build-detail-dps-active">
-                    ({formatThroughput(activeThroughput.dps, 0)} {t("system.dps")}
-                    {activeThroughput.hps > 0
-                      ? ` / ${formatThroughput(activeThroughput.hps, 0)} ${t("system.hps")}`
+                    ({formatThroughput(editedThroughput.dps, 0)} {t("system.dps")}
+                    {editedThroughput.hps > 0
+                      ? ` / ${formatThroughput(editedThroughput.hps, 0)} ${t("system.hps")}`
                       : ""}
                     )
                   </small>
@@ -689,17 +695,28 @@ export default function BuildTab({
             </div>
           </div>
           {optimizingViewed && (
-            <output className={styles.status}>
-              {t("ui.buildTab.optimizationBestSoFar")}{" "}
-              {optimization.progress?.reading ? formatThroughput(optimization.progress.reading.dps, 0) : "…"}{" "}
-              {t("system.dps")}
-              {optimization.progress?.phase === "searching" &&
-                t("ui.buildTab.optimizationEstimate", {
-                  fast: optimization.progress.fast,
-                  rebuild: optimization.progress.rebuild,
-                  seconds: Math.ceil((optimization.progress.estimatedMs ?? 0) / 1000),
+            <div className={styles.status}>
+              <div className={styles.statusHeading}>
+                <Chip className={styles.previewBadge}>{t("ui.app.preview")}</Chip>
+                <output>
+                  {t("ui.buildTab.optimizationBestSoFar")}{" "}
+                  {optimization.progress?.reading ? formatThroughput(optimization.progress.reading.dps, 0) : "…"}{" "}
+                  {t("system.dps")}
+                  {optimization.progress?.phase === "searching" &&
+                    t("ui.buildTab.optimizationEstimate", {
+                      fast: optimization.progress.fast,
+                      rebuild: optimization.progress.rebuild,
+                      seconds: Math.ceil((optimization.progress.estimatedMs ?? 0) / 1000),
+                    })}
+                </output>
+              </div>
+              <p>{t("ui.buildTab.optimizationPreviewHint")}</p>
+              <p>
+                {t("ui.buildTab.optimizationRotation", {
+                  name: gameText(optimization.input.rotation.name) || t("ui.app.activeRotation"),
                 })}
-            </output>
+              </p>
+            </div>
           )}
           <BuildManagement
             key={editingEntry.id}

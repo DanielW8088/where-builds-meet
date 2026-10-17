@@ -17,7 +17,6 @@ import { gameText } from "@/i18n"
 import { publishNotice } from "@/notices"
 import type { RotationEntry } from "@/rotationTransfer"
 import { useDpsStore } from "@/stores/dpsStore"
-import { useGearOptimizationStore } from "@/stores/gearOptimizationStore"
 import { useRotationStore, type ActiveRotationResult } from "@/stores/rotationStore"
 
 /**
@@ -73,7 +72,6 @@ function cachedGraduationDps(prepared: ReturnType<typeof buildGraduationBundleSe
 }
 
 export function useActiveRotationResult(input: ActiveRotationInput) {
-  const optimizing = useGearOptimizationStore(state => state.run !== undefined)
   const {
     pathId,
     build,
@@ -107,7 +105,7 @@ export function useActiveRotationResult(input: ActiveRotationInput) {
   const revisionRef = useRef<string | undefined>(undefined)
 
   useEffect(() => {
-    if (!active || !subject || optimizing) return
+    if (!active || !subject) return
     let cancelled = false
     const current = () => !cancelled
     const startedCategories = new Set<RotationCalculationCategory>()
@@ -244,5 +242,5 @@ export function useActiveRotationResult(input: ActiveRotationInput) {
       cancelled = true
       for (const category of startedCategories) useRotationStore.getState().settleCategory(category)
     }
-  }, [active, subject, pathId, measurement, draftRotation, comparisonsActive, optimizing])
+  }, [active, subject, pathId, measurement, draftRotation, comparisonsActive])
 }

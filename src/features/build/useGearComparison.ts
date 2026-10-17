@@ -88,7 +88,7 @@ export function useGearComparison(input: {
   rotation: RotationRecord | undefined
 }) {
   const { build, slot, candidates, equippedId, visibleItemIds, gearItems, context, rotation } = input
-  const optimizing = useGearOptimizationStore(state => state.run !== undefined)
+  const optimizing = useGearOptimizationStore(state => build !== undefined && state.run?.input.build.id === build.id)
 
   const targets = useMemo<ThroughputTarget[]>(() => {
     if (!build || optimizing) return []

@@ -13,11 +13,16 @@ import { useGearStore } from "@/stores/gearStore"
 
 import { weaponPair } from "./helpers/weaponPair"
 
-vi.mock("@/features/build/useBuildThroughputs", () => ({ useBuildThroughputs: () => ({}) }))
+vi.mock("@/features/build/useBuildThroughputs", () => ({
+  useBuildThroughputs: () => ({
+    viewed: { dps: 200, hps: 0, totalDamage: 2000 },
+    active: { dps: 100, hps: 0, totalDamage: 1000 },
+  }),
+}))
 vi.mock("@/notices", () => ({ publishNotice: () => {}, dismissNotice: () => {} }))
 vi.mock("@/i18n", () => ({
   getLocale: () => "en",
-  t: (key: string) => key,
+  t: (key: string, parameters: Record<string, string | number> = {}) => [key, ...Object.values(parameters)].join(" "),
   gameText: (value: string) => value,
   dataText: (_key: string, value: string) => value,
 }))
@@ -48,8 +53,8 @@ it("shows progress in the build list, locks editing, and turns the action into C
   const root = createRoot(container)
   const button = (label: string) =>
     [...container.querySelectorAll("button")].find(button => button.textContent === label)!
-  try {
-    await act(async () =>
+  const show = async (rotationName: string) =>
+    act(async () =>
       root.render(
         createElement(BuildTab, {
           pathId: "stonesplitStrength",
@@ -60,7 +65,7 @@ it("shows progress in the build list, locks editing, and turns the action into C
           graduatedBuildIds: [],
           onActiveBuildChange: () => {},
           onSelectBuildWeapons: () => true,
-          activeRotation: { name: "Snapshot", steps: [] },
+          activeRotation: { name: rotationName, steps: [] },
           measurement: {
             environment: {
               pathId: "stonesplitStrength",
@@ -77,7 +82,15 @@ it("shows progress in the build list, locks editing, and turns the action into C
         }),
       ),
     )
+  try {
+    await show("Snapshot")
     await act(async () => button("ui.buildTab.findBestCombination").click())
+    expect(container.textContent).toContain("ui.app.preview")
+    expect(container.textContent).toContain("ui.buildTab.optimizationPreviewHint")
+    expect(container.textContent).toContain("ui.buildTab.optimizationRotation Snapshot")
+    await show("Different rotation")
+    expect(container.textContent).toContain("ui.buildTab.optimizationRotation Snapshot")
+    expect(container.textContent).not.toContain("ui.buildTab.optimizationRotation Different rotation")
     expect(button("ui.buildTab.cancel")).toBeDefined()
     expect(container.querySelector("progress")).not.toBeNull()
     expect(container.querySelector<HTMLButtonElement>('[aria-label="ui.buildTab.editBuildName"]')!.disabled).toBe(true)
@@ -100,7 +113,14 @@ it("shows progress in the build list, locks editing, and turns the action into C
     expect(container.querySelector("progress")!.value).toBe(3)
     expect(container.querySelector("progress")!.max).toBe(10)
     expect(container.querySelector("output")!.textContent).toContain("1234")
+    await act(async () => container.querySelectorAll<HTMLButtonElement>(".build-select-button")[1].click())
+    expect(container.textContent).not.toContain("ui.buildTab.optimizationPreviewHint")
+    expect(button("ui.buildTab.findBestCombination").disabled).toBe(true)
+    expect(container.querySelector(".build-detail-dps")!.textContent).toContain("+100")
+    expect(container.querySelector(".build-detail-dps")!.textContent).not.toContain("1234")
+    await act(async () => container.querySelectorAll<HTMLButtonElement>(".build-select-button")[0].click())
     await act(async () => button("ui.buildTab.cancel").click())
+    expect(container.textContent).not.toContain("ui.buildTab.optimizationPreviewHint")
     expect(container.querySelector("progress")).toBeNull()
     expect(button("ui.buildTab.findBestCombination").disabled).toBe(false)
   } finally {

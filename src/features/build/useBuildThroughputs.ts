@@ -5,7 +5,6 @@ import type { RotationRecord } from "@/calculations/rotationTimeline"
 import type { ThroughputReading } from "@/calculations/rotationWorkerTransport"
 import type { BuildEntry, GearItem } from "@/gear"
 import { useDpsStore } from "@/stores/dpsStore"
-import { useGearOptimizationStore } from "@/stores/gearOptimizationStore"
 
 /** Something to measure, under a name the caller chose. The name is not part of the identity. */
 export type ThroughputTarget = { key: string; build: BuildEntry | undefined }
@@ -84,19 +83,18 @@ export function useBuildThroughputs(input: {
   rotation: RotationRecord | undefined
 }): Record<string, ThroughputReading | undefined> {
   const { targets, gearItems, context, rotation } = input
-  const optimizingId = useGearOptimizationStore(state => state.run?.input.build.id)
   const [settled, setSettled] = useState<Record<string, { cacheKey: string; reading: ThroughputReading }>>({})
 
   const measured = useMemo<Measured[]>(
     () =>
       targets.map(target => {
-        if (!target.build || !rotation || target.build.id === optimizingId) return { key: target.key }
+        if (!target.build || !rotation) return { key: target.key }
         return {
           key: target.key,
           ...measurementFor({ key: target.key, build: target.build, gearItems, context, rotation }),
         }
       }),
-    [targets, gearItems, context, rotation, optimizingId],
+    [targets, gearItems, context, rotation],
   )
 
   // The cache keys are the identity of the work, so they and not the array decide whether the

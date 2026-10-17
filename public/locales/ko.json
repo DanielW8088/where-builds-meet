@@ -690,6 +690,8 @@
   "ui.buildTab.officialDashboardGearJson": "공식 대시보드 장비 JSON",
   "ui.buildTab.officialWhereWindsMeetDashboard": "공식 연운 대시보드",
   "ui.buildTab.openThe": "열기",
+  "ui.buildTab.optimizationPreviewHint": "검색이 끝나거나 취소를 누르기 전까지 장비 변경은 미리보기입니다. 일반 계산에는 저장된 장비가 사용됩니다.",
+  "ui.buildTab.optimizationRotation": "최적화 대상: {name}",
   "ui.buildTab.optionalAttributeError": "각 선택적 속성을 입력하거나 비워 두십시오.",
   "ui.buildTab.pasteTheCopiedDashboardJsonHere": "복사한 대시보드 JSON을 여기에 붙여넣으세요",
   "ui.buildTab.percentageValuesAreEnteredAsPercentagePoints": "퍼센트 값은 백분율 포인트 단위로 입력합니다.",
