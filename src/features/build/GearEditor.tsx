@@ -5,6 +5,7 @@ import {
   attunementData,
   clampGearRoll,
   gearData,
+  gearAffixKeyForLevel,
   gearLevels,
   maxGearRoll,
   type GearDefinition,
@@ -39,7 +40,7 @@ export type GearDraft = {
 }
 
 export const blankValue = (): GearValueDraft => ({ key: "", value: "" })
-export const newDraft = (level: GearLevel = 96): GearDraft => ({
+export const newDraft = (level: GearLevel = 100): GearDraft => ({
   level,
   rarity: "Gold",
   relayed: false,
@@ -95,7 +96,16 @@ export function capAndFilterGearDraft(
   definition: GearDefinition | undefined,
   relayed = draft.relayed,
 ): GearDraft {
-  const capped = capGearDraft(draft, relayed)
+  const capped = capGearDraft(
+    {
+      ...draft,
+      additionalAffixes: draft.additionalAffixes.map(affix => ({
+        ...affix,
+        key: gearAffixKeyForLevel(affix.key, draft.level),
+      })),
+    },
+    relayed,
+  )
   if (!definition) return capped
   const allowedBase = affixOptionsForGearDefinition(definition, "baseAffixes", capped.level, capped.relayed)
   const allowedAdditional = affixOptionsForGearDefinition(definition, "additionalAffixes", capped.level, capped.relayed)

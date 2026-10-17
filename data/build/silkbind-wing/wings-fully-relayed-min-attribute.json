@@ -183,7 +183,7 @@
         "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
-          { "key": "power", "value": 53.955999999999996 },
+          { "key": "allMysticDmgBoost", "value": 0.10715999999999999 },
           { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "crit", "value": 0.09775999999999999 }
         ],
@@ -196,7 +196,7 @@
         "baseAffix": { "key": "crit", "value": 0.09775999999999999 },
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
-          { "key": "power", "value": 53.955999999999996 },
+          { "key": "allMysticDmgBoost", "value": 0.10715999999999999 },
           { "key": "minSilkbind", "value": 48.315999999999995 },
           { "key": "crit", "value": 0.09775999999999999 }
         ],

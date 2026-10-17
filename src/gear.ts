@@ -67,6 +67,17 @@ export type GearItem = {
   attunement?: GearValue
 }
 
+export function gearAffixKeyForLevel(key: string, level: GearLevel) {
+  if (level !== 100) return key
+  switch (key) {
+    case "singleTargetMysticDmgBoost":
+    case "areaMysticDmgBoost":
+      return "allMysticDmgBoost"
+    default:
+      return key
+  }
+}
+
 export type GearInventory = { items: GearItem[]; equipped: Partial<Record<GearSlot, string>> }
 
 export type GearAffixCount = { key: string; count: number }
@@ -475,6 +486,12 @@ function parseGearItem(value: unknown): GearItem | undefined {
   const validated = validateUnknown(gearItemInputSchema, value)
   if (!validated.success) return undefined
   const candidate = validated.output as Partial<GearItem>
+  if (isGearLevel(candidate.level) && candidate.additionalAffixes) {
+    candidate.additionalAffixes = candidate.additionalAffixes.map(affix => ({
+      ...affix,
+      key: gearAffixKeyForLevel(affix.key, candidate.level!),
+    }))
+  }
   if (typeof candidate.id !== "string" || !candidate.id) return undefined
   if (typeof candidate.definitionId !== "string") return undefined
   const definition = gearData.gear[candidate.definitionId]

@@ -100,6 +100,13 @@ export const defenseStats: StatDefinition[] = [
   { key: "critDmgBonus", label: "Crit DMG Bonus", unit: "%", showUnitInLabel: false, showUnitInInput: true },
   { key: "affinityDmgBonus", label: "Affinity DMG Bonus", unit: "%", showUnitInLabel: false, showUnitInInput: true },
   {
+    key: "allMysticDmgBoost",
+    label: "All Mystic Skill DMG Boost",
+    unit: "%",
+    showUnitInLabel: false,
+    showUnitInInput: true,
+  },
+  {
     key: "singleTargetMysticDmgBoost",
     label: "Single-Target Mystic Skill DMG Boost",
     unit: "%",

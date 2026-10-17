@@ -105,8 +105,6 @@
       "maxSilkbind": 51.4,
       "minBamboocut": 51.4,
       "maxBamboocut": 51.4,
-      "areaMysticDmgBoost": 0.114,
-      "singleTargetMysticDmgBoost": 0.114,
       "vsBossDmg": 0.038,
       "allMartialArts": 0.036,
       "swordDmgBoost": 0.074,
@@ -116,7 +114,8 @@
       "umbrellaDmgBoost": 0.074,
       "ropeDartDmgBoost": 0.074,
       "hengBladeDmgBoost": 0.074,
-      "ribbonAndDrumDmgBoost": 0.074
+      "ribbonAndDrumDmgBoost": 0.074,
+      "allMysticDmgBoost": 0.114
     },
     "attunement": {
       "physicalPenetration": 12.8,

@@ -890,12 +890,11 @@ function BuildManagement({
   measurement,
   activeRotation,
 }: BuildManagementProps) {
-  const gearTier = breakthroughProfile(measurement.environment.settings).gearTier
   const [selectedSlot, setSelectedSlot] = useState<GearSlot>("leftWeapon")
   const [editing, setEditing] = useState(false)
   const [editingItemId, setEditingItemId] = useState<string | null>(null)
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
-  const [draft, setDraft] = useState<GearDraft>(() => newDraft(gearTier))
+  const [draft, setDraft] = useState<GearDraft>(() => newDraft())
   const [error, setError] = useState("")
   // The candidates currently on screen. Each card reports its own, so the set is what bounds how
   // much measuring a slot asks for, and an empty set means a slot costs nothing to look at.
@@ -949,7 +948,7 @@ function BuildManagement({
     setEditing(false)
     setEditingItemId(null)
     setPendingDeleteId(null)
-    setDraft(newDraft(gearTier))
+    setDraft(newDraft())
     setError("")
     // Another slot's cards report their own visibility, so what this one measured is dropped with it.
     setVisibleItemIds(emptySet)
@@ -957,7 +956,7 @@ function BuildManagement({
 
   function beginAdd() {
     if (editing && editingItemId === null) return
-    setDraft(newDraft(gearTier))
+    setDraft(newDraft())
     setError("")
     setEditingItemId(null)
     setPendingDeleteId(null)
@@ -1044,7 +1043,7 @@ function BuildManagement({
     }))
     setEditing(false)
     setEditingItemId(null)
-    setDraft(newDraft(gearTier))
+    setDraft(newDraft())
     setError("")
   }
 
@@ -1072,7 +1071,7 @@ function BuildManagement({
     if (editingItemId === item.id) {
       setEditing(false)
       setEditingItemId(null)
-      setDraft(newDraft(gearTier))
+      setDraft(newDraft())
       setError("")
     }
   }

@@ -184,7 +184,7 @@
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
           { "key": "precision", "value": 0.094 },
-          { "key": "maxBamboocut", "value": 51.4 }
+          { "key": "allMysticDmgBoost", "value": 0.114 }
         ],
         "attunement": { "key": "heavenwillChargedBoost", "value": 0.07 }
       },
@@ -197,7 +197,7 @@
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
           { "key": "precision", "value": 0.094 },
-          { "key": "maxBamboocut", "value": 51.4 }
+          { "key": "allMysticDmgBoost", "value": 0.114 }
         ],
         "attunement": { "key": "heavenwillChargedBoost", "value": 0.07 }
       },

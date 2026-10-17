@@ -723,6 +723,16 @@ export function StatsTab({
               </StatPair>
               <StatPair>
                 <CalculatedStatField
+                  definition={statDefinition("allMysticDmgBoost")}
+                  compact
+                  stats={stats}
+                  statOverrides={statOverrides}
+                  onStatChange={onStatChange}
+                  onStatReset={onStatReset}
+                />
+              </StatPair>
+              <StatPair>
+                <CalculatedStatField
                   definition={statDefinition("singleTargetMysticDmgBoost")}
                   compact
                   stats={stats}

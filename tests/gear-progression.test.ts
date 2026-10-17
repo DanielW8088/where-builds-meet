@@ -43,6 +43,30 @@ const sheet = (breakthrough: string) =>
   })
 
 describe("gear progression", () => {
+  it.each(["singleTargetMysticDmgBoost", "areaMysticDmgBoost"])(
+    "migrates stored tier-100 %s without losing the item or its roll",
+    key => {
+      const inventory = {
+        items: [
+          {
+            id: "legacy-mystic",
+            slot: "helmet",
+            definitionId: "helmet",
+            level: 100,
+            rarity: "Gold",
+            baseAffix: { key: "maxHp", value: 1000 },
+            additionalAffixes: [{ key, value: 0.098 }],
+          },
+        ],
+        equipped: { helmet: "legacy-mystic" },
+      }
+      const parsed = parseGearInventory(inventory)!
+      expect(parsed.items).toHaveLength(1)
+      expect(parsed.items[0].additionalAffixes).toEqual([{ key: "allMysticDmgBoost", value: 0.098 }])
+      expect(parsed.equipped).toEqual(inventory.equipped)
+    },
+  )
+
   it("materializes valid maximum-roll inventories at both supported preset tiers", () => {
     for (const preset of defaultBuildPresets)
       for (const tier of [96, 100] as const) {
@@ -118,6 +142,16 @@ describe("gear progression", () => {
       variant => variant.label === attunementData.physicalPenetration.name,
     )!
     expect(penetration.maxRoll).toBe(maxGearRoll("physicalPenetration", "attunement", false, 100))
+    for (const key of ["singleTargetMysticDmgBoost", "areaMysticDmgBoost"] as const) {
+      expect(
+        bundle.statPriority.some(variant => variant.stats && variant.stats[key] !== subject.build.baseStats[key]),
+      ).toBe(false)
+    }
+    expect(
+      bundle.statPriority.some(
+        variant => variant.stats && variant.stats.allMysticDmgBoost !== subject.build.baseStats.allMysticDmgBoost,
+      ),
+    ).toBe(true)
     const otherEnemy = buildRotationComparisonBundle({ ...subject, enemy: { ...subject.enemy, level: 96 } })
     expect(otherEnemy.statPriority).toEqual(bundle.statPriority)
     expect(otherEnemy.attunementPriority).toEqual(bundle.attunementPriority)
@@ -137,6 +171,28 @@ describe("gear progression", () => {
     expect(raw.stats).toEqual(
       calculateEquippedGearEffects(resolveBuildInventory(entry, copied.gearItems, weapons, 100), weapons, false).stats,
     )
+  })
+
+  it.each([100931001, 100941001])("imports combined Mystic affix %s as a percentage", id => {
+    const imported = parseOfficialGearExport(
+      {
+        wearEquipsDetailed: {
+          3: {
+            exVo: {
+              level: 100,
+              rarity: "Gold",
+              baseAffixes: [
+                [10143001, 3444],
+                [id, 11.4],
+              ],
+            },
+          },
+        },
+      },
+      weapons,
+    )
+    expect(imported.warnings).toEqual([])
+    expect(imported.exportValue.gearItems[0].additionalAffixes).toEqual([{ key: "allMysticDmgBoost", value: 0.114 }])
   })
 
   it("recognizes and imports tier-100 items without changing their rolls", () => {

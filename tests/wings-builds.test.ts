@@ -113,7 +113,10 @@ describe("Wings builds", () => {
       tier,
     )
     for (const item of maximum.items) {
-      expect(item.additionalAffixes.filter(affix => affix.key === "power")).toHaveLength(1)
+      const mysticArmor = tier === 100 && (item.slot === "helmet" || item.slot === "chestpiece")
+      expect(
+        item.additionalAffixes.filter(affix => affix.key === (mysticArmor ? "allMysticDmgBoost" : "power")),
+      ).toHaveLength(1)
       expect(item.additionalAffixes.some(affix => affix.key === "maxSilkbind")).toBe(false)
     }
     for (const item of maximum.items.filter(row => row.slot === "leftWeapon" || row.slot === "rightWeapon"))
@@ -130,11 +133,14 @@ describe("Wings builds", () => {
       expect(affixes.filter(affix => affix.key === "agility")).toHaveLength(3)
     },
   )
-  it.each([96, 100] as const)("keeps Double Min at twelve Physical and eight Silkbind rolls at tier %s", tier => {
-    const preset = defaultBuildPresets.find(row => row.id === "wings-fully-relayed-double-min")!
-    const inventory = buildPresetInventory(preset, tier)
-    const affixes = inventory.items.flatMap(item => [item.baseAffix].concat(item.additionalAffixes))
-    expect(affixes.filter(affix => affix.key === "minPhys")).toHaveLength(12)
-    expect(affixes.filter(affix => affix.key === "minSilkbind")).toHaveLength(8)
-  })
+  it.each([96, 100] as const)(
+    "keeps Double Min attack allocation with tier-100 Mystic replacements at tier %s",
+    tier => {
+      const preset = defaultBuildPresets.find(row => row.id === "wings-fully-relayed-double-min")!
+      const inventory = buildPresetInventory(preset, tier)
+      const affixes = inventory.items.flatMap(item => [item.baseAffix].concat(item.additionalAffixes))
+      expect(affixes.filter(affix => affix.key === "minPhys")).toHaveLength(12)
+      expect(affixes.filter(affix => affix.key === "minSilkbind")).toHaveLength(tier === 100 ? 6 : 8)
+    },
+  )
 })

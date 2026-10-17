@@ -1533,5 +1533,7 @@
   "10194119": "crit",
   "10194120": "affinity",
   "10194121": "allMartialArts",
-  "10194124": "vsBossDmg"
+  "10194124": "vsBossDmg",
+  "100931001": "allMysticDmgBoost",
+  "100941001": "allMysticDmgBoost"
 }

@@ -2343,3 +2343,10 @@ Tier-100 item bases, affix pools, and maxima come from the interpreted fields in
 `local/datamine/wwm-items-tier-100.json`. Existing relay-only affix eligibility
 and the 0.94 relayed-affix multiplier continue to apply. Presets retain their
 existing affix selections and use the selected tier's maximum rolls.
+
+Tier-100 gear uses `allMysticDmgBoost` instead of area/single-target Mystic
+affixes. Its roll table excludes the two legacy affixes so stat-priority
+comparisons cannot recommend unavailable rolls. Stored inventory parsing
+migrates the old keys at tier 100 while
+preserving roll values; the editor also converts them when changing tier.
+New gear drafts default to tier 100 independently of the selected breakthrough.

@@ -183,7 +183,7 @@
         "additionalAffixes": [
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
-          { "key": "singleTargetMysticDmgBoost", "value": 0.114 },
+          { "key": "allMysticDmgBoost", "value": 0.114 },
           { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "panaceaMartialHealingBoost", "value": 0.07 }
@@ -196,7 +196,7 @@
         "additionalAffixes": [
           { "key": "minPhys", "value": 90.6 },
           { "key": "agility", "value": 57.4 },
-          { "key": "singleTargetMysticDmgBoost", "value": 0.114 },
+          { "key": "allMysticDmgBoost", "value": 0.114 },
           { "key": "maxSilkbind", "value": 51.4 }
         ],
         "attunement": { "key": "panaceaMartialHealingBoost", "value": 0.07 }

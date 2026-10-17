@@ -45,7 +45,8 @@
     "vsBossDmg": { "name": "vs Boss DMG", "percentage": true },
     "maxHp": { "name": "Max HP", "pickable": false },
     "physicalDefense": { "name": "Physical Defense", "pickable": false },
-    "ribbonAndDrumDmgBoost": { "name": "Art of Ribbon & Drum", "percentage": true }
+    "ribbonAndDrumDmgBoost": { "name": "Art of Ribbon & Drum", "percentage": true },
+    "allMysticDmgBoost": { "name": "All Mystic Skill DMG Boost", "percentage": true }
   },
   "universalAdditionalAffixes": {
     "91": ["body", "defense"],
@@ -1314,8 +1315,7 @@
           "precision",
           "crit",
           "affinity",
-          "areaMysticDmgBoost",
-          "singleTargetMysticDmgBoost"
+          "allMysticDmgBoost"
         ]
       },
       "attunements": ["Armor"]
@@ -1397,8 +1397,7 @@
           "precision",
           "crit",
           "affinity",
-          "areaMysticDmgBoost",
-          "singleTargetMysticDmgBoost"
+          "allMysticDmgBoost"
         ]
       },
       "attunements": ["Armor"]

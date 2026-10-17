@@ -24,6 +24,14 @@ describe("GearEditor", () => {
     container.remove()
   })
 
+  it.each(["areaMysticDmgBoost", "singleTargetMysticDmgBoost"])("converts %s when changing to tier 100", key => {
+    const draft = newDraft(96)
+    draft.additionalAffixes[0] = { key, value: "9.8" }
+    const converted = capAndFilterGearDraft({ ...draft, level: 100 }, gearData.gear.helmet)
+    expect(converted.additionalAffixes[0]).toEqual({ key: "allMysticDmgBoost", value: "9.8" })
+    expect(newDraft().level).toBe(100)
+  })
+
   it.each(["", "body", "defense", "maxHp", "physicalDefense"])(
     "keeps defensive %s rolls without offering defensive choices",
     async key => {

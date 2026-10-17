@@ -63,7 +63,7 @@ describe("official defensive affixes", () => {
           },
         },
       },
-      ["thundercryBlade", "stormbreakerSpear"],
+      ["thundercry", "stormbreaker"],
     )
     expect(parsed.warnings).toEqual([])
     expect(parsed.exportValue.gearItems[0]).toMatchObject({

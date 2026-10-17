@@ -66,6 +66,7 @@ export type CharacterStats = {
   ribbonAndDrumDmgBoost: number
   fanDmgBoost: number
   dualBladesDmgBoost: number
+  allMysticDmgBoost: number
   singleTargetMysticDmgBoost: number
   areaMysticDmgBoost: number
 }

@@ -373,12 +373,12 @@ function mysticSkillDamageBonus(stats: CharacterStats, skillTags: string[]) {
   for (const tag of skillTags) {
     switch (tag) {
       case "SingleTargetMystic":
-        return stats.singleTargetMysticDmgBoost
+        return stats.singleTargetMysticDmgBoost + stats.allMysticDmgBoost
       case "AreaMystic":
-        return stats.areaMysticDmgBoost
+        return stats.areaMysticDmgBoost + stats.allMysticDmgBoost
     }
   }
-  return 0
+  return skillTags.includes("Mystic") ? stats.allMysticDmgBoost : 0
 }
 
 function calculateDamageBreakdownInternal(

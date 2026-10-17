@@ -1648,3 +1648,18 @@ the character sheet and worker bundle consume them. Values are the normal
 variant from `local/datamine/wwm-solo-levels.json`, including the exported HP
 that was missing from Arsenal and understated in the old Enhancement slot list.
 The supported Solo Levels are 17 and 18; no interpolation or fallback is used.
+
+Tier-100 Wings and Kite presets use All Mystic on helmet and chest,
+replacing their previous Silkbind/Bamboocut or Power rolls. Kite Max moves
+helmet Critical to the left weapon in place of Power before replacing that
+helmet Power with All Mystic, preserving its Max Physical rolls. Tier 96 stays
+unchanged. These tier-100 choices supersede the earlier fixed attack-roll
+counts for Wings Double Min.
+
+Tier-100 Fully Relayed Umbra uses Momentum on greaves and Max Void Attack
+on the left weapon; tier-100 left-weapon attribute rolls must use Void. Among legal replacements of its additional Momentum
+rolls with Affinity or Max Bellstrike, including optional helmet/chest All
+Mystic replacements, the highest 38-Blood-Burst preset DPS uses seven
+Momentum, three Affinity, one Max Void Attack, and no All Mystic additional
+rolls. Comparison uses breakthrough 18, Clay Oven Flatbread, Fire, no script,
+default global buffs, and the preset ping; other affixes and setup stay fixed.

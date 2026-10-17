@@ -667,6 +667,32 @@ describe("gear", () => {
       "Area Mystic bonus did not apply only to its matching tag.",
     )
 
+    for (const tags of [["Mystic"], ["Mystic", "SingleTargetMystic"], ["Mystic", "AreaMystic"], ["MartialArt"]]) {
+      const base = damage.calculateDamageBreakdown(
+        { phyCoef: 1, attrCoef: 1 },
+        { ...damageContext, skillTags: tags },
+      ).total
+      const boosted = damage.calculateDamageBreakdown(
+        { phyCoef: 1, attrCoef: 1 },
+        {
+          ...damageContext,
+          skillTags: tags,
+          stats: { ...damageStats, singleTargetMysticDmgBoost: 0, areaMysticDmgBoost: 0, allMysticDmgBoost: 0.114 },
+        },
+      ).total
+      const unboosted = damage.calculateDamageBreakdown(
+        { phyCoef: 1, attrCoef: 1 },
+        {
+          ...damageContext,
+          skillTags: tags,
+          stats: { ...damageStats, singleTargetMysticDmgBoost: 0, areaMysticDmgBoost: 0 },
+        },
+      ).total
+      assert(
+        base > 0 && Math.abs(boosted / unboosted - (tags.includes("Mystic") ? 1.114 : 1)) < 1e-9,
+        "All Mystic must boost every Mystic category and leave martial arts unchanged.",
+      )
+    }
     Reflect.deleteProperty(globalThis, "window")
   })
 })
