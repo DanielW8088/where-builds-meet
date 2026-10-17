@@ -73,6 +73,39 @@
           }
         ]
       }
+    ],
+    [
+      { "effect": [] },
+      {
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 85.8 } } } }]
+      },
+      {
+        "effect": [
+          {
+            "requirement": [{ "target": "resource", "value": "BladeMomentum", "comparison": ">", "amount": 1 }],
+            "effectiveStat": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.35, "max": 0.21 } } }
+          }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "rawStat": { "maxStonesplit": 228, "minStonesplit": 114 },
+            "stat": {
+              "stonesplitDmgBonus": { "formula": { "source": "minStonesplit", "multiplier": 0.000336, "max": 0.126 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "SnowpartingBlade" }],
+            "effect": { "flatAttackBonus": 0.15 }
+          }
+        ]
+      }
     ]
   ]
 }

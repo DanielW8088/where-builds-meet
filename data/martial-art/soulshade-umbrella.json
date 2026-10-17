@@ -135,6 +135,70 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "effect": [
+          {
+            "requirement": [
+              { "target": "equippedMartialArt", "value": "panaceaFan" },
+              { "target": "skillTag", "value": "Mystic" }
+            ],
+            "effect": { "dmgBonus": 0.2 }
+          },
+          {
+            "target": "FloatingGrace",
+            "modify": {
+              "effect": [
+                { "requirement": [{ "target": "target", "value": "Exhausted" }], "effect": { "dmgBonus": 0.05 } }
+              ]
+            }
+          },
+          {
+            "target": "FloatingGraceDeluge",
+            "modify": {
+              "effect": [
+                { "requirement": [{ "target": "target", "value": "Exhausted" }], "effect": { "dmgBonus": 0.05 } }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 85.8 } } } }]
+      },
+      {
+        "effect": [
+          { "requirement": [{ "target": "skillTag", "value": "Special" }], "effect": { "criticalHealingBonus": 0.05 } },
+          {
+            "requirement": [{ "target": "skillTag", "value": "Special" }],
+            "effect": {
+              "criticalHealingBonus": {
+                "formula": { "source": "minPhys", "multiplier": 0.0003333333333333333, "max": 0.25 }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "rawStat": { "maxSilkbind": 228, "minSilkbind": 114 },
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 25.2 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "SoulshadeUmbrella" }],
+            "effect": { "flatAttackBonus": 0.15 }
+          }
+        ]
+      }
     ]
   ]
 }

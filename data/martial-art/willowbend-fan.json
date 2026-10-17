@@ -873,6 +873,73 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "effect": [
+          { "target": "Tailwind", "modify": { "duration": 24 } },
+          {
+            "requirement": [
+              { "target": "self", "value": "Tailwind" },
+              { "target": "equippedMartialArt", "value": "museflowWaistDrum" }
+            ],
+            "effect": {
+              "stat": {
+                "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
+                "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
+                "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
+                "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
+                "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
+                "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
+                "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
+                "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0988 } } } }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "requirement": [
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "self", "value": "Tailwind" },
+                  { "target": "self", "value": "RadiantDrum" }
+                ]
+              }
+            ],
+            "effect": {
+              "stat": {
+                "physDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } },
+                "silkbindDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.00016, "max": 0.12 } }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 25.2 } }
+            },
+            "rawStat": { "maxSilkbind": 228, "minSilkbind": 114 }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          { "requirement": [{ "target": "skillTag", "value": "WillowbendFan" }], "effect": { "flatAttackBonus": 0.15 } }
+        ]
+      }
     ]
   ]
 }

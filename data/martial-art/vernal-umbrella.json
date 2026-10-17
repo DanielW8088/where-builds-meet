@@ -151,6 +151,78 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "effect": [
+          {
+            "requirement": [
+              { "target": "skillTag", "value": "VernalUmbrella" },
+              { "target": "skillTag", "value": "Ballistic" }
+            ],
+            "effect": { "physicalResistance": -5 }
+          },
+          {
+            "requirement": [
+              { "target": "skillTag", "value": "VernalUmbrella" },
+              { "target": "skillTag", "value": "Ballistic" },
+              {
+                "operator": "or",
+                "operand": [
+                  { "target": "target", "value": "Immobilized" },
+                  { "target": "target", "value": "Airborne" }
+                ]
+              }
+            ],
+            "effect": { "physicalResistance": -10 }
+          }
+        ]
+      },
+      {
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0988 } } } }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "requirement": [
+              { "target": "skillTag", "value": "VernalUmbrella" },
+              { "target": "skillTag", "value": "Ballistic" }
+            ],
+            "effect": {
+              "critDmgBonus": {
+                "function": "segment",
+                "param1": "minPhys",
+                "param2": [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750],
+                "param3": [
+                  0, 0.024, 0.048, 0.072, 0.096, 0.12, 0.144, 0.168, 0.192, 0.216, 0.24, 0.264, 0.288, 0.312, 0.336,
+                  0.36
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "rawStat": { "maxSilkbind": 228, "minSilkbind": 114 },
+            "stat": {
+              "silkbindPenetration": { "formula": { "source": "minSilkbind", "multiplier": 0.0672, "max": 25.2 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "VernalUmbrella" }],
+            "effect": { "flatAttackBonus": 0.15 }
+          }
+        ]
+      }
     ]
   ]
 }

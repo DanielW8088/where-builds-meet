@@ -71,6 +71,38 @@
           }
         ]
       }
+    ],
+    [
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "stat": {
+              "maxHp": { "formula": { "source": { "max": ["body", "power"] }, "multiplier": 10, "max": 3250 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "rawStat": { "maxStonesplit": 228, "minStonesplit": 114 },
+            "stat": {
+              "stonesplitDmgBonus": { "formula": { "source": "minStonesplit", "multiplier": 0.000336, "max": 0.126 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "StormbreakerSpear" }],
+            "effect": { "flatAttackBonus": 0.15 }
+          }
+        ]
+      }
     ]
   ]
 }

@@ -104,6 +104,53 @@
           { "requirement": [{ "target": "skillTag", "value": "PanaceaFan" }], "effect": { "flatAttackBonus": 0.0725 } }
         ]
       }
+    ],
+    [
+      { "effect": [] },
+      {
+        "effect": [
+          { "stat": { "crit": { "formula": { "source": "agility", "multiplier": 0.000304, "max": 0.0988 } } } }
+        ]
+      },
+      {
+        "effect": [
+          { "requirement": [{ "target": "skillTag", "value": "Heavy" }], "effect": { "healingBonus": 0.05 } },
+          {
+            "requirement": [{ "target": "skillTag", "value": "Heavy" }],
+            "effect": {
+              "healingBonus": { "formula": { "source": "minPhys", "multiplier": 0.0003333333333333333, "max": 0.25 } }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "rawStat": { "maxSilkbind": 228, "minSilkbind": 114 },
+            "stat": {
+              "silkbindDmgBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.126 } },
+              "silkbindHealingBonus": { "formula": { "source": "minSilkbind", "multiplier": 0.000336, "max": 0.126 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "requirement": [
+              { "target": "equippedMartialArt", "value": "soulshadeUmbrella" },
+              { "target": "skillTag", "value": "Mystic" }
+            ],
+            "effect": { "convert": { "from": "abrasionRate", "to": "normalRate", "ratio": 1 }, "flatAttackBonus": 0.15 }
+          }
+        ]
+      },
+      {
+        "effect": [
+          { "requirement": [{ "target": "skillTag", "value": "PanaceaFan" }], "effect": { "flatAttackBonus": 0.0725 } }
+        ]
+      }
     ]
   ]
 }

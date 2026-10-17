@@ -50,7 +50,8 @@
             null,
             null,
             240,
-            258
+            258,
+            276
           ]
         },
         "maxPhys": {
@@ -73,7 +74,8 @@
             null,
             null,
             480,
-            516
+            516,
+            552
           ]
         },
         "maxHp": {
@@ -96,7 +98,8 @@
             null,
             null,
             40070,
-            43147
+            43147,
+            46223
           ]
         },
         "physicalDefense": {
@@ -119,7 +122,8 @@
             null,
             null,
             120,
-            130
+            130,
+            138
           ]
         }
       }
@@ -164,6 +168,26 @@
         "affinityDmgBonus": 0.15,
         "minVoidAttack": 26.4,
         "maxVoidAttack": 26.4
+      }
+    },
+    "19": {
+      "rawStat": {
+        "maxHp": 8500,
+        "minPhys": 118.8,
+        "maxPhys": 118.8,
+        "physicalDefense": 112.2,
+        "agility": 27,
+        "power": 27,
+        "momentum": 27,
+        "body": 27,
+        "defense": 27,
+        "precision": 0.165,
+        "crit": 0.24,
+        "affinity": 0.12,
+        "critDmgBonus": 0.15,
+        "affinityDmgBonus": 0.15,
+        "minVoidAttack": 39.6,
+        "maxVoidAttack": 39.6
       }
     }
   },

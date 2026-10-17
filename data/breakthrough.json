@@ -32,5 +32,22 @@
     },
     "soloLevel": 18,
     "gearTier": 100
+  },
+  "19": {
+    "name": "19",
+    "martialArtTalentRank": 15,
+    "level": 96,
+    "defense": 446,
+    "physicalResistance": 0,
+    "bellstrikeResistance": 0,
+    "stonesplitResistance": 0,
+    "silkbindResistance": 0,
+    "bamboocutResistance": 0,
+    "judgementResistance": 0.85,
+    "levelBonusStats": {
+      "rawStat": { "precision": 0.192, "agility": 178, "power": 178, "momentum": 178, "body": 178, "defense": 178 }
+    },
+    "soloLevel": 19,
+    "gearTier": 100
   }
 }

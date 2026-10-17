@@ -103,6 +103,54 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "effect": [
+          { "requirement": [{ "target": "skillTag", "value": "PerfectDodge" }], "buffDurationBonus": 0.4 },
+          {
+            "trigger": {
+              "event": "attackResponse",
+              "requirement": [{ "target": "skillTag", "value": "PerfectDodge" }],
+              "cooldown": 30,
+              "action": { "type": "clearCD", "value": "AddledMind", "charges": 1 }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [{ "stat": { "minPhys": { "formula": { "source": "agility", "multiplier": 0.264, "max": 85.8 } } } }]
+      },
+      {
+        "effect": [
+          { "requirement": [{ "target": "self", "value": "Flamelash" }], "effect": { "critDmgBonus": 0.05 } },
+          {
+            "requirement": [{ "target": "self", "value": "Flamelash" }],
+            "effect": {
+              "critDmgBonus": { "formula": { "source": "minPhys", "multiplier": 0.0003333333333333333, "max": 0.25 } }
+            }
+          }
+        ]
+      },
+      {
+        "effect": [
+          {
+            "rawStat": { "maxBamboocut": 228, "minBamboocut": 114 },
+            "stat": {
+              "bamboocutPenetration": { "formula": { "source": "minBamboocut", "multiplier": 0.0672, "max": 25.2 } }
+            }
+          }
+        ]
+      },
+      { "effect": [] },
+      {
+        "effect": [
+          {
+            "requirement": [{ "target": "skillTag", "value": "InfernalTwinblades" }],
+            "effect": { "flatAttackBonus": 0.15 }
+          }
+        ]
+      }
     ]
   ]
 }

@@ -20,6 +20,15 @@ Resistance, 16.5% level Precision, and 150 of each base attribute. Breakthrough
 for both profiles; it is not imported from the Solo Level datamine.
 Breakthrough 17 selects martial-art talent rank 13 and breakthrough 18 selects
 rank 14 through `martialArtTalentRank`.
+Breakthrough 19 selects Solo Level 19 and martial-art rank 15, with 19.2%
+level Precision and 178 of each base attribute. It retains breakthrough 18's
+enemy profile (including level 96) and equipment tier 100. Its Enhancement
+totals are 46,223 HP, 276–552 Physical Attack, and 138 Physical Defense.
+Character talent totals use the grey variant's cumulative Solo Level 19 rewards.
+Rank 15 raises the base-attribute conversion cap to 325, adds 114–228 attribute
+attack, and raises attribute penetration/damage caps to 25.2/12.6%. Its
+martial-art Bonus Attack increase is 15%, with a 1.5% coefficient increase for
+the supported effects without Bonus Attack.
 Each equipped martial art contributes only its `talent[rank]` effects; ranks are
 not cumulative. Infernal Twinblades' rank-13 conversions use the interpreted
 datamine rates: 0.264 Min Physical Attack per Agility (capped at 73.92), and

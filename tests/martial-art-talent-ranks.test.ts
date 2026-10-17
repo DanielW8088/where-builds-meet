@@ -142,7 +142,7 @@ describe("martial-art-talent-ranks", () => {
       )
       assert.equal(
         sheet.rawStats.minBamboocut,
-        profile.martialArtTalentRank === 14 ? 312 : 296,
+        ({ 13: 296, 14: 312, 15: 328 } as Record<number, number>)[profile.martialArtTalentRank],
         `Breakthrough ${profile.name} selects both selected attribute talents`,
       )
       assert(
