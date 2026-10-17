@@ -222,6 +222,15 @@ remain in `data/official/import-map.json`. Maintain these checked-in mappings
 using this project's datamine source in `local/datamine/`; the legacy extractor
 based on the reference site has been retired.
 
+Tier 100 dashboard affix IDs are mapped from the interpreted initial affixes,
+tuning affixes, and nested attunement entries in
+`local/datamine/wwm-items-tier-100.json`. Named entries reuse the canonical
+keys established by identically named Tier 96 entries, including defensive
+stats and PvE armor attunements. Tuning metadata, PvP-only mechanics, and
+unnamed entries without an independently confirmed mapping remain unsupported;
+ID prefixes alone do not establish meaning. Imports preserve the reported roll
+values and use the existing percentage conversion and slot validation.
+
 The Tier 96 Kite armor-attunement family uses IDs `279751` through `279755` in
 charged/martial/third-type order for Heavenwill Gauntlets, followed by Heavy and
 Special for Skygrasp Rope Dart. Dashboard Body and Defense IDs are mapped as

@@ -4,20 +4,21 @@ import { calculateEquippedGearEffects, mergeImportedBuildState, parseGearInvento
 import { parseOfficialGearExport } from "@/officialGearImport"
 
 describe("official defensive affixes", () => {
-  it("preserves all four defensive rolls through import, storage, and equipped effects", () => {
+  it.each([96, 100])("preserves tier %i defensive rolls through import, storage, and equipped effects", level => {
+    const prefix = level === 100 ? 101 : 97
     const parsed = parseOfficialGearExport(
       {
         wearEquipsDetailed: {
           1: {
             exVo: {
-              level: 96,
+              level,
               rarity: "Gold",
               baseAffixes: [
-                [9711001, 53],
-                [9793001, 40],
-                [9793003, 41],
-                [9793006, 2500],
-                [9793009, 35],
+                [Number(`${prefix}11001`), 53],
+                [Number(`${prefix}93001`), 40],
+                [Number(`${prefix}93003`), 41],
+                [Number(`${prefix}93006`), 2500],
+                [Number(`${prefix}93009`), 35],
               ],
             },
           },
@@ -42,6 +43,34 @@ describe("official defensive affixes", () => {
       defense: 41,
       maxHp: 2500,
       physicalDefense: 35,
+    })
+  })
+
+  it("imports tier 100 armor attunements with their percentage roll intact", () => {
+    const parsed = parseOfficialGearExport(
+      {
+        wearEquipsDetailed: {
+          3: {
+            exVo: {
+              level: 100,
+              rarity: "Gold",
+              baseAffixes: [
+                [10143001, 3444],
+                [10193103, 41],
+                [290202, 7],
+              ],
+            },
+          },
+        },
+      },
+      ["thundercryBlade", "stormbreakerSpear"],
+    )
+    expect(parsed.warnings).toEqual([])
+    expect(parsed.exportValue.gearItems[0]).toMatchObject({
+      level: 100,
+      baseAffix: { key: "maxHp", value: 3444 },
+      additionalAffixes: [{ key: "defense", value: 41 }],
+      attunement: { key: "thundercryChargedBoost", value: 0.07 },
     })
   })
 
