@@ -48,7 +48,7 @@ Base totals exclude ping.
 ## Datamine interpretation
 
 Local references are under `local/datamine/`: `wwm-skills-normal-all.json`,
-`wwm-skills-mystic-skills-offensive.json`, `wwm-skills-mechanism-all.json`,
+`wwm-skills-mystic-skills-all.json`, `wwm-skills-mechanism-all.json`,
 `wwm-inner-way-normal.json`, and
 `wwm-martial-arts-normal.json`. Prefer interpreted normal-variant fields;
 ignore `versions` subtrees. Do not infer missing timing, route selection,
@@ -56,8 +56,15 @@ resource units, or mode-specific behavior from a damage baseline alone.
 
 - Skill `byLevel` arrays use **level minus one**, including leading nulls.
   `aggregated` contains level-independent values. Implemented offensive
-  Mystics use level 71; Smolder, Dragon Head - Tide, and Ghostly Step - Umbra
-  use `enlightenmentCurves`. Martial-art coefficients resolve from the normal
+  Mystics use **level 76** (array index 75). Smolder, Dragon Head - Tide,
+  and Ghostly Steps - Umbra use their established enlightenment baseline,
+  not the regular curve. In the current schema-2 Mystic export, those known
+  baselines are normal-variant `unassignedLevels` rows 171 at level 71 and
+  176 at level 76. Row 171 reproduces the confirmed prior values before
+  importing row 176; this is a narrow exception to ignoring `versions`, not
+  a generic fallback for unidentified source routes. Ghostly Steps has the
+  same values at both levels. Preserve each authored hit multiplier when
+  replacing coefficients and flat bonuses. Martial-art coefficients resolve from the normal
   curve's `SKILL_POWER_PRO_ATK` / `SKILL_POWER_PRO_HEAL`, with
   `SKILL_ADD_W_ATK` as `phyBonus` and `SKILL_ADD_WX_PRO_ATK` as `attrBonus`,
   read at **level 100** (array index 99) unless the value is `aggregated`.
@@ -90,10 +97,12 @@ not a second catalog of current values:
 - Smolder's tick factor remains **0.0532**, confirmed by observed damage;
   the exported **0.045** conflicts with that evidence. DOT flat bonuses remain
   inactive under the current damage formula.
-- Dragon Head - Tide uses the confirmed pre-multiplier physical/attribute
-  coefficient **16.3591422641509** and physical bonus **2483.50943396226**,
-  followed by its upgrade/enlightenment factors. Do not replace that baseline
-  with a conflicting export without new evidence.
+- Dragon Head - Tide retains its confirmed enlightenment route. Its level-76
+  pre-multiplier physical/attribute coefficient is **16.3600856603774** and
+  physical bonus is **2596.71698113208**, followed by the existing upgrade/
+  enlightenment factors. The source's level-71 row reproduces the previously
+  confirmed 16.3591422641509 / 2483.50943396226 baseline; the regular curve
+  is a different route and must not replace it.
 - Panacea's extra **Mystic Precision Enhancement** talent is intentional despite
   its absence from the rank-13 source list; see the talent audit.
 - Echoes of Oblivion's Karma reduction is **10 flat Bamboocut Resistance** at

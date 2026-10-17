@@ -419,3 +419,40 @@ The user approved all twenty results on October 17, 2026. The accepted snapshots
 | stonesplitStrength/mixed-dummy-smolder-poet-1-min      |   69015.3929252431 |  68316.11098675086 | -1.0132% | 4140923.5755145852 |  4098966.659205051 | 60 → 60  |
 | stonesplitStrength/pure-dummy-1-min                    |  63110.35654269702 |  62468.47502452412 | -1.0171% | 3786621.3925618213 | 3748108.5014714473 | 60 → 60  |
 | stonesplitStrength/pure-dummy-1-min-infinite-vitality  |  66124.73807374043 |  65445.18119214224 | -1.0277% |  3967484.284424426 | 3926710.8715285347 | 60 → 60  |
+
+## Accepted: Mystic skill level 76 (2026-10-17)
+
+Implemented offensive Mystic coefficients and flat attack bonuses now resolve
+from source level 76 instead of 71, including the existing enlightened Smolder
+and Dragon Head - Tide routes. This changes authored JSON only: hit multipliers,
+cast and hit times, cooldowns, and effect mechanics are unchanged. Ghostly Steps
+has identical values at both source levels. Combustion and Smolder DOT coefficients
+use level 76 with their retained 0.0532 tick factor. The current damage formula
+does not apply DOT flat bonuses. No runtime level-selection mechanism is added.
+
+All twenty accepted fixtures remain at breakthrough 17. Mystic level is the
+shared authored skill level, independent of that setting. Damage and DPS increase
+in every preset; every duration remains 60 seconds. The user approved all twenty results on October 17, 2026; the accepted snapshots now use Mystic level 76.
+
+| Rotation                                               |       Accepted DPS |            New DPS |  Change |    Accepted damage |         New damage | Duration |
+| ------------------------------------------------------ | -----------------: | -----------------: | ------: | -----------------: | -----------------: | -------- |
+| bamboocutDust/dust-dummy-1-min                         | 63703.630174113605 | 63734.250633261436 | 0.0481% | 3822217.8104468165 | 3824055.0379956863 | 60 → 60  |
+| bamboocutDust/dust-dummy-1-min-100pc                   |  63499.66835014831 |  63530.30027333388 | 0.0482% | 3809980.1010088986 | 3811818.0164000327 | 60 → 60  |
+| bamboocutKite/dummy-1-min-infinite-vitality            |  58069.99291541508 |  58100.60763869319 | 0.0527% |  3484199.574924905 | 3486036.4583215914 | 60 → 60  |
+| bamboocutKite/dummy-1-min-iv-bp                        |  62952.31877288379 | 62981.141537984215 | 0.0458% | 3777139.1263730275 | 3778868.4922790527 | 60 → 60  |
+| bamboocutWind/wind-dummy-1-min-infinite-vitality       |  69642.61567669724 |  69660.74696256213 | 0.0260% |  4178556.940601835 | 4179644.8177537285 | 60 → 60  |
+| bellstrikeSplendor/dummy-1-min-81-waves                |  66123.69995113375 |  66144.19305033117 | 0.0310% | 3967421.9970680247 | 3968651.5830198703 | 60 → 60  |
+| bellstrikeUmbra/dummy-1-min-38-bb                      |   81247.4031684037 |  81279.15623741267 | 0.0391% |  4874844.190104222 |   4876749.37424476 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-regular-fire                | 29972.305634679007 | 30047.698178324827 | 0.2515% | 1798338.3380807405 | 1802861.8906994895 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-smolder                     |  36873.94978161095 |  36963.91838572095 | 0.2440% |  2212436.986896657 |  2217835.103143257 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-wts                         | 36180.063544133074 |  36270.30696158508 | 0.2494% | 2170803.8126479844 |  2176218.417695105 | 60 → 60  |
+| silkbindDeluge/dummy-1-min-wts-team                    | 38715.724661035245 |  38811.38525892662 | 0.2471% | 2322943.4796621148 |  2328683.115535597 | 60 → 60  |
+| silkbindWing/wings-dummy-1-min-dawnsun                 |  36423.74732400038 |  36450.29858359722 | 0.0729% |  2185424.839440023 | 2187017.9150158335 | 60 → 60  |
+| silkbindWing/wings-dummy-1-min-jadebreaker             | 49600.968893796395 |  49626.86992889119 | 0.0522% | 2976058.1336277835 | 2977612.1957334713 | 60 → 60  |
+| stonesplitMight/dummy-1-min                            |   80140.3390419006 |  80160.26931425251 | 0.0249% |  4808420.342514036 |   4809616.15885515 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-1-min                   |  67762.68828283051 |  67780.81295646731 | 0.0267% |   4065761.29696983 | 4066848.7773880386 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-1-min-double-stab       |  67017.06987142487 |  67034.95167411004 | 0.0267% |  4021024.192285492 |  4022097.100446602 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-infinite-vitality-1-min |  68130.15507253766 |   68160.4634521545 | 0.0445% | 4087809.3043522593 |   4089627.80712927 | 60 → 60  |
+| stonesplitStrength/mixed-dummy-smolder-poet-1-min      |  68316.11098675086 |   68354.2559063995 | 0.0558% |  4098966.659205051 |  4101255.354383969 | 60 → 60  |
+| stonesplitStrength/pure-dummy-1-min                    |  62468.47502452412 |  62489.58348841498 | 0.0338% | 3748108.5014714473 |  3749375.009304899 | 60 → 60  |
+| stonesplitStrength/pure-dummy-1-min-infinite-vitality  |  65445.18119214224 | 65475.613410428676 | 0.0465% | 3926710.8715285347 | 3928536.8046257207 | 60 → 60  |
