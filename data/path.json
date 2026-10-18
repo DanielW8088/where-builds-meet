@@ -68,7 +68,7 @@
   "silkbindWing": {
     "name": "Wings",
     "tag": "SilkbindWing",
-    "status": "preview",
+    "status": "available",
     "buildGroup": "silkbind-wing",
     "defaultBuild": "wings-fully-relayed-min",
     "graduated": ["wings-graduate"],

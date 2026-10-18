@@ -13,9 +13,11 @@ import {
 import type { RotationRecord } from "./rotationTimeline"
 import type { ThroughputReading } from "./rotationWorkerTransport"
 
-export const gearSearchLimits = { combinations: 100_000, milliseconds: 120_000 }
+export const gearSearchLimits = { combinations: 100_000 }
 export type EquippedGear = Partial<Record<GearSlot, string>>
 export type GearSearchInput = {
+  /** Zero disables both estimated and elapsed time limits. Defaults to two minutes. */
+  timeLimitMinutes?: number
   build: BuildEntry
   items: GearItem[]
   context: MeasurementContext
@@ -102,6 +104,8 @@ export function optimizeGear(
   report: (progress: GearSearchProgress) => void,
   now: () => number = () => performance.now(),
 ) {
+  const minutes = input.timeLimitMinutes ?? 2
+  const timeLimitMs = minutes === 0 ? Infinity : minutes * 60_000
   const started = now()
   const candidates = gearCombinationCandidates(input)
   const bundleFor = (equipped: EquippedGear) =>
@@ -139,7 +143,7 @@ export function optimizeGear(
   }
   publish(true)
   const assertBudget = () => {
-    if (now() - started > gearSearchLimits.milliseconds) {
+    if (now() - started > timeLimitMs) {
       publish(true)
       throw new GearSearchError("tooLong")
     }
@@ -196,7 +200,7 @@ export function optimizeGear(
     preparationMs * 2 +
     progress.fast * conservativeCost(samples.fast) +
     progress.rebuild * conservativeCost(samples.rebuild)
-  if (progress.estimatedMs > gearSearchLimits.milliseconds) throw new GearSearchError("tooLong")
+  if (progress.estimatedMs > timeLimitMs) throw new GearSearchError("tooLong")
   ranked.sort((a, b) => b.score - a.score)
   progress = { ...progress, phase: "searching" }
   publish(true)

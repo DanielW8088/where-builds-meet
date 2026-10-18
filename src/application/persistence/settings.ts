@@ -17,6 +17,7 @@ import { settingsSchema } from "@/schemas/storage"
 
 import {
   developmentModeStorageKey,
+  gearSearchMinutesStorageKey,
   divinecraftStorageKey,
   foodStorageKey,
   enduranceFoodStorageKey,
@@ -89,4 +90,10 @@ export function loadSettings(): CalculatorSettings {
     breakthrough: defaultBreakthrough,
     ping: resolvePing(saved.ping),
   }
+}
+
+export function loadGearSearchMinutes() {
+  const saved = getPersistentItem(gearSearchMinutesStorageKey)
+  const minutes = saved === null ? 2 : Number(saved)
+  return Number.isFinite(minutes) && minutes >= 0 ? minutes : 2
 }

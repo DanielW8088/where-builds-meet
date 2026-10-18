@@ -172,6 +172,20 @@ describe("gear combination optimization", () => {
     ).toThrow("tooLong")
   })
 
+  it.each([0, 100])(
+    "completes with a time limit of %s minutes when the default budget would expire",
+    timeLimitMinutes => {
+      let elapsed = 0
+      const updates: GearSearchProgress[] = []
+      optimizeGear(
+        { ...fixture(), timeLimitMinutes },
+        progress => updates.push(progress),
+        () => (elapsed += 30_000),
+      )
+      expect(updates.at(-1)?.phase).toBe("completed")
+    },
+  )
+
   it("rejects an oversized inventory before evaluating damage", () => {
     const input = fixture()
     input.items = input.items.flatMap(item =>

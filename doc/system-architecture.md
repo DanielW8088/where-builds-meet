@@ -92,7 +92,8 @@ and all other timeline inputs remain in the signature. Damage-outcome listeners
 and live collectors prevent reuse. The shared rotation variant evaluator resolves
 damage with the complete candidate sheet; other candidates rebuild their baseline.
 The estimate includes preparation and a 50% evaluation-cost margin. Searches whose
-estimated total exceeds two minutes are rejected; an elapsed-time guard also stops
+estimated total exceeds the saved Settings time limit (two minutes by default) are rejected;
+zero disables both time guards. Each new search snapshots that limit. An elapsed-time guard also stops
 an underestimated run and retains its latest reported best.
 
 `gearOptimizationStore` holds transient progress and equipment for the Build view.

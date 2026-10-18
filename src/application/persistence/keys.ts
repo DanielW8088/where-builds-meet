@@ -1,3 +1,4 @@
+export const gearSearchMinutesStorageKey = "wwm-gear-search-minutes-v1"
 export const localeStorageKey = "wwm-locale"
 export const developmentModeStorageKey = "wwm-dev-mode-v1"
 export const characterStatsStorageKey = "wwm-character-stats-v3"
@@ -35,6 +36,7 @@ export const previewSelectionStorageKey = "wwm-preview-selection-v1"
 
 export const applicationStorageKeys = new Set([
   localeStorageKey,
+  gearSearchMinutesStorageKey,
   developmentModeStorageKey,
   characterStatsStorageKey,
   legacyCharacterStatsStorageKey,

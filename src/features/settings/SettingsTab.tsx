@@ -7,6 +7,7 @@ import { previewCatalog, type PreviewId } from "@/application/gameData/previews"
 import type { ScopeTarget } from "@/application/gearScope"
 import { gameText, t } from "@/i18n"
 import { useGearStore } from "@/stores/gearStore"
+import { useSettingsStore } from "@/stores/settingsStore"
 import { type WeaponId } from "@/types"
 import { Button } from "@/ui/Button"
 import { Dialog } from "@/ui/Dialog"
@@ -123,6 +124,8 @@ export function SettingsTab({
   onLayoutChange: (layout: LayoutMode) => void
   onPreviewChange: (preview: PreviewId | null) => void
 }) {
+  const gearSearchMinutes = useSettingsStore(state => state.gearSearchMinutes)
+  const setGearSearchMinutes = useSettingsStore(state => state.setGearSearchMinutes)
   const weaponsLocked = Boolean(typedPathDefinitions[pathId].lockedWeapons)
 
   return (
@@ -161,7 +164,7 @@ export function SettingsTab({
             </label>
           ))}
         </div>
-        <label className="editor-field ping-field">
+        <label className="editor-field ping-field settings-number-field">
           <span>{t("ui.app.ping")}</span>
           <NumberInput
             value={settings.ping}
@@ -170,6 +173,15 @@ export function SettingsTab({
             step={1}
             inputMode="numeric"
             onCommit={ping => onSettingsChange(current => ({ ...current, ping: ping ?? 0 }))}
+          />
+        </label>
+        <label className="editor-field settings-number-field">
+          <span>{t("ui.app.gearSearchMinutes")}</span>
+          <NumberInput
+            value={gearSearchMinutes}
+            min={0}
+            step={1}
+            onCommit={minutes => setGearSearchMinutes(minutes ?? 2)}
           />
         </label>
         <div className="settings-share-row">

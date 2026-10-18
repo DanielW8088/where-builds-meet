@@ -3,6 +3,7 @@ import { t } from "@/i18n"
 import { dismissNotice, publishNotice } from "@/notices"
 import { useGearOptimizationStore } from "@/stores/gearOptimizationStore"
 import { useGearStore } from "@/stores/gearStore"
+import { useSettingsStore } from "@/stores/settingsStore"
 
 let worker: Worker | undefined
 
@@ -25,6 +26,7 @@ export function startGearOptimization(input: GearSearchInput) {
   if (useGearOptimizationStore.getState().run || input.build.isDefault) return
   dismissNotice("gear-optimization")
   const snapshot = structuredClone(input)
+  snapshot.timeLimitMinutes = useSettingsStore.getState().gearSearchMinutes
   delete snapshot.context.buildSetupOverrides
   const store = useGearOptimizationStore.getState()
   store.setRun({ input: snapshot })

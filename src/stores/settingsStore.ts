@@ -1,8 +1,12 @@
 import { create } from "zustand"
 
 import type { LayoutMode } from "@/application/contracts"
-import { developmentModeStorageKey, layoutPreviewStorageKey } from "@/application/persistence/keys"
-import { loadDevMode, loadLayoutPreview } from "@/application/persistence/settings"
+import {
+  developmentModeStorageKey,
+  gearSearchMinutesStorageKey,
+  layoutPreviewStorageKey,
+} from "@/application/persistence/keys"
+import { loadDevMode, loadGearSearchMinutes, loadLayoutPreview } from "@/application/persistence/settings"
 import { setPersistentItem } from "@/persistentStorage"
 
 /**
@@ -19,6 +23,8 @@ import { setPersistentItem } from "@/persistentStorage"
  */
 export type SettingsStore = {
   /** Gates the work-in-progress paths, the test-preset builds, and the unreleased locales. */
+  gearSearchMinutes: number
+  setGearSearchMinutes: (minutes: number) => void
   devMode: boolean
   /** The chosen layout while `devMode` is on. The effective layout is derived in `App`, because
    *  it also depends on the live viewport, which is not a stored value. */
@@ -42,10 +48,21 @@ export type SettingsStore = {
 }
 
 export const useSettingsStore = create<SettingsStore>()(set => ({
+  gearSearchMinutes: 2,
+  setGearSearchMinutes: minutes => {
+    if (!Number.isFinite(minutes) || minutes < 0) return
+    setPersistentItem(gearSearchMinutesStorageKey, String(minutes))
+    set({ gearSearchMinutes: minutes })
+  },
   devMode: false,
   layoutPreview: "pc",
 
-  initialise: compactViewport => set({ devMode: loadDevMode(), layoutPreview: loadLayoutPreview(compactViewport) }),
+  initialise: compactViewport =>
+    set({
+      devMode: loadDevMode(),
+      layoutPreview: loadLayoutPreview(compactViewport),
+      gearSearchMinutes: loadGearSearchMinutes(),
+    }),
 
   setDevMode: enabled => {
     setPersistentItem(developmentModeStorageKey, String(enabled))
