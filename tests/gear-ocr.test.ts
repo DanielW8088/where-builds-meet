@@ -3,8 +3,8 @@ import { existsSync } from "node:fs"
 import { createWorker, OEM, PSM } from "tesseract.js"
 import { assert, describe, it } from "vitest"
 
-import { inferGearLevelAndRarity, parseGearOcrTsv } from "../src/gearOcr"
-import type { GearOcrResult } from "../src/gearOcr"
+import { gearRarityFromTitleColor, inferGearLevelAndRarity, parseGearOcrTsv } from "@/gearOcr"
+import type { GearOcrResult } from "@/gearOcr"
 
 // Ported from script/probe/check-gear-ocr.mjs. Screenshot recognition needs
 // the gitignored local/OCR fixtures; the pure parsing checks always run.
@@ -26,6 +26,37 @@ const attunementOf = (result: GearOcrResult) => {
 }
 
 describe("gear-ocr", () => {
+  it("uses datamined item names ahead of the editor slot", () => {
+    const tsv = "5\t1\t1\t1\t1\t1\t28\t20\t200\t40\t95\tMirage Ward"
+    const result = parseGearOcrTsv(tsv, "Mirage Ward\nTier 96", 564, 811, "helmet")
+    assert.equal(result.definitionId, "pendant")
+    const weapon = parseGearOcrTsv(tsv, "Mirage Keening\nTier 96", 564, 811, "sword")
+    assert.equal(weapon.definitionId, "moBlade")
+    const purple = parseGearOcrTsv(tsv, "Mirage Ward\nTier 96", 564, 811, "helmet", "Purple")
+    assert.equal(purple.rarity, "Purple", "Title color supplies rarity without visible fixed base stats.")
+  })
+
+  it("reads only the colored marker beside the title at different scales", () => {
+    for (const scale of [1, 2]) {
+      const width = 100 * scale
+      const height = 200 * scale
+      const tsv = [5, 1, 1, 1, 1, 1, 25 * scale, 10 * scale, 60 * scale, 20 * scale, 95, "Item Name"].join("\t")
+      const pixels = new Uint8ClampedArray(width * height * 4)
+      const paint = (left: number, top: number, right: number, bottom: number, rgb: number[]) => {
+        for (let y = top * scale; y < bottom * scale; y++) {
+          for (let x = left * scale; x < right * scale; x++) pixels.set([...rgb, 255], (y * width + x) * 4)
+        }
+      }
+      paint(10, 10, 15, 30, [190, 160, 100])
+      paint(10, 60, 90, 80, [170, 140, 200])
+      assert.equal(gearRarityFromTitleColor(pixels, width, height, tsv), "Gold")
+      paint(10, 10, 15, 30, [170, 140, 200])
+      assert.equal(gearRarityFromTitleColor(pixels, width, height, tsv), "Purple")
+      paint(10, 10, 15, 30, [180, 180, 180])
+      assert.equal(gearRarityFromTitleColor(pixels, width, height, tsv), undefined)
+    }
+  })
+
   it.skipIf(!screenshotsPresent)("recognizes gear screenshots", async () => {
     // Tesseract's Node adapter writes its decompressed model to cachePath; keep that cache in ignored local/.
     const worker = await createWorker("eng", OEM.LSTM_ONLY, { langPath: "public/ocr", cachePath: "local" })
@@ -100,6 +131,35 @@ describe("gear-ocr", () => {
     } finally {
       await worker.terminate()
     }
+  })
+
+  it("reads inline progression rows, including split values and repeated base labels", () => {
+    const lines = [
+      [328, "Max Physical Attack", "+49.3"],
+      [461, "Agility", "+40.1"],
+      [598, "[Turn]Max Physical Attack", "+6", "3.8"],
+      [730, "Precision Rate", "+6.5%"],
+      [866, "Min Bellstrike Attack", "+35.7"],
+      [1014, "Physical Resistance", "+7.2"],
+    ] as const
+    const tsv = lines
+      .flatMap(([top, label, ...values], index) =>
+        [label, ...values].map((text, word) =>
+          [5, 1, 1, 1, index + 1, word + 1, word === 0 ? 225 : 490 + word * 30, top, 25, 24, 90, text].join("\t"),
+        ),
+      )
+      .join("\n")
+    const result = parseGearOcrTsv(tsv, "Vanguard Ward\nTier91", 891, 1143, "moBlade")
+    assert.deepEqual(result.baseAffix, { key: "maxPhys", value: 49.3 })
+    assert.deepEqual(result.additionalAffixes, [
+      { key: "agility", value: 40.1 },
+      { key: "maxPhys", value: 63.8 },
+      { key: "precision", value: 0.065 },
+      { key: "minBellstrike", value: 35.7 },
+    ])
+    assert.equal(result.level, 91)
+    assert.equal(result.definitionId, "pendant", "The item name overrides an incorrect editor slot.")
+    assert.equal(result.attunement, undefined, "Unavailable attunements still require manual correction.")
   })
 
   it("infers rarity and tolerates unclear OCR fields without screenshots", () => {

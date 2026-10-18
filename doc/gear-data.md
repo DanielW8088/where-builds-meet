@@ -171,7 +171,9 @@ Mo Blade screenshot is displayed only as a composition example.
 
 OCR supplies the definition, tier, fixed base stats, relaying marker, affix rows,
 attunement, and their displayed values. Rarity is inferred by matching the fixed
-base stats against the selected gear tier; image color is not inspected. Labels
+base stats against the selected gear tier when the title's rarity color cannot
+be read. A focused pixel scan beside the first title word recognizes Gold and
+Purple markers; attribute colors farther down the page do not determine rarity. Labels
 are normalized to the existing IDs in `data/gear.json` and
 `data/attunement.json`; percentage points are converted to decimal ratios at
 this UI boundary. Sparse-layout recognition is preferred; if it misses a row,
@@ -181,6 +183,21 @@ or missing affix and attunement rows remain empty for manual correction instead
 of rejecting the entire image. The current editor slot supplies the gear type
 when its label is unreadable. A successful import fills the ordinary gear draft
 and still requires the user to review it and press Save.
+
+The progression detail page is also supported: its values follow each label
+inline rather than aligning at the right edge. Adjacent numeric OCR fragments
+are joined before parsing, including split decimals. If the tier is missed,
+a focused line scan reads the banner above the first attribute. These pages
+show an item name instead of a gear type. `data/ocr-item-names.json` maps
+unambiguous item names from the local Tier 91, Tier 96, and Tier 100 catalogs to existing
+gear definitions, using equipment slots and explicit weapon types. Ambiguous
+names and weapon types are excluded. Recognized item names take priority over
+the editor slot; the modal still rejects gear belonging to a different slot.
+The Tier 91 catalog identifies Vanguard Ward as a Pendant. Unknown names retain
+the editor-slot fallback. With no readable title marker or fixed base stats,
+rarity defaults to Gold. Existing gear
+eligibility still applies; unsupported defensive attunements such as Physical
+Resistance remain empty for manual correction.
 
 ## Export and import
 

@@ -1,3 +1,5 @@
+import itemNamesJson from "@gamedata/ocr-item-names.json"
+
 import {
   affixOptionsForGearDefinition,
   attunementData,
@@ -56,6 +58,15 @@ function definitionFromText(text: string, fallbackDefinitionId?: string) {
     .replace(/[^a-z0-9]+/g, " ")
     .replace(/\s+/g, " ")
     .trim()
+  const namedItems = Object.entries(itemNamesJson)
+    .filter(([name]) => ` ${normalized} `.includes(` ${normalize(name)} `))
+    .sort(([left], [right]) => right.length - left.length)
+  if (namedItems.length > 0) {
+    const longestName = namedItems[0][0].length
+    const definitions = new Set(namedItems.filter(([name]) => name.length === longestName).map(([, id]) => id))
+    if (definitions.size === 1) return namedItems[0][1]
+    throw new Error("The item name matches more than one supported gear type.")
+  }
   const aliases: Record<string, string[]> = {
     hengBlade: ["weapon heng blade", "heng blade"],
     moBlade: ["weapon mo blade", "mo blade"],
@@ -72,6 +83,39 @@ function definitionFromText(text: string, fallbackDefinitionId?: string) {
     throw new Error("Could not identify exactly one supported gear type from the image.")
   }
   return matches[0][0]
+}
+
+export function gearRarityFromTitleColor(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  tsv: string,
+): GearRarity | undefined {
+  const titleWord = parseWords(tsv)
+    .filter(word => word.confidence >= 50 && /[a-z]{3}/i.test(word.text))
+    .sort((left, right) => left.top - right.top)[0]
+  if (!titleWord || titleWord.top > height * 0.25) return undefined
+  // The narrow rarity strip sits immediately left of the first title word.
+  // Scale the search area with title height so resized screenshots still work.
+  const left = Math.max(0, Math.floor(titleWord.left - titleWord.height * 0.75))
+  const right = Math.max(0, Math.floor(titleWord.left - titleWord.height * 0.1))
+  const top = Math.max(0, Math.floor(titleWord.top))
+  const bottom = Math.min(height, Math.ceil(titleWord.top + titleWord.height))
+  let gold = 0
+  let purple = 0
+  for (let y = top; y < bottom; y++) {
+    for (let x = left; x < Math.min(width, right); x++) {
+      const offset = (y * width + x) * 4
+      const [red, green, blue, alpha] = pixels.subarray(offset, offset + 4)
+      if (alpha < 128 || Math.max(red, green, blue) < 65) continue
+      if (red > blue * 1.2 && green > blue * 1.12 && red >= green * 0.95) gold++
+      if (blue > green * 1.12 && red > green * 1.05 && blue >= red * 0.9) purple++
+    }
+  }
+  const minimum = Math.max(3, (right - left) * (bottom - top) * 0.02)
+  if (gold >= minimum && gold > purple * 2) return "Gold"
+  if (purple >= minimum && purple > gold * 2) return "Purple"
+  return undefined
 }
 
 function valueForLabel(label: string, allowedKeys: string[], definitions: Record<string, { name?: string }>) {
@@ -98,6 +142,10 @@ function numericValue(text: string) {
 
 function isStandaloneNumericValue(text: string) {
   return /^[^0-9]*\d+(?:[.,]\d+)?%?[^0-9]*$/.test(text.trim())
+}
+
+function inlineValueWords(words: OcrWord[]) {
+  return words.filter(word => /^\+\s*\d/.test(word.text)).sort((left, right) => left.top - right.top)
 }
 
 function storedValue(key: string, value: number, definitions: Record<string, { percentage?: boolean }>): GearValue {
@@ -141,6 +189,7 @@ export function parseGearOcrTsv(
   imageWidth: number,
   imageHeight: number,
   fallbackDefinitionId?: string,
+  titleRarity?: GearRarity,
 ): GearOcrResult {
   const words = parseWords(tsv)
   if (words.length === 0) throw new Error("No readable text was found in the image.")
@@ -148,7 +197,9 @@ export function parseGearOcrTsv(
   const definition = gearData.gear[definitionId]
   if (!definition) throw new Error("The recognized gear type is not supported.")
   const normalizedText = normalize(rawText)
-  const { level, rarity } = inferGearLevelAndRarity(definitionId, rawText)
+  const inferred = inferGearLevelAndRarity(definitionId, rawText)
+  const { level } = inferred
+  const rarity = titleRarity ?? inferred.rarity
   const relayed = /\brelay(?:ing|ed)?\b/.test(normalizedText)
 
   // The gear's built-in attack value is displayed above the affix rows, and
@@ -162,7 +213,9 @@ export function parseGearOcrTsv(
         word.left > imageWidth * 0.7 && isStandaloneNumericValue(word.text) && numericValue(word.text) !== undefined,
     )
     .sort((left, right) => left.top - right.top)
-  const numberWords = valueCandidates.slice(-6)
+  const inlineWords = inlineValueWords(words)
+  const inlineLayout = inlineWords.length >= 2
+  const numberWords = (inlineLayout ? inlineWords : valueCandidates).slice(-6)
 
   const rows = numberWords
     .map((numberWord, index) => {
@@ -180,7 +233,7 @@ export function parseGearOcrTsv(
       const label = words
         .filter(
           word =>
-            word.left < imageWidth * 0.7 &&
+            word.left < (inlineLayout ? numberWord.left : imageWidth * 0.7) &&
             word.top + word.height / 2 >= top &&
             word.top + word.height / 2 < bottom &&
             word.confidence >= 20,
@@ -188,7 +241,20 @@ export function parseGearOcrTsv(
         .sort((left, right) => (Math.abs(left.top - right.top) <= 12 ? left.left - right.left : left.top - right.top))
         .map(word => word.text)
         .join(" ")
-      const value = numericValue(numberWord.text)
+      // Inline values can be split into adjacent OCR words, e.g. `+6 3.8`.
+      const valueText = inlineLayout
+        ? words
+            .filter(
+              word =>
+                word.left >= numberWord.left &&
+                Math.abs(word.top + word.height / 2 - center) <= numberWord.height / 2 &&
+                /^[+\d.,%]+$/.test(word.text),
+            )
+            .sort((left, right) => left.left - right.left)
+            .map(word => word.text)
+            .join("")
+        : numberWord.text
+      const value = numericValue(valueText)
       if (value === undefined) return undefined
       return { label, value }
     })
@@ -246,10 +312,20 @@ export function parseGearOcrTsv(
   }
 }
 
-async function imageDimensions(file: File) {
+async function imageDetails(file: File) {
   const bitmap = await createImageBitmap(file)
   try {
-    return { width: bitmap.width, height: bitmap.height }
+    const canvas = document.createElement("canvas")
+    canvas.width = bitmap.width
+    canvas.height = bitmap.height
+    const context = canvas.getContext("2d")
+    if (!context) throw new Error("Could not read image colors.")
+    context.drawImage(bitmap, 0, 0)
+    return {
+      width: bitmap.width,
+      height: bitmap.height,
+      pixels: context.getImageData(0, 0, bitmap.width, bitmap.height).data,
+    }
   } finally {
     bitmap.close()
   }
@@ -261,7 +337,7 @@ export async function recognizeGearImage(
   fallbackDefinitionId?: string,
 ) {
   if (!file.type.startsWith("image/")) throw new Error("Choose a PNG, JPEG, or WebP image file.")
-  const dimensions = await imageDimensions(file)
+  const dimensions = await imageDetails(file)
   const { createWorker, OEM, PSM } = await import("tesseract.js")
   const assetRoot = `${import.meta.env.BASE_URL}ocr`
   let recognitionPass = 0
@@ -281,7 +357,32 @@ export async function recognizeGearImage(
     await worker.setParameters({ tessedit_pageseg_mode: PSM.SPARSE_TEXT, preserve_interword_spaces: "1" })
     const positionedResult = await worker.recognize(file, {}, { text: true, tsv: true })
     if (!positionedResult.data.tsv) throw new Error("OCR did not return positioned text.")
-    const rawText = `${metadataResult.data.text}\n${positionedResult.data.text}`
+    const titleRarity = gearRarityFromTitleColor(
+      dimensions.pixels,
+      dimensions.width,
+      dimensions.height,
+      positionedResult.data.tsv,
+    )
+    let rawText = `${metadataResult.data.text}\n${positionedResult.data.text}`
+    const inlineWords = inlineValueWords(parseWords(positionedResult.data.tsv))
+    if (!/tier\s*(91|96|100)/i.test(rawText) && inlineWords.length >= 2) {
+      // The progression page's tier banner uses dark text on a light strip.
+      // Isolate it from the surrounding light-on-dark title and attributes.
+      const gap = inlineWords[1].top - inlineWords[0].top
+      const left = Math.round(dimensions.width * 0.25)
+      const top = Math.max(0, Math.round(inlineWords[0].top - gap))
+      await worker.setParameters({ tessedit_pageseg_mode: PSM.SINGLE_LINE })
+      const tierResult = await worker.recognize(file, {
+        rectangle: {
+          left,
+          top,
+          width: Math.round(dimensions.width * 0.35),
+          height: Math.min(dimensions.height - top, Math.max(1, Math.round(gap * 0.6))),
+        },
+      })
+      const tier = tierResult.data.text.match(/tier\s*(91|96|100)\b/i)
+      if (tier) rawText += `\nTier ${tier[1]}`
+    }
     try {
       return parseGearOcrTsv(
         positionedResult.data.tsv,
@@ -289,6 +390,7 @@ export async function recognizeGearImage(
         dimensions.width,
         dimensions.height,
         fallbackDefinitionId,
+        titleRarity,
       )
     } catch (sparseError) {
       if (!metadataResult.data.tsv) throw sparseError
@@ -299,6 +401,7 @@ export async function recognizeGearImage(
           dimensions.width,
           dimensions.height,
           fallbackDefinitionId,
+          titleRarity,
         )
       } catch {
         throw sparseError
