@@ -6,15 +6,16 @@ import { fileURLToPath } from "node:url"
 
 import { assert, describe, it } from "vitest"
 
-import { buildPresetRotationBundle } from "../src/application/graduation"
-import { calculateRotationBaseline } from "../src/calculations/rotationCalculator"
-import { loadDpsSnapshotFixtures, selectDpsSnapshotUpdates } from "./helpers/dps-snapshot-fixtures"
+import { buildPresetRotationBundle } from "@/application/graduation"
+import { calculateRotationBaseline } from "@/calculations/rotationCalculator"
+
+import { loadDpsSnapshotCases, selectDpsSnapshotUpdates } from "./helpers/dps-snapshot-fixtures"
 import { compareDpsSnapshots, dpsSnapshotUlpBudget } from "./helpers/dps-snapshot-guard.mjs"
 
 describe("dps-snapshots", () => {
   it("compares every preset rotation against its accepted DPS snapshot", async () => {
     const snapshotFile = new URL("./snapshots/rotation-dps.json", import.meta.url)
-    const cases = await loadDpsSnapshotFixtures()
+    const cases = await loadDpsSnapshotCases()
     const rawUpdateIds = (process.env.DPS_UPDATE_IDS ?? "").trim()
     const updateIds = selectDpsSnapshotUpdates(
       rawUpdateIds,

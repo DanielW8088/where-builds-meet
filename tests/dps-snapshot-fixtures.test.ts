@@ -2,13 +2,14 @@ import { readdir, readFile } from "node:fs/promises"
 
 import { assert, describe, expect, it } from "vitest"
 
-import { resolvePing } from "../src/calculations/combatDefaults"
-import { loadDpsSnapshotFixtures, selectDpsSnapshotUpdates } from "./helpers/dps-snapshot-fixtures"
+import { resolvePing } from "@/calculations/combatDefaults"
+
+import { loadDpsSnapshotCases, selectDpsSnapshotUpdates } from "./helpers/dps-snapshot-fixtures"
 import { compareDpsSnapshots } from "./helpers/dps-snapshot-guard.mjs"
 
 describe("rotation DPS snapshot fixtures", () => {
   it("discovers every non-empty preset with a compatible build", async () => {
-    const cases = await loadDpsSnapshotFixtures()
+    const cases = await loadDpsSnapshotCases()
     const snapshots = JSON.parse(await readFile("tests/snapshots/rotation-dps.json", "utf8"))
     const paths = JSON.parse(await readFile("data/path.json", "utf8"))
     const files = await readdir("data/rotation", { recursive: true })
@@ -25,7 +26,8 @@ describe("rotation DPS snapshot fixtures", () => {
       const group = file.replaceAll("\\", "/").split("/")[0]
       const pathId = Object.keys(paths).find(id => paths[id].buildGroup === group)
       assert(pathId !== undefined, "Rotation has no path: " + file)
-      expected.push(pathId + "/" + file.replaceAll("\\", "/").split("/").at(-1)!.slice(0, -5))
+      const rotationId = pathId + "/" + file.replaceAll("\\", "/").split("/").at(-1)!.slice(0, -5)
+      expected.push(rotationId + "/18", rotationId + "/19")
     }
     expect(cases.map(c => c.id).sort()).toEqual(expected.sort())
     await Promise.all(
@@ -35,23 +37,35 @@ describe("rotation DPS snapshot fixtures", () => {
         )
         expect(build.martialArts.slice().sort()).toEqual(entry.fixture.martialArts.slice().sort())
         expect(entry.fixture.ping).toBe(entry.rotation.ping)
+        expect(entry.id.endsWith("/" + entry.fixture.breakthrough)).toBe(true)
       }),
     )
     expect(compareDpsSnapshots(snapshots.cases, snapshots.cases)).toEqual([])
   })
   it("updates one rotation, an entire path, or all cases without accepting unrelated results", () => {
-    const ids = ["kite/regular", "kite/bp", "deluge/wts"]
+    const ids = ["kite/regular/18", "kite/regular/19", "kite/bp/18", "kite/bp/19", "deluge/wts/18", "deluge/wts/19"]
     expect(selectDpsSnapshotUpdates("", ids)).toEqual([])
-    expect(selectDpsSnapshotUpdates("kite/regular", ids)).toEqual(["kite/regular"])
-    expect(selectDpsSnapshotUpdates("kite", ids)).toEqual(["kite/bp", "kite/regular"])
-    expect(selectDpsSnapshotUpdates("kite/bp deluge/wts", ids)).toEqual(["deluge/wts", "kite/bp"])
+    expect(selectDpsSnapshotUpdates("kite/regular/18", ids)).toEqual(["kite/regular/18"])
+    expect(selectDpsSnapshotUpdates("kite/regular", ids)).toEqual(["kite/regular/18", "kite/regular/19"])
+    expect(selectDpsSnapshotUpdates("kite", ids)).toEqual([
+      "kite/bp/18",
+      "kite/bp/19",
+      "kite/regular/18",
+      "kite/regular/19",
+    ])
+    expect(selectDpsSnapshotUpdates("kite/bp deluge/wts", ids)).toEqual([
+      "deluge/wts/18",
+      "deluge/wts/19",
+      "kite/bp/18",
+      "kite/bp/19",
+    ])
     expect(selectDpsSnapshotUpdates("all", ids)).toEqual(ids)
     for (const selector of ["missing", "kite kite/bp", "kite/bp kite/bp", "kit"])
       expect(() => selectDpsSnapshotUpdates(selector, ids)).toThrow(
         /Unknown DPS snapshot selector|Overlapping DPS snapshot selectors/,
       )
   })
-  it("detects a sibling rotation regression or missing baseline independently", () => {
+  it("detects a regression or missing baseline at either breakthrough independently", () => {
     // Each snapshot number is compared on its own, so a case must move exactly
     // the field under test rather than deriving it from another.
     const sample = (overrides = {}) => ({
@@ -61,10 +75,14 @@ describe("rotation DPS snapshot fixtures", () => {
       duration: 60,
       ...overrides,
     })
-    const old = { "kite/regular": sample(), "kite/bp": sample() }
+    const old = { "kite/regular/18": sample(), "kite/regular/19": sample() }
     expect(
-      compareDpsSnapshots(old, { ...old, "kite/regular": sample({ dps: 99 }), "kite/bp": sample({ dps: 101 }) }),
+      compareDpsSnapshots(old, {
+        ...old,
+        "kite/regular/18": sample({ dps: 99 }),
+        "kite/regular/19": sample({ dps: 101 }),
+      }),
     ).toHaveLength(2)
-    expect(compareDpsSnapshots(old, { "kite/regular": old["kite/regular"] })).toHaveLength(1)
+    expect(compareDpsSnapshots(old, { "kite/regular/18": old["kite/regular/18"] })).toHaveLength(1)
   })
 })

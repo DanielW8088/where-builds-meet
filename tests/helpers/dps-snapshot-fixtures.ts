@@ -22,7 +22,7 @@ export const dpsSnapshotEnvironment = {
   script: "None",
   globalDebuffs: { ...defaultGlobalDebuffs },
 }
-export async function loadDpsSnapshotFixtures() {
+export async function loadDpsSnapshotFixtures(breakthrough = dpsSnapshotEnvironment.breakthrough) {
   const paths = JSON.parse(await readFile(new URL("path.json", dataRoot), "utf8"))
   const groups = new Set(
     (await readdir(new URL("rotation/", dataRoot), { withFileTypes: true }))
@@ -55,6 +55,7 @@ export async function loadDpsSnapshotFixtures() {
               rotation: rotationId,
               martialArts: rotation.martialArts!,
               ...dpsSnapshotEnvironment,
+              breakthrough,
               ping: resolvePing(rotation.ping, dpsSnapshotEnvironment.ping),
             },
           }
@@ -67,6 +68,12 @@ export async function loadDpsSnapshotFixtures() {
   for (const id of Object.keys(snapshotBuildOverrides))
     if (!cases.some(entry => entry.id === id)) throw new Error("Stale snapshot build override: " + id)
   return cases
+}
+
+/** Accepted regression cases cover both current breakthroughs for every rotation. */
+export async function loadDpsSnapshotCases() {
+  const levels = await Promise.all(["18", "19"].map(breakthrough => loadDpsSnapshotFixtures(breakthrough)))
+  return levels.flatMap(cases => cases.map(entry => ({ ...entry, id: entry.id + "/" + entry.fixture.breakthrough })))
 }
 export function selectDpsSnapshotUpdates(raw: string, caseIds: string[]): string[] {
   if (!raw.trim()) return []

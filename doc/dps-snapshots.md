@@ -9,7 +9,9 @@ retaining its coverage, selector, and comparison-algorithm tests.
 ## Fixture selection
 
 `tests/helpers/dps-snapshot-fixtures.ts` discovers rotation JSON files from each
-path's existing rotation directory. Cases use stable `<pathId>/<rotationId>` keys.
+path's existing rotation directory. Cases use stable
+`<pathId>/<rotationId>/<breakthrough>` keys, with one case each for breakthroughs
+18 and 19. Breakthrough 17 is no longer part of the accepted snapshots.
 Empty planner rotations are excluded. A durable coverage test checks all
 non-empty rotation files against this catalog. The release guard compares the
 catalog with accepted baseline keys, so new or removed presets cannot silently
@@ -21,7 +23,7 @@ Strength uses the pure build, and Double Stab uses the double-min build. The
 remaining variants retain the path default. This covers all non-empty presets,
 not every build/rotation combination.
 
-Current calculations use breakthrough 17, each rotation's saved ping (40 ms
+Current snapshot calculations use breakthroughs 18 and 19, each rotation's saved ping (40 ms
 by default; 30 ms for Might), Simmering Fish Slices,
 Fire Divinecraft, no Script, and no global or skill overrides. The rotation
 supplies its martial arts and encounter flags; the build supplies its gear,
@@ -30,7 +32,19 @@ Inner Ways, and sets. Fixtures are passed to `src/application/graduation.ts`'s
 calculation pipeline. No browser preferences or duplicate damage formulas enter
 the check.
 
+The shared rotation-fixture loader retains its breakthrough-17 default for
+existing behavioral tests. `loadDpsSnapshotCases` explicitly selects 18 and 19
+for the release guard and its coverage checks; that default cannot select the
+snapshot environment.
+
 ## Accepted values and review gate
+
+The current baseline set replaces the twenty breakthrough-17 cases with forty
+cases at breakthroughs 18 and 19, as requested. These use the corrected flat
+breakthrough rewards as well as each level's gear, Enhancement, Arsenal, sets,
+Inner Ways, and martial-art talents. Earlier numerical acceptance notes in this
+document describe historical breakthrough-17 baselines unless stated otherwise;
+the snapshot JSON contains the current exact values.
 
 The October 2026 Umbra release uses the user-approved current damage for all
 presets. This includes the new WIP Umbra rotation, weapon-specific Deflect timing,
@@ -170,7 +184,8 @@ own 24 sites and 21 of them resolve before the fight ends. See
 
 Run `npm run test:dps`, explain each affected rotation's old/new result and cause,
 and obtain acceptance before updating it. `DPS_UPDATE_IDS` accepts an exact case
-ID, a path ID to select all its rotations, or `all`. Unselected baselines remain
+ID, a `<pathId>/<rotationId>` prefix to select both breakthroughs, a path ID to
+select all its rotations and breakthroughs, or `all`. Unselected baselines remain
 unchanged; unknown or overlapping selectors fail.
 
 In PowerShell:
