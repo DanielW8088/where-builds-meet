@@ -10,13 +10,6 @@
     "effect": [{ "effect": { "affinityDmgBonus": 0.1 } }],
     "refresh": true
   },
-  "SwordsZenith": {
-    "name": "Sword's Zenith",
-    "description": "One stack represents 20 Sword Spirit; maximum is 100.",
-    "maxStack": 5,
-    "refresh": false,
-    "shortName": "Zenith"
-  },
   "WaterDrop": {
     "name": "Water Drop",
     "duration": 12,

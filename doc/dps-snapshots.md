@@ -470,3 +470,17 @@ and T6 6% contributions add to 12% instead of compounding.
 | silkbindWing/wings-dummy-1-min-jadebreaker | 49626.86992889119 | 49620.402274184016 |    2977612.1957334713 |     2977224.136451041 |
 
 Both durations remain 60 seconds. All other release fixtures are unchanged.
+
+## Umbra Zenith resource (2026-10-19)
+
+The user approved the 40/100 Zenith resource and revised 38-Blood-Burst rotation.
+Zenith starts at 40 rather than five prepared buff stacks, and gains 20 per burst.
+Smolder follows the first Sweep All so full Zenith extends it; the second Sweep
+All wait is shortened to preserve River Flow and all 38 bursts.
+
+The accepted `bellstrikeUmbra/dummy-1-min-38-bb` result changes from
+81279.15623741267 to 79390.39767233716 DPS, and total damage from
+4876749.37424476 to 4763423.860340229 over the same 60 seconds. Blood Burst
+damage decreases by approximately 90610 as full-Zenith and buff alignment change;
+Smolder decreases by approximately 27924 with 104 ticks instead of 112.
+All other preset snapshots remain unchanged.

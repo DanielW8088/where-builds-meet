@@ -45,7 +45,7 @@
         {
           "requirement": [
             { "target": "skillTag", "value": "HighBleed" },
-            { "target": "self", "value": "SwordsZenith" }
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 20 }
           ],
           "effect": { "dmgBonus": 0.15 }
         }

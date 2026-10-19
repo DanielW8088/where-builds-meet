@@ -1178,9 +1178,11 @@ Wolfchaser's Art at T6. `dummy-1-min-38-bb` is registered as a draft, with the
 requested ordered sequence and Battle End at battle-relative 60 seconds. BB
 means Blood Burst; 38 is the intended trigger count, not a validated result.
 The first four-hit sword charge's first damage marker anchors battle start.
-The preset applies five Zenith stacks before the opening drink, representing
-Spirit prepared before the fight. Its first Blood Burst therefore starts at full
-Zenith, guaranteeing affinity and extending active Smolder through Sword Horizon T3.
+Zenith is a resource starting at 40, capped at 100 (20 per former stack).
+The preset has no opening Zenith buff. Smolder follows the first Sweep All,
+allowing the next full-Zenith burst to extend it through Sword Horizon T3.
+The wait before the second Sweep All is 0.2 seconds, preserving River Flow,
+its 12-second burst cooldown, and all 38 Blood Bursts.
 
 Umbra variants share `skillBreakdownCategory` by skill family: Inner Track
 Slash, Inner Balance Strike, Second Track Slash, Sober Sorrow, Sweep All, and
@@ -1256,7 +1258,7 @@ Damage coverage and remaining omissions:
 Sword Blood Burst clears all Bleed stacks, then T6 reapplies two while Zenith
 exists after the burst's Spirit grant, including the first burst as observed
 in the user's confirmed special sequence. Raw Horizon passive `102154301` grants 20 Sword Spirit per burst,
-represented by one of five Zenith stacks. At 100 Spirit the next burst forces
+stored as 20 units of the Zenith resource. At 100 Spirit the next burst forces
 Affinity; T6 retains 20 and then credits that burst's ordinary 20 gain.
 The T4 bonus and T1 follow-up Endurance restore are implemented. T3's full-Zenith
 burst extends Bleeding, Smolder, Qingyi's Poison, and Weeping Blood by ten seconds,

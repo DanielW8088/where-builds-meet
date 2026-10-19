@@ -655,7 +655,7 @@
         "time": 0,
         "requirement": [
           { "target": "self", "value": "SwordHorizonT6" },
-          { "target": "self", "value": "SwordsZenith" }
+          { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 20 }
         ]
       },
       {
@@ -669,7 +669,7 @@
           "resolveAt": "skillStart",
           "operand": [
             { "target": "self", "value": "SwordHorizonT3" },
-            { "target": "self", "value": "SwordsZenith", "stack": 5 }
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }
           ]
         }
       }
@@ -688,7 +688,7 @@
         "time": 0,
         "modifier": [
           {
-            "requirement": [{ "target": "self", "value": "SwordsZenith", "stack": 5 }],
+            "requirement": [{ "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }],
             "effect": { "GuaranteedAffinity": true }
           }
         ]
@@ -704,7 +704,7 @@
           "resolveAt": "skillStart",
           "operand": [
             { "target": "self", "value": "SwordHorizonT3" },
-            { "target": "self", "value": "SwordsZenith", "stack": 5 }
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }
           ]
         }
       },
@@ -719,7 +719,7 @@
           "resolveAt": "skillStart",
           "operand": [
             { "target": "self", "value": "SwordHorizonT3" },
-            { "target": "self", "value": "SwordsZenith", "stack": 5 }
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }
           ]
         }
       },
@@ -734,7 +734,7 @@
           "resolveAt": "skillStart",
           "operand": [
             { "target": "self", "value": "SwordHorizonT3" },
-            { "target": "self", "value": "SwordsZenith", "stack": 5 }
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }
           ]
         }
       },
@@ -749,42 +749,39 @@
           "resolveAt": "skillStart",
           "operand": [
             { "target": "self", "value": "SwordHorizonT3" },
-            { "target": "self", "value": "SwordsZenith", "stack": 5 }
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }
           ]
         }
       },
       {
-        "type": "consume",
-        "target": "self",
+        "type": "consumeResource",
         "value": "SwordsZenith",
-        "stack": "all",
         "time": 0,
         "requirement": {
           "resolveAt": "skillStart",
-          "operand": [{ "target": "self", "value": "SwordsZenith", "stack": 5 }]
-        }
+          "operand": [{ "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 }]
+        },
+        "amount": "all"
       },
       {
-        "type": "apply",
-        "target": "self",
+        "type": "addResource",
         "value": "SwordsZenith",
-        "stack": 1,
         "time": 0,
         "requirement": {
           "resolveAt": "skillStart",
           "operand": [
-            { "target": "self", "value": "SwordsZenith", "stack": 5 },
+            { "target": "resource", "value": "SwordsZenith", "comparison": ">=", "amount": 100 },
             { "target": "self", "value": "SwordHorizonT6" }
           ]
-        }
+        },
+        "amount": 20
       },
       {
-        "type": "apply",
-        "target": "self",
+        "type": "addResource",
         "value": "SwordsZenith",
-        "stack": 1,
         "time": 0,
-        "requirement": [{ "target": "self", "value": "SwordHorizonT3" }]
+        "requirement": [{ "target": "self", "value": "SwordHorizonT3" }],
+        "amount": 20
       }
     ],
     "modifier": [],

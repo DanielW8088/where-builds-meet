@@ -51,9 +51,9 @@ function run(
       weapons: ["strategicSword", "heavenquakerSpear"],
       innerWayConditions: [...innerWayConditionsFor([...selectedWays], undefined, "bellstrikeUmbra")],
       innerWayRules: innerWayEffectRulesFor([...selectedWays], 17, "bellstrikeUmbra"),
-      initialBuffs: zenith ? [{ name: "SwordsZenith", stack: zenith, appliedAt: 0 }] : [],
-      initialResources: { Endurance: 100, Vitality: 100 },
-      resourceMaximums: { Endurance: 200, Vitality: 100 },
+
+      initialResources: { Endurance: 100, Vitality: 100, SwordsZenith: zenith * 20 },
+      resourceMaximums: { Endurance: 200, Vitality: 100, SwordsZenith: 100 },
     },
     procRoll,
   )
@@ -130,7 +130,7 @@ describe("Umbra draft behavior", () => {
     )
   })
 
-  it("starts the preset at full Zenith and extends Smolder on its first Blood Burst", async () => {
+  it("starts the preset at 40 Zenith and extends the later Smolder at full Zenith", async () => {
     const fixtureCase = (await loadDpsSnapshotFixtures()).find(
       entry => entry.id === "bellstrikeUmbra/dummy-1-min-38-bb",
     )!
@@ -141,11 +141,14 @@ describe("Umbra draft behavior", () => {
     )!
     const result = calculateRotationBaseline(bundle)
     const rows = result.timeline
-    const first = rows.find(row => row.step.skill === "BloodBurstDamage")!
-    expect(first.buffs.get("SwordsZenith")?.stack).toBe(5)
-    const before = first.debuffs.get("Smolder")!.expiresAt!
-    const next = rows.find(row => row.startTime > first.startTime && row.debuffs.has("Smolder"))!
-    expect(next.debuffs.get("Smolder")!.expiresAt).toBeCloseTo(Math.min(before + 10, first.startTime + 16), 8)
+
+    expect(rows[0].resources.SwordsZenith).toBe(40)
+    const full = rows.find(
+      row => row.step.skill === "BloodBurstDamage" && row.resources.SwordsZenith === 100 && row.debuffs.has("Smolder"),
+    )!
+    const before = full.debuffs.get("Smolder")!.expiresAt!
+    const next = rows.find(row => row.startTime > full.startTime && row.debuffs.has("Smolder"))!
+    expect(next.debuffs.get("Smolder")!.expiresAt).toBeCloseTo(Math.min(before + 10, full.startTime + 16), 8)
   })
 
   it("keeps the Endurance readiness flag functional while hiding its timeline plate", () => {
@@ -167,7 +170,7 @@ describe("Umbra draft behavior", () => {
     })
     const bursts = rows.filter(row => row.step.skill === "BloodBurstDamage")
     expect(bursts).toHaveLength(2)
-    expect(bursts.map(row => row.buffs.get("SwordsZenith")?.stack ?? 0)).toEqual([0, 1])
+    expect(bursts.map(row => row.resources.SwordsZenith ?? 0)).toEqual([0, 20])
     expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.debuffs.get("Smolder")?.expiresAt).toBe(10)
   })
 
@@ -184,7 +187,7 @@ describe("Umbra draft behavior", () => {
     expect(bursts.map(row => row.startTime)).toEqual([0.48, 1.158977982])
     const next = rows.find(row => row.step.skill === "InnerTrackSlash1")!
     expect(next.debuffs.get("UmbraBleeding")?.stack).toBe(2)
-    expect(next.buffs.get("SwordsZenith")?.stack).toBe(2)
+    expect((next.resources.SwordsZenith ?? 0) / 20).toBe(2)
   })
 
   it("bursts when a Horizon hit reaches five, including the second hit of a two-hit follow-up", () => {
@@ -493,7 +496,8 @@ describe("Umbra draft behavior", () => {
       setupEffects: [],
       innerWayRules: [],
       weapons: ["strategicSword", "heavenquakerSpear"],
-      initialBuffs: [{ name: "SwordsZenith", stack: 5, appliedAt: 0 }],
+      initialResources: { SwordsZenith: 100 },
+      resourceMaximums: { SwordsZenith: 100 },
       innerWayConditions: [...innerWayConditionsFor([...ways], undefined, "bellstrikeUmbra")],
     })
     const ticks = rows.filter(row => row.kind === "dot")
@@ -626,7 +630,7 @@ describe("Umbra draft behavior", () => {
     const ghostly = result.timeline.find(row => row.kind === "rotation" && row.step.skill === "GhostlyStepsUmbra")!
     expect(ghostly.rotationIndex).toBe(firstQ.rotationIndex! + 1)
     expect(ghostly.startTime - firstQ.startTime).toBeCloseTo(firstQ.effectiveCastTime, 8)
-    expect(secondSweepBurst.buffs.get("SwordsZenith")?.stack).toBe(4)
+    expect(secondSweepBurst.resources.SwordsZenith).toBe(100)
     const thirdSweepBurst = bursts.find(row => row.sourceRowId === sweeps[2].id)!
     const fourthSweepBurst = bursts.find(row => row.sourceRowId === sweeps[3].id)!
     expect(fourthSweepBurst).toBeDefined()
@@ -657,14 +661,14 @@ describe("Umbra draft behavior", () => {
     expect(bursts[0].debuffs.get("UmbraBleeding")?.stack).toBe(5)
     const charge = rows.find(row => row.step.type === "skill" && row.step.skill === "SecondTrackSlash1")!
     expect(charge.debuffs.get("UmbraBleeding")?.stack).toBe(3)
-    expect(charge.buffs.get("SwordsZenith")?.stack).toBe(1)
+    expect((charge.resources.SwordsZenith ?? 0) / 20).toBe(1)
   })
 
   it("retains two Bleed stacks with existing Zenith and resets full Zenith to 40 Spirit at T6", () => {
     const rows = run(casts("CrisscrossSecondTrackSlash1", "SecondTrackSlash1"), 5, 5)
     const charge = rows.find(row => row.step.type === "skill" && row.step.skill === "SecondTrackSlash1")!
     expect(charge.debuffs.get("UmbraBleeding")?.stack).toBe(2)
-    expect(charge.buffs.get("SwordsZenith")?.stack).toBe(2)
+    expect((charge.resources.SwordsZenith ?? 0) / 20).toBe(2)
     expect(charge.actionStates[0].resources?.Endurance).toBeCloseTo(103.8003, 8)
   })
 
