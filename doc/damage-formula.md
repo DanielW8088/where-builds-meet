@@ -314,6 +314,12 @@ receives the same per-stack increase without changing displayed character
 stats. Effect-supplied penetration is likewise resolved independently for all
 five damage channels.
 
+These bonuses apply after Void/Formless Attack is converted into the equipped
+primary attribute. Tailwind's unpaired 3%, paired Fan talent's 6%, and Zephyr
+Whispers T6's additional 6% use the same attack-value bonus fields as Hawkwing.
+Native attribute and converted Void Attack therefore receive the same increase;
+the paired Tailwind bonuses add to 12% at T6 rather than compounding.
+
 Hawkwing is an outcome-triggered attack bonus. Deterministic calculations carry
 an expiry-sorted active-state array and scalar inactive probability,
 quantized to integer 0.1 ms ticks. Every hit reads the expected stack count before

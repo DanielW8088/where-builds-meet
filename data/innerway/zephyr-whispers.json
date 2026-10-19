@@ -88,16 +88,10 @@
             "effect": [
               {
                 "effect": {
-                  "stat": {
-                    "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.06 } },
-                    "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.06 } },
-                    "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.06 } },
-                    "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.06 } },
-                    "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.06 } },
-                    "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.06 } },
-                    "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.06 } },
-                    "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.06 } }
-                  }
+                  "bellstrikeAttackBonus": 0.06,
+                  "stonesplitAttackBonus": 0.06,
+                  "silkbindAttackBonus": 0.06,
+                  "bamboocutAttackBonus": 0.06
                 }
               }
             ]

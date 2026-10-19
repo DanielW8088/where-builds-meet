@@ -89,6 +89,34 @@ const hit = (time: number) => ({ type: "damage", phyCoef: 1, attrCoef: 1, time }
 const grant = (value: string) => ({ type: "apply", target: "self", value, time: 0 })
 
 describe("Wings supported Inner Way effects", () => {
+  it.each([undefined, 0])("applies Tailwind attack bonuses additively after Void conversion at Fan rank %s", rank => {
+    const innerWays = [{ innerWay: "ZephyrWhispers", tier: "T6" }]
+    const options = { rank, stats: { minSilkbind: 0, maxSilkbind: 0, minVoidAttack: 100, maxVoidAttack: 100 } }
+    const action = { type: "damage", phyCoef: 0, attrCoef: 1, time: 1 }
+    const plain = calculate(innerWays, [action], options).metrics.totalDamage
+    const boosted = calculate(innerWays, [grant("Tailwind"), action], options).metrics.totalDamage
+    expect(boosted / plain).toBeCloseTo(rank === undefined ? 1.06 : 1.12, 12)
+  })
+
+  it.each([undefined, 0])("buffs converted Void and native Silkbind equally with Fan rank %s", rank => {
+    for (const tier of ["T5", "T6"] as const) {
+      const innerWays = [{ innerWay: "ZephyrWhispers", tier }]
+      const native = calculate(innerWays, [grant("Tailwind"), hit(1)], { rank }).metrics.totalDamage
+      for (const voidAttack of [50, 100]) {
+        const converted = calculate(innerWays, [grant("Tailwind"), hit(1)], {
+          rank,
+          stats: {
+            minSilkbind: 100 - voidAttack,
+            maxSilkbind: 100 - voidAttack,
+            minVoidAttack: voidAttack,
+            maxVoidAttack: voidAttack,
+          },
+        }).metrics.totalDamage
+        expect(converted).toBeCloseTo(native, 9)
+      }
+    }
+  })
+
   it.each([1, 2, 4])("applies Ink Rhyme after the final hit with %s targets", enemyCount => {
     const result = calculate([{ innerWay: "ZephyrWhispers", tier: "T4" }], [], {
       rotation: { name: "Ink timing", enemyCount, ping: 0, steps: [{ type: "skill", skill: "EndOfGale" }] },

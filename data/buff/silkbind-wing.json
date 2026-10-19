@@ -10,16 +10,10 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "stat": {
-            "minBellstrike": { "formula": { "source": "minBellstrike", "multiplier": 0.03 } },
-            "maxBellstrike": { "formula": { "source": "maxBellstrike", "multiplier": 0.03 } },
-            "minStonesplit": { "formula": { "source": "minStonesplit", "multiplier": 0.03 } },
-            "maxStonesplit": { "formula": { "source": "maxStonesplit", "multiplier": 0.03 } },
-            "minSilkbind": { "formula": { "source": "minSilkbind", "multiplier": 0.03 } },
-            "maxSilkbind": { "formula": { "source": "maxSilkbind", "multiplier": 0.03 } },
-            "minBamboocut": { "formula": { "source": "minBamboocut", "multiplier": 0.03 } },
-            "maxBamboocut": { "formula": { "source": "maxBamboocut", "multiplier": 0.03 } }
-          }
+          "bellstrikeAttackBonus": 0.03,
+          "stonesplitAttackBonus": 0.03,
+          "silkbindAttackBonus": 0.03,
+          "bamboocutAttackBonus": 0.03
         }
       }
     ],

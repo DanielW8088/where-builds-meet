@@ -456,3 +456,17 @@ in every preset; every duration remains 60 seconds. The user approved all twenty
 | stonesplitStrength/mixed-dummy-smolder-poet-1-min      |  68316.11098675086 |   68354.2559063995 | 0.0558% |  4098966.659205051 |  4101255.354383969 | 60 → 60  |
 | stonesplitStrength/pure-dummy-1-min                    |  62468.47502452412 |  62489.58348841498 | 0.0338% | 3748108.5014714473 |  3749375.009304899 | 60 → 60  |
 | stonesplitStrength/pure-dummy-1-min-infinite-vitality  |  65445.18119214224 | 65475.613410428676 | 0.0465% | 3926710.8715285347 | 3928536.8046257207 | 60 → 60  |
+
+## Tailwind attack-value category correction (2026-10-19)
+
+The user approved the corrected Wings results for release. Tailwind's base
+buff, paired Fan talents, and Zephyr Whispers T6 now use the shared attribute
+attack-value bonuses after Void conversion, matching Hawkwing. The paired 6%
+and T6 6% contributions add to 12% instead of compounding.
+
+| Rotation                                   |      Previous DPS |       Accepted DPS | Previous total damage | Accepted total damage |
+| ------------------------------------------ | ----------------: | -----------------: | --------------------: | --------------------: |
+| silkbindWing/wings-dummy-1-min-dawnsun     | 36450.29858359722 |  36434.99885039597 |    2187017.9150158335 |     2186099.931023758 |
+| silkbindWing/wings-dummy-1-min-jadebreaker | 49626.86992889119 | 49620.402274184016 |    2977612.1957334713 |     2977224.136451041 |
+
+Both durations remain 60 seconds. All other release fixtures are unchanged.
