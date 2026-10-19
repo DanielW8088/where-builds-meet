@@ -1021,6 +1021,12 @@ bookmarklet copies role gear JSON from the authenticated official origin, then
 snapshot. That snapshot enters the same validator and collision-safe merge path
 as a file import. The large official ID table is loaded only when the user
 submits the modal, keeping it out of the initial application chunk.
+Official affix mappings also include relay-only records from the normal layer-zero
+`local/datamine/wwm-affixes.json` catalog for tiers 91, 96, and 100. Item roll pools
+omit zero-weight relay affixes, so they are not a complete source for import IDs.
+These IDs use the existing gear eligibility and relay detection mechanisms.
+Tier-100 armor base signatures distinguish Gold and Purple without relying on
+an explicit dashboard rarity field.
 
 Rotation export similarly produces a versioned JSON snapshot of custom rotation
 records. Rotation import validates skill and event step shapes, appends custom
