@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 
+import { selectedMartialArtEffects } from "@/application/characterComposition"
 import {
   baseAttributeEffects,
   breakthroughProfile,
@@ -12,6 +13,19 @@ import type { StatEffectContainer } from "@/calculations/statEffects"
 import { emptyStats } from "@/data/statDefinitions"
 
 describe("breakthrough", () => {
+  it("matches the empty Strength attack baseline with breakthrough rewards applied once", () => {
+    const settings = { ...defaultSettings, breakthrough: "18" }
+    const effects = [
+      ...systemStatEffectsForProgression(18, 18),
+      breakthroughProfile(settings).levelBonusStats,
+      ...selectedMartialArtEffects(settings),
+    ]
+    const result = calculateStatsWithEffects(emptyStats, effects, 0).stats
+    expect(result.minPhys).toBeCloseTo(947.408, 8)
+    expect(result.maxPhys).toBeCloseTo(1665.22, 8)
+    expect(Math.round(result.minPhys)).toBe(947)
+  })
+
   it("replaces profile bonuses and applies shared attribute conversions", async () => {
     const { createBaseAttributeEffects } = await import("@/data/baseAttributeEffects.ts")
     const { emptyStats } = await import("@/data/statDefinitions.ts")

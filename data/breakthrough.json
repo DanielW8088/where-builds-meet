@@ -28,7 +28,18 @@
     "bamboocutResistance": 0,
     "judgementResistance": 0.85,
     "levelBonusStats": {
-      "rawStat": { "precision": 0.178, "agility": 164, "power": 164, "momentum": 164, "body": 164, "defense": 164 }
+      "rawStat": {
+        "precision": 0.178,
+        "agility": 164,
+        "power": 164,
+        "momentum": 164,
+        "body": 164,
+        "defense": 164,
+        "minPhys": 14,
+        "maxPhys": 28,
+        "maxHp": 3500,
+        "physicalDefense": 7
+      }
     },
     "soloLevel": 18,
     "gearTier": 100
@@ -45,7 +56,18 @@
     "bamboocutResistance": 0,
     "judgementResistance": 0.85,
     "levelBonusStats": {
-      "rawStat": { "precision": 0.192, "agility": 178, "power": 178, "momentum": 178, "body": 178, "defense": 178 }
+      "rawStat": {
+        "precision": 0.192,
+        "agility": 178,
+        "power": 178,
+        "momentum": 178,
+        "body": 178,
+        "defense": 178,
+        "minPhys": 30,
+        "maxPhys": 60,
+        "maxHp": 7400,
+        "physicalDefense": 15
+      }
     },
     "soloLevel": 19,
     "gearTier": 100

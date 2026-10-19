@@ -160,6 +160,13 @@ Defense. These totals replace the former fixed per-slot Enhancement entries.
 
 The simulation input starts from zero, then the calculator applies innate character stats, the selected breakthrough's level bonuses, Enhancement bonuses, the selected Solo Level's cumulative character talent stats, regional Oddity totals eligible for the selected breakthrough (Qingzhou from breakthrough 18), attribute conversions, equipped gear, selected Inner Ways, martial-art talents, the active build's arsenal, bow/ring set, weapon set, and armor set (with any Main-tab overrides), food, and the selected Divinecraft through these stages. Set options may also contribute named timeline conditions; these use the common requirement pipeline for non-stat mechanics such as Formbend extending Shield and Breakthrough:
 
+Breakthrough level bonuses include the normal-variant flat player rewards from
+`local/datamine/wwm-solo-levels.json`, separately from Enhancement and character
+talents. The selected profile supplies its complete reward, not a sum of earlier
+profiles: breakthrough 18 grants 14–28 Physical Attack, 3,500 HP, and 7 Physical
+Defense; breakthrough 19 grants 30–60 Physical Attack, 7,400 HP, and 15 Physical
+Defense. These permanent raw stats also feed raw-sourced talent formulas.
+
 Inner Way stat tables resolve using the selected breakthrough's `soloLevel`,
 independently of `martialArtTalentRank`, before these stages. A table contributes
 only its selected level; fixed bonuses remain constant. For example, Eonpour
