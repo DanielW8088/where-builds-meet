@@ -22,7 +22,7 @@
     "showCoverage": true,
     "refresh": true,
     "duration": 12,
-    "effect": [{ "effect": { "globalDmgBonus": 0.05 } }]
+    "effect": [{ "effect": { "dmgBonus": 0.05 } }]
   },
   "Candlelight": {
     "name": "Candlelight",

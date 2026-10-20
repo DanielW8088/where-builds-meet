@@ -1200,7 +1200,14 @@ outgoing/returning damage actions.
 The draft has no accepted DPS snapshot and must not be treated as a validated
 build or rotation recommendation.
 
-Burn and Bury includes `dmgBonus: 0.3`, additive in the same category as vs Boss.
+Soulbreak's 5% applier damage bonus uses general `dmgBonus` (Category 1).
+Burn and Bury uses `baseDMGBonus: 0.3`, multiplying its direct base hit separately
+from Category 1; settlement does not receive this multiplier again. Towline T6
+retains its 12% replay and the shared Wildstride/Strayhunt replay adjustment.
+Tang Melody requires HP above 50% through T4; T5 removes that restriction.
+Fragrant Song's throw-scoped Resonance marker grants both guaranteed critical
+and 20% Category 1 HP damage while active, using the existing throw ownership
+and expiry rules. Current encounters are non-player targets.
 Light Anew T3 immobilization/lockouts, Candlelight slow, Phantom Rally pull,
 and Burn and Bury slow/Breath-hold are intentionally ignored by user instruction.
 

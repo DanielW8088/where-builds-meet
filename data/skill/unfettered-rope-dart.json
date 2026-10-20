@@ -49,7 +49,7 @@
         "requirement": { "resolveAt": "skillStart", "operand": [{ "target": "target", "value": "Soulbreak" }] }
       }
     ],
-    "modifier": [{ "effect": { "dmgBonus": 0.3 } }],
+    "modifier": [{ "effect": { "baseDMGBonus": 0.3 } }],
     "tags": ["MartialArts", "DirectDamage", "RopeDart", "UnfetteredRopeDart", "Special", "BurnAndBury"],
     "martialArt": "unfettered",
     "weapon": "RopeDart"

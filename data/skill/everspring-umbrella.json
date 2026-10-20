@@ -381,7 +381,10 @@
     "castTime": 0,
     "action": [{ "type": "damage", "time": 0, "phyCoef": 0.54, "attrCoef": 0.54, "phyBonus": 0, "attrBonus": 0 }],
     "modifier": [
-      { "requirement": [{ "target": "self", "value": "FragrantSongResonance" }], "effect": { "GuaranteedCrit": true } }
+      {
+        "requirement": [{ "target": "self", "value": "FragrantSongResonance" }],
+        "effect": { "GuaranteedCrit": true, "hpDMGBonus": 0.2 }
+      }
     ],
     "tags": [
       "Triggered",

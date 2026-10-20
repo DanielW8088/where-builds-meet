@@ -515,3 +515,18 @@ comparison gains when Affinity is already capped.
 
 Both cases use `bellstrikeUmbra/dummy-1-min-38-bb` and retain their 60-second
 duration. All other preset snapshots remain unchanged.
+
+## Dust damage bonus categories (2026-10-21)
+
+The user approved Soulbreak's move to Category 1, Burn and Bury's move to
+base damage, Fragrant Song's 20% bonus on eligible Resonances, and Tang Melody's
+HP restriction removal at T5. Settlement retains the shared replay adjustments.
+
+| Rotation               | Breakthrough |      Previous DPS |      Accepted DPS | Previous total damage | Accepted total damage |
+| ---------------------- | -----------: | ----------------: | ----------------: | --------------------: | --------------------: |
+| dust-dummy-1-min-100pc |           18 | 75762.06418324591 | 75378.65890896872 |     4545723.850994755 |     4522719.534538123 |
+| dust-dummy-1-min-100pc |           19 | 79184.49742802598 | 78781.63492472706 |     4751069.845681558 |     4726898.095483623 |
+| dust-dummy-1-min       |           18 | 76001.99657216367 | 75645.22735018363 |      4560119.79432982 |     4538713.641011018 |
+| dust-dummy-1-min       |           19 | 79435.57971811047 | 79060.62177416348 |     4766134.783086629 |     4743637.306449808 |
+
+All durations remain 60 seconds; all other preset snapshots are unchanged.

@@ -16,7 +16,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -30,7 +30,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -45,7 +45,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -59,7 +59,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -74,7 +74,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -88,7 +88,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -103,7 +103,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -117,7 +117,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -132,7 +132,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],
@@ -146,7 +146,7 @@
               "operator": "or",
               "operand": [
                 { "target": "selfHPPercentage", "comparison": ">", "amount": 50 },
-                { "target": "self", "value": "SongOfTangT6" }
+                { "target": "self", "value": "SongOfTangT5" }
               ]
             }
           ],

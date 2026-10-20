@@ -527,7 +527,7 @@ describe("Dust mechanics", () => {
 
   it("registers the Dust 100% Phantom Chime rotation as the path default", () => {
     expect(pathData.bamboocutDust.defaultRotation).toBe("dust-dummy-1-min-100pc")
-    expect(dustPhantomChimeRotation.name).toBe("Dummy 1 min 100% PC")
+    expect(dustPhantomChimeRotation.name).toBe("Dummy 1 Min 100% PC")
     expect(dustPhantomChimeRotation.martialArts).toEqual(["everspring", "unfettered"])
     expect(dustPhantomChimeRotation.ping).toBe(40)
     expect(dustPhantomChimeRotation.steps.at(-1)).toEqual({ type: "event", event: "BattleEnd", startTime: 60 })
@@ -873,6 +873,36 @@ describe("Dust mechanics", () => {
     expect(run("SoulLoss")).toBeGreaterThan(0)
     expect(run("Soulbreak") / run("SoulLoss")).toBeCloseTo((1.3 / 0.78) * 1.05)
   })
+  it("adds Soulbreak to general damage bonus for martial arts and mystics", () => {
+    for (const tags of [["MartialArts"], ["Mystic"]]) {
+      const input = bundle()
+      input.stats.vsBossDmg = 0.2
+      input.timeline.skills.Hit.tags = tags
+      input.timeline.rotation.steps = [castStep("Hit")]
+      const base = calculateRotationBaseline(input).metrics.totalDamage
+      input.timeline.initialDebuffs = [{ name: "Soulbreak", stack: 1 }]
+      expect(calculateRotationBaseline(input).metrics.totalDamage / base).toBeCloseTo(1.25 / 1.2)
+    }
+  })
+  it("adds Fragrant Song damage to its guaranteed-critical Resonance only while marked", () => {
+    const input = bundle()
+    input.timeline.skills.Resonance = umbrella.Resonance
+    input.timeline.rotation.steps = [castStep("Resonance")]
+    input.stats.vsBossDmg = 0.2
+    input.stats.crit = 0
+    const ordinary = calculateRotationBaseline(input).metrics.totalDamage
+    input.timeline.initialBuffs = [{ name: "FragrantSongResonance", stack: 1 }]
+    const marked = calculateRotationBaseline(input).metrics.totalDamage
+    expect(marked / ordinary).toBeCloseTo(1.5 * (1.4 / 1.2))
+    input.timeline.initialBuffs = []
+    input.timeline.skills.MarkSong = {
+      name: "Mark Song",
+      castTime: 0,
+      action: [{ type: "apply", target: "self", value: "FragrantSongResonance", time: 0 }],
+    }
+    input.timeline.rotation.steps = [castStep("MarkSong"), delayStep(3), castStep("Resonance")]
+    expect(calculateRotationBaseline(input).metrics.totalDamage).toBeCloseTo(ordinary)
+  })
   it("applies Tang Melody after hits, rate limits it, caps it, and expires it", () => {
     const input = bundle({ SongOfTang: 0 })
     input.timeline.skills.Hit.castTime = 0.5
@@ -891,7 +921,7 @@ describe("Dust mechanics", () => {
     ]
     expect(stacks(calculateRotationBaseline(enhanced), "TangMelody")).toEqual([0, 1, 2, 3, 4, 5, 5])
   })
-  it("restricts Tang Melody critical damage by HP until T6 and to martial arts", () => {
+  it("restricts Tang Melody critical damage by HP until T5 and to martial arts", () => {
     const damage = (tier: number, hp: number, martial = true) => {
       const input = bundle({ SongOfTang: tier })
       input.timeline.rotation.steps = [
@@ -906,6 +936,12 @@ describe("Dust mechanics", () => {
     expect(damage(0, 100)).toBeCloseTo(1.52 / 1.5)
     expect(damage(0, 50)).toBe(1)
     expect(damage(0, 25)).toBe(1)
+    for (const tier of [3, 4]) {
+      expect(damage(tier, 50)).toBe(1)
+      expect(damage(tier, 51)).toBeGreaterThan(1)
+    }
+    expect(damage(5, 25)).toBeGreaterThan(1)
+    expect(damage(5, 25, false)).toBe(1)
     expect(damage(6, 25)).toBeGreaterThan(1)
     expect(damage(6, 25, false)).toBe(1)
   })
@@ -1038,7 +1074,7 @@ describe("Dust confirmed damage and cooldown rules", () => {
     const sweep = result.timeline.find(row => row.step.type === "skill" && row.step.skill === "SoulSweep")!
     expect(sweep.startTime).toBeCloseTo(ready)
   })
-  it("Burn and Bury adds its bonus to vs Boss instead of multiplying it", () => {
+  it("Burn and Bury multiplies base damage separately from vs Boss", () => {
     const input = bundle()
     input.stats.vsBossDmg = 0.2
     input.timeline.rotation.steps = [castStep("Mark"), castStep("BurnAndBury")]
@@ -1049,7 +1085,7 @@ describe("Dust confirmed damage and cooldown rules", () => {
       const row = result.timeline.find(row => row.step.type === "skill" && row.step.skill === "BurnAndBury")!
       return result.actionBreakdowns[`${row.id}:1`].total
     }
-    expect(damage(boosted) / damage(base)).toBeCloseTo(1.5 / 1.2)
+    expect(damage(boosted) / damage(base)).toBeCloseTo(1.3)
   })
 })
 
@@ -1346,10 +1382,17 @@ describe("Phantom Umbrella summons and Resonance", () => {
     expect(chime(2)).toBe(0)
     // Tiers are cumulative, so Tier 4 is compared against Tier 3 to isolate the
     // damage bonus from the Tier 3 resistance shred that both share.
-    const base = resonanceDamage(run(3, spin))
-    const upgraded = resonanceDamage(run(4, spin))
-    expect(base).toBeGreaterThan(0)
-    expect(upgraded / base).toBeCloseTo(1.2, 6)
+    const base = run(3, spin)
+    const upgraded = run(4, spin)
+    expect(resonanceDamage(base)).toBeGreaterThan(0)
+    for (const row of resonances(base)) {
+      const song = row.modifierEffects?.some(effect => effect.GuaranteedCrit === true)
+      const id = `${row.id}:0`
+      expect(upgraded.actionBreakdowns[id].total / base.actionBreakdowns[id].total).toBeCloseTo(
+        song ? 1.4 / 1.2 : 1.2,
+        6,
+      )
+    }
   })
   it("resonates Dreamwrought Bubbles on return at Tier 6 only", () => {
     const steps = [castStep("DreamwroughtBubbles")] as RotationStep[]
