@@ -1,9 +1,7 @@
 import { requirementsPass, type EditableObject } from "./rotationTimeline"
 import { trackedEffectMetadata, type EffectState } from "./trackedEffectState"
 
-/** Run-local preparation. Numerical predicates are keyed by their result, so HP changes
- * that stay on the same side of a threshold do not rebuild contributions. */
-export function createPreparedEffectState(requirements: unknown[]) {
+function collectNumericRequirements(requirements: unknown[]) {
   const numericRequirements: EditableObject[] = []
   const numericKeys = new Set<string>()
   const visit = (value: unknown): void => {
@@ -29,10 +27,17 @@ export function createPreparedEffectState(requirements: unknown[]) {
     Object.values(condition).forEach(visit)
   }
   requirements.forEach(visit)
+  return numericRequirements
+}
+
+/** Run-local preparation. Numerical predicates are keyed by their result, so HP changes
+ * that stay on the same side of a threshold do not rebuild contributions. */
+export function createPreparedEffectState(requirements: unknown[]) {
+  const numericRequirements = collectNumericRequirements(requirements)
   const states = new Map<string, EditableObject[]>()
   const identities = new WeakMap<object, number>()
   let nextIdentity = 0
-  const modifierKeys = new WeakMap<object, string>()
+  const modifierKeys = new WeakMap<object, { key: string; requirements: EditableObject[] }>()
   const emptyConditions = new Set<string>()
   const identity = (value: object) => {
     let id = identities.get(value)
@@ -51,17 +56,17 @@ export function createPreparedEffectState(requirements: unknown[]) {
     modifiers: object,
     resolve: () => EditableObject[],
   ) => {
-    const predicates = numericRequirements.map(requirement =>
-      requirementsPass([requirement], buffs, debuffs, [], emptyConditions, [], resources, state) ? 1 : 0,
-    )
     let modifierKey = modifierKeys.get(modifiers)
     if (modifierKey === undefined) {
-      modifierKey = JSON.stringify(modifiers)
+      modifierKey = { key: JSON.stringify(modifiers), requirements: collectNumericRequirements([modifiers]) }
       modifierKeys.set(modifiers, modifierKey)
     }
+    const predicates = [...numericRequirements, ...modifierKey.requirements].map(requirement =>
+      requirementsPass([requirement], buffs, debuffs, [], emptyConditions, [], resources, state) ? 1 : 0,
+    )
     const key = JSON.stringify([
       identity(staticEffects),
-      modifierKey,
+      modifierKey.key,
       trackedEffectMetadata(buffs).requirementKey,
       trackedEffectMetadata(debuffs).requirementKey,
       predicates,

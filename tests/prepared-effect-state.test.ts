@@ -1,15 +1,36 @@
 import { describe, expect, it, vi } from "vitest"
 
-import { createPreparedEffectState } from "../src/calculations/preparedEffectState"
+import { createPreparedEffectState } from "@/calculations/preparedEffectState"
 import {
   buildRotationTimeline,
   requirementsPass,
   type TrackedEffect,
   type TimelineBuildInput,
-} from "../src/calculations/rotationTimeline"
-import { trackedEffectMetadata, effectState, effectKey } from "../src/calculations/trackedEffectState"
+} from "@/calculations/rotationTimeline"
+import { trackedEffectMetadata, effectState, effectKey } from "@/calculations/trackedEffectState"
 
 describe("prepared combat state", () => {
+  it.each([false, true])("tracks resource thresholds inside action modifiers (active first=%s)", activeFirst => {
+    const prepare = createPreparedEffectState([])
+    const skill = {}
+    const buffs = effectState()
+    const modifiers = [
+      {
+        requirement: [{ target: "resource", value: "Energy", comparison: ">=", amount: 100 }],
+        effect: { GuaranteedAffinity: true },
+      },
+    ]
+    const resolveAt = (energy: number) =>
+      prepare(buffs, buffs, { Energy: energy }, {}, skill, modifiers, () =>
+        energy >= 100 ? [{ GuaranteedAffinity: true }] : [],
+      )
+    const first = resolveAt(activeFirst ? 100 : 99)
+    const second = resolveAt(activeFirst ? 99 : 100)
+    expect(first).toEqual(activeFirst ? [{ GuaranteedAffinity: true }] : [])
+    expect(second).toEqual(activeFirst ? [] : [{ GuaranteedAffinity: true }])
+    expect(resolveAt(101)).toBe(activeFirst ? first : second)
+    expect(resolveAt(98)).toBe(activeFirst ? second : first)
+  })
   it.each([false, true])("uses skill candidate order independently of insertion order (reversed=%s)", reversed => {
     const names = reversed ? ["Second", "First"] : ["First", "Second"]
     const input: TimelineBuildInput = {

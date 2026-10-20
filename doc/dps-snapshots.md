@@ -499,3 +499,19 @@ The accepted `bellstrikeUmbra/dummy-1-min-38-bb` result changes from
 damage decreases by approximately 90610 as full-Zenith and buff alignment change;
 Smolder decreases by approximately 27924 with 104 ticks instead of 112.
 All other preset snapshots remain unchanged.
+
+## Umbra action-modifier cache correction (2026-10-20)
+
+The user approved the resource-predicate cache correction for release. Blood
+Burst's full-Zenith guaranteed Affinity now follows the action's current resource
+condition instead of reusing a cached result from the other side of its threshold.
+This restores eligible guaranteed-Affinity hits and removes spurious bow/ring
+comparison gains when Affinity is already capped.
+
+| Breakthrough |      Previous DPS |       Accepted DPS | Previous total damage | Accepted total damage |
+| ------------ | ----------------: | -----------------: | --------------------: | --------------------: |
+| 18           |  93882.4712814389 |  95163.45897986703 |     5632948.276886335 |    5709807.5387920225 |
+| 19           | 98795.44321255597 | 100119.09485414634 |     5927726.592753358 |     6007145.691248781 |
+
+Both cases use `bellstrikeUmbra/dummy-1-min-38-bb` and retain their 60-second
+duration. All other preset snapshots remain unchanged.

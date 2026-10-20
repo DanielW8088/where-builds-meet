@@ -98,8 +98,11 @@ The action resolver prepares contextual effect lists once per distinct semantic
 state: skill tag signature, effect identities/stacks/maxima/recipients,
 action modifiers, and numeric requirement outcomes. Numeric predicates include
 resource, distance, HP, and Qi comparisons, including predicates nested inside
-modified definitions. Remaining within a threshold region reuses the prepared
-list; crossing a threshold or changing effect membership selects another state.
+modified definitions. Numeric predicates in action and component modifiers are
+indexed with those modifiers too, so a resource-dependent guaranteed outcome
+cannot leak across its threshold through the cache. Remaining within a threshold
+region reuses the prepared list; crossing a threshold or changing effect
+membership selects another state.
 The preparation cache belongs to one resolver/run. Attribution excludes its buff
 before resolving requirements, so dependent buffs are handled correctly.
 
