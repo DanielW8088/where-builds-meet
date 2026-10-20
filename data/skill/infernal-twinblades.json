@@ -79,7 +79,9 @@
     "castTime": 0.43,
     "action": [
       { "type": "damage", "time": 0.339, "phyCoef": 0.42049, "attrCoef": 0.42049, "phyBonus": 117, "attrBonus": 64 },
-      { "type": "addResource", "value": "Hellfire", "amount": 10, "time": 0.339 }
+      { "type": "addResource", "value": "Hellfire", "amount": 10, "time": 0.339 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 2, "duration": 0.794, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -106,7 +108,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 2, "duration": 0.794, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -122,7 +126,9 @@
       { "type": "damage", "time": 0.242, "phyCoef": 0.22542, "attrCoef": 0.22542, "phyBonus": 63, "attrBonus": 34 },
       { "type": "damage", "time": 0.343, "phyCoef": 0.22542, "attrCoef": 0.22542, "phyBonus": 63, "attrBonus": 34 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.242 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.343 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.343 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 3, "duration": 0.797, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -138,7 +144,9 @@
       { "type": "damage", "time": 0.248, "phyCoef": 0.2886, "attrCoef": 0.2886, "phyBonus": 80.5, "attrBonus": 43.5 },
       { "type": "damage", "time": 0.419, "phyCoef": 0.2886, "attrCoef": 0.2886, "phyBonus": 80.5, "attrBonus": 43.5 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.248 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.419 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.419 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 4, "duration": 1.059, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -147,14 +155,16 @@
   "InfernalLight3Cancel": {
     "ignorePing": true,
     "name": "Light Attack 3 [Cancel]",
-    "shortName": "A3",
+    "shortName": "A3 [Cancel]",
     "skillBreakdownCategory": "Light Attack",
     "castTime": 0.419,
     "action": [
       { "type": "damage", "time": 0.248, "phyCoef": 0.2886, "attrCoef": 0.2886, "phyBonus": 80.5, "attrBonus": 43.5 },
       { "type": "damage", "time": 0.419, "phyCoef": 0.2886, "attrCoef": 0.2886, "phyBonus": 80.5, "attrBonus": 43.5 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.248 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.419 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.419 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 4, "duration": 1.059, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -181,7 +191,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 4, "duration": 1.059, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -197,7 +209,8 @@
       { "type": "damage", "time": 0.167, "phyCoef": 0.254095, "attrCoef": 0.254095, "phyBonus": 71, "attrBonus": 38.5 },
       { "type": "damage", "time": 0.167, "phyCoef": 0.254095, "attrCoef": 0.254095, "phyBonus": 71, "attrBonus": 38.5 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.167 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.167 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.167 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -213,7 +226,8 @@
       { "type": "damage", "time": 0.167, "phyCoef": 0.254095, "attrCoef": 0.254095, "phyBonus": 71, "attrBonus": 38.5 },
       { "type": "damage", "time": 0.167, "phyCoef": 0.254095, "attrCoef": 0.254095, "phyBonus": 71, "attrBonus": 38.5 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.167 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.167 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.167 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -240,7 +254,8 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -256,7 +271,9 @@
       { "type": "damage", "time": 0.104, "phyCoef": 0.32359, "attrCoef": 0.32359, "phyBonus": 90, "attrBonus": 49 },
       { "type": "damage", "time": 0.328, "phyCoef": 0.32359, "attrCoef": 0.32359, "phyBonus": 90, "attrBonus": 49 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.104 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.328 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.328 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 2, "duration": 0.571, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -279,7 +296,9 @@
     "castTime": 0.466,
     "action": [
       { "type": "damage", "time": 0.294, "phyCoef": 0.9012, "attrCoef": 0.9012, "phyBonus": 250, "attrBonus": 136 },
-      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.294 }
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.294 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 3, "duration": 0.75, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -315,7 +334,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 3, "duration": 0.75, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -407,7 +428,9 @@
       { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.478 },
       { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.535 },
       { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.59 },
-      { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.646 }
+      { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.646 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 4, "duration": 1, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -473,7 +496,9 @@
       { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.447 },
       { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.544 },
       { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.644 },
-      { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.823 }
+      { "type": "addResource", "value": "Hellfire", "amount": 1.25, "time": 0.823 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 5, "duration": 1.1, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -509,7 +534,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 5, "duration": 1.1, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -608,7 +635,8 @@
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
       },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 1.023 }
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 1.023 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -708,7 +736,8 @@
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
       },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 1.023 }
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 1.023 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -744,7 +773,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 3, "duration": 0.797, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -771,7 +802,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 2, "duration": 0.571, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -806,7 +839,8 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -841,7 +875,9 @@
           },
           { "target": "distance", "comparison": "<", "amount": 12 }
         ]
-      }
+      },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 4, "duration": 1, "time": 0 }
     ],
     "martialArt": "infernalTwinblades",
     "weapon": "DualBlades",
@@ -854,5 +890,177 @@
       "BladeOfHeavensWrath",
       "Empowered"
     ]
+  },
+  "InfernalFlamelashLight1Combo": {
+    "ignorePing": true,
+    "name": "Blade of Heaven's Wrath 1 [Combo]",
+    "shortName": "FA1 [Combo]",
+    "skillBreakdownCategory": "Blade of Heaven's Wrath",
+    "castTime": 0.186,
+    "action": [
+      { "type": "damage", "time": 0.104, "phyCoef": 0.32359, "attrCoef": 0.32359, "phyBonus": 90, "attrBonus": 49 },
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.104 },
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 2, "duration": 0.571, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "InfernalTwinblades",
+      "DualBlades",
+      "Light",
+      "InfernalFlamelashLight1",
+      "BladeOfHeavensWrath",
+      "Empowered"
+    ]
+  },
+  "InfernalFlamelashLight2Combo": {
+    "ignorePing": true,
+    "name": "Blade of Heaven's Wrath 2 [Combo]",
+    "shortName": "FA2 [Combo]",
+    "skillBreakdownCategory": "Blade of Heaven's Wrath",
+    "castTime": 0.26,
+    "action": [
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 3, "duration": 0.75, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "InfernalTwinblades",
+      "DualBlades",
+      "Light",
+      "InfernalFlamelashLight2",
+      "BladeOfHeavensWrath",
+      "Empowered"
+    ]
+  },
+  "InfernalFlamelashLight3Combo": {
+    "ignorePing": true,
+    "name": "Blade of Heaven's Wrath 3 [Combo]",
+    "shortName": "FA3 [Combo]",
+    "skillBreakdownCategory": "Blade of Heaven's Wrath",
+    "castTime": 0.217,
+    "action": [
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 4, "duration": 1, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "InfernalTwinblades",
+      "DualBlades",
+      "Light",
+      "InfernalFlamelashLight3",
+      "BladeOfHeavensWrath",
+      "Empowered"
+    ]
+  },
+  "InfernalFlamelashLight4Combo": {
+    "ignorePing": true,
+    "name": "Blade of Heaven's Wrath 4 [Combo]",
+    "shortName": "FA4 [Combo]",
+    "skillBreakdownCategory": "Blade of Heaven's Wrath",
+    "castTime": 0.26,
+    "action": [
+      { "type": "consume", "target": "self", "value": "InfernalFlamelashCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalFlamelashCombo", "stack": 5, "duration": 1.1, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": [
+      "DirectDamage",
+      "MartialArts",
+      "InfernalTwinblades",
+      "DualBlades",
+      "Light",
+      "InfernalFlamelashLight4",
+      "BladeOfHeavensWrath",
+      "Empowered"
+    ]
+  },
+  "InfernalLight1Combo": {
+    "ignorePing": true,
+    "name": "Light Attack 1 [Combo]",
+    "shortName": "A1 [Combo]",
+    "skillBreakdownCategory": "Light Attack",
+    "castTime": 0.23,
+    "action": [
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 2, "duration": 0.794, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": ["DirectDamage", "MartialArts", "InfernalTwinblades", "DualBlades", "Light", "InfernalLight1"]
+  },
+  "InfernalLight2Combo": {
+    "ignorePing": true,
+    "name": "Light Attack 2 [Combo]",
+    "shortName": "A2 [Combo]",
+    "skillBreakdownCategory": "Light Attack",
+    "castTime": 0.23,
+    "action": [
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 3, "duration": 0.797, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": ["DirectDamage", "MartialArts", "InfernalTwinblades", "DualBlades", "Light", "InfernalLight2"]
+  },
+  "InfernalLight3Combo": {
+    "ignorePing": true,
+    "name": "Light Attack 3 [Combo]",
+    "shortName": "A3 [Combo]",
+    "skillBreakdownCategory": "Light Attack",
+    "castTime": 0.26,
+    "action": [
+      { "type": "damage", "time": 0.248, "phyCoef": 0.2886, "attrCoef": 0.2886, "phyBonus": 80.5, "attrBonus": 43.5 },
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.248 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 4, "duration": 1.059, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": ["DirectDamage", "MartialArts", "InfernalTwinblades", "DualBlades", "Light", "InfernalLight3"]
+  },
+  "InfernalLight1Cancel": {
+    "ignorePing": true,
+    "name": "Light Attack 1 [Cancel]",
+    "shortName": "A1 [Cancel]",
+    "skillBreakdownCategory": "Light Attack",
+    "castTime": 0.339,
+    "action": [
+      { "type": "damage", "time": 0.339, "phyCoef": 0.42049, "attrCoef": 0.42049, "phyBonus": 117, "attrBonus": 64 },
+      { "type": "addResource", "value": "Hellfire", "amount": 10, "time": 0.339 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 2, "duration": 0.794, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": ["DirectDamage", "MartialArts", "InfernalTwinblades", "DualBlades", "Light", "InfernalLight1"]
+  },
+  "InfernalLight2Cancel": {
+    "ignorePing": true,
+    "name": "Light Attack 2 [Cancel]",
+    "shortName": "A2 [Cancel]",
+    "skillBreakdownCategory": "Light Attack",
+    "castTime": 0.343,
+    "action": [
+      { "type": "damage", "time": 0.242, "phyCoef": 0.22542, "attrCoef": 0.22542, "phyBonus": 63, "attrBonus": 34 },
+      { "type": "damage", "time": 0.343, "phyCoef": 0.22542, "attrCoef": 0.22542, "phyBonus": 63, "attrBonus": 34 },
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.242 },
+      { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.343 },
+      { "type": "consume", "target": "self", "value": "InfernalLightCombo", "stack": "all", "time": 0 },
+      { "type": "apply", "target": "self", "value": "InfernalLightCombo", "stack": 3, "duration": 0.797, "time": 0 }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": ["DirectDamage", "MartialArts", "InfernalTwinblades", "DualBlades", "Light", "InfernalLight2"]
   }
 }

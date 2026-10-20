@@ -137,10 +137,17 @@ describe("Wind dummy preset", () => {
     for (const [index, row] of fullCasts.entries()) {
       if (!row.step.skill?.includes("PerfectDodge")) continue
       const cancel = fullCasts[index - 1]
-      expect(cancel.step.skill?.endsWith("Rodent")).toBe(true)
       expect(
-        full.timeline.filter(trigger => trigger.sourceRowId === cancel.id && trigger.step.skill === "Rodent"),
-      ).toHaveLength(cancel.buffs.has("RodentRampage") || cancel.buffs.has("EnhancedRodentRampage") ? 1 : 0)
+        cancel.step.skill?.endsWith("Rodent") ||
+          cancel.step.skill?.endsWith("Combo") ||
+          cancel.step.skill === "InfernalFlamelashLight4",
+      ).toBe(true)
+      const hasRampage = cancel.buffs.has("RodentRampage") || cancel.buffs.has("EnhancedRodentRampage")
+      const rodents = full.timeline.filter(
+        trigger => trigger.sourceRowId === cancel.id && trigger.step.skill === "Rodent",
+      )
+      if (cancel.step.skill?.endsWith("Rodent")) assert.equal(rodents.length, hasRampage ? 1 : 0)
+      if (cancel.step.skill?.endsWith("Combo")) assert.equal(rodents.length, 0)
       expect(cancel.startTime).toBeLessThanOrEqual(row.startTime)
     }
     expect(fullCasts.length).toBe(bundle.timeline.rotation.steps.filter(step => step.type === "skill").length)
@@ -162,12 +169,12 @@ describe("Wind dummy preset", () => {
     ])
     let worldUsed = false
     for (const [index, row] of casts.entries()) {
-      const match = /^InfernalFlamelashLight([1-5])(Cancel|Rodent)?$/.exec(row.step.skill ?? "")
+      const match = /^InfernalFlamelashLight([1-5])(Cancel|Rodent|Combo)?$/.exec(row.step.skill ?? "")
       if (!match) continue
       const stage = Number(match[1])
-      if (match[2] === "Rodent") {
+      if (match[2] === "Rodent" || match[2] === "Combo") {
         const dodge = casts[index + 1]
-        assert.equal(dodge.step.skill, "PerfectDodge")
+        assert(dodge.step.skill === "PerfectDodge" || (match[2] === "Combo" && dodge.step.skill?.endsWith("Combo")))
         assert.equal(
           row.actions.some(action => action.type === "damage"),
           false,
@@ -184,10 +191,45 @@ describe("Wind dummy preset", () => {
           ...row.actions.filter(action => action.type === "damage").map(action => Number(action.time)),
         )
         assert(Math.abs(row.effectiveCastTime - lastHit) < 1e-9)
-        assert(Math.abs(q.startTime - row.startTime - lastHit - (expectedCancel === "AddledMind" ? 0.04 : 0)) < 1e-9)
+        assert(
+          Math.abs(
+            q.startTime - row.startTime - lastHit - (expectedCancel === "AddledMind" ? rotation.ping / 1000 : 0),
+          ) < 1e-9,
+        )
         worldUsed = true
       }
     }
+  })
+
+  it("completes opening FA2 before FA3 Rodent and the first dodge", () => {
+    const { timeline } = calculateRotationBaseline(bundleFor())
+    const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const dodgeIndex = casts.findIndex(row => row.step.skill === "PerfectDodge")
+    const fa2 = casts[dodgeIndex - 2]
+    const rodent = casts[dodgeIndex - 1]
+    const dodge = casts[dodgeIndex]
+    expect(fa2.step.skill).toBe("InfernalFlamelashLight2")
+    expect(rodent.step.skill).toBe("InfernalFlamelashLight3Rodent")
+    const hits = fa2.actions.filter(action => action.type === "damage")
+    expect(hits).toHaveLength(1)
+    expect(fa2.startTime + fa2.effectiveCastTime + rotation.ping / 1000).toBeLessThanOrEqual(dodge.startTime)
+    expect(hits.every(action => fa2.startTime + Number(action.time) < dodge.startTime)).toBe(true)
+  })
+
+  it("finishes the late combo before the intended attack and never retries FA5 through dodge", () => {
+    const { timeline } = calculateRotationBaseline(bundleFor())
+    const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const combos = casts.filter(row => row.step.skill === "InfernalFlamelashLight4Combo")
+    expect(combos).toHaveLength(2)
+    for (const combo of combos) {
+      const dodge = casts[casts.indexOf(combo) + 1]
+      expect(dodge.step.skill).toBe("PerfectDodge")
+      expect(combo.startTime + combo.effectiveCastTime + rotation.ping / 1000).toBeLessThanOrEqual(
+        dodge.startTime + 1e-9,
+      )
+      expect(dodge.buffs.get("InfernalFlamelashCombo")?.stack).toBe(5)
+    }
+    expect(casts.some(row => row.step.skill === "InfernalFlamelashLight5Rodent")).toBe(false)
   })
 
   it.each([0, 1, 2])("ends Flamelash window %s on the drain tick that exhausts Hellfire", index => {
@@ -220,7 +262,8 @@ describe("Wind dummy preset", () => {
     expect(sustained.every(pair => pair.after.resources.Hellfire > 0)).toBe(true)
     const depletions = pairs.filter(pair => !pair.after.buffs.has("Flamelash"))
     expect(depletions).toHaveLength(1)
-    expect(depletions[0].after.resources.Hellfire).toBe(0)
+    // A hit between depletion and the +1ms observation may already refill Hellfire.
+    // The buff must still end on the tick whose cost exhausted its pre-tick balance.
     expect(depletions[0].before.resources.Hellfire).toBeLessThanOrEqual(1 + depletions[0].tick * 0.05 + 1e-9)
   })
 
@@ -239,15 +282,26 @@ describe("Wind dummy preset", () => {
     expect(third.resources.Hellfire).toBe(80)
   })
 
+  it("keeps only the millisecond delay needed for the final A1 Hellfire refill", () => {
+    const bundle = bundleFor()
+    const result = calculateRotationBaseline(bundle)
+    const activations = result.timeline.filter(row => row.kind === "rotation" && row.step.skill === "Flamelash")
+    expect(activations[2].resources.Hellfire).toBe(80)
+    const delay = bundle.timeline.rotation.steps.find(step => step.type === "event" && step.event === "Delay")!
+    delay.duration! -= 0.001
+    const shorter = calculateRotationBaseline(bundle)
+    const shorterActivations = shorter.timeline.filter(row => row.kind === "rotation" && row.step.skill === "Flamelash")
+    expect(shorterActivations[2].resources.Hellfire).toBeLessThan(80)
+  })
+
   it("refreshes Rampage after the third activation and refills before the fourth", () => {
     const { timeline } = calculateRotationBaseline(bundleFor())
     const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
     const activations = casts.filter(row => row.step.skill === "Flamelash")
     expect(activations).toHaveLength(4)
     const thirdIndex = casts.indexOf(activations[2])
-    expect(casts.slice(thirdIndex + 1, thirdIndex + 6).map(row => row.step.skill)).toEqual([
+    expect(casts.slice(thirdIndex + 1, thirdIndex + 5).map(row => row.step.skill)).toEqual([
       "InfernalFlamelashLight1",
-      "InfernalFlamelashLight2",
       "BladeboundThreadCancel",
       "Deflect",
       "RodentRampage",
@@ -259,7 +313,7 @@ describe("Wind dummy preset", () => {
       row =>
         row.startTime > refillCancel.startTime &&
         row.startTime < fourth.startTime &&
-        /^InfernalLight[1-4]$/.test(row.step.skill ?? ""),
+        /^InfernalLight[1-4](Cancel)?$/.test(row.step.skill ?? ""),
     )
     expect(normals.length).toBeGreaterThanOrEqual(4)
     expect(normals.every(row => !row.buffs.has("Flamelash"))).toBe(true)
@@ -281,7 +335,7 @@ describe("Wind dummy preset", () => {
     const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
     const fourth = casts.findLast(row => row.step.skill === "Flamelash")!
     const refill = casts[casts.indexOf(fourth) - 1]
-    expect(refill.step.skill).toBe("InfernalLight1")
+    expect(refill.step.skill).toBe("InfernalLight1Cancel")
     expect(refill.effectiveCastTime).toBeGreaterThan(0)
     const tail = casts.filter(row => row.startTime >= refill.startTime)
     expect(tail.every(row => row.buffs.has("BreakingPointCooldown"))).toBe(true)

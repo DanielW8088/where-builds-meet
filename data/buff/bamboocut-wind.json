@@ -176,5 +176,7 @@
     "maxStack": 2,
     "refresh": true,
     "onMaxStack": { "consume": "all", "trigger": "Rodent" }
-  }
+  },
+  "InfernalFlamelashCombo": { "name": "Blade of Heaven's Wrath Combo", "hidden": true, "maxStack": 5, "refresh": true },
+  "InfernalLightCombo": { "name": "Infernal Light Attack Combo", "hidden": true, "maxStack": 4, "refresh": true }
 }

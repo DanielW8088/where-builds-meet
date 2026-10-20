@@ -1028,7 +1028,7 @@ from LA2/LA3.
 
 The manually authored second window restarts at FA1 after its first dodge.
 Perfect Dodge itself preserves the combo; this restart is retained by user request.
-A 0.330s Delay before the late second-window FA4 lets it start with Flamelash
+A 0.066s Delay before the late second-window FA4 lets it start with Flamelash
 active and continue after Hellfire depletion. Its remaining hits regenerate
 Hellfire, followed by the normal LA1–LA4, Flute Cancel / Deflect, and LA1 refill
 sequence. The next Flamelash starts at 80 Hellfire without changing the drain
@@ -1719,3 +1719,68 @@ Mystic replacements, the highest 38-Blood-Burst preset DPS uses seven
 Momentum, three Affinity, one Max Void Attack, and no All Mystic additional
 rolls. Comparison uses breakthrough 18, Clay Oven Flatbread, Fire, no script,
 default global buffs, and the preset ping; other affixes and setup stay fixed.
+
+### Wind combo windows
+
+Ordinary Infernal light attacks track the next stage in hidden `InfernalLightCombo`:
+A1 sets 2 for 0.794s, A2 sets 3 for 0.797s, A3 sets 4 for 1.059s, and A4 clears it.
+Blade of Heaven's Wrath uses separate hidden `InfernalFlamelashCombo`: FA1 sets 2
+for 0.571s, FA2 sets 3 for 0.750s, FA3 sets 4 for 1.000s, FA4 sets 5 for 1.100s,
+and FA5 clears it. Each cast replaces the previous count at cast start, including
+Cancel, Rodent, and Combo variants. These markers do not restrict skill selection.
+Dodge does not clear them; expiry remains relative to the attack's start.
+
+`[Combo]` variants end at the window's opening: A1/A2/A3 at
+0.230/0.230/0.260s and FA1/FA2/FA3/FA4 at 0.186/0.260/0.217/0.260s.
+Only actions at or before that boundary survive; later blade hits and their
+Hellfire gains are omitted. The two FA4 / Perfect Dodge / FA5 connections in
+the Wind preset use FA4 Combo. Retry, restart, and utility dodge sequences keep
+their existing Rodent variants. No FA5 Combo exists because FA5 ends the chain.
+
+The Wind preset uses 30ms ping. FA5 Rodent / Dodge / FA5 is not a valid
+continuation and its Rodent-only entry is removed. Only the last attack before dodge may use Combo; preceding attacks must complete.
+The late sequence removes the FA2 before Bladebound Thread Cancel and uses full
+FA1 / FA2 / FA3 / FA4 Combo after the Rampage refresh. The pre-Flamelash Cancel variants and 0.066s delay preserve the 80-Hellfire
+refill and the 41.475s dodge at 30ms ping. At millisecond precision, 0.065s
+refills only to 74.5. A 40ms trial could not satisfy both constraints: its
+minimum delay for 80 Hellfire was 0.132s, which ended FA4 Combo at 41.521333s
+and missed the incoming attack. The preset therefore retains 30ms.
+
+Ordinary Infernal A1–A4 can cancel into Flamelash after their final hit. Their
+Cancel variants retain every hit, Hellfire gain, and combo-state action, with
+cast times 0.339/0.343/0.419/0.167s respectively. The Wind preset uses these
+variants whenever an ordinary light attack is immediately followed by Flamelash.
+
+The opening Flamelash window fits full FA1 / FA2 before FA3 Rodent and the
+first Perfect Dodge at 5.475s; the dodge is followed by the selected FA1 restart.
+
+### Wind no-dodge dummy rotation
+
+`wind-dummy-1-min-iv-no-dodge` is the separate **Dummy 1 Min IV No Dodge**
+preset: non-attacking Dummy, infinite Vitality, 30ms ping, and a 60-second
+battle cutoff. It retains the charged Rampage preparation and RD Q damage
+battle-start anchor. Ghostly Step - Umbra cancels the first A4; World to Sword
+cancels the first FA5. Subsequent completed FA5 casts use Addled Mind while
+Flamelash remains active, or Deflect at the depletion transition.
+
+Light attacks use full A1–A4 or FA1–FA5 sequences until Flamelash depletion
+or an RD refresh interrupts them. RD Q / Deflect / RD Special refresh together
+after Rampage expires, at the next completed-attack boundary; short waits let
+the outgoing Rampage expire instead of refreshing it early. Every light attack
+launches its coordinated Rodent, and FA5 keeps its two final-hit Echoes Rodents.
+No dodge, Rodent-only light variant, or Combo shortcut is authored.
+Flute is used outside Flamelash. New Flamelash casts start at 80 Hellfire;
+a 0.021s wait after one A1 Cancel lets an already-launched Rodent complete
+that refill. The shared authored Qi markers are retained, with the break
+attached to the second Flamelash window’s first FA1.
+
+Before the third Rampage activation, full FA3 follows FA2: its first hit launches
+the coordinated Rodent before the outgoing Rampage expires, while the rest of
+the cast finishes across expiry. RD Q / Deflect / RD Special follow that full
+FA3 without the previous expiry wait. Rampage need not cover later blade hits
+of a stage once its coordinated Rodent has launched; FA5 still needs Rampage
+through the final hit for the two additional Echoes Rodents.
+
+The preset ends its authored skill sequence on the final in-battle FA4.
+The post-battle RD Q / Deflect / RD Special refresh and its expiry wait are
+omitted; the fixed Battle End event still closes the measurement at 60 seconds.
