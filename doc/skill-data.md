@@ -1639,8 +1639,8 @@ remaining mechanisms and draft Flourishing Notes timing limits.
 ### Global Wings support
 
 The Global Buffs Wings selector uses permanent expected bonuses for other paths:
-Cloudshear contributes 6% damage and healing; Yellow weights Tailwind's 3%
-attribute attack bonus by 13.5/20 and Radiant Drum's 6% Physical/all-attribute
+Support assumes Harmony Song T6. Ally Cloudshear contributes 2% damage and healing; Yellow weights Tailwind's 3%
+attribute attack bonus by 13.5/20 and Radiant Drum's 12% Physical/all-attribute
 attack bonus by 6.5/20. Blue uses 9.5/20 and 10.5/20 respectively. Full uses
 Cloudshear and Radiant Drum at full coverage. These weighted effects do not
 activate local Tailwind/Radiant Drum states or grant Wings talent bonuses.

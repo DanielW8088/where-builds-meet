@@ -113,13 +113,13 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "dmgBonus": 0.06,
-          "healingBonus": 0.06,
-          "physicalAttackBonus": 0.0195,
-          "bellstrikeAttackBonus": 0.03975,
-          "stonesplitAttackBonus": 0.03975,
-          "silkbindAttackBonus": 0.03975,
-          "bamboocutAttackBonus": 0.03975
+          "dmgBonus": 0.02,
+          "healingBonus": 0.02,
+          "physicalAttackBonus": 0.039,
+          "bellstrikeAttackBonus": 0.05925,
+          "stonesplitAttackBonus": 0.05925,
+          "silkbindAttackBonus": 0.05925,
+          "bamboocutAttackBonus": 0.05925
         }
       }
     ]
@@ -135,13 +135,13 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "dmgBonus": 0.06,
-          "healingBonus": 0.06,
-          "physicalAttackBonus": 0.0315,
-          "bellstrikeAttackBonus": 0.04575,
-          "stonesplitAttackBonus": 0.04575,
-          "silkbindAttackBonus": 0.04575,
-          "bamboocutAttackBonus": 0.04575
+          "dmgBonus": 0.02,
+          "healingBonus": 0.02,
+          "physicalAttackBonus": 0.063,
+          "bellstrikeAttackBonus": 0.07725,
+          "stonesplitAttackBonus": 0.07725,
+          "silkbindAttackBonus": 0.07725,
+          "bamboocutAttackBonus": 0.07725
         }
       }
     ]
@@ -157,13 +157,13 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "dmgBonus": 0.06,
-          "healingBonus": 0.06,
-          "physicalAttackBonus": 0.06,
-          "bellstrikeAttackBonus": 0.06,
-          "stonesplitAttackBonus": 0.06,
-          "silkbindAttackBonus": 0.06,
-          "bamboocutAttackBonus": 0.06
+          "dmgBonus": 0.02,
+          "healingBonus": 0.02,
+          "physicalAttackBonus": 0.12,
+          "bellstrikeAttackBonus": 0.12,
+          "stonesplitAttackBonus": 0.12,
+          "silkbindAttackBonus": 0.12,
+          "bamboocutAttackBonus": 0.12
         }
       }
     ]

@@ -84,13 +84,13 @@ describe("global Wings support", () => {
     manual.timeline.rotation = weighted.timeline.rotation
     manual.timeline.setupEffects.push({
       effect: {
-        dmgBonus: 0.06,
-        healingBonus: 0.06,
-        physicalAttackBonus: 0.06 * radiant,
-        bellstrikeAttackBonus: 0.03 * (1 - radiant) + 0.06 * radiant,
-        stonesplitAttackBonus: 0.03 * (1 - radiant) + 0.06 * radiant,
-        silkbindAttackBonus: 0.03 * (1 - radiant) + 0.06 * radiant,
-        bamboocutAttackBonus: 0.03 * (1 - radiant) + 0.06 * radiant,
+        dmgBonus: 0.02,
+        healingBonus: 0.02,
+        physicalAttackBonus: 0.12 * radiant,
+        bellstrikeAttackBonus: 0.03 * (1 - radiant) + 0.12 * radiant,
+        stonesplitAttackBonus: 0.03 * (1 - radiant) + 0.12 * radiant,
+        silkbindAttackBonus: 0.03 * (1 - radiant) + 0.12 * radiant,
+        bamboocutAttackBonus: 0.03 * (1 - radiant) + 0.12 * radiant,
       },
     })
     expect(actual.metrics.totalDamage).toBeCloseTo(calculateRotationBaseline(manual).metrics.totalDamage, 8)
