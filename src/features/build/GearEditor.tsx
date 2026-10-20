@@ -237,6 +237,7 @@ export function GearEditor({
   attunementOptions,
   selectedAdditionalKeys,
   onDraftChange,
+  onImportSlot,
   onLevelChange,
   onRelayedChange,
   onCancel,
@@ -253,6 +254,7 @@ export function GearEditor({
   attunementOptions: string[]
   selectedAdditionalKeys: Set<string>
   onDraftChange: Dispatch<SetStateAction<GearDraft>>
+  onImportSlot: (definitionId: string) => void
   onLevelChange: (level: GearLevel) => void
   onRelayedChange: (relayed: boolean) => void
   onCancel: () => void
@@ -261,6 +263,7 @@ export function GearEditor({
   const [ocrOpen, setOcrOpen] = useState(false)
 
   const importOcrResult = (result: GearOcrResult) => {
+    onImportSlot(result.definitionId)
     const importedAdditional = result.additionalAffixes
       .slice(0, 4)
       .map(affix => savedValueToDraft(affix, gearData.affixes))

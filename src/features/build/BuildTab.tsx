@@ -1058,6 +1058,19 @@ function BuildManagement({
     setVisibleItemIds(emptySet)
   }
 
+  function importGearSlot(definitionId: string) {
+    if (selected.definitionId === definitionId) return
+    const slot = gearSlots.find(candidate => gearDefinitionForSlot(candidate, weapons).definitionId === definitionId)
+    if (!slot) {
+      throw new Error(`No matching slot for ${gearData.gear[definitionId]?.name ?? definitionId} in the current build.`)
+    }
+    setSelectedSlot(slot)
+    setEditingItemId(null)
+    setPendingDeleteId(null)
+    setError("")
+    setVisibleItemIds(emptySet)
+  }
+
   function beginAdd() {
     if (editing && editingItemId === null) return
     setDraft(newDraft())
@@ -1304,6 +1317,7 @@ function BuildManagement({
                   attunementOptions={attunementOptions}
                   selectedAdditionalKeys={selectedAdditionalKeys}
                   onDraftChange={setDraft}
+                  onImportSlot={importGearSlot}
                   onLevelChange={updateLevel}
                   onRelayedChange={updateRelayed}
                   onCancel={cancelEditing}

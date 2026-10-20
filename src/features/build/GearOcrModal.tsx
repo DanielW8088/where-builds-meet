@@ -7,20 +7,19 @@ import {
   type DragEvent,
 } from "react"
 
-import { gearData } from "../../gear"
-import type { GearOcrResult } from "../../gearOcr"
-import { t } from "../../i18n"
-import { publishNotice, dismissNotice } from "../../notices"
-import { Button } from "../../ui/Button"
-import { Dialog } from "../../ui/Dialog"
+import type { GearOcrResult } from "@/gearOcr"
+import { t } from "@/i18n"
+import { publishNotice, dismissNotice } from "@/notices"
+import { Button } from "@/ui/Button"
+import { Dialog } from "@/ui/Dialog"
 
-type GearOcrModule = typeof import("../../gearOcr")
+type GearOcrModule = typeof import("@/gearOcr")
 
 let gearOcrModulePromise: Promise<GearOcrModule> | undefined
 
 function loadGearOcrModule() {
   if (!gearOcrModulePromise) {
-    gearOcrModulePromise = import("../../gearOcr").catch(error => {
+    gearOcrModulePromise = import("@/gearOcr").catch(error => {
       gearOcrModulePromise = undefined
       throw error
     })
@@ -94,12 +93,6 @@ export function GearOcrModal({ open, definitionId, definitionName, onClose, onIm
         },
         definitionId,
       )
-      if (result.definitionId !== definitionId) {
-        const recognizedName = gearData.gear[result.definitionId]?.name ?? result.definitionId
-        throw new Error(
-          `This image contains ${recognizedName}, but the current editor expects ${definitionName}. Open the matching gear slot and try again.`,
-        )
-      }
       onImport(result)
       onClose()
     } catch (caught) {

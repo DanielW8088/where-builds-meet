@@ -53,6 +53,7 @@ describe("GearEditor", () => {
             attunementOptions={attunementsForGearDefinition(definition)}
             selectedAdditionalKeys={new Set()}
             onDraftChange={vi.fn<GearEditorProps["onDraftChange"]>()}
+            onImportSlot={vi.fn<GearEditorProps["onImportSlot"]>()}
             onLevelChange={vi.fn<GearEditorProps["onLevelChange"]>()}
             onRelayedChange={vi.fn<GearEditorProps["onRelayedChange"]>()}
             onCancel={vi.fn<GearEditorProps["onCancel"]>()}
