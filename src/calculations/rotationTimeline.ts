@@ -3667,6 +3667,7 @@ export function buildRotationTimeline(
           weapons,
           resources,
           requirementState(),
+          { buffs: event.row.buffs, debuffs: event.row.debuffs },
         )
     if (!requirementPasses) continue
     const skillKey = event.row.step.type === "skill" ? (event.row.step.skill ?? "") : event.row.step.event

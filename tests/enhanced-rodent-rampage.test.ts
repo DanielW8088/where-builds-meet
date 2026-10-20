@@ -1,3 +1,8 @@
+import buffs from "@gamedata/buff/bamboocut-wind.json"
+import echoes from "@gamedata/innerway/echoes-of-oblivion.json"
+import vendetta from "@gamedata/innerway/vendetta.json"
+import infernal from "@gamedata/skill/infernal-twinblades.json"
+import mortal from "@gamedata/skill/mortal-rope-dart.json"
 import { describe, expect, it } from "vitest"
 
 import {
@@ -7,11 +12,6 @@ import {
   type TimelineBuildInput,
 } from "@/calculations/rotationTimeline"
 
-import buffs from "../data/buff/bamboocut-wind.json"
-import echoes from "../data/innerway/echoes-of-oblivion.json"
-import vendetta from "../data/innerway/vendetta.json"
-import infernal from "../data/skill/infernal-twinblades.json"
-import mortal from "../data/skill/mortal-rope-dart.json"
 import { asEffectDefinitions, asSkillRecords, skillActions } from "./helpers/shippedData"
 import { rowCasting } from "./helpers/timelineRows"
 
@@ -144,9 +144,8 @@ for (const sampled of [false, true]) {
       const times = rodentTimes(build(data))
       const isCancel = skill === "InfernalFlamelashLight5Cancel"
       expect(times).toHaveLength(isCancel ? 4 : 1)
-      expect(times.filter(time => Math.abs(time - appliedAt - (isCancel ? 0.842 : 0.5)) < 1e-6)).toHaveLength(
-        isCancel ? 3 : 1,
-      )
+      expect(times.filter(time => Math.abs(time - appliedAt - 1.523) < 1e-6)).toHaveLength(isCancel ? 2 : 0)
+      expect(times.filter(time => Math.abs(time - appliedAt - (isCancel ? 0.842 : 0.5)) < 1e-6)).toHaveLength(1)
     })
     it.each([12, 20])("blocks all Rodent routes out of range and resumes after moving back from %s", distance => {
       const data = input([

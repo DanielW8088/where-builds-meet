@@ -156,7 +156,10 @@ percentage points. Keep IDs stable and references resolvable.
    changes, so on-hit applications affect later hits, not the triggering hit.
 3. Buff/debuff effects and ordinary requirements inspect action-time state.
    A requirement `{ "resolveAt": "skillStart", "operand": [...] }` instead
-   freezes its result at the owning component's start.
+   freezes its result at the owning component's start. Individual self/target
+   effect conditions in an action requirement array may also use
+   `resolveAt: "skillStart"`; those read the owning row’s starting buff/debuff
+   state while unmarked conditions still inspect action-time state.
 
 Normal action `time` is seconds from cast start. Keep action arrays in
 nondecreasing time order; array order resolves ties. Actions may occur after
@@ -995,6 +998,57 @@ that Flamelash may expire during an already-started cast; its remaining hits
 continue with the actual buff state. Do not restore Flamelash or extend its
 duration to cover those hits. A new Blade of Heaven's Wrath cast starting
 without Flamelash remains an invalid state to investigate.
+
+The 2026-10-20 timing export supplies normal animation-route interrupt boundaries
+of 0.466s, 2/3s, and 0.866s for FA2, FA3, and FA4. Hit clocks are unchanged;
+FA5’s two Echoes T6 bonus Rodents launch on its final blade hit at 1.023s
+(full and Cancel variants); the ordinary coordinated Rodent launches on its first hit.
+The Flamelash requirement for those two bonus Rodents uses resolveAt: skillStart:
+it must be active when FA5 starts, and may expire before the final hit. Rampage,
+Echoes T6, and distance requirements still resolve when the final hit triggers.
+FA5 Rodent retains only its single immediate Rodent.
+
+FA1 remains 0.357s and full FA5 remains 1.401s. The preset uses FA5 Cancel's
+1.023s last-hit boundary followed by World to Sword on the first cycle and
+Addled Mind on subsequent cycles while Flamelash remains active. The FA5 that
+ends the first Flamelash window uses Deflect instead because Flamelash expires
+during that cast. The next enhanced cycle restarts at FA1. Across
+a dodge, it retries the stage replaced by a Rodent-only cast. It preserves the
+dummy's incoming attack schedule, with earlier dodge starts aligned to their
+authored attacks. If an attack cannot finish and leave the 40ms dodge input latency,
+it uses the zero-duration Rodent-only variant and discards all blade hits,
+including otherwise reachable partial hits. FA5 reserves enough time for the following
+Addled Mind to finish before the dodge as well. FA3 now has that same existing
+Rodent-only mechanism. Ordinary attacks restart at A1 after Flamelash expires.
+Every Bladebound Thread Cancel is immediately followed by Deflect, including
+the opening cast and the later Rodent Rampage refresh sequences. The ordinary
+light-attack sequence after the first in-combat Rampage refresh starts only
+after Bladebound Thread Cancel, Deflect, and Rodent Rampage, so utility casts do not split LA1
+from LA2/LA3.
+
+The manually authored second window restarts at FA1 after its first dodge.
+Perfect Dodge itself preserves the combo; this restart is retained by user request.
+A 0.330s Delay before the late second-window FA4 lets it start with Flamelash
+active and continue after Hellfire depletion. Its remaining hits regenerate
+Hellfire, followed by the normal LA1–LA4, Flute Cancel / Deflect, and LA1 refill
+sequence. The next Flamelash starts at 80 Hellfire without changing the drain
+cadence or forcing a resource value.
+
+Hellfire remains governed by its accelerating 0.132s drain and Echoes'
+Samsara hit recovery; no duration override or resource refill is authored.
+New enhanced casts must start with Flamelash active; an accepted cast can
+finish after depletion. Qi markers follow the damage-based break anchor.
+
+The in-combat refresh blocks use Bladebound Thread Cancel / Deflect, then
+Rodent Rampage. After the third activation, full FA1 and FA2 precede that
+block so the existing Rampage can launch its coordinated attacks before refresh. Its later cycle
+continues FA1–FA5 instead of reverting to normal attacks while Flamelash is active.
+When that FA5 exhausts Hellfire, Deflect precedes normal LA1–LA4 loops. The fourth
+activation waits until Hellfire is 80, then resumes FA1–FA5 with Addled Mind after
+FA5. The late 53.475s and 59.475s dodges are omitted while Breaking Point
+Cooldown is active and no Mystery buff remains. Full LA1 completes the refill,
+and full FA2 connects directly into FA3 instead of using Rodent-only casts and
+dodge resets.
 
 ### Bamboocut Dust definitions
 

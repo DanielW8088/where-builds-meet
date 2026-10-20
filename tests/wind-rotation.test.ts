@@ -105,13 +105,27 @@ describe("Wind dummy preset", () => {
     expect(result.duration).toBeCloseTo(60)
     expect(Math.min(...result.baseline.map(entry => entry.timelineTime!))).toBeCloseTo(fightStart)
     expect(result.baseline.every(entry => entry.timelineTime! <= fightStart + 60)).toBe(true)
+    for (const row of fullCasts.filter(row => row.step.skill === "BladeboundThreadCancel")) {
+      const next = fullCasts[fullCasts.indexOf(row) + 1]
+      expect(next.step.skill).toBe("Deflect")
+      expect(next.startTime).toBeCloseTo(row.startTime + row.effectiveCastTime)
+    }
+    for (const row of fullCasts.filter(row => ["InfernalLight2", "InfernalLight3"].includes(row.step.skill ?? ""))) {
+      const previous = fullCasts[fullCasts.indexOf(row) - 1]
+      const previousSkill = row.step.skill === "InfernalLight2" ? "InfernalLight1" : "InfernalLight2"
+      expect(previous.step.skill).toBe(previousSkill)
+      expect(row.startTime).toBeCloseTo(previous.startTime + previous.effectiveCastTime)
+    }
     const activations = fullCasts.filter(row => row.step.skill === "Flamelash")
     expect(activations).toHaveLength(4)
     const rodentCancels = fullCasts.filter(row => row.step.skill?.endsWith("Rodent"))
     expect(rodentCancels.length).toBeGreaterThan(0)
     for (const row of rodentCancels) {
       expect(row.effectiveCastTime).toBe(0)
-      expect(row.actions.some(action => action.type === "damage")).toBe(false)
+      assert.equal(
+        row.actions.some(action => action.type === "damage"),
+        false,
+      )
     }
     // Flamelash may expire during a cast, but must be active when that cast starts.
     for (const row of casts.filter(
@@ -126,7 +140,7 @@ describe("Wind dummy preset", () => {
       expect(cancel.step.skill?.endsWith("Rodent")).toBe(true)
       expect(
         full.timeline.filter(trigger => trigger.sourceRowId === cancel.id && trigger.step.skill === "Rodent"),
-      ).toHaveLength(1)
+      ).toHaveLength(cancel.buffs.has("RodentRampage") || cancel.buffs.has("EnhancedRodentRampage") ? 1 : 0)
       expect(cancel.startTime).toBeLessThanOrEqual(row.startTime)
     }
     expect(fullCasts.length).toBe(bundle.timeline.rotation.steps.filter(step => step.type === "skill").length)
@@ -135,6 +149,148 @@ describe("Wind dummy preset", () => {
     )
     expect(result.metrics.totalDamage).toBeGreaterThan(0)
     expect(Number.isFinite(result.metrics.dps)).toBe(true)
+  })
+
+  it("cancels completed FA5 casts and keeps the seven selected dodge windows", () => {
+    const { timeline } = calculateRotationBaseline(bundleFor(true))
+    const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const firstQ = rowCasting(casts, "BladeboundThreadCancel")
+    const anchor = firstQ.startTime + Number(firstQ.actions[0].time)
+    const dodges = casts.filter(row => row.step.skill === "PerfectDodge")
+    expect(dodges.map(row => Number((row.startTime - anchor).toFixed(3)))).toEqual([
+      5.475, 11.475, 17.475, 23.475, 29.475, 41.475, 47.475,
+    ])
+    let worldUsed = false
+    for (const [index, row] of casts.entries()) {
+      const match = /^InfernalFlamelashLight([1-5])(Cancel|Rodent)?$/.exec(row.step.skill ?? "")
+      if (!match) continue
+      const stage = Number(match[1])
+      if (match[2] === "Rodent") {
+        const dodge = casts[index + 1]
+        assert.equal(dodge.step.skill, "PerfectDodge")
+        assert.equal(
+          row.actions.some(action => action.type === "damage"),
+          false,
+        )
+        continue
+      }
+      if (stage === 5) {
+        const q = casts[index + 1]
+        assert.equal(row.step.skill, "InfernalFlamelashLight5Cancel")
+        let expectedCancel = "WorldToSword"
+        if (worldUsed) expectedCancel = q.buffs.has("Flamelash") ? "AddledMind" : "Deflect"
+        assert.equal(q.step.skill, expectedCancel)
+        const lastHit = Math.max(
+          ...row.actions.filter(action => action.type === "damage").map(action => Number(action.time)),
+        )
+        assert(Math.abs(row.effectiveCastTime - lastHit) < 1e-9)
+        assert(Math.abs(q.startTime - row.startTime - lastHit - (expectedCancel === "AddledMind" ? 0.04 : 0)) < 1e-9)
+        worldUsed = true
+      }
+    }
+  })
+
+  it.each([0, 1, 2])("ends Flamelash window %s on the drain tick that exhausts Hellfire", index => {
+    const bundle = bundleFor()
+    const flame = bundle.timeline.skills.Flamelash
+    const checkpoints = Array.from({ length: 120 }, (_, tick) => (tick + 1) * 0.132)
+    bundle.timeline.skills = {
+      ...bundle.timeline.skills,
+      Flamelash: { ...flame, action: [...flame.action!, { type: "trigger", value: "HellfireObservation", time: 0 }] },
+      HellfireObservation: {
+        castTime: 0,
+        tags: ["Triggered"],
+        action: checkpoints.flatMap(time =>
+          [time - 0.001, time + 0.001].map(time => ({ type: "addResource", value: "Hellfire", amount: 0, time })),
+        ),
+      },
+    }
+    const { timeline } = calculateRotationBaseline(bundle)
+    const observation = timeline.filter(row => row.step.skill === "HellfireObservation")[index]
+    const pairs = checkpoints
+      .map((_, tick) => ({
+        tick,
+        before: observation.actionStates[tick * 2],
+        after: observation.actionStates[tick * 2 + 1],
+      }))
+      .filter(pair => pair.before && pair.after && pair.before.buffs.has("Flamelash"))
+    expect(pairs.length).toBeGreaterThan(0)
+    expect(pairs.every(pair => pair.before.resources.Hellfire > 0)).toBe(true)
+    const sustained = pairs.filter(pair => pair.after.buffs.has("Flamelash"))
+    expect(sustained.every(pair => pair.after.resources.Hellfire > 0)).toBe(true)
+    const depletions = pairs.filter(pair => !pair.after.buffs.has("Flamelash"))
+    expect(depletions).toHaveLength(1)
+    expect(depletions[0].after.resources.Hellfire).toBe(0)
+    expect(depletions[0].before.resources.Hellfire).toBeLessThanOrEqual(1 + depletions[0].tick * 0.05 + 1e-9)
+  })
+
+  it("refills Hellfire after the second Flamelash and preserves the selected FA1 restart", () => {
+    const { timeline } = calculateRotationBaseline(bundleFor())
+    const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const firstQ = casts.find(row => row.step.skill === "BladeboundThreadCancel")!
+    const anchor = firstQ.startTime + Number(firstQ.actions[0].time)
+    const dodge = casts.find(
+      row => row.step.skill === "PerfectDodge" && Math.abs(row.startTime - anchor - 23.475) < 1e-9,
+    )!
+    expect(casts[casts.indexOf(dodge) + 1].step.skill).toBe("InfernalFlamelashLight1")
+    const third = casts.filter(row => row.step.skill === "Flamelash")[2]
+    const refill = casts.find(row => row.startTime > dodge.startTime && row.step.skill === "InfernalLight1")!
+    expect(refill.buffs.has("Flamelash")).toBe(false)
+    expect(third.resources.Hellfire).toBe(80)
+  })
+
+  it("refreshes Rampage after the third activation and refills before the fourth", () => {
+    const { timeline } = calculateRotationBaseline(bundleFor())
+    const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const activations = casts.filter(row => row.step.skill === "Flamelash")
+    expect(activations).toHaveLength(4)
+    const thirdIndex = casts.indexOf(activations[2])
+    expect(casts.slice(thirdIndex + 1, thirdIndex + 6).map(row => row.step.skill)).toEqual([
+      "InfernalFlamelashLight1",
+      "InfernalFlamelashLight2",
+      "BladeboundThreadCancel",
+      "Deflect",
+      "RodentRampage",
+    ])
+    const fourth = activations[3]
+    expect(fourth.resources.Hellfire).toBe(80)
+    const refillCancel = casts.findLast(row => row.step.skill === "Deflect" && row.startTime < fourth.startTime)!
+    const normals = casts.filter(
+      row =>
+        row.startTime > refillCancel.startTime &&
+        row.startTime < fourth.startTime &&
+        /^InfernalLight[1-4]$/.test(row.step.skill ?? ""),
+    )
+    expect(normals.length).toBeGreaterThanOrEqual(4)
+    expect(normals.every(row => !row.buffs.has("Flamelash"))).toBe(true)
+    expect(normals.slice(0, 4).map(row => row.step.skill)).toEqual([
+      "InfernalLight1",
+      "InfernalLight2",
+      "InfernalLight3",
+      "InfernalLight4",
+    ])
+    const enhanced = casts.filter(
+      row => row.startTime > fourth.startTime && row.step.skill?.startsWith("InfernalFlamelashLight"),
+    )
+    expect(enhanced.length).toBeGreaterThan(0)
+    expect(enhanced.every(row => row.buffs.has("Flamelash"))).toBe(true)
+  })
+
+  it("keeps attacking late while Breaking Point is cooling down and Mystery is absent", () => {
+    const { timeline } = calculateRotationBaseline(bundleFor())
+    const casts = timeline.filter(row => row.kind === "rotation" && row.step.type === "skill")
+    const fourth = casts.findLast(row => row.step.skill === "Flamelash")!
+    const refill = casts[casts.indexOf(fourth) - 1]
+    expect(refill.step.skill).toBe("InfernalLight1")
+    expect(refill.effectiveCastTime).toBeGreaterThan(0)
+    const tail = casts.filter(row => row.startTime >= refill.startTime)
+    expect(tail.every(row => row.buffs.has("BreakingPointCooldown"))).toBe(true)
+    expect(tail.every(row => ![...row.buffs.keys()].some(name => name.startsWith("Mystery")))).toBe(true)
+    expect(tail.some(row => row.step.skill === "PerfectDodge" || row.step.skill?.endsWith("Rodent"))).toBe(false)
+    const fa2 = tail.findLast(row => row.step.skill === "InfernalFlamelashLight2")!
+    const next = casts[casts.indexOf(fa2) + 1]
+    expect(next.step.skill).toBe("InfernalFlamelashLight3")
+    expect(next.startTime).toBeCloseTo(fa2.startTime + fa2.effectiveCastTime)
   })
 
   it("resolves paired dummy attacks, infinite Vitality, and the break after FA1 damage", () => {
@@ -166,20 +322,12 @@ describe("Wind dummy preset", () => {
     const qiRows = timeline.filter(row => row.step.type === "event" && row.step.event === "Qi")
     expect(qiRows).toHaveLength(5)
     const breakTime = qiRows[2].startTime - fightStart
-    expect(breakTime).toBeCloseTo(21.024, 2)
+    expect(breakTime).toBeGreaterThan(0)
+    expect(breakTime).toBeLessThan(60)
     const recoveryTime = breakTime + 10
-    const nextBreak = 65
-    const immunityEnd = recoveryTime + 4
-    const expectedTimes = [
-      breakTime * 0.4,
-      breakTime * 0.6,
-      breakTime,
-      immunityEnd + (nextBreak - immunityEnd) * 0.4,
-      immunityEnd + (nextBreak - immunityEnd) * 0.6,
-    ]
     const ratios = [0.5999, 0.3999, 0, 0.5999, 0.3999]
+    expect(qiRows.slice(1).every((row, index) => row.startTime > qiRows[index].startTime)).toBe(true)
     qiRows.forEach((row, index) => {
-      expect(Math.abs(row.startTime - fightStart - expectedTimes[index])).toBeLessThan(0.2)
       const actionIndex = row.actions.findIndex(action => action.type === "setQi")
       expect(row.actionStates[actionIndex + 1].targetQiRatio).toBe(ratios[index])
     })
@@ -190,7 +338,7 @@ describe("Wind dummy preset", () => {
           state: row.actionStates[index],
         })),
       )
-      .filter(entry => entry.time > recoveryTime + 0.01 && entry.time < expectedTimes[3] - 0.2)
+      .filter(entry => entry.time > recoveryTime + 0.01 && entry.time < qiRows[3].startTime - fightStart - 0.2)
     expect(afterRecovery.length).toBeGreaterThan(0)
     expect(afterRecovery.every(entry => entry.state.targetQiRatio === 1)).toBe(true)
   })

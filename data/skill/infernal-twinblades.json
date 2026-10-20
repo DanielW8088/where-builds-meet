@@ -276,7 +276,7 @@
     "name": "Blade of Heaven's Wrath 2",
     "shortName": "FA2",
     "skillBreakdownCategory": "Blade of Heaven's Wrath",
-    "castTime": 0.5,
+    "castTime": 0.466,
     "action": [
       { "type": "damage", "time": 0.294, "phyCoef": 0.9012, "attrCoef": 0.9012, "phyBonus": 250, "attrBonus": 136 },
       { "type": "addResource", "value": "Hellfire", "amount": 5, "time": 0.294 }
@@ -334,7 +334,7 @@
     "name": "Blade of Heaven's Wrath 3",
     "shortName": "FA3",
     "skillBreakdownCategory": "Blade of Heaven's Wrath",
-    "castTime": 0.8,
+    "castTime": 0.6666666666666667,
     "action": [
       {
         "type": "damage",
@@ -427,7 +427,7 @@
     "name": "Blade of Heaven's Wrath 4",
     "shortName": "FA4",
     "skillBreakdownCategory": "Blade of Heaven's Wrath",
-    "castTime": 0.96,
+    "castTime": 0.866,
     "action": [
       {
         "type": "damage",
@@ -538,40 +538,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
-      {
-        "type": "trigger",
-        "value": "Rodent",
-        "time": 0.342,
-        "requirement": [
-          {
-            "operator": "or",
-            "operand": [
-              { "target": "self", "value": "RodentRampage" },
-              { "target": "self", "value": "EnhancedRodentRampage" }
-            ]
-          },
-          { "target": "self", "value": "Flamelash" },
-          { "target": "self", "value": "EchoesOfOblivionT6" },
-          { "target": "distance", "comparison": "<", "amount": 12 }
-        ]
-      },
-      {
-        "type": "trigger",
-        "value": "Rodent",
-        "time": 0.342,
-        "requirement": [
-          {
-            "operator": "or",
-            "operand": [
-              { "target": "self", "value": "RodentRampage" },
-              { "target": "self", "value": "EnhancedRodentRampage" }
-            ]
-          },
-          { "target": "self", "value": "Flamelash" },
-          { "target": "self", "value": "EchoesOfOblivionT6" },
-          { "target": "distance", "comparison": "<", "amount": 12 }
-        ]
-      },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.342 },
       {
         "type": "damage",
         "time": 0.443,
@@ -580,6 +547,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.443 },
       {
         "type": "damage",
         "time": 0.541,
@@ -588,6 +556,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.541 },
       {
         "type": "damage",
         "time": 0.641,
@@ -596,6 +565,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.641 },
       {
         "type": "damage",
         "time": 1.023,
@@ -604,10 +574,40 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.342 },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.443 },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.541 },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.641 },
+      {
+        "type": "trigger",
+        "value": "Rodent",
+        "time": 1.023,
+        "requirement": [
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "RodentRampage" },
+              { "target": "self", "value": "EnhancedRodentRampage" }
+            ]
+          },
+          { "target": "self", "value": "Flamelash", "resolveAt": "skillStart" },
+          { "target": "self", "value": "EchoesOfOblivionT6" },
+          { "target": "distance", "comparison": "<", "amount": 12 }
+        ]
+      },
+      {
+        "type": "trigger",
+        "value": "Rodent",
+        "time": 1.023,
+        "requirement": [
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "RodentRampage" },
+              { "target": "self", "value": "EnhancedRodentRampage" }
+            ]
+          },
+          { "target": "self", "value": "Flamelash", "resolveAt": "skillStart" },
+          { "target": "self", "value": "EchoesOfOblivionT6" },
+          { "target": "distance", "comparison": "<", "amount": 12 }
+        ]
+      },
       { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 1.023 }
     ],
     "martialArt": "infernalTwinblades",
@@ -638,40 +638,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
-      {
-        "type": "trigger",
-        "value": "Rodent",
-        "time": 0.342,
-        "requirement": [
-          {
-            "operator": "or",
-            "operand": [
-              { "target": "self", "value": "RodentRampage" },
-              { "target": "self", "value": "EnhancedRodentRampage" }
-            ]
-          },
-          { "target": "self", "value": "Flamelash" },
-          { "target": "self", "value": "EchoesOfOblivionT6" },
-          { "target": "distance", "comparison": "<", "amount": 12 }
-        ]
-      },
-      {
-        "type": "trigger",
-        "value": "Rodent",
-        "time": 0.342,
-        "requirement": [
-          {
-            "operator": "or",
-            "operand": [
-              { "target": "self", "value": "RodentRampage" },
-              { "target": "self", "value": "EnhancedRodentRampage" }
-            ]
-          },
-          { "target": "self", "value": "Flamelash" },
-          { "target": "self", "value": "EchoesOfOblivionT6" },
-          { "target": "distance", "comparison": "<", "amount": 12 }
-        ]
-      },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.342 },
       {
         "type": "damage",
         "time": 0.443,
@@ -680,6 +647,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.443 },
       {
         "type": "damage",
         "time": 0.541,
@@ -688,6 +656,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.541 },
       {
         "type": "damage",
         "time": 0.641,
@@ -696,6 +665,7 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
+      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.641 },
       {
         "type": "damage",
         "time": 1.023,
@@ -704,10 +674,40 @@
         "phyBonus": 140.4,
         "attrBonus": 76.4
       },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.342 },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.443 },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.541 },
-      { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 0.641 },
+      {
+        "type": "trigger",
+        "value": "Rodent",
+        "time": 1.023,
+        "requirement": [
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "RodentRampage" },
+              { "target": "self", "value": "EnhancedRodentRampage" }
+            ]
+          },
+          { "target": "self", "value": "Flamelash", "resolveAt": "skillStart" },
+          { "target": "self", "value": "EchoesOfOblivionT6" },
+          { "target": "distance", "comparison": "<", "amount": 12 }
+        ]
+      },
+      {
+        "type": "trigger",
+        "value": "Rodent",
+        "time": 1.023,
+        "requirement": [
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "RodentRampage" },
+              { "target": "self", "value": "EnhancedRodentRampage" }
+            ]
+          },
+          { "target": "self", "value": "Flamelash", "resolveAt": "skillStart" },
+          { "target": "self", "value": "EchoesOfOblivionT6" },
+          { "target": "distance", "comparison": "<", "amount": 12 }
+        ]
+      },
       { "type": "addResource", "value": "Hellfire", "amount": 2, "time": 1.023 }
     ],
     "martialArt": "infernalTwinblades",
@@ -816,6 +816,41 @@
       "DualBlades",
       "Light",
       "InfernalFlamelashLight5",
+      "BladeOfHeavensWrath",
+      "Empowered"
+    ]
+  },
+  "InfernalFlamelashLight3Rodent": {
+    "ignorePing": true,
+    "name": "Blade of Heaven's Wrath 3 [Rodent]",
+    "shortName": "FA3 [Rodent]",
+    "skillBreakdownCategory": "Blade of Heaven's Wrath",
+    "castTime": 0,
+    "action": [
+      {
+        "type": "trigger",
+        "value": "Rodent",
+        "time": 0,
+        "requirement": [
+          {
+            "operator": "or",
+            "operand": [
+              { "target": "self", "value": "RodentRampage" },
+              { "target": "self", "value": "EnhancedRodentRampage" }
+            ]
+          },
+          { "target": "distance", "comparison": "<", "amount": 12 }
+        ]
+      }
+    ],
+    "martialArt": "infernalTwinblades",
+    "weapon": "DualBlades",
+    "tags": [
+      "MartialArts",
+      "InfernalTwinblades",
+      "DualBlades",
+      "Light",
+      "InfernalFlamelashLight3",
       "BladeOfHeavensWrath",
       "Empowered"
     ]

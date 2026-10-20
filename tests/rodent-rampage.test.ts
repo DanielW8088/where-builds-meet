@@ -3,17 +3,17 @@ import assert from "node:assert/strict"
 import { describe, it } from "vitest"
 
 import { emptyAttunementStats } from "@/calculations/attunementStats"
-import type { WeaponId } from "@/types"
-
-import type { DamageContext } from "../src/calculations/damage.ts"
-import type { RotationSimulationBaseline, RotationSimulationBundle } from "../src/calculations/rotationCalculator.ts"
+import type { DamageContext } from "@/calculations/damage.ts"
+import type { RotationSimulationBaseline, RotationSimulationBundle } from "@/calculations/rotationCalculator.ts"
 import type {
   EditableObject,
   RotationStep,
   SkillRecord,
   TimelineBuildInput,
   TimelineRow,
-} from "../src/calculations/rotationTimeline.ts"
+} from "@/calculations/rotationTimeline.ts"
+import type { WeaponId } from "@/types"
+
 import { assertClose } from "./helpers/floatEquality"
 import { castStep, delayStep } from "./helpers/rotationSteps"
 import { asEffectDefinitions, asSkillRecords } from "./helpers/shippedData"
@@ -26,15 +26,14 @@ const skillActions = (record: SkillRecord): EditableObject[] => (record.action ?
 describe("rodent-rampage", () => {
   it("Infernal stage timing, Rodent cadence/lifetime, T6 gating, dynamic damage, and expected/sampled checks passed", async () => {
     const close = (a: number | undefined, b: number, message: string) => assertClose(a, b, 1e-9, message)
-    const infernal = asSkillRecords((await import("../data/skill/infernal-twinblades.json")).default)
-    const mortal = asSkillRecords((await import("../data/skill/mortal-rope-dart.json")).default)
-    const buffs = asEffectDefinitions((await import("../data/buff/bamboocut-wind.json")).default)
-    const { buildRotationTimeline } = await import("../src/calculations/rotationTimeline.ts")
-    const { calculateRotationBaseline } = await import("../src/calculations/rotationCalculator.ts")
-    const { calculateDamageBreakdown, calculateSimulatedDamageBreakdown } =
-      await import("../src/calculations/damage.ts")
-    const { calculateDerivedStats } = await import("../src/calculations/effectiveStats.ts")
-    const { emptyStats } = await import("../src/data/statDefinitions.ts")
+    const infernal = asSkillRecords((await import("@gamedata/skill/infernal-twinblades.json")).default)
+    const mortal = asSkillRecords((await import("@gamedata/skill/mortal-rope-dart.json")).default)
+    const buffs = asEffectDefinitions((await import("@gamedata/buff/bamboocut-wind.json")).default)
+    const { buildRotationTimeline } = await import("@/calculations/rotationTimeline.ts")
+    const { calculateRotationBaseline } = await import("@/calculations/rotationCalculator.ts")
+    const { calculateDamageBreakdown, calculateSimulatedDamageBreakdown } = await import("@/calculations/damage.ts")
+    const { calculateDerivedStats } = await import("@/calculations/effectiveStats.ts")
+    const { emptyStats } = await import("@/data/statDefinitions.ts")
     const weapons: WeaponId[] = ["infernalTwinblades", "mortalRopeDart"]
     const slow: SkillRecord = {
       castTime: 0.5,
@@ -113,7 +112,11 @@ describe("rodent-rampage", () => {
       const castRows = rows.filter(row => ids.includes(row.step.skill ?? ""))
       const lastCast = castRows.at(-1)
       assert(lastCast, "Every stage must cast in the rotation.")
-      close(lastCast.startTime + lastCast.effectiveCastTime, 6.588, "Interrupt timings determine the rotation endpoint")
+      close(
+        lastCast.startTime + lastCast.effectiveCastTime,
+        6.326666666666667,
+        "Interrupt timings determine the rotation endpoint",
+      )
       let offset = 0.541
       for (const [index, [duration, firstHit, hitCount]] of [
         [0.43, 0.339, 1],
@@ -121,9 +124,9 @@ describe("rodent-rampage", () => {
         [0.6, 0.248, 2],
         [0.529, 0.167, 2],
         [0.357, 0.104, 2],
-        [0.5, 0.294, 1],
-        [0.8, 0.253, 8],
-        [0.96, 0.345, 5],
+        [0.466, 0.294, 1],
+        [2 / 3, 0.253, 8],
+        [0.866, 0.345, 5],
         [1.401, 0.342, 5],
       ].entries()) {
         const row = castRows[index]
@@ -134,7 +137,14 @@ describe("rodent-rampage", () => {
           "Stage keeps every original damage hit: " + row.step.skill,
         )
         const procs = rodentRows(rows).filter(proc => Math.abs(proc.startTime - (offset + firstHit)) < 1e-9)
-        assert.equal(procs.length, index === 8 ? 3 : 1, "Rodent fires only on the first hit of each stage")
+        assert.equal(procs.length, 1, "The coordinated Rodent fires on the first hit of each stage")
+        if (index === 8) {
+          assert.equal(
+            rodentRows(rows).filter(proc => Math.abs(proc.startTime - (offset + 1.023)) < 1e-9).length,
+            2,
+            "FA5 T6 extras launch on its final hit",
+          )
+        }
         assert.ok(
           procs.every(proc => proc.currentMartialArt === "infernalTwinblades"),
           "Triggered Rodent does not switch the active martial art",
@@ -257,7 +267,7 @@ describe("rodent-rampage", () => {
       }
     }
     const bundle = (conditions: string[]): RotationSimulationBundle => ({
-      timeline: input([castStep("RodentRampage"), castStep("InfernalFlamelashLight5")], {
+      timeline: input([castStep("RodentRampage"), castStep("InfernalFlamelashLight5"), delayStep(0.6)], {
         innerWayConditions: conditions,
       }),
       startAnchor: { rowId: "rotation-0" },

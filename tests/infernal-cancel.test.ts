@@ -1,14 +1,14 @@
+import windBuffsJson from "@gamedata/buff/bamboocut-wind.json"
 import { describe, expect, it } from "vitest"
-
-import windBuffsJson from "../data/buff/bamboocut-wind.json"
 const windBuffs = asEffectDefinitions(windBuffsJson)
-import infernalJson from "../data/skill/infernal-twinblades.json"
+import infernalJson from "@gamedata/skill/infernal-twinblades.json"
 const infernal = asSkillRecords(infernalJson)
 
-import mortalJson from "../data/skill/mortal-rope-dart.json"
+import mortalJson from "@gamedata/skill/mortal-rope-dart.json"
+
 import { asEffectDefinitions, asSkillRecords } from "./helpers/shippedData"
 const mortal = asSkillRecords(mortalJson)
-import { buildRotationTimeline, type RotationStep, type TimelineBuildInput } from "../src/calculations/rotationTimeline"
+import { buildRotationTimeline, type RotationStep, type TimelineBuildInput } from "@/calculations/rotationTimeline"
 
 const cast = (skill: string): RotationStep => ({ type: "skill", skill })
 const input = (steps: RotationStep[]): TimelineBuildInput => ({
@@ -51,6 +51,32 @@ describe("Infernal light attack variants", () => {
       expect(hits(buildRotationTimeline(config))).toEqual([])
     },
   )
+  it.each(["InfernalFlamelashLight5", "InfernalFlamelashLight5Cancel"])(
+    "%s keeps final-hit bonus Rodents when Flamelash expires during the cast",
+    skill => {
+      for (const sampled of [false, true]) {
+        const config = input([cast("StartFlamelash"), cast(skill), { type: "event", event: "Delay", duration: 1 }])
+        config.effectDefinitions = { ...config.effectDefinitions, Flamelash: { duration: 0.5, maxStack: 1 } }
+        config.skills.StartFlamelash = {
+          castTime: 0,
+          ignorePing: true,
+          action: [{ type: "apply", target: "self", value: "Flamelash", time: 0 }],
+        }
+        config.initialBuffs = [{ name: "RodentRampage", stack: 1 }]
+        const build = () => buildRotationTimeline(config, sampled ? () => 0.5 : undefined)
+        const rows = build()
+        const fa5 = skillRows(rows, skill)[0]
+        expect(fa5.buffs.has("Flamelash")).toBe(true)
+        const finalHitIndex = fa5.actions.findIndex(action => action.type === "damage" && Number(action.time) === 1.023)
+        expect(fa5.actionStates[finalHitIndex].buffs.has("Flamelash")).toBe(false)
+        const rodentHits = hits(rows).filter(hit => hit.skill === "Rodent")
+        expect(rodentHits).toHaveLength(3)
+        expect(rodentHits.filter(hit => Math.abs(hit.time - fa5.startTime - 1.523) < 1e-9)).toHaveLength(2)
+        config.rotation.steps.shift()
+        expect(hits(build()).filter(hit => hit.skill === "Rodent")).toHaveLength(1)
+      }
+    },
+  )
   it.each([false, true])(
     "retains every FA5 hit and its T6 Rodents while ending on the final hit (sampled=%s)",
     sampled => {
@@ -69,7 +95,8 @@ describe("Infernal light attack variants", () => {
       expect(skillRows(rows, "RodentsResilienceCharge")[0].startTime).toBeCloseTo(bladeHits.at(-1)!.time + 0.04)
       const rodentHits = hits(rows).filter(hit => hit.skill === "Rodent")
       expect(rodentHits).toHaveLength(3)
-      expect(rodentHits.every(hit => Math.abs(hit.time - bladeHits[0].time - 0.5) < 1e-9)).toBe(true)
+      expect(rodentHits.filter(hit => Math.abs(hit.time - bladeHits[0].time - 0.5) < 1e-9)).toHaveLength(1)
+      expect(rodentHits.filter(hit => Math.abs(hit.time - bladeHits.at(-1)!.time - 0.5) < 1e-9)).toHaveLength(2)
       config.rotation.steps = [cast("RodentRampage"), cast("InfernalFlamelashLight5"), cast("RodentsResilienceCharge")]
       const normal = buildRotationTimeline(config)
       expect(
