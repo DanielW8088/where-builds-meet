@@ -954,6 +954,17 @@ export function mergeImportedBuildState(
   }
 }
 
+function currentPresetId(id: string) {
+  switch (id) {
+    case "deluge-fully-relayed-min-rw":
+      return "deluge-fully-relayed-min-ib"
+    case "deluge-fully-relayed-max-rw":
+      return "deluge-fully-relayed-max-ib"
+    default:
+      return id
+  }
+}
+
 export function loadBuildState(): BuildState {
   try {
     const savedValue = getPersistentItem(buildListStorageKey)
@@ -963,7 +974,12 @@ export function loadBuildState(): BuildState {
         ? validateUnknown(storedBuildStateSchema, saved)
         : undefined
     const savedRecord = validatedRecord?.success ? (saved as { entries?: unknown; gearItems?: unknown }) : undefined
-    const savedEntries = Array.isArray(saved) ? saved : Array.isArray(savedRecord?.entries) ? savedRecord.entries : []
+    const savedEntries = (
+      Array.isArray(saved) ? saved : Array.isArray(savedRecord?.entries) ? savedRecord.entries : []
+    ).map(entry => {
+      if (!entry || typeof entry !== "object" || typeof entry.id !== "string") return entry
+      return Object.assign({}, entry, { id: currentPresetId(entry.id) })
+    })
     const sharedItems = savedRecord ? parseGearItems(savedRecord.gearItems) : []
     const legacySetup = normalizeBuildSetup(readLegacyBuildSetup())
     const defaultIds = new Set(defaultBuildPresets.map(preset => preset.id))
@@ -1026,7 +1042,8 @@ export function loadBuildState(): BuildState {
         })
       }
     }
-    const requestedActiveId = getPersistentItem(activeBuildStorageKey)
+    const savedActiveId = getPersistentItem(activeBuildStorageKey)
+    const requestedActiveId = savedActiveId ? currentPresetId(savedActiveId) : savedActiveId
     const fallbackActiveId =
       savedValue === null && entries.some(entry => entry.id === "migrated-build") ? "migrated-build" : defaults[0]?.id
     const activeBuildId =

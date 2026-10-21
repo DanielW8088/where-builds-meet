@@ -392,6 +392,23 @@ does not affect outgoing damage.
 
 ## Default build presets
 
+Deluge's fully relayed Ivorybloom min/max presets replace the Rainwhisper
+presets at gear tiers 96 and 100. They retain Moonflare, the original Inner Ways,
+and their min/agility or max/power attack focus. Legal maximum relayed affix
+swaps were scored through the production calculation bundle on the solo WTS
+rotation with Simmering Fish Slices, Fire Divinecraft, no Script, and default
+global effects. The search preserves the primary attack and attribute affixes;
+it does not claim an exhaustive optimum over every possible loadout.
+
+Effective Precision reaches 100% at breakthroughs 17–19. Effective Critical
+reaches 80% with Ivorybloom's full-HP bonus, except the max build at breakthrough
+18, which reaches about 79.81%. At breakthrough 19 the solo WTS results are
+45,295.03 DPS (min) and 46,668.00 DPS (max), versus 44,606.16 for the existing
+Etherwrath min preset under the same environment. Ivorybloom improves Smolder
+and WTS in these checks but loses on regular-fire; Etherwrath remains the default.
+Stored Rainwhisper preset selections and local preset names migrate to the
+corresponding Ivorybloom preset on load. Custom builds and shared gear are retained.
+
 Default builds live in path-grouped `data/build/**/*.json` files. Vite eagerly discovers every JSON
 file beneath that root, so adding a preset does not require a TypeScript import. Presets
 are grouped by path (for example, `stonesplit-strength/` and `stonesplit-might/`), while the

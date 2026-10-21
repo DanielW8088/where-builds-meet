@@ -4,7 +4,11 @@ import { assert, describe, expect, it } from "vitest"
 
 import { resolvePing } from "@/calculations/combatDefaults"
 
-import { loadDpsSnapshotCases, selectDpsSnapshotUpdates } from "./helpers/dps-snapshot-fixtures"
+import {
+  additionalSnapshotBuilds,
+  loadDpsSnapshotCases,
+  selectDpsSnapshotUpdates,
+} from "./helpers/dps-snapshot-fixtures"
 import { compareDpsSnapshots } from "./helpers/dps-snapshot-guard.mjs"
 
 describe("rotation DPS snapshot fixtures", () => {
@@ -28,6 +32,8 @@ describe("rotation DPS snapshot fixtures", () => {
       assert(pathId !== undefined, "Rotation has no path: " + file)
       const rotationId = pathId + "/" + file.replaceAll("\\", "/").split("/").at(-1)!.slice(0, -5)
       expected.push(rotationId + "/18", rotationId + "/19")
+      for (const build of additionalSnapshotBuilds[pathId] ?? [])
+        expected.push(rotationId + "/" + build + "/18", rotationId + "/" + build + "/19")
     }
     expect(cases.map(c => c.id).sort()).toEqual(expected.sort())
     await Promise.all(

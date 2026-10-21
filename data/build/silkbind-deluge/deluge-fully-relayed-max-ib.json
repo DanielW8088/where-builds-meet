@@ -1,6 +1,6 @@
 {
-  "id": "deluge-fully-relayed-max-rw",
-  "name": "Fully Relayed Max Build Rain Whisper",
+  "id": "deluge-fully-relayed-max-ib",
+  "name": "Fully Relayed Max Build Ivorybloom",
   "order": 1,
   "martialArts": ["panaceaFan", "soulshadeUmbrella"],
   "relayed": true,
@@ -11,7 +11,7 @@
       { "innerWay": "MoraleChant", "tier": "T6" },
       { "innerWay": "SeasonalEdge", "tier": "T6" }
     ],
-    "weaponSets": { "RainWhisper": 4 },
+    "weaponSets": { "Ivorybloom": 4 },
     "armorSets": { "Moonflare": 4 },
     "bowRingSet": "Precision",
     "arsenal": "Silkbind"
@@ -26,8 +26,8 @@
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.132 },
           { "key": "power", "value": 46.436 },
-          { "key": "minPhys", "value": 73.132 },
-          { "key": "crit", "value": 0.0846 }
+          { "key": "precision", "value": 0.0752 },
+          { "key": "minPhys", "value": 73.13199999999999 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 11 }
       },
@@ -39,8 +39,8 @@
         "additionalAffixes": [
           { "key": "maxPhys", "value": 73.132 },
           { "key": "power", "value": 46.436 },
-          { "key": "agility", "value": 46.436 },
-          { "key": "crit", "value": 0.0846 }
+          { "key": "minPhys", "value": 73.13199999999999 },
+          { "key": "agility", "value": 46.43599999999999 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 11 }
       },
@@ -132,8 +132,8 @@
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
           { "key": "power", "value": 53.955999999999996 },
-          { "key": "minPhys", "value": 85.16399999999999 },
-          { "key": "crit", "value": 0.09775999999999999 }
+          { "key": "precision", "value": 0.08836 },
+          { "key": "fanDmgBoost", "value": 0.06956 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },
@@ -145,8 +145,8 @@
         "additionalAffixes": [
           { "key": "maxPhys", "value": 85.16399999999999 },
           { "key": "power", "value": 53.955999999999996 },
-          { "key": "agility", "value": 53.955999999999996 },
-          { "key": "crit", "value": 0.09775999999999999 }
+          { "key": "minPhys", "value": 85.16399999999999 },
+          { "key": "agility", "value": 53.955999999999996 }
         ],
         "attunement": { "key": "physicalPenetration", "value": 12.8 }
       },

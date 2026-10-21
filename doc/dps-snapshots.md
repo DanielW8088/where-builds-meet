@@ -23,6 +23,12 @@ Strength uses the pure build, and Double Stab uses the double-min build. The
 remaining variants retain the path default. This covers all non-empty presets,
 not every build/rotation combination.
 
+Deluge additionally covers both fully relayed Ivorybloom builds on all four
+rotations at breakthroughs 18 and 19. These additional cases use
+`<pathId>/<rotationId>/<buildId>/<breakthrough>` keys, preserving the existing
+Etherwrath baseline keys. Rotation and path update selectors include their
+additional builds; including a build ID selects only that build's cases.
+
 Current snapshot calculations use breakthroughs 18 and 19, each rotation's saved ping (40 ms
 by default; 30 ms for Might), Simmering Fish Slices,
 Fire Divinecraft, no Script, and no global or skill overrides. The rotation
@@ -581,3 +587,17 @@ Special 1 hit in the changed post-flute sequence. Both presets measure 60 second
 | bellstrikeUmbra/dummy-1-min-37-bb-dh/19 |        New preset | 94326.03108977214 |            New preset |     5659561.865386328 |
 | bellstrikeUmbra/dummy-1-min-38-bb/18    | 85334.27364913882 |  87699.8570634879 |     5120056.418948329 |     5261991.423809274 |
 | bellstrikeUmbra/dummy-1-min-38-bb/19    | 89769.16730002478 | 92262.43970756652 |     5386150.038001487 |     5535746.382453991 |
+
+## Accepted Deluge Ivorybloom builds (October 21, 2026)
+
+The user accepted both new Ivorybloom builds for release. Sixteen additional
+cases cover min/max gear on regular-fire, Smolder, solo WTS, and team WTS at
+breakthroughs 18 and 19. These replace the selectable Rainwhisper presets,
+not the existing Etherwrath default or its accepted snapshots. The accepted
+builds retain Moonflare and the original Inner Ways, with affixes adjusted
+for approximately 100% Effective Precision and 80% Effective Critical while
+Ivorybloom's full-HP bonus is active.
+
+All existing accepted cases remain unchanged. Exact DPS, total damage, and
+duration are recorded in the snapshot JSON; all sixteen added cases last
+60 seconds.

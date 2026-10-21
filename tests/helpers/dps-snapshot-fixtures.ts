@@ -14,6 +14,9 @@ export const snapshotBuildOverrides: Record<string, string> = {
   "stonesplitStrength/pure-dummy-1-min-infinite-vitality": "pure-fully-relayed-min",
   "stonesplitStrength/mixed-dummy-1-min-double-stab": "mixed-fully-relayed-double-min",
 }
+export const additionalSnapshotBuilds: Record<string, string[]> = {
+  silkbindDeluge: ["deluge-fully-relayed-min-ib", "deluge-fully-relayed-max-ib"],
+}
 export const dpsSnapshotEnvironment = {
   breakthrough: "17",
   ping: 40,
@@ -73,7 +76,20 @@ export async function loadDpsSnapshotFixtures(breakthrough = dpsSnapshotEnvironm
 /** Accepted regression cases cover both current breakthroughs for every rotation. */
 export async function loadDpsSnapshotCases() {
   const levels = await Promise.all(["18", "19"].map(breakthrough => loadDpsSnapshotFixtures(breakthrough)))
-  return levels.flatMap(cases => cases.map(entry => ({ ...entry, id: entry.id + "/" + entry.fixture.breakthrough })))
+  return levels.flatMap(cases =>
+    cases.flatMap(entry => {
+      const id = entry.id + "/" + entry.fixture.breakthrough
+      return [
+        { ...entry, id },
+        ...(additionalSnapshotBuilds[entry.pathId] ?? []).map(build =>
+          Object.assign({}, entry, {
+            id: entry.id + "/" + build + "/" + entry.fixture.breakthrough,
+            fixture: { ...entry.fixture, build },
+          }),
+        ),
+      ]
+    }),
+  )
 }
 export function selectDpsSnapshotUpdates(raw: string, caseIds: string[]): string[] {
   if (!raw.trim()) return []
