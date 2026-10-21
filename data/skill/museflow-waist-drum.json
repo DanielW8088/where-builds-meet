@@ -201,7 +201,7 @@
         "requirement": [{ "target": "self", "value": "HarmonySongT1" }]
       }
     ],
-    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "modifier": [{ "effect": { "baseDMGBonus": 0.3 } }],
     "tags": [
       "DirectDamage",
       "MartialArts",
@@ -376,7 +376,7 @@
         ]
       }
     ],
-    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "modifier": [{ "effect": { "baseDMGBonus": 0.3 } }],
     "tags": [
       "DirectDamage",
       "MartialArts",
@@ -418,7 +418,7 @@
         ]
       }
     ],
-    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "modifier": [{ "effect": { "baseDMGBonus": 0.3 } }],
     "tags": [
       "DirectDamage",
       "MartialArts",
@@ -629,7 +629,7 @@
         ]
       }
     ],
-    "modifier": [{ "requirement": [{ "target": "targetType", "value": "Dummy" }], "effect": { "baseDMGBonus": 0.3 } }],
+    "modifier": [{ "effect": { "baseDMGBonus": 0.3 } }],
     "tags": [
       "DirectDamage",
       "MartialArts",

@@ -306,7 +306,16 @@ describe("infernal-twinblades-talents", () => {
       active: boolean,
       extra: { stats?: Partial<CharacterStats>; timeline?: Partial<TimelineBuildInput> } = {},
     ): RotationSimulationBaseline => {
-      const stats = { ...emptyStats, agility: 280, minPhys, maxPhys: 2000, precision: 1, crit: 1, ...extra.stats }
+      const stats = {
+        ...emptyStats,
+        agility: 280,
+        minPhys,
+        maxPhys: 2000,
+        precision: 1,
+        crit: 1,
+        critDmgBonus: 0.5,
+        ...extra.stats,
+      }
       return calculateRotationBaseline({
         timeline: {
           rotation: {

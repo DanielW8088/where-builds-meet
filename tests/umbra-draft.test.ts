@@ -384,7 +384,7 @@ describe("Umbra draft behavior", () => {
     expect(authored[3].resources.Endurance).toBeLessThan(50)
   })
 
-  it("applies Soul-Shaken's empowered DOT multiplier through the centralized damage calculation", async () => {
+  it("adds Soul-Shaken's High Bleed bonus to Category 1 through the centralized damage calculation", async () => {
     const fixtureCase = (await loadDpsSnapshotFixtures()).find(
       entry => entry.id === "bellstrikeUmbra/dummy-1-min-38-bb",
     )!
@@ -399,11 +399,12 @@ describe("Umbra draft behavior", () => {
       },
       fixture.build,
     )!
-    const total = (tags: string[], soulShaken: boolean) =>
+    const total = (tags: string[], soulShaken: boolean, category1 = 0) =>
       calculateRotationBaseline({
         ...bundle,
         timeline: {
           ...bundle.timeline,
+          setupEffects: [...bundle.timeline.setupEffects, { effect: { dmgBonus: category1 } }],
           initialDebuffs: soulShaken ? [{ name: "SoulShaken", stack: 5 }] : [],
           skills: {
             ...bundle.timeline.skills,
@@ -424,7 +425,7 @@ describe("Umbra draft behavior", () => {
     const highGain = total(highTags, true) - total(highTags, false)
     expect(ordinaryGain).toBe(0)
     expect(highGain).toBeGreaterThan(0)
-    expect(total(highTags, true) / total(highTags, false)).toBeCloseTo(1.5, 8)
+    expect(total(highTags, true)).toBeCloseTo(total(highTags, false, 0.5), 8)
   })
 
   it.each([3, 4, 5])("refunds one special detonation per cast starting at %s Bleed stacks", bleed => {

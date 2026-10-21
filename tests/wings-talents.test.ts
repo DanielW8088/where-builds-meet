@@ -44,7 +44,16 @@ describe("Wings talent calculations", () => {
   })
 
   function hit(weapon: WeaponId, talent: number, buff?: string, drum = true, minPhys = 750, crit = 0) {
-    const stats = { ...emptyStats, minPhys, maxPhys: 1000, minSilkbind: 100, maxSilkbind: 100, precision: 1, crit }
+    const stats = {
+      ...emptyStats,
+      minPhys,
+      maxPhys: 1000,
+      minSilkbind: 100,
+      maxSilkbind: 100,
+      precision: 1,
+      crit,
+      critDmgBonus: 0.5,
+    }
     const effects = asTalentEffects(martialArtDefinitions[weapon].talent[13][talent].effect)
     return calculateRotationBaseline({
       startAnchor: { rowId: "rotation-0" },
@@ -99,7 +108,7 @@ describe("Wings talent calculations", () => {
     for (const crit of [0.2, 0.6]) {
       const plain = hit("museflowWaistDrum", 2, undefined, false, 750, crit)
       expect(hit("museflowWaistDrum", 2, undefined, true, 750, crit)).toBeCloseTo(
-        plain * (1 + crit * Math.min(crit * 0.5, 0.3)),
+        plain * (1 + (crit * Math.min(crit * 0.5, 0.3)) / (1 + crit * 0.5)),
       )
     }
   })

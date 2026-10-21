@@ -156,7 +156,7 @@ describe("insightful-strike", () => {
       "Expected tracking must agree with all concrete histories across decay deadlines",
     )
 
-    const stats = { ...emptyStats, minPhys: 100, maxPhys: 100, precision: 1, directAffinity: 1 }
+    const stats = { ...emptyStats, minPhys: 100, maxPhys: 100, precision: 1, directAffinity: 1, affinityDmgBonus: 0.2 }
     const enemy = {
       name: "Insightful Strike probe",
       level: 96,

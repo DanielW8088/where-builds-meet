@@ -6,9 +6,9 @@ Blood Burst is direct damage tagged `HighBleed` and `Bleed`. The latter selects
 Bleeding attunements and talents; it does not grant DOT bonuses. Its `Sword`
 and `MartialArts` tags enable Art of Sword and All Martial Arts in the standard
 shared additive bonus bucket. Soul-Shaken's
-`highBleedDamage` applies only to `HighBleed` hits (10% per stack, up to 50%)
-in the existing multiplicative damage bucket. Its ordinary `dotDamage` bonuses
-apply only to periodic DOT damage and exclude High Bleed. BB does not receive
+`dmgBonus` joins Category 1, gated to `HighBleed` hits (10% per stack, up to 50%)
+or ordinary `DOT` ticks excluding High Bleed. Ordinary ticks receive 5% per stack,
+plus another 5% for the current Strategic Sword or Heavenquaker Spear art. BB does not receive
 Insightful Strike's DOT-only T6 bonus; its normal direct-hit triggers remain active.
 
 Enemy defense, level, path resistances, Judgement Resistance, and level-derived
@@ -852,9 +852,26 @@ DOT Multiplier = 1 + sum(active dotDamage effects)
 
 `dotDamage` values add together within this category and then multiply physical
 and every attribute component of the DOT. They do not affect ordinary damage
-actions, even when the casting skill applies or extends a DOT. Soul-Shaken uses
-this field for its general DOT vulnerability and its additional Umbra-source
-vulnerability.
+actions, even when the casting skill applies or extends a DOT. Soul-Shaken does
+not use this standalone multiplier: its eligible DOT and High Bleed bonuses
+join Category 1 via conditional `dmgBonus` entries. The authored definition
+retains the upgraded recipe; base versus upgraded granting routes remain unaudited.
+
+Candlelight also joins Category 1 (selector 10), adding 2% per stack up to 10%,
+with an authored carrier lifetime of 3.1 seconds. It does not join Mechanism.
+
+Cloudshear: Wings adds 6% to each applicable channel's DMG Bonus stat, additive
+with that channel's art talent and Strayhunt. Ordinary ally Cloudshear in the
+Wings support presets adds 2% to those same channel pools. Each channel receives
+one contribution, while the healing bonus remains separate.
+
+Blade of Grass also joins Category 1 for the existing Light/Heavy plus
+VariedCombo predicates, including its separate T6 bonus. The calculator models
+PvE targets without an additional non-player condition; exact source hit-tag
+1112 membership beyond these predicates remains unverified.
+
+End of Gale's T3 bonus adds 20% to Category 1 for that skill; it does not
+modify the base damage ratio.
 
 Vendetta Token uses `dmgBonus: 0.5` for Rodent-tagged attacks, following the
 confirmed general-damage behavior. Vendetta T6 adds `dmgBonus: 0.3` for those attacks
@@ -866,11 +883,32 @@ Other attacks receive neither bonus. No Category 2 multiplier is introduced.
 
 ```text
 Abrasion or Normal = 1
-Critical = 1 + Effective Critical DMG Bonus + active critDmgBonus effects
-Affinity = 1 + Affinity DMG Bonus
+Critical = clamp(1 + Effective Critical DMG Bonus + active critDmgBonus effects, 1.35, 2.50)
+Affinity = clamp(1 + Affinity DMG Bonus + active affinityDmgBonus effects, 1.20, 2.30)
 ```
 
 Critical and affinity bonuses multiply physical and every attribute component.
+The limits follow the audited current Global `ZD_QX_DMG.lua` consumer and apply
+after adding eligible event bonuses, in expected, sampled, and prepared damage
+paths. Target outcome-damage reductions are not modeled by this clamp-only correction.
+
+Base Yi River adds its damage bonus to Category 1 for every eligible channel
+at all tiers. T1 adds Physical Penetration; it does not change the damage pool.
+The T3 controlled-target damage/healing increase remains separate.
+
+Vulnerable uses Normal layer 0: 8% HP damage plus 10% for the eligible Might
+arts, additive in Category 1. By the selected PvE policy it contributes no Qi
+damage, including its conditional entry.
+
+Museflow's early Drum Series critical talents cap the evaluated formula at 10%
+for rank indices 2–5 and 20% for 6–7. Later ranks retain their 30% cap. The
+continuous conversion is retained pending the separate D09 stepped-talent change.
+
+Ripple's 30% target correction applies on every supported PvE target. The
+Tailwind/Radiant Drum talent adds 40 percentage points to the same correction,
+producing 70%, rather than multiplying by 1.4. Other base-ratio adjustments
+still share `baseDMGBonus`; separating target corrections from that pool remains
+a distinct representation change.
 Rain Whisper four-piece contributes 10% `critDmgBonus` as an unconditional
 compute-time effect, so it does not alter the displayed character Critical DMG
 stat. It adds a separate 15% `critDmgBonus` to damage actions whose hit-time

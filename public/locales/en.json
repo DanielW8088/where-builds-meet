@@ -345,7 +345,7 @@
   "data.debuff.silkbindWing.TangledGauze.name": "Tangled Gauze",
   "data.debuff.silkbindWing.WarriorMark.description": "Envigorated Warrior T6: for 5s, attacks from this target do not disable the damage/healing bonus. Incoming attacks are attributed to the simulator’s selected target.",
   "data.debuff.silkbindWing.WarriorMark.name": "Farewell",
-  "data.debuff.stonesplitMight.Vulnerable.description": "Increases HP and Qi damage taken by 8%, and by an additional 8% for Might.",
+  "data.debuff.stonesplitMight.Vulnerable.description": "Increases HP damage taken by 8%, with an additional 10% for Might. Does not increase Qi damage.",
   "data.debuff.stonesplitMight.Vulnerable.name": "Vulnerable",
   "data.debuff.stonesplitMight.Vulnerable.shortName": "Vul",
   "data.debuff.stonesplitStrength.Dread.description": "Increases HP damage taken by 12%.",

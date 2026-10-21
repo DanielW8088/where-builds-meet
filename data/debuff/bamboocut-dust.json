@@ -26,18 +26,18 @@
   },
   "Candlelight": {
     "name": "Candlelight",
-    "duration": 3,
+    "duration": 3.1,
     "cooldown": 0.5,
     "maxStack": 5,
     "refresh": true,
     "showCoverage": true,
     "shared": true,
     "stackEffects": [
-      [{ "effect": { "globalDmgBonus": 0.02 } }],
-      [{ "effect": { "globalDmgBonus": 0.04 } }],
-      [{ "effect": { "globalDmgBonus": 0.06 } }],
-      [{ "effect": { "globalDmgBonus": 0.08 } }],
-      [{ "effect": { "globalDmgBonus": 0.1 } }]
+      [{ "effect": { "dmgBonus": 0.02 } }],
+      [{ "effect": { "dmgBonus": 0.04 } }],
+      [{ "effect": { "dmgBonus": 0.06 } }],
+      [{ "effect": { "dmgBonus": 0.08 } }],
+      [{ "effect": { "dmgBonus": 0.1 } }]
     ]
   },
   "SoulLoss": {

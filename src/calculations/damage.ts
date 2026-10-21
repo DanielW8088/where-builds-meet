@@ -607,6 +607,10 @@ function calculateDamageBreakdownInternal(
         specialBonus: number
       }>
     | undefined = captureAdditiveResponse ? [] : undefined
+  // Event bonuses and snapshot bonuses share the final outcome-factor limits.
+  const criticalBonusFor = (snapshot: DerivedStats) =>
+    Math.min(1.5, Math.max(0.35, snapshot.effectiveCritDmgBonus + resolvedEffects.critDmgBonus))
+  const affinityBonus = Math.min(1.3, Math.max(0.2, stats.affinityDmgBonus + resolvedEffects.affinityDmgBonus))
   const calculateVariant = (damageType: AttackRollMode, specialBonus: number, snapshot = derivedStats) => {
     const variantStartedAt = import.meta.env.DEV ? startCalculationPhase() : 0
     const physicalChannelStartedAt = import.meta.env.DEV ? startCalculationPhase() : 0
@@ -720,13 +724,10 @@ function calculateDamageBreakdownInternal(
         selectedDamage = calculateVariant("min", 0)
         break
       case "affinity":
-        selectedDamage = calculateVariant("max", stats.affinityDmgBonus + resolvedEffects.affinityDmgBonus)
+        selectedDamage = calculateVariant("max", affinityBonus)
         break
       case "critical":
-        selectedDamage = calculateVariant(
-          sampledAttack,
-          derivedStats.effectiveCritDmgBonus + resolvedEffects.critDmgBonus,
-        )
+        selectedDamage = calculateVariant(sampledAttack, criticalBonusFor(derivedStats))
         break
       case "normal":
         selectedDamage = calculateVariant(sampledAttack, 0)
@@ -771,8 +772,8 @@ function calculateDamageBreakdownInternal(
       outcomeDamage = [
         calculateVariant("min", 0, snapshot),
         calculateVariant("average", 0, snapshot),
-        calculateVariant("average", snapshot.effectiveCritDmgBonus + resolvedEffects.critDmgBonus, snapshot),
-        calculateVariant("max", stats.affinityDmgBonus + resolvedEffects.affinityDmgBonus, snapshot),
+        calculateVariant("average", criticalBonusFor(snapshot), snapshot),
+        calculateVariant("max", affinityBonus, snapshot),
       ]
     }
     const [abrasionDamage, normalDamage, critDamage, affinityDamage] = outcomeDamage
@@ -865,8 +866,8 @@ function calculateDamageBreakdownInternal(
       const outcomes = [
         [1, 0, rates.abrasionRate, 0],
         [0.5, 0.5, rates.normalRate, 0],
-        [0.5, 0.5, rates.critRate, derivedStats.effectiveCritDmgBonus + resolvedEffects.critDmgBonus],
-        [0, 1, rates.affinityRate, stats.affinityDmgBonus + resolvedEffects.affinityDmgBonus],
+        [0.5, 0.5, rates.critRate, criticalBonusFor(derivedStats)],
+        [0, 1, rates.affinityRate, affinityBonus],
       ]
       for (const [minimumWeight, maximumWeight, probability, specialBonus] of outcomes) {
         if (probability === 0) continue

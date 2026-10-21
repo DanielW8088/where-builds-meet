@@ -166,7 +166,7 @@
       { "type": "apply", "target": "self", "value": "FlowingWind", "stack": 1, "reapply": true, "time": 0.566 }
     ],
     "modifier": [
-      { "requirement": [{ "target": "self", "value": "ZephyrWhispersT3" }], "effect": { "baseDMGBonus": 0.2 } },
+      { "requirement": [{ "target": "self", "value": "ZephyrWhispersT3" }], "effect": { "dmgBonus": 0.2 } },
       {
         "requirement": [{ "target": "enemyCount", "comparison": ">=", "amount": 2 }],
         "effect": {

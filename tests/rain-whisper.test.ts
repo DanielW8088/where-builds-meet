@@ -19,7 +19,7 @@ describe("rain-whisper", () => {
       effectForSoloLevel(effect, 17, "Rain Whisper"),
     )
 
-    const stats = { ...emptyStats, minPhys: 1000, maxPhys: 1000, precision: 1, crit: 1 }
+    const stats = { ...emptyStats, minPhys: 1000, maxPhys: 1000, precision: 1, crit: 1, critDmgBonus: 0.5 }
     const enemy = {
       name: "Probe",
       level: 96,

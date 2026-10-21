@@ -53,7 +53,7 @@
               ]
             }
           ],
-          "effect": { "globalDmgBonus": 0.02 }
+          "effect": { "dmgBonus": 0.02 }
         },
         {
           "requirement": [
@@ -72,7 +72,7 @@
             },
             { "target": "self", "value": "BladesWillT3" }
           ],
-          "effect": { "globalDmgBonus": 0.02 }
+          "effect": { "dmgBonus": 0.02 }
         }
       ],
       [
@@ -92,7 +92,7 @@
               ]
             }
           ],
-          "effect": { "globalDmgBonus": 0.04 }
+          "effect": { "dmgBonus": 0.04 }
         },
         {
           "requirement": [
@@ -111,7 +111,7 @@
             },
             { "target": "self", "value": "BladesWillT3" }
           ],
-          "effect": { "globalDmgBonus": 0.04 }
+          "effect": { "dmgBonus": 0.04 }
         }
       ],
       [
@@ -131,7 +131,7 @@
               ]
             }
           ],
-          "effect": { "globalDmgBonus": 0.06 }
+          "effect": { "dmgBonus": 0.06 }
         },
         {
           "requirement": [
@@ -150,7 +150,7 @@
             },
             { "target": "self", "value": "BladesWillT3" }
           ],
-          "effect": { "globalDmgBonus": 0.06 }
+          "effect": { "dmgBonus": 0.06 }
         }
       ],
       [
@@ -170,7 +170,7 @@
               ]
             }
           ],
-          "effect": { "globalDmgBonus": 0.08 }
+          "effect": { "dmgBonus": 0.08 }
         },
         {
           "requirement": [
@@ -189,7 +189,7 @@
             },
             { "target": "self", "value": "BladesWillT3" }
           ],
-          "effect": { "globalDmgBonus": 0.08 }
+          "effect": { "dmgBonus": 0.08 }
         }
       ],
       [
@@ -209,7 +209,7 @@
               ]
             }
           ],
-          "effect": { "globalDmgBonus": 0.1 }
+          "effect": { "dmgBonus": 0.1 }
         },
         {
           "requirement": [
@@ -228,7 +228,7 @@
             },
             { "target": "self", "value": "BladesWillT3" }
           ],
-          "effect": { "globalDmgBonus": 0.1 }
+          "effect": { "dmgBonus": 0.1 }
         }
       ]
     ]

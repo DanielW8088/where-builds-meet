@@ -178,8 +178,8 @@ describe("global-debuff-controls", () => {
       "Vulnerable must give its shared 8% to non-Might damage.",
     )
     assert(
-      closeTo(result(vulnerableEffects, ["StormbreakerSpear"]) / baseline, 1.16),
-      "Vulnerable must give an additional 8% to Might damage.",
+      closeTo(result(vulnerableEffects, ["StormbreakerSpear"]) / baseline, 1.18),
+      "Vulnerable must give an additional 10% to Might damage.",
     )
     const fearfulEffects = globalDebuffTimelineEffects({ ...defaultGlobalDebuffs, fearfulBlade: true })
     assert(

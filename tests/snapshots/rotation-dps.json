@@ -23,8 +23,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 75378.65890896872,
-      "totalDamage": 4522719.534538123,
+      "dps": 75052.69588297587,
+      "totalDamage": 4503161.752978552,
       "duration": 60
     },
     "bamboocutDust/dust-dummy-1-min-100pc/19": {
@@ -49,8 +49,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 78781.63492472706,
-      "totalDamage": 4726898.095483623,
+      "dps": 78440.19900757818,
+      "totalDamage": 4706411.940454691,
       "duration": 60
     },
     "bamboocutDust/dust-dummy-1-min/18": {
@@ -75,8 +75,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 75645.22735018363,
-      "totalDamage": 4538713.641011018,
+      "dps": 75218.61406855253,
+      "totalDamage": 4513116.844113152,
       "duration": 60
     },
     "bamboocutDust/dust-dummy-1-min/19": {
@@ -101,8 +101,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 79060.62177416348,
-      "totalDamage": 4743637.306449808,
+      "dps": 78613.83531516723,
+      "totalDamage": 4716830.118910034,
       "duration": 60
     },
     "bamboocutKite/dummy-1-min-infinite-vitality/18": {
@@ -387,8 +387,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 95163.45897986703,
-      "totalDamage": 5709807.5387920225,
+      "dps": 85334.27364913882,
+      "totalDamage": 5120056.418948329,
       "duration": 60
     },
     "bellstrikeUmbra/dummy-1-min-38-bb/19": {
@@ -413,8 +413,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 100119.09485414634,
-      "totalDamage": 6007145.691248781,
+      "dps": 89769.16730002478,
+      "totalDamage": 5386150.038001487,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-regular-fire/18": {
@@ -647,8 +647,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 43736.632758129155,
-      "totalDamage": 2624197.9654877493,
+      "dps": 43977.495233684975,
+      "totalDamage": 2638649.7140210983,
       "duration": 60
     },
     "silkbindWing/wings-dummy-1-min-dawnsun/19": {
@@ -673,8 +673,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 45787.3473306048,
-      "totalDamage": 2747240.8398362882,
+      "dps": 46034.37102098257,
+      "totalDamage": 2762062.261258954,
       "duration": 60
     },
     "silkbindWing/wings-dummy-1-min-jadebreaker/18": {
@@ -699,8 +699,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 59269.205061193956,
-      "totalDamage": 3556152.3036716375,
+      "dps": 59631.270792308605,
+      "totalDamage": 3577876.2475385163,
       "duration": 60
     },
     "silkbindWing/wings-dummy-1-min-jadebreaker/19": {
@@ -725,8 +725,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 62089.81204533403,
-      "totalDamage": 3725388.722720042,
+      "dps": 62462.147083776756,
+      "totalDamage": 3747728.8250266053,
       "duration": 60
     },
     "stonesplitMight/dummy-1-min/18": {
@@ -751,8 +751,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 93998.91147957309,
-      "totalDamage": 5639934.6887743855,
+      "dps": 94833.29806850525,
+      "totalDamage": 5689997.884110315,
       "duration": 60
     },
     "stonesplitMight/dummy-1-min/19": {
@@ -777,8 +777,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 99308.74329065508,
-      "totalDamage": 5958524.597439305,
+      "dps": 100190.5834583792,
+      "totalDamage": 6011435.007502752,
       "duration": 60
     },
     "stonesplitStrength/mixed-dummy-1-min-double-stab/18": {

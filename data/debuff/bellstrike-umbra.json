@@ -9,8 +9,11 @@
     "stackEffects": [
       [
         {
-          "effect": { "dotDamage": 0.05 },
-          "requirement": [{ "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }]
+          "effect": { "dmgBonus": 0.05 },
+          "requirement": [
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
+          ]
         },
         {
           "requirement": [
@@ -21,16 +24,20 @@
                 { "target": "martialArt", "value": "StrategicSword" }
               ]
             },
-            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
           ],
-          "effect": { "dotDamage": 0.05 }
+          "effect": { "dmgBonus": 0.05 }
         },
-        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "highBleedDamage": 0.1 } }
+        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "dmgBonus": 0.1 } }
       ],
       [
         {
-          "effect": { "dotDamage": 0.1 },
-          "requirement": [{ "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }]
+          "effect": { "dmgBonus": 0.1 },
+          "requirement": [
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
+          ]
         },
         {
           "requirement": [
@@ -41,16 +48,20 @@
                 { "target": "martialArt", "value": "StrategicSword" }
               ]
             },
-            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
           ],
-          "effect": { "dotDamage": 0.1 }
+          "effect": { "dmgBonus": 0.1 }
         },
-        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "highBleedDamage": 0.2 } }
+        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "dmgBonus": 0.2 } }
       ],
       [
         {
-          "effect": { "dotDamage": 0.15 },
-          "requirement": [{ "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }]
+          "effect": { "dmgBonus": 0.15 },
+          "requirement": [
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
+          ]
         },
         {
           "requirement": [
@@ -61,16 +72,20 @@
                 { "target": "martialArt", "value": "StrategicSword" }
               ]
             },
-            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
           ],
-          "effect": { "dotDamage": 0.15 }
+          "effect": { "dmgBonus": 0.15 }
         },
-        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "highBleedDamage": 0.3 } }
+        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "dmgBonus": 0.3 } }
       ],
       [
         {
-          "effect": { "dotDamage": 0.2 },
-          "requirement": [{ "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }]
+          "effect": { "dmgBonus": 0.2 },
+          "requirement": [
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
+          ]
         },
         {
           "requirement": [
@@ -81,16 +96,20 @@
                 { "target": "martialArt", "value": "StrategicSword" }
               ]
             },
-            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
           ],
-          "effect": { "dotDamage": 0.2 }
+          "effect": { "dmgBonus": 0.2 }
         },
-        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "highBleedDamage": 0.4 } }
+        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "dmgBonus": 0.4 } }
       ],
       [
         {
-          "effect": { "dotDamage": 0.25 },
-          "requirement": [{ "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }]
+          "effect": { "dmgBonus": 0.25 },
+          "requirement": [
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
+          ]
         },
         {
           "requirement": [
@@ -101,11 +120,12 @@
                 { "target": "martialArt", "value": "StrategicSword" }
               ]
             },
-            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] }
+            { "operator": "not", "operand": [{ "target": "skillTag", "value": "HighBleed" }] },
+            { "target": "skillTag", "value": "DOT" }
           ],
-          "effect": { "dotDamage": 0.25 }
+          "effect": { "dmgBonus": 0.25 }
         },
-        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "highBleedDamage": 0.5 } }
+        { "requirement": [{ "target": "skillTag", "value": "HighBleed" }], "effect": { "dmgBonus": 0.5 } }
       ]
     ],
     "refresh": true

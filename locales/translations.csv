@@ -345,7 +345,7 @@ data.debuff.silkbindWing.TangledGauze.description,Roots the target and prevents 
 data.debuff.silkbindWing.TangledGauze.name,Tangled Gauze,羅纏,,,,,,,,,,
 data.debuff.silkbindWing.WarriorMark.description,"Envigorated Warrior T6: for 5s, attacks from this target do not disable the damage/healing bonus. Incoming attacks are attributed to the simulator’s selected target.",Envigorated Warrior T6：持續5秒，來自此目標的攻擊不會使傷害與治療增益失效。目前模擬中的來襲攻擊皆歸屬於所選目標。,,,,,,,,,,
 data.debuff.silkbindWing.WarriorMark.name,Farewell,別離,,,,,,,,,,
-data.debuff.stonesplitMight.Vulnerable.description,"Increases HP and Qi damage taken by 8%, and by an additional 8% for Might.",受到的氣血及真氣傷害提高 8%；對威勢再額外提高 8%。,,,"받는 기혈과 진기 피해가 8% 증가하며, 공격자가 탄식의 검기나 풍뢰의 징표를 사용 중일 경우 추가로 8% 증가한다.",,,,,,,
+data.debuff.stonesplitMight.Vulnerable.description,"Increases HP damage taken by 8%, with an additional 10% for Might. Does not increase Qi damage.",受到的氣血及真氣傷害提高 8%；對威勢再額外提高 8%。,,,"받는 기혈과 진기 피해가 8% 증가하며, 공격자가 탄식의 검기나 풍뢰의 징표를 사용 중일 경우 추가로 8% 증가한다.",,,,,,,
 data.debuff.stonesplitMight.Vulnerable.name,Vulnerable,易傷,,,취약,,,,,,,
 data.debuff.stonesplitMight.Vulnerable.shortName,Vul,傷,,,취약,,,,,,,
 data.debuff.stonesplitStrength.Dread.description,Increases HP damage taken by 12%.,受到的氣血傷害提高 12%。,,,보스 대상에게 가하는 기혈 데미지가 12% 증가합니다.,,,,,,,

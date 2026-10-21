@@ -11,7 +11,8 @@
       [
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             {
               "operator": "or",
               "operand": [
@@ -24,7 +25,8 @@
         },
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             { "target": "self", "value": "SongOfTangT3" },
             {
               "operator": "or",
@@ -40,7 +42,8 @@
       [
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             {
               "operator": "or",
               "operand": [
@@ -53,7 +56,8 @@
         },
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             { "target": "self", "value": "SongOfTangT3" },
             {
               "operator": "or",
@@ -69,7 +73,8 @@
       [
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             {
               "operator": "or",
               "operand": [
@@ -82,7 +87,8 @@
         },
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             { "target": "self", "value": "SongOfTangT3" },
             {
               "operator": "or",
@@ -98,7 +104,8 @@
       [
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             {
               "operator": "or",
               "operand": [
@@ -111,7 +118,8 @@
         },
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             { "target": "self", "value": "SongOfTangT3" },
             {
               "operator": "or",
@@ -127,7 +135,8 @@
       [
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             {
               "operator": "or",
               "operand": [
@@ -140,7 +149,8 @@
         },
         {
           "requirement": [
-            { "target": "skillTag", "value": "MartialArts" },
+            { "target": "skillTag", "value": "DirectDamage" },
+            { "target": "skillTag", "value": "MartialArt" },
             { "target": "self", "value": "SongOfTangT3" },
             {
               "operator": "or",

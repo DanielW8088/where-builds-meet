@@ -5,9 +5,9 @@ import { describe, it } from "vitest"
 import { martialArtDefinitions } from "@/application/gameData/martialArts"
 import { emptyAttunementStats } from "@/calculations/attunementStats"
 import type { DamageContext } from "@/calculations/damage"
+import { effectState } from "@/calculations/trackedEffectState"
 import type { CharacterStats } from "@/types"
 
-import { effectState } from "../src/calculations/trackedEffectState"
 import { isClose } from "./helpers/floatEquality"
 import { rankTalentEffects } from "./helpers/shippedData"
 
@@ -81,7 +81,14 @@ describe("nameless-spear-talents", () => {
     )
       throw new Error("Affinity DMG Up must work with Endless Gale while low Endurance remains unsimulated.")
 
-    const damageStats: CharacterStats = { ...emptyStats, minPhys: 1000, maxPhys: 1000, precision: 1, affinity: 1 }
+    const damageStats: CharacterStats = {
+      ...emptyStats,
+      minPhys: 1000,
+      maxPhys: 1000,
+      precision: 1,
+      affinity: 1,
+      affinityDmgBonus: 0.2,
+    }
     const enemy = {
       name: "Probe",
       level: 96,
@@ -110,7 +117,7 @@ describe("nameless-spear-talents", () => {
     )
     close(
       enhanced.physical / baseline.physical,
-      1 + (baseline.outcomeRates?.affinity ?? 0) * 0.18,
+      1 + ((baseline.outcomeRates?.affinity ?? 0) * 0.18) / (1 + (baseline.outcomeRates?.affinity ?? 0) * 0.2),
       "Affinity DMG Up must cap at 18% above 30% Affinity Rate.",
     )
   })

@@ -192,17 +192,19 @@ describe("martial-art-talents", () => {
       ["snowparting", 2, "BladeMomentum"],
     ] as Array<[WeaponId, number, string]>) {
       for (const amount of [0, 1, 1.01]) {
-        const stats = { crit: 0.6 }
+        const stats = { crit: 0.6, critDmgBonus: 0.5 }
         const { damage } = run(weapon, slots, [], { stats, timeline: { initialResources: { [resource]: amount } } })
-        let expected = 1000
-        if (amount > 1) expected *= weapon === "skygrasp" ? 1.09 : 1 + criticalRate(damage) * 0.21
+        let expected = 1000 * (1 + criticalRate(damage) * 0.5)
+        if (amount > 1) {
+          expected = weapon === "skygrasp" ? expected * 1.09 : expected + 1000 * criticalRate(damage) * 0.21
+        }
         close(damage.physical, expected, `${weapon} strict one-bar threshold`)
       }
     }
-    const snowpartingStart = run("snowparting", 2, [], { stats: { crit: 0.6 } })
+    const snowpartingStart = run("snowparting", 2, [], { stats: { crit: 0.6, critDmgBonus: 0.5 } })
     close(
       snowpartingStart.damage.physical,
-      1126,
+      1426,
       "System starting Blade Momentum enables Snowparting's 21% Critical DMG bonus at 60% Critical Rate",
     )
     for (const minPhys of [49, 50, 749, 750, 1000]) {
@@ -210,15 +212,15 @@ describe("martial-art-talents", () => {
         ["inkwellFan", 2, ["MoonShatterSpring"]],
         ["vernalUmbrella", 2, ["VernalUmbrella", "Ballistic"]],
       ] as Array<[WeaponId, number, string[]]>) {
-        const { damage } = run(weapon, slots, tags, { stats: { minPhys, crit: 1 } })
+        const { damage } = run(weapon, slots, tags, { stats: { minPhys, crit: 1, critDmgBonus: 0.5 } })
         close(
           damage.physical,
-          ((minPhys + 1000) / 2) * (1 + criticalRate(damage) * Math.min(15, Math.floor(minPhys / 50)) * 0.024),
+          ((minPhys + 1000) / 2) * (1 + criticalRate(damage) * (0.5 + Math.min(15, Math.floor(minPhys / 50)) * 0.024)),
           `${weapon} 50-point damage steps`,
         )
         close(
-          run(weapon, slots, ["Other"], { stats: { minPhys, crit: 1 } }).damage.physical,
-          (minPhys + 1000) / 2,
+          run(weapon, slots, ["Other"], { stats: { minPhys, crit: 1, critDmgBonus: 0.5 } }).damage.physical,
+          ((minPhys + 1000) / 2) * (1 + criticalRate(damage) * 0.5),
           `${weapon} unrelated attacks`,
         )
       }
@@ -244,7 +246,7 @@ describe("martial-art-talents", () => {
         },
       })
       close(criticalRate(damage), qi < 30 ? 0.3 : 0, "Low-Qi critical chance threshold")
-      close(damage.physical, qi < 30 ? 1080 : 1000, "Low-Qi HP damage threshold")
+      close(damage.physical, qi < 30 ? 1080 * (1 + 0.3 * 0.35) : 1000, "Low-Qi HP damage threshold")
     }
     for (const [weapon, slots, tags] of [
       ["thundercry", 0, ["ThundercryBlade", "Charged"]],
@@ -267,16 +269,17 @@ describe("martial-art-talents", () => {
       "Thundercry fixed and scaling Critical Rate",
     )
     close(
-      run("thundercry", 0, ["ThundercryBlade", "Charged"], { stats: { maxHp: 150000, crit: 1 } }).damage.physical,
-      1144.8,
+      run("thundercry", 0, ["ThundercryBlade", "Charged"], { stats: { maxHp: 150000, crit: 1, critDmgBonus: 0.5 } })
+        .damage.physical,
+      1060 * (1 + 0.8 * (0.5 + 0.1)),
       "Thundercry effective attack and Critical DMG",
     )
     close(
       run("unfettered", 2, [], {
-        stats: { crit: 0.6 },
+        stats: { crit: 0.6, critDmgBonus: 0.5 },
         timeline: { initialDebuffs: [{ name: "Soulbreak", stack: 1 }] },
       }).damage.physical,
-      1162 * 1.05,
+      1462 * 1.05,
       "Soulbreak conditional critical damage and applier damage amplification",
     )
     close(

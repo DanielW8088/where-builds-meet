@@ -99,31 +99,55 @@ describe("dot-damage", () => {
     const fifthStack = soulShaken.stackEffects[4]
     const umbraRule = fifthStack[1]
     expect(
-      requirementsPass(umbraRule.requirement, effectState([]), effectState([]), ["HeavenQuakerSpear"], new Set()),
+      requirementsPass(
+        umbraRule.requirement,
+        effectState([]),
+        effectState([]),
+        ["HeavenQuakerSpear", "DOT"],
+        new Set(),
+      ),
       "Heavenquaker Spear must satisfy Soul-Shaken's Umbra requirement.",
     ).toBeTruthy()
     expect(
-      requirementsPass(umbraRule.requirement, effectState([]), effectState([]), ["StrategicSword"], new Set()),
+      requirementsPass(umbraRule.requirement, effectState([]), effectState([]), ["StrategicSword", "DOT"], new Set()),
       "Strategic Sword must satisfy Soul-Shaken's Umbra requirement.",
     ).toBeTruthy()
     expect(
-      !requirementsPass(umbraRule.requirement, effectState([]), effectState([]), ["SnowpartingBlade"], new Set()),
+      !requirementsPass(
+        umbraRule.requirement,
+        effectState([]),
+        effectState([]),
+        ["SnowpartingBlade", "DOT"],
+        new Set(),
+      ),
       "Non-Umbra martial arts must not receive Soul-Shaken's conditional bonus.",
     ).toBeTruthy()
 
     for (const [tags, multiplier] of [
       [["StrategicSword", "DOT", "HighBleed"], 1.5],
       [["Other", "DOT", "HighBleed"], 1.5],
+      [["StrategicSword", "DirectDamage", "HighBleed"], 1.5],
       [["HeavenQuakerSpear", "DOT"], 1.5],
       [["Other", "DOT"], 1.25],
+      [["HeavenQuakerSpear", "DirectDamage"], 1],
+      [["Other", "DirectDamage"], 1],
     ] as Array<[string[], number]>) {
       const selected = fifthStack
         .filter(rule => requirementsPass(rule.requirement, effectState([]), effectState([]), tags, new Set()))
         .map(rule => rule.effect ?? rule)
       expect(
-        closeTo(damage(selected, true, tags).total / baselineDot.total, multiplier),
-        "Soul-Shaken's High Bleed bonus adds once and respects source tags",
+        closeTo(
+          damage([{ dmgBonus: 0.2 }, ...selected], tags.includes("DOT"), tags).total / baselineDot.total,
+          multiplier + 0.2,
+        ),
+        "Soul-Shaken adds once to Category 1 and respects DOT, High Bleed, and current-art eligibility",
       ).toBeTruthy()
+      const sampled = calculateSimulatedDamageBreakdown(
+        { phyCoef: 1, attrCoef: 1 },
+        { ...baseContext, effects: [{ dmgBonus: 0.2 }, ...selected], skillTags: tags, isDot: tags.includes("DOT") },
+        () => 0.5,
+      )
+      expect(sampled.total / simulatedBaseline.total).toBeCloseTo(multiplier + 0.2, 9)
     }
   })
 

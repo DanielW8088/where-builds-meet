@@ -5,9 +5,9 @@ import { describe, it } from "vitest"
 import { martialArtDefinitions } from "@/application/gameData/martialArts"
 import { emptyAttunementStats } from "@/calculations/attunementStats"
 import type { DamageContext } from "@/calculations/damage"
+import { effectState } from "@/calculations/trackedEffectState"
 import type { CharacterStats } from "@/types"
 
-import { effectState } from "../src/calculations/trackedEffectState"
 import { isClose } from "./helpers/floatEquality"
 import { probeLoad } from "./helpers/probe-loader.js"
 
@@ -93,7 +93,14 @@ describe("nameless-sword-talents", () => {
     )
       throw new Error("Sword Qi Affinity Enhancement must require sub-40% Qi or Qi Imbalance at hit time.")
 
-    const damageStats: CharacterStats = { ...emptyStats, minPhys: 1500, maxPhys: 1500, precision: 1, affinity: 1 }
+    const damageStats: CharacterStats = {
+      ...emptyStats,
+      minPhys: 1500,
+      maxPhys: 1500,
+      precision: 1,
+      affinity: 1,
+      affinityDmgBonus: 0.2,
+    }
     const enemy = {
       name: "Probe",
       level: 96,
@@ -127,7 +134,7 @@ describe("nameless-sword-talents", () => {
     close(hpEnhanced.physical / baseline.physical, 1.2, "Sword Energy HP damage must cap at 20%.")
     close(
       affinityEnhanced.physical / baseline.physical,
-      1 + (baseline.outcomeRates?.affinity ?? 0) * 0.18,
+      1 + ((baseline.outcomeRates?.affinity ?? 0) * 0.18) / (1 + (baseline.outcomeRates?.affinity ?? 0) * 0.2),
       "Sword Energy Affinity damage must cap at 18% at 1500 Max Physical Attack.",
     )
   })

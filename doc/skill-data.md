@@ -1205,6 +1205,11 @@ Burn and Bury uses `baseDMGBonus: 0.3`, multiplying its direct base hit separate
 from Category 1; settlement does not receive this multiplier again. Towline T6
 retains its 12% replay and the shared Wildstride/Strayhunt replay adjustment.
 Tang Melody requires HP above 50% through T4; T5 removes that restriction.
+Its critical bonus requires both singular `MartialArt` and `DirectDamage`,
+matching the modeled originating class-108 skill contexts. The broad
+`MartialArts` tag alone is insufficient. Scarlet Spin Resonance retains its
+`MartialArt` context, while Dreamwrought Bubbles and ordinary light/heavy
+attacks do not gain the bonus. This does not change the stack-application triggers.
 Fragrant Song's throw-scoped Resonance marker grants both guaranteed critical
 and 20% Category 1 HP damage while active, using the existing throw ownership
 and expiry rules. Current encounters are non-player targets.
@@ -1561,7 +1566,8 @@ affix availability pending a dedicated equipment export.
 
 Cloudshear and Etherwrath are available for Wings. Cloudshear retains the
 77.8 minimum Physical Attack two-piece bonus at four pieces. Its self buff,
-裁雲·翊 (`buff.json` 109804), grants 6% all-type damage and healing for 15 seconds, capped at
+裁雲·翊 (`buff.json` 109804), grants 6% to each applicable channel's damage-scale
+pool and 6% healing for 15 seconds, capped at
 one stack and refreshing its duration on reapplication, when Fan Q applies
 扶風 or Drum Special applies 爍鼓. The automatic 扶風 application when 爍鼓
 expires does not trigger Cloudshear. Ally application is not part of the dummy presets.
@@ -1646,7 +1652,8 @@ remaining mechanisms and draft Flourishing Notes timing limits.
 ### Global Wings support
 
 The Global Buffs Wings selector uses permanent expected bonuses for other paths:
-Support assumes Harmony Song T6. Ally Cloudshear contributes 2% damage and healing; Yellow weights Tailwind's 3%
+Support assumes Harmony Song T6. Ally Cloudshear contributes 2% to each
+applicable channel's damage-scale pool and 2% healing; Yellow weights Tailwind's 3%
 attribute attack bonus by 13.5/20 and Radiant Drum's 12% Physical/all-attribute
 attack bonus by 6.5/20. Blue uses 9.5/20 and 10.5/20 respectively. Full uses
 Cloudshear and Radiant Drum at full coverage. These weighted effects do not

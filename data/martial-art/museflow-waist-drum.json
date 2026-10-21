@@ -23,7 +23,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.1 } } }
           }
         ]
       }
@@ -42,7 +42,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.1 } } }
           }
         ]
       },
@@ -66,7 +66,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.1 } } }
           }
         ]
       },
@@ -113,7 +113,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.1 } }
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.1 } } }
           }
         ]
       },
@@ -152,7 +152,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.2 } }
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.2 } } }
           }
         ]
       },
@@ -193,7 +193,7 @@
         "effect": [
           {
             "requirement": [{ "target": "skillTag", "value": "DrumSeries" }],
-            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.3 }, "max": 0.2 } }
+            "effect": { "critDmgBonus": { "formula": { "source": "crit", "multiplier": 0.5, "max": 0.2 } } }
           }
         ]
       },

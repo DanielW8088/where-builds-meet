@@ -46,7 +46,20 @@
     "duration": 15,
     "maxStack": 1,
     "refresh": true,
-    "effect": [{ "effect": { "dmgBonus": 0.06, "healingBonus": 0.06 } }],
+    "effect": [
+      {
+        "effect": {
+          "healingBonus": 0.06,
+          "stat": {
+            "physDmgBonus": 0.06,
+            "bellstrikeDmgBonus": 0.06,
+            "stonesplitDmgBonus": 0.06,
+            "silkbindDmgBonus": 0.06,
+            "bamboocutDmgBonus": 0.06
+          }
+        }
+      }
+    ],
     "showCoverage": true
   },
   "FlowingWind": {
@@ -113,13 +126,19 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "dmgBonus": 0.02,
           "healingBonus": 0.02,
           "physicalAttackBonus": 0.039,
           "bellstrikeAttackBonus": 0.05925,
           "stonesplitAttackBonus": 0.05925,
           "silkbindAttackBonus": 0.05925,
-          "bamboocutAttackBonus": 0.05925
+          "bamboocutAttackBonus": 0.05925,
+          "stat": {
+            "physDmgBonus": 0.02,
+            "bellstrikeDmgBonus": 0.02,
+            "stonesplitDmgBonus": 0.02,
+            "silkbindDmgBonus": 0.02,
+            "bamboocutDmgBonus": 0.02
+          }
         }
       }
     ]
@@ -135,13 +154,19 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "dmgBonus": 0.02,
           "healingBonus": 0.02,
           "physicalAttackBonus": 0.063,
           "bellstrikeAttackBonus": 0.07725,
           "stonesplitAttackBonus": 0.07725,
           "silkbindAttackBonus": 0.07725,
-          "bamboocutAttackBonus": 0.07725
+          "bamboocutAttackBonus": 0.07725,
+          "stat": {
+            "physDmgBonus": 0.02,
+            "bellstrikeDmgBonus": 0.02,
+            "stonesplitDmgBonus": 0.02,
+            "silkbindDmgBonus": 0.02,
+            "bamboocutDmgBonus": 0.02
+          }
         }
       }
     ]
@@ -157,13 +182,19 @@
           { "operator": "not", "operand": [{ "target": "equippedMartialArt", "value": "museflowWaistDrum" }] }
         ],
         "effect": {
-          "dmgBonus": 0.02,
           "healingBonus": 0.02,
           "physicalAttackBonus": 0.12,
           "bellstrikeAttackBonus": 0.12,
           "stonesplitAttackBonus": 0.12,
           "silkbindAttackBonus": 0.12,
-          "bamboocutAttackBonus": 0.12
+          "bamboocutAttackBonus": 0.12,
+          "stat": {
+            "physDmgBonus": 0.02,
+            "bellstrikeDmgBonus": 0.02,
+            "stonesplitDmgBonus": 0.02,
+            "silkbindDmgBonus": 0.02,
+            "bamboocutDmgBonus": 0.02
+          }
         }
       }
     ]

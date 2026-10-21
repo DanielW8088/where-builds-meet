@@ -98,7 +98,7 @@ function bundle(selected: Partial<Record<keyof typeof catalogs, number>> = {}): 
         Hit: {
           name: "Hit",
           castTime: 1,
-          tags: ["MartialArts", "DirectDamage"],
+          tags: ["MartialArts", "MartialArt", "DirectDamage"],
           action: [{ type: "damage", time: 0, phyCoef: 1, attrCoef: 0 }],
         },
         Mark: {
@@ -195,6 +195,27 @@ describe("Dust mechanics", () => {
     expect(hits.map(row => row.actionStates[0].debuffs.get("Candlelight")?.stack ?? 0)).toEqual([
       0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 0,
     ])
+  })
+  it("adds Candlelight to Category 1 and retains it between 3 and 3.1 seconds", () => {
+    const input = bundle()
+    input.stats.allMartialArts = 0.2
+    input.timeline.skills.Hit.tags = ["MartialArts", "DirectDamage"]
+    input.timeline.skills.Hit.castTime = 0
+    input.timeline.rotation.steps = [
+      castStep("Hit"),
+      castStep("Candle"),
+      delayStep(3.05),
+      castStep("Hit"),
+      delayStep(0.1),
+      castStep("Hit"),
+    ]
+    const result = calculateRotationBaseline(input)
+    const hits = result.timeline.filter(row => row.step.skill === "Hit")
+    const amounts = hits.map(row => result.actionBreakdowns[`${row.id}:0`].total)
+    expect(hits[1].actionStates[0].debuffs.has("Candlelight")).toBe(true)
+    expect(hits[2].actionStates[0].debuffs.has("Candlelight")).toBe(false)
+    expect(amounts[1] / amounts[0]).toBeCloseTo(1.3 / 1.2, 10)
+    expect(amounts[2]).toBeCloseTo(amounts[0], 10)
   })
   it.each([
     { tier: 3, count: 2, expected: [0, 1, 1, 2, 2, 3] },
@@ -903,6 +924,25 @@ describe("Dust mechanics", () => {
     input.timeline.rotation.steps = [castStep("MarkSong"), delayStep(3), castStep("Resonance")]
     expect(calculateRotationBaseline(input).metrics.totalDamage).toBeCloseTo(ordinary)
   })
+  it("limits Tang Melody to direct martial-art-skill contexts, including Scarlet Spin Resonance", () => {
+    for (const [skill, tags, eligible] of [
+      ["Probe", ["MartialArts", "MartialArt", "DirectDamage"], true],
+      ["Probe", ["MartialArts", "Light", "DirectDamage"], false],
+      ["Probe", ["MartialArts", "MartialArt", "DOT"], false],
+      ["Resonance", umbrella.Resonance.tags!, true],
+      ["DreamwroughtBubbles", umbrella.DreamwroughtBubbles.tags!, false],
+    ] as const) {
+      const input = bundle()
+      input.timeline.skills.Probe = { castTime: 1, tags: [...tags], action: [{ type: "damage", phyCoef: 1, time: 0 }] }
+      input.timeline.setupEffects.push({ effect: { GuaranteedCrit: true } })
+      input.timeline.rotation.steps = [castStep("Probe")]
+      input.timeline.rotation.name = skill
+      const plain = calculateRotationBaseline(input).metrics.totalDamage
+      input.timeline.initialBuffs = [{ name: "TangMelody", stack: 5 }]
+      const boosted = calculateRotationBaseline(input).metrics.totalDamage
+      expect(boosted / plain).toBeCloseTo(eligible ? 1.6 / 1.5 : 1, 10)
+    }
+  })
   it("applies Tang Melody after hits, rate limits it, caps it, and expires it", () => {
     const input = bundle({ SongOfTang: 0 })
     input.timeline.skills.Hit.castTime = 0.5
@@ -921,7 +961,7 @@ describe("Dust mechanics", () => {
     ]
     expect(stacks(calculateRotationBaseline(enhanced), "TangMelody")).toEqual([0, 1, 2, 3, 4, 5, 5])
   })
-  it("restricts Tang Melody critical damage by HP until T5 and to martial arts", () => {
+  it("restricts Tang Melody critical damage by HP until T5 and to direct martial-art-skill contexts", () => {
     const damage = (tier: number, hp: number, martial = true) => {
       const input = bundle({ SongOfTang: tier })
       input.timeline.rotation.steps = [

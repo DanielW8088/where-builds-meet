@@ -530,3 +530,32 @@ HP restriction removal at T5. Settlement retains the shared replay adjustments.
 | dust-dummy-1-min       |           19 | 79435.57971811047 | 79060.62177416348 |     4766134.783086629 |     4743637.306449808 |
 
 All durations remain 60 seconds; all other preset snapshots are unchanged.
+
+## Reviewed damage bonus corrections (2026-10-21)
+
+The user approved the multiplier audit corrections and these resulting snapshots.
+Soul-Shaken joins Category 1, Cloudshear joins channel damage scales, and
+Candlelight, Blade of Grass, and End of Gale T3 join Category 1. Tang Melody
+uses direct martial-art-skill eligibility; Vulnerable grants 8% plus 10% HP
+damage with zero Qi contribution under the selected layer-0 policy. Base Yi
+River uses Category 1, early Museflow formula caps are enforced, Critical and
+Affinity outcome factors are clamped, and Ripple corrections cover all supported
+PvE targets. See damage-formula.md for the implemented scopes and remaining
+stepped-talent and target-reduction limitations.
+
+| Preset / breakthrough                         |       Previous DPS |       Accepted DPS | Previous total damage | Accepted total damage |
+| --------------------------------------------- | -----------------: | -----------------: | --------------------: | --------------------: |
+| bamboocutDust/dust-dummy-1-min-100pc/18       |  75378.65890896872 |  75052.69588297587 |     4522719.534538123 |     4503161.752978552 |
+| bamboocutDust/dust-dummy-1-min-100pc/19       |  78781.63492472706 |  78440.19900757818 |     4726898.095483623 |     4706411.940454691 |
+| bamboocutDust/dust-dummy-1-min/18             |  75645.22735018363 |  75218.61406855253 |     4538713.641011018 |     4513116.844113152 |
+| bamboocutDust/dust-dummy-1-min/19             |  79060.62177416348 |  78613.83531516723 |     4743637.306449808 |     4716830.118910034 |
+| bellstrikeUmbra/dummy-1-min-38-bb/18          |  95163.45897986703 |  85334.27364913882 |    5709807.5387920225 |     5120056.418948329 |
+| bellstrikeUmbra/dummy-1-min-38-bb/19          | 100119.09485414634 |  89769.16730002478 |     6007145.691248781 |     5386150.038001487 |
+| silkbindWing/wings-dummy-1-min-dawnsun/18     | 43736.632758129155 | 43977.495233684975 |    2624197.9654877493 |    2638649.7140210983 |
+| silkbindWing/wings-dummy-1-min-dawnsun/19     |   45787.3473306048 |  46034.37102098257 |    2747240.8398362882 |     2762062.261258954 |
+| silkbindWing/wings-dummy-1-min-jadebreaker/18 | 59269.205061193956 | 59631.270792308605 |    3556152.3036716375 |    3577876.2475385163 |
+| silkbindWing/wings-dummy-1-min-jadebreaker/19 |  62089.81204533403 | 62462.147083776756 |     3725388.722720042 |    3747728.8250266053 |
+| stonesplitMight/dummy-1-min/18                |  93998.91147957309 |  94833.29806850525 |    5639934.6887743855 |     5689997.884110315 |
+| stonesplitMight/dummy-1-min/19                |  99308.74329065508 |  100190.5834583792 |     5958524.597439305 |     6011435.007502752 |
+
+All durations remain 60 seconds. Other preset snapshots are unchanged.
