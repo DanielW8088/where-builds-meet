@@ -1249,3 +1249,30 @@ Mystic skills, including both area and single-target skills. It does not affect
 martial arts. The exported affixes are 100931001 and 100941001, property 476
 (`ALL_SKILL_QS_ADD`), with rolls from 0.057 to 0.114. Their display names are
 missing in the export; the application labels them All Mystic Skill DMG Boost.
+
+### Ivorybloom critical-heal retention
+
+Ivorybloom grants its four-piece critical-rate, critical-damage, and critical-healing
+bonuses at full HP or for three seconds after any recipient receives a critical
+heal. Every qualifying heal refreshes the deadline, including teammate heals and
+heals performed at full HP. The triggering heal uses its pre-event bonuses.
+The two activation routes grant the same bonus once.
+
+The setup effect's `retainAfterCriticalHealing` metadata names the retained effect
+and supplies its duration; its existing `requirement` remains the ordinary full-HP
+activation route. The combat resolver applies the same nested effect below full HP
+while retained, through the shared action-stat pipeline.
+
+Expected calculations retain probability mass by expiration time. For each heal,
+inactive branches refresh with their unbuffed critical chance and active branches
+with their buffed chance. A group heal's conditional refresh chance is one minus
+the product of each recipient's noncritical chance. Damage and healing are evaluated
+in both states and weighted, rather than multiplying the bonus stats by uptime.
+Sampled runs use the actual independent recipient outcomes and one concrete deadline.
+Expiration occurs at the three-second boundary; another critical heal can start a
+new window at that timestamp. Healing rotations rebuild for comparison variants,
+so changed critical rates, healing, HP, and overheal collectors are resolved again.
+
+Source: normal/layer-zero set 29 in the 2026-10-21 16:50 local datamine export.
+The grey variant retains older full-HP-only wording. Refresh and teammate eligibility
+are confirmed game behavior supplied by the user.

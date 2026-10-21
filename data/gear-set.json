@@ -240,6 +240,7 @@
             }
           },
           {
+            "retainAfterCriticalHealing": { "buff": "Ivorybloom", "duration": 3 },
             "requirement": [{ "target": "selfHPPercentage", "comparison": ">=", "amount": 100 }],
             "effect": {
               "effectiveStat": { "effectiveCritBonus": 0.05 },

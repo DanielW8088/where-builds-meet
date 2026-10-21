@@ -543,8 +543,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 34154.27110890462,
-      "totalDamage": 2049256.2665342772,
+      "dps": 34419.47660004927,
+      "totalDamage": 2065168.596002956,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-max-ib/19": {
@@ -569,8 +569,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 36126.3509325572,
-      "totalDamage": 2167581.055953432,
+      "dps": 36394.89891932632,
+      "totalDamage": 2183693.935159579,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-min-ib/18": {
@@ -595,8 +595,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 34024.37601796653,
-      "totalDamage": 2041462.5610779922,
+      "dps": 34294.68017230815,
+      "totalDamage": 2057680.8103384892,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-min-ib/19": {
@@ -621,8 +621,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 35730.80714074862,
-      "totalDamage": 2143848.4284449173,
+      "dps": 36000.000433415174,
+      "totalDamage": 2160000.0260049105,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-smolder/18": {
@@ -699,8 +699,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 43788.9540968329,
-      "totalDamage": 2627337.245809974,
+      "dps": 43844.29571936671,
+      "totalDamage": 2630657.7431620024,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-max-ib/19": {
@@ -725,8 +725,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 46239.449019446925,
-      "totalDamage": 2774366.9411668153,
+      "dps": 46295.47057296413,
+      "totalDamage": 2777728.2343778475,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-min-ib/18": {
@@ -751,8 +751,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 43683.101666054536,
-      "totalDamage": 2620986.099963272,
+      "dps": 43739.554320807685,
+      "totalDamage": 2624373.259248461,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-min-ib/19": {
@@ -777,8 +777,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 45779.46348725329,
-      "totalDamage": 2746767.8092351975,
+      "dps": 45835.6880067277,
+      "totalDamage": 2750141.280403662,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts-team/18": {
@@ -855,8 +855,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 49006.665014782695,
-      "totalDamage": 2940399.9008869617,
+      "dps": 49329.753525098415,
+      "totalDamage": 2959785.211505905,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-max-ib/19": {
@@ -881,8 +881,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 51736.92621298834,
-      "totalDamage": 3104215.5727793006,
+      "dps": 52063.84377748187,
+      "totalDamage": 3123830.626648912,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-min-ib/18": {
@@ -907,8 +907,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 48467.157855578545,
-      "totalDamage": 2908029.4713347126,
+      "dps": 48796.28441444007,
+      "totalDamage": 2927777.0648664045,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-min-ib/19": {
@@ -933,8 +933,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 49862.40965920838,
-      "totalDamage": 2991744.579552503,
+      "dps": 50190.19817949422,
+      "totalDamage": 3011411.890769653,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts/18": {
@@ -1011,8 +1011,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 44207.25461829743,
-      "totalDamage": 2652435.277097846,
+      "dps": 44530.34197372,
+      "totalDamage": 2671820.5184232,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-max-ib/19": {
@@ -1037,8 +1037,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 46668.00210519777,
-      "totalDamage": 2800080.126311866,
+      "dps": 46994.91860295103,
+      "totalDamage": 2819695.116177062,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-min-ib/18": {
@@ -1063,8 +1063,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 43235.39787405948,
-      "totalDamage": 2594123.872443569,
+      "dps": 43564.52335941963,
+      "totalDamage": 2613871.401565178,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-min-ib/19": {
@@ -1089,8 +1089,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 45295.0319111315,
-      "totalDamage": 2717701.91466789,
+      "dps": 45622.81936233084,
+      "totalDamage": 2737369.1617398504,
       "duration": 60
     },
     "silkbindWing/wings-dummy-1-min-dawnsun/18": {

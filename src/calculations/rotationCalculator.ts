@@ -6,6 +6,7 @@ import type { CharacterStats, EnemyProfile, WeaponId } from "@/types"
 import { attunementDamageMultiplier, attunementPenetrationMultiplier } from "./attunementStats"
 import { finishCalculationPhase, startCalculationPhase } from "./calculationBenchmark"
 import { DEFAULT_TARGET_HP_RATIO, normalizeEnemyCount, resolveTargetType } from "./combatDefaults"
+import { CriticalHealingBuffTracker, criticalHealingBuffFor, type CriticalHealingBuff } from "./criticalHealingBuff"
 import {
   calculateDamageBreakdown,
   calculateDamageWithAdditiveResponse,
@@ -109,6 +110,7 @@ export type RotationDamageEntry = {
   activeBuffStacks?: Record<string, number>
   activeDebuffStacks?: Record<string, number>
   replay?: { sourceDamage: number; coef: number; sourceActionIds?: string[] }
+  criticalHealingBuff?: CriticalHealingBuff
   hawkwing?: HawkwingEffect
   insightfulStrike?: InsightfulStrikeEffect
   seasonalEdge?: SeasonalEdgeEntryState
@@ -256,6 +258,7 @@ function calculateRotationDamageEntry(
   } else if (entry.action.type === "heal") {
     const healingContext = {
       ...entry.context,
+      effects: [...entry.context.effects, ...additionalEffects],
       unconditionalDamageEffects: addUnconditionalDamageEffects(
         entry.context.unconditionalDamageEffects,
         outcomeEffects,
@@ -322,7 +325,20 @@ function blendDamageBreakdowns(
             inactive.outcomeRates.affinity * inactiveProbability + active.outcomeRates.affinity * activeProbability,
         }
       : undefined
+  const recipientHealing = inactive.recipientHealing?.map((healing, index) => {
+    const other = active.recipientHealing![index]
+    const blend = (field: "physical" | "silkbind" | "total" | "normalRate" | "criticalRate") =>
+      (healing[field] ?? 0) * inactiveProbability + (other[field] ?? 0) * activeProbability
+    return {
+      physical: blend("physical"),
+      silkbind: blend("silkbind"),
+      total: blend("total"),
+      normalRate: blend("normalRate"),
+      criticalRate: blend("criticalRate"),
+    }
+  })
   return {
+    ...(recipientHealing ? { recipientHealing, healing: combineHealingBreakdowns(recipientHealing) } : {}),
     physical: weighted("physical"),
     bellstrike: weighted("bellstrike"),
     stonesplit: weighted("stonesplit"),
@@ -368,6 +384,7 @@ export type ResolvedRotationDamage = {
   selfRecovery?: number
   expectedBuffStacks?: Record<string, number>
   outcomeEffects?: UnconditionalDamageEffects
+  expectedCriticalHealingBuff?: { probability: number; effects: EditableObject[] }
   expectedConcentration?: {
     probability: number
     activeEffects: UnconditionalDamageEffects
@@ -384,6 +401,8 @@ function createRotationDamageResolver(
   const simulatedHawkwing = random ? new SimulatedHawkwingTracker() : undefined
   const expectedInsightfulStrike = random ? undefined : new ExpectedInsightfulStrikeTracker()
   const simulatedInsightfulStrike = random ? new SimulatedInsightfulStrikeTracker() : undefined
+  const healingBuffTracker = new CriticalHealingBuffTracker()
+  let healingBuffExpiry = -Infinity
   const simulatedSeasons = new Map<string, string>()
   const concentrationAt = (effect: InsightfulStrikeEffect, time: number) =>
     random
@@ -473,20 +492,28 @@ function createRotationDamageResolver(
           expectedBuffStacks[buff] = (expectedBuffStacks[buff] ?? 0) + outcome.weight
         })
       })
-    const calculateWithSeason = (
+    const calculateWithSeasonBase = (
       baseOutcomeEffects: UnconditionalDamageEffects,
       directAffinityBonus: number,
+      additionalEffects: EditableObject[] = [],
     ): RotationActionBreakdown => {
       const outcomes = entry.seasonalEdge?.outcomes
       if (!outcomes?.length || entry.action.type !== "damage" || entry.replay)
-        return calculateRotationDamageEntry(entry, baseOutcomeEffects, directAffinityBonus, random, [], preparedDamage)
+        return calculateRotationDamageEntry(
+          entry,
+          baseOutcomeEffects,
+          directAffinityBonus,
+          random,
+          additionalEffects,
+          preparedDamage,
+        )
       if (random) {
         return calculateRotationDamageEntry(
           entry,
           baseOutcomeEffects,
           directAffinityBonus,
           random,
-          effectsForSeasonalOutcome(entry.context, selectedSeasonalOutcome!),
+          [...effectsForSeasonalOutcome(entry.context, selectedSeasonalOutcome!), ...additionalEffects],
           preparedDamage,
         )
       }
@@ -505,13 +532,39 @@ function createRotationDamageResolver(
           baseOutcomeEffects,
           directAffinityBonus,
           undefined,
-          effects,
+          [...effects, ...additionalEffects],
           preparedDamage,
         )
         combined = combined ? blendDamageBreakdowns(combined, current, weight / (combinedWeight + weight)) : current
         combinedWeight += weight
       })
       return combined!
+    }
+    const healingBuff = entry.criticalHealingBuff
+    let retainedProbability = 0
+    if (healingBuff) {
+      retainedProbability = random ? Number(healingBuffExpiry > tick) : healingBuffTracker.probability(tick)
+      expectedBuffStacks[healingBuff.name] = (entry.context.currentHPRatio ?? 1) >= 1 ? 1 : retainedProbability
+    }
+    // The ordinary requirement already supplies the bonus at full HP.
+    const bypassProbability = (entry.context.currentHPRatio ?? 1) >= 1 ? 0 : retainedProbability
+    let inactiveHealing: RotationActionBreakdown | undefined
+    let activeHealing: RotationActionBreakdown | undefined
+    const calculateWithSeason = (effects: UnconditionalDamageEffects, directAffinity: number) => {
+      if (!healingBuff) return calculateWithSeasonBase(effects, directAffinity)
+      const active = () => calculateWithSeasonBase(effects, directAffinity, healingBuff.effects)
+      if (random) return bypassProbability ? active() : calculateWithSeasonBase(effects, directAffinity)
+      // Heals need both conditional rates even when one state currently has zero mass.
+      const needsRates = entry.action.type === "heal"
+      const inactive =
+        bypassProbability < 1 || needsRates ? calculateWithSeasonBase(effects, directAffinity) : undefined
+      let enabled: RotationActionBreakdown | undefined
+      if (bypassProbability > 0 || needsRates) enabled = (entry.context.currentHPRatio ?? 1) >= 1 ? inactive : active()
+      inactiveHealing = inactive
+      activeHealing = enabled
+      if (bypassProbability === 0) return inactive!
+      if (bypassProbability === 1) return enabled!
+      return blendDamageBreakdowns(inactive!, enabled!, bypassProbability)
     }
     let inactiveBreakdown: RotationActionBreakdown | undefined
     let activeBreakdown: RotationActionBreakdown | undefined
@@ -536,6 +589,16 @@ function createRotationDamageResolver(
       if (!random) {
         if (concentrationActive) activeBreakdown = breakdown
         else inactiveBreakdown = breakdown
+      }
+    }
+    if (healingBuff && breakdown.recipientHealing) {
+      if (random) {
+        if (breakdown.recipientHealing.some(healing => healing.outcome === "critical"))
+          healingBuffExpiry = tick + healingBuff.durationTicks
+      } else {
+        const chance = (resolved: RotationActionBreakdown | undefined) =>
+          1 - (resolved?.recipientHealing ?? []).reduce((none, healing) => none * (1 - (healing.criticalRate ?? 0)), 1)
+        healingBuffTracker.refresh(tick, healingBuff.durationTicks, chance(inactiveHealing), chance(activeHealing))
       }
     }
     if (!entry.replay && breakdown.total > 0) {
@@ -580,6 +643,9 @@ function createRotationDamageResolver(
       entry,
       breakdown,
       ...(selfRecovery > 0 ? { selfRecovery } : {}),
+      ...(healingBuff
+        ? { expectedCriticalHealingBuff: { probability: bypassProbability, effects: healingBuff.effects } }
+        : {}),
       ...(Object.keys(expectedBuffStacks).length ? { expectedBuffStacks, outcomeEffects } : {}),
       ...(!random && concentrationProbability !== undefined
         ? {
@@ -1554,6 +1620,7 @@ function createTimelineEntryBuilder(
   const rules = overrides.innerWayRules ?? input.innerWayRules
   const conditions = new Set(overrides.innerWayConditions ?? input.innerWayConditions)
   let setupEffects = overrides.setupEffects ?? input.setupEffects
+  const criticalHealingBuff = criticalHealingBuffFor(setupEffects)
   const hawkwing = hawkwingEffectFor(setupEffects, input.effectDefinitions)
   const insightfulStrike = insightfulStrikeEffectFor(rules, input.effectDefinitions)
   const seasonalEdge = seasonalEdgeEffectFor(rules, input.effectDefinitions)
@@ -1939,6 +2006,7 @@ function createTimelineEntryBuilder(
           ...trackedEffectMetadata(debuffs).stacks,
           ...("expectedDebuffStacks" in actionState ? actionState.expectedDebuffStacks : {}),
         },
+        ...(criticalHealingBuff ? { criticalHealingBuff } : {}),
         ...(hawkwing ? { hawkwing } : {}),
         ...(insightfulStrike ? { insightfulStrike } : {}),
         ...(seasonalEdge
@@ -2214,7 +2282,11 @@ function baselineRateInvariant(baseline: RotationSimulationBaseline) {
         .get(baseline)
         ?.every(
           ({ entry }) =>
-            !entry.hawkwing && !entry.insightfulStrike && !entry.seasonalEdge && !entry.context.expectedEffects?.length,
+            !entry.criticalHealingBuff &&
+            !entry.hawkwing &&
+            !entry.insightfulStrike &&
+            !entry.seasonalEdge &&
+            !entry.context.expectedEffects?.length,
         ),
     )
     rateInvariantBaselines.set(baseline, independent)
@@ -2343,41 +2415,54 @@ export function calculateRotationBaseline(bundle: RotationSimulationBundle): Rot
   const actionBreakdowns = Object.fromEntries(
     resolvedSequence
       .filter(({ entry }) => entry.id)
-      .map(({ entry, breakdown, expectedBuffStacks, outcomeEffects, expectedConcentration }) => {
-        rawBaselineDamage += breakdown.total
-        baselineHealing += breakdown.healing?.total ?? 0
-        const additiveResponse = takeAdditiveDamageBonusResponse(breakdown)
-        const buffedDamageBySource = Object.fromEntries(
-          (entry.replay ? [] : (entry.attributionContexts ?? []))
-            .map(({ sourceRowId, context }) => {
-              const damageStartedAt = import.meta.env.DEV ? startCalculationPhase() : 0
-              const reusedDamage =
-                !expectedConcentration && !entry.seasonalEdge?.outcomes?.length
-                  ? additiveResponse?.(contextWithOutcomeEffects(context, outcomeEffects, 0))
-                  : undefined
-              const counterfactualDamage =
-                reusedDamage ??
-                calculateExpectedOutcomeDamage(
-                  entry.action,
-                  context,
-                  outcomeEffects,
-                  expectedConcentration,
-                  entry.seasonalEdge,
-                ).total
-              if (import.meta.env.DEV) finishCalculationPhase("damageCalculation", damageStartedAt)
-              return [sourceRowId, breakdown.total - counterfactualDamage]
-            })
-            .filter(([, damage]) => Math.abs(damage as number) > 1e-9),
-        )
-        return [
-          entry.id!,
-          {
-            ...breakdown,
-            ...(Object.keys(buffedDamageBySource).length ? { buffedDamageBySource } : {}),
-            ...(expectedBuffStacks ? { expectedBuffStacks } : {}),
-          },
-        ]
-      }),
+      .map(
+        ({
+          entry,
+          breakdown,
+          expectedBuffStacks,
+          outcomeEffects,
+          expectedConcentration,
+          expectedCriticalHealingBuff,
+        }) => {
+          rawBaselineDamage += breakdown.total
+          baselineHealing += breakdown.healing?.total ?? 0
+          const additiveResponse = takeAdditiveDamageBonusResponse(breakdown)
+          const buffedDamageBySource = Object.fromEntries(
+            (entry.replay ? [] : (entry.attributionContexts ?? []))
+              .map(({ sourceRowId, context }) => {
+                const damageStartedAt = import.meta.env.DEV ? startCalculationPhase() : 0
+                const reusedDamage =
+                  !expectedCriticalHealingBuff && !expectedConcentration && !entry.seasonalEdge?.outcomes?.length
+                    ? additiveResponse?.(contextWithOutcomeEffects(context, outcomeEffects, 0))
+                    : undefined
+                const calculateCounterfactual = (effects: EditableObject[] = []) =>
+                  calculateExpectedOutcomeDamage(
+                    entry.action,
+                    { ...context, effects: [...context.effects, ...effects] },
+                    outcomeEffects,
+                    expectedConcentration,
+                    entry.seasonalEdge,
+                  ).total
+                const probability = expectedCriticalHealingBuff?.probability ?? 0
+                const counterfactualDamage =
+                  reusedDamage ??
+                  calculateCounterfactual() * (1 - probability) +
+                    (probability > 0 ? calculateCounterfactual(expectedCriticalHealingBuff!.effects) * probability : 0)
+                if (import.meta.env.DEV) finishCalculationPhase("damageCalculation", damageStartedAt)
+                return [sourceRowId, breakdown.total - counterfactualDamage]
+              })
+              .filter(([, damage]) => Math.abs(damage as number) > 1e-9),
+          )
+          return [
+            entry.id!,
+            {
+              ...breakdown,
+              ...(Object.keys(buffedDamageBySource).length ? { buffedDamageBySource } : {}),
+              ...(expectedBuffStacks ? { expectedBuffStacks } : {}),
+            },
+          ]
+        },
+      ),
   )
   const baselineDamage =
     rawBaselineDamage - mysticDamageInResolvedSequence(resolvedSequence) * (1 - mysticVitalityDamageScale)

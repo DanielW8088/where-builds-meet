@@ -616,3 +616,34 @@ Ivorybloom's full-HP bonus is active.
 All existing accepted cases remain unchanged. Exact DPS, total damage, and
 duration are recorded in the snapshot JSON; all sixteen added cases last
 60 seconds.
+
+## Ivorybloom critical-heal retention, 2026-10-21
+
+The user approved these sixteen snapshot updates after reviewing the DPS changes.
+Ivorybloom now retains its four-piece bonuses for three seconds after critically
+healing any recipient, refreshing on further critical heals. The full-HP route
+remains active independently and never doubles the bonus. Expected calculations
+track separate active/inactive refresh chances and expiration probabilities;
+sampled runs use actual recipient outcomes.
+
+All affected rotations last 60 seconds. Total damage therefore changes in the
+same proportion as DPS. Other accepted cases remain unchanged within the guard.
+
+| Snapshot                                                                 |       Previous DPS |       Accepted DPS |   Change |
+| ------------------------------------------------------------------------ | -----------------: | -----------------: | -------: |
+| `silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-max-ib/18` | 34154.271108904621 | 34419.476600049267 | +0.7765% |
+| `silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-max-ib/19` | 36126.350932557201 | 36394.898919326319 | +0.7434% |
+| `silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-min-ib/18` | 34024.376017966533 | 34294.680172308152 | +0.7944% |
+| `silkbindDeluge/dummy-1-min-regular-fire/deluge-fully-relayed-min-ib/19` | 35730.807140748620 | 36000.000433415174 | +0.7534% |
+| `silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-max-ib/18`      | 43788.954096832902 | 43844.295719366710 | +0.1264% |
+| `silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-max-ib/19`      | 46239.449019446925 | 46295.470572964128 | +0.1212% |
+| `silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-min-ib/18`      | 43683.101666054536 | 43739.554320807685 | +0.1292% |
+| `silkbindDeluge/dummy-1-min-smolder/deluge-fully-relayed-min-ib/19`      | 45779.463487253292 | 45835.688006727702 | +0.1228% |
+| `silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-max-ib/18`     | 49006.665014782695 | 49329.753525098415 | +0.6593% |
+| `silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-max-ib/19`     | 51736.926212988343 | 52063.843777481867 | +0.6319% |
+| `silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-min-ib/18`     | 48467.157855578545 | 48796.284414440073 | +0.6791% |
+| `silkbindDeluge/dummy-1-min-wts-team/deluge-fully-relayed-min-ib/19`     | 49862.409659208381 | 50190.198179494218 | +0.6574% |
+| `silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-max-ib/18`          | 44207.254618297433 | 44530.341973720002 | +0.7308% |
+| `silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-max-ib/19`          | 46668.002105197767 | 46994.918602951031 | +0.7005% |
+| `silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-min-ib/18`          | 43235.397874059483 | 43564.523359419632 | +0.7612% |
+| `silkbindDeluge/dummy-1-min-wts/deluge-fully-relayed-min-ib/19`          | 45295.031911131497 | 45622.819362330840 | +0.7237% |
