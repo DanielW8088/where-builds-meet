@@ -14,9 +14,6 @@ export const snapshotBuildOverrides: Record<string, string> = {
   "stonesplitStrength/pure-dummy-1-min-infinite-vitality": "pure-fully-relayed-min",
   "stonesplitStrength/mixed-dummy-1-min-double-stab": "mixed-fully-relayed-double-min",
 }
-export const additionalSnapshotBuilds: Record<string, string[]> = {
-  silkbindDeluge: ["deluge-fully-relayed-min-ib", "deluge-fully-relayed-max-ib"],
-}
 export const dpsSnapshotEnvironment = {
   breakthrough: "17",
   ping: 40,
@@ -73,22 +70,40 @@ export async function loadDpsSnapshotFixtures(breakthrough = dpsSnapshotEnvironm
   return cases
 }
 
-/** Accepted regression cases cover both current breakthroughs for every rotation. */
+/** Accepted regression cases cover every build/rotation pair at both current breakthroughs. */
 export async function loadDpsSnapshotCases() {
   const levels = await Promise.all(["18", "19"].map(breakthrough => loadDpsSnapshotFixtures(breakthrough)))
+  const groups = [...new Set(levels.flat().map(entry => entry.buildGroup))]
+  const buildsByGroup = new Map(
+    await Promise.all(
+      groups.map(async group => {
+        const directory = new URL("build/" + group + "/", dataRoot)
+        const files = (await readdir(directory)).filter(file => file.endsWith(".json")).sort()
+        const builds = await Promise.all(
+          files.map(
+            async file =>
+              JSON.parse(await readFile(new URL(file, directory), "utf8")) as {
+                id: string
+                martialArts: Environment["martialArts"]
+              },
+          ),
+        )
+        if (!builds.length) throw new Error("No preset builds found for DPS snapshots: " + group)
+        return [group, builds] as const
+      }),
+    ),
+  )
   return levels.flatMap(cases =>
-    cases.flatMap(entry => {
-      const id = entry.id + "/" + entry.fixture.breakthrough
-      return [
-        { ...entry, id },
-        ...(additionalSnapshotBuilds[entry.pathId] ?? []).map(build =>
+    cases.flatMap(entry =>
+      buildsByGroup
+        .get(entry.buildGroup)!
+        .map(build =>
           Object.assign({}, entry, {
-            id: entry.id + "/" + build + "/" + entry.fixture.breakthrough,
-            fixture: { ...entry.fixture, build },
+            id: entry.id + "/" + build.id + "/" + entry.fixture.breakthrough,
+            fixture: { ...entry.fixture, build: build.id, martialArts: build.martialArts },
           }),
         ),
-      ]
-    }),
+    ),
   )
 }
 export function selectDpsSnapshotUpdates(raw: string, caseIds: string[]): string[] {

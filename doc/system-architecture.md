@@ -2109,8 +2109,8 @@ from data.
   Bamboocut martial arts, but Void/Formless Attack folding currently remains
   Stonesplit-only.
 - DMG Bonus Category 2 is specified but not implemented.
-- Release deployment runs deterministic DPS snapshot checks for every non-empty preset,
-  including WIP paths. Ordinary builds run preset, localization, behavioral-test, type, and
+- Release deployment runs deterministic DPS snapshot checks for every build paired with every
+  non-empty rotation in its path at breakthroughs 18 and 19, including WIP paths. Ordinary builds run preset, localization, behavioral-test, type, and
   production-bundle verification without the accepted-snapshot comparison.
   Any difference beyond 4 ULPs in DPS, total damage, or duration, in either direction, requires review
   before release; see [DPS snapshots](dps-snapshots.md). Focused probes cover individual mechanics.

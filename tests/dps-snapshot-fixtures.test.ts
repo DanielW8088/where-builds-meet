@@ -4,15 +4,11 @@ import { assert, describe, expect, it } from "vitest"
 
 import { resolvePing } from "@/calculations/combatDefaults"
 
-import {
-  additionalSnapshotBuilds,
-  loadDpsSnapshotCases,
-  selectDpsSnapshotUpdates,
-} from "./helpers/dps-snapshot-fixtures"
+import { loadDpsSnapshotCases, selectDpsSnapshotUpdates } from "./helpers/dps-snapshot-fixtures"
 import { compareDpsSnapshots } from "./helpers/dps-snapshot-guard.mjs"
 
 describe("rotation DPS snapshot fixtures", () => {
-  it("discovers every non-empty preset with a compatible build", async () => {
+  it("discovers every build paired with every non-empty rotation at both breakthroughs", async () => {
     const cases = await loadDpsSnapshotCases()
     const snapshots = JSON.parse(await readFile("tests/snapshots/rotation-dps.json", "utf8"))
     const paths = JSON.parse(await readFile("data/path.json", "utf8"))
@@ -23,6 +19,15 @@ describe("rotation DPS snapshot fixtures", () => {
         .filter(file => file.endsWith(".json"))
         .map(async file => ({ file, rotation: JSON.parse(await readFile("data/rotation/" + file, "utf8")) })),
     )
+    const buildFiles = await readdir("data/build", { recursive: true })
+    const builds = await Promise.all(
+      buildFiles
+        .filter(file => file.endsWith(".json"))
+        .map(async file => ({
+          group: file.replaceAll("\\", "/").split("/")[0],
+          build: JSON.parse(await readFile("data/build/" + file, "utf8")),
+        })),
+    )
     for (const { file, rotation } of rotations) {
       assert(Number.isFinite(rotation.ping), "Preset must store its own ping: " + file)
       assert(resolvePing(rotation.ping, 85) === rotation.ping, "Preset ping must ignore Settings: " + file)
@@ -31,9 +36,8 @@ describe("rotation DPS snapshot fixtures", () => {
       const pathId = Object.keys(paths).find(id => paths[id].buildGroup === group)
       assert(pathId !== undefined, "Rotation has no path: " + file)
       const rotationId = pathId + "/" + file.replaceAll("\\", "/").split("/").at(-1)!.slice(0, -5)
-      expected.push(rotationId + "/18", rotationId + "/19")
-      for (const build of additionalSnapshotBuilds[pathId] ?? [])
-        expected.push(rotationId + "/" + build + "/18", rotationId + "/" + build + "/19")
+      for (const { build } of builds.filter(entry => entry.group === group))
+        expected.push(rotationId + "/" + build.id + "/18", rotationId + "/" + build.id + "/19")
     }
     expect(cases.map(c => c.id).sort()).toEqual(expected.sort())
     await Promise.all(

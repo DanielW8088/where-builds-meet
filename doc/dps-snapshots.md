@@ -9,30 +9,27 @@ retaining its coverage, selector, and comparison-algorithm tests.
 ## Fixture selection
 
 `tests/helpers/dps-snapshot-fixtures.ts` discovers rotation JSON files from each
-path's existing rotation directory. Cases use stable
-`<pathId>/<rotationId>/<breakthrough>` keys, with one case each for breakthroughs
-18 and 19. Breakthrough 17 is no longer part of the accepted snapshots.
-Empty planner rotations are excluded. A durable coverage test checks all
-non-empty rotation files against this catalog. The release guard compares the
-catalog with accepted baseline keys, so new or removed presets cannot silently
-escape review. A missing accepted baseline does not block ordinary builds.
+path's existing rotation directory and every build JSON in the same build group.
+Every non-empty rotation is paired with every build in that group, at breakthroughs
+18 and 19, including builds with different weapon configurations. The production
+bundle uses the build's configured weapons and the rotation's recorded actions.
+Cases use stable `<pathId>/<rotationId>/<buildId>/<breakthrough>` keys, so changing
+a path's default build does not change the snapshot catalog or calculation inputs.
+Empty planner rotations are excluded. The coverage test independently enumerates
+the build/rotation cross product. The release guard detects missing and obsolete
+baseline keys. Rotation and path update selectors include every matching build;
+including a build ID selects only that build's cases.
 
-Each rotation uses its path's default build unless an explicit build override
-selects its corresponding variant: regular Kite uses the non-BP build, pure
-Strength uses the pure build, and Double Stab uses the double-min build. The
-remaining variants retain the path default. This covers all non-empty presets,
-not every build/rotation combination.
-
-Deluge additionally covers both fully relayed Ivorybloom builds on all four
-rotations at breakthroughs 18 and 19. These additional cases use
-`<pathId>/<rotationId>/<buildId>/<breakthrough>` keys, preserving the existing
-Etherwrath baseline keys. Rotation and path update selectors include their
-additional builds; including a build ID selects only that build's cases.
+On October 21, 2026, the user approved expanding coverage to every build/rotation
+pair and accepting their current calculated values. This replaces the previous
+default-build cases and Deluge-only additional build cases. The shared behavioral
+fixture loader still selects defaults and explicit rotation overrides; only the
+release case loader expands to all builds.
 
 Current snapshot calculations use breakthroughs 18 and 19, each rotation's saved ping (40 ms
 by default; 30 ms for Might), Simmering Fish Slices,
 Fire Divinecraft, no Script, and no global or skill overrides. The rotation
-supplies its martial arts and encounter flags; the build supplies its gear,
+supplies its actions and encounter flags; the build supplies its weapons, gear,
 Inner Ways, and sets. Fixtures are passed to `src/application/graduation.ts`'s
 `buildPresetRotationBundle` and `calculateRotationBaseline`, the production
 calculation pipeline. No browser preferences or duplicate damage formulas enter
