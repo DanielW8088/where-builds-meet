@@ -409,6 +409,12 @@ and WTS in these checks but loses on regular-fire; Etherwrath remains the defaul
 Stored Rainwhisper preset selections and local preset names migrate to the
 corresponding Ivorybloom preset on load. Custom builds and shared gear are retained.
 
+Deluge's graduate benchmark is Full Max Build Ivorybloom. It uses the fully
+relayed max preset's setup and affix choices with each base and additional affix
+raised to its tier's full, non-relayed maximum. Attunements retain their existing
+maximum values. The retired Full Min Build Etherwrath selection migrates to this
+graduate preset, preserving local names and custom builds.
+
 Default builds live in path-grouped `data/build/**/*.json` files. Vite eagerly discovers every JSON
 file beneath that root, so adding a preset does not require a TypeScript import. Presets
 are grouped by path (for example, `stonesplit-strength/` and `stonesplit-might/`), while the

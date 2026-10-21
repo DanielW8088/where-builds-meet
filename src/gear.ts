@@ -956,6 +956,8 @@ export function mergeImportedBuildState(
 
 function currentPresetId(id: string) {
   switch (id) {
+    case "deluge-full-min-ew":
+      return "deluge-full-max-ib"
     case "deluge-fully-relayed-min-rw":
       return "deluge-fully-relayed-min-ib"
     case "deluge-fully-relayed-max-rw":

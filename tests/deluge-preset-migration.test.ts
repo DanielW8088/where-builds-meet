@@ -4,9 +4,11 @@ import { afterEach, expect, it } from "vitest"
 import { activeBuildStorageKey, buildListStorageKey, loadBuildState } from "@/gear"
 
 afterEach(() => localStorage.clear())
-it.each(["min", "max"])("migrates the retired Rainwhisper %s preset selection and preserves custom builds", mode => {
-  const oldId = `deluge-fully-relayed-${mode}-rw`
-  const newId = `deluge-fully-relayed-${mode}-ib`
+it.each([
+  ["deluge-fully-relayed-min-rw", "deluge-fully-relayed-min-ib"],
+  ["deluge-fully-relayed-max-rw", "deluge-fully-relayed-max-ib"],
+  ["deluge-full-min-ew", "deluge-full-max-ib"],
+])("migrates retired preset %s to %s and preserves custom builds", (oldId, newId) => {
   localStorage.setItem(
     buildListStorageKey,
     JSON.stringify({
