@@ -1,5 +1,5 @@
 {
-  "name": "Dummy 1 Min 38 BB",
+  "name": "Dummy 1 Min 39 BB",
   "martialArts": ["strategicSword", "heavenquakerSpear"],
   "ping": 40,
   "targetType": "Dummy",
@@ -72,6 +72,9 @@
     { "type": "skill", "skill": "SweepAll" },
     { "type": "skill", "skill": "Deflect" },
     { "type": "skill", "skill": "InnerBalanceStrikeIII1" },
+    { "type": "skill", "skill": "SecondTrackSlash2Casts1Hit" },
+    { "type": "skill", "skill": "Deflect" },
+    { "type": "skill", "skill": "InnerTrackSlash" },
     { "type": "event", "event": "BattleEnd", "startTime": 60 },
     { "type": "event", "event": "Qi", "startTime": 11.622243413854541, "targetQiRatio": 0.5999 },
     { "type": "event", "event": "Qi", "startTime": 17.433365120781808, "targetQiRatio": 0.3999 },

@@ -643,7 +643,7 @@ describe("Umbra draft behavior", () => {
       row => row.kind === "rotation" && row.step.skill === "InnerBalanceStrikeIII2",
     )!
     expect(bursts.filter(row => row.sourceRowId === firstSpecial.id)).toHaveLength(2)
-    expect(bursts).toHaveLength(38)
+    expect(bursts).toHaveLength(39)
     const specialRefunds = result.timeline.flatMap(row =>
       row.step.skill === "StrategicSwordSpecialBloodBurst"
         ? row.actions.filter(
