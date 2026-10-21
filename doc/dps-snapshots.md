@@ -559,3 +559,25 @@ stepped-talent and target-reduction limitations.
 | stonesplitMight/dummy-1-min/19                |  99308.74329065508 |  100190.5834583792 |     5958524.597439305 |     6011435.007502752 |
 
 All durations remain 60 seconds. Other preset snapshots are unchanged.
+
+## Reviewed Umbra rotation endings (2026-10-21)
+
+The user approved extending both dummy presets through their remaining in-battle
+hits and adding the Dragon Head variant. Dummy 1 Min 39 BB retains the
+`dummy-1-min-38-bb` internal ID so saved preset selections continue to resolve.
+Its ending continues Special 1 into Second Track Slash [2 Casts, 1 Hit], Deflect,
+and the in-battle portion of Inner Track Slash.
+
+Dummy 1 Min 37 BB DH uses Special 2, Deflect, Special 1, Second Track Slash
+[2 Casts, 1 Hit], and Deflect after the second flute. Its first two full
+Sober Sorrow casts use the five-hit cancel; the last remains full. Dragon Head
+hits during Exhausted, Smolder stays connected, and the final charge follow-up
+lands at 59.73390950863632 seconds. The authored Qi break follows the final
+Special 1 hit in the changed post-flute sequence. Both presets measure 60 seconds.
+
+| Preset / breakthrough                   |      Previous DPS |      Accepted DPS | Previous total damage | Accepted total damage |
+| --------------------------------------- | ----------------: | ----------------: | --------------------: | --------------------: |
+| bellstrikeUmbra/dummy-1-min-37-bb-dh/18 |        New preset | 89702.39142504496 |            New preset |    5382143.4855026975 |
+| bellstrikeUmbra/dummy-1-min-37-bb-dh/19 |        New preset | 94326.03108977214 |            New preset |     5659561.865386328 |
+| bellstrikeUmbra/dummy-1-min-38-bb/18    | 85334.27364913882 |  87699.8570634879 |     5120056.418948329 |     5261991.423809274 |
+| bellstrikeUmbra/dummy-1-min-38-bb/19    | 89769.16730002478 | 92262.43970756652 |     5386150.038001487 |     5535746.382453991 |

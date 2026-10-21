@@ -365,6 +365,58 @@
       "totalDamage": 4925055.741447238,
       "duration": 60
     },
+    "bellstrikeUmbra/dummy-1-min-37-bb-dh/18": {
+      "fixture": {
+        "build": "umbra-fully-relayed",
+        "rotation": "dummy-1-min-37-bb-dh",
+        "martialArts": ["strategicSword", "heavenquakerSpear"],
+        "breakthrough": "18",
+        "ping": 40,
+        "food": "SimmeringFishSlices",
+        "divinecraft": "Fire",
+        "script": "None",
+        "globalDebuffs": {
+          "draught": "none",
+          "phantomChime": false,
+          "qiImbalance": false,
+          "soulShaken": false,
+          "vulnerable": false,
+          "fearfulBlade": false,
+          "qingyisCharm": "none",
+          "floatingGrace": "none",
+          "silkbindWings": "none"
+        }
+      },
+      "dps": 89702.39142504496,
+      "totalDamage": 5382143.4855026975,
+      "duration": 60
+    },
+    "bellstrikeUmbra/dummy-1-min-37-bb-dh/19": {
+      "fixture": {
+        "build": "umbra-fully-relayed",
+        "rotation": "dummy-1-min-37-bb-dh",
+        "martialArts": ["strategicSword", "heavenquakerSpear"],
+        "breakthrough": "19",
+        "ping": 40,
+        "food": "SimmeringFishSlices",
+        "divinecraft": "Fire",
+        "script": "None",
+        "globalDebuffs": {
+          "draught": "none",
+          "phantomChime": false,
+          "qiImbalance": false,
+          "soulShaken": false,
+          "vulnerable": false,
+          "fearfulBlade": false,
+          "qingyisCharm": "none",
+          "floatingGrace": "none",
+          "silkbindWings": "none"
+        }
+      },
+      "dps": 94326.03108977214,
+      "totalDamage": 5659561.865386328,
+      "duration": 60
+    },
     "bellstrikeUmbra/dummy-1-min-38-bb/18": {
       "fixture": {
         "build": "umbra-fully-relayed",
@@ -387,8 +439,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 85334.27364913882,
-      "totalDamage": 5120056.418948329,
+      "dps": 87699.8570634879,
+      "totalDamage": 5261991.423809274,
       "duration": 60
     },
     "bellstrikeUmbra/dummy-1-min-38-bb/19": {
@@ -413,8 +465,8 @@
           "silkbindWings": "none"
         }
       },
-      "dps": 89769.16730002478,
-      "totalDamage": 5386150.038001487,
+      "dps": 92262.43970756652,
+      "totalDamage": 5535746.382453991,
       "duration": 60
     },
     "silkbindDeluge/dummy-1-min-regular-fire/18": {
