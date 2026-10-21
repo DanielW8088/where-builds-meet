@@ -10,13 +10,7 @@ type Messages = LocaleMessages
 export { developmentModeStorageKey }
 const fallbackManifest: LocaleManifest = { default: "en", locales: ["en"] }
 const wipLocales = new Set<string>()
-const localeDisplayNames: Record<string, string> = {
-  en: "English",
-  "zh-Hant": "繁體中文",
-  "zh-Hans": "简体中文",
-  ko: "한국어",
-}
-const traditionalChineseRegions = new Set(["tw", "hk", "mo"])
+const localeDisplayNames: Record<string, string> = { en: "English", "zh-Hant": "繁體中文", ko: "한국어" }
 
 let manifest = fallbackManifest
 let activeLocale = fallbackManifest.default
@@ -55,19 +49,10 @@ function availableLocale(candidate: string | null | undefined) {
   return supported && localeAvailable(supported) ? supported : undefined
 }
 
-// Browsers report Chinese by region (zh-CN, zh-TW) or script (zh-Hans-CN); the catalogs are keyed by script.
-function chineseScriptLocale(candidate: string) {
-  const [language, ...subtags] = candidate.toLowerCase().split("-")
-  if (language !== "zh") return undefined
-  if (subtags.includes("hant")) return "zh-Hant"
-  if (subtags.includes("hans")) return "zh-Hans"
-  return subtags.some(subtag => traditionalChineseRegions.has(subtag)) ? "zh-Hant" : "zh-Hans"
-}
-
 function browserLocale() {
   const candidates = navigator.languages?.length ? navigator.languages : [navigator.language]
   for (const candidate of candidates) {
-    const exact = availableLocale(candidate) ?? availableLocale(chineseScriptLocale(candidate))
+    const exact = availableLocale(candidate)
     if (exact) return exact
     const base = availableLocale(candidate.split("-")[0])
     if (base) return base
