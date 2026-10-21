@@ -184,7 +184,7 @@ describe("Umbra draft behavior", () => {
     )
     expect(checks).toEqual([5, 3, 4, 5])
     const bursts = rows.filter(row => row.step.skill === "BloodBurstDamage")
-    expect(bursts.map(row => row.startTime)).toEqual([0.48, 1.158977982])
+    expect(bursts.map(row => row.startTime)).toEqual([0.48, 1.063 + 0.095032667])
     const next = rows.find(row => row.step.skill === "InnerTrackSlash1")!
     expect(next.debuffs.get("UmbraBleeding")?.stack).toBe(2)
     expect((next.resources.SwordsZenith ?? 0) / 20).toBe(2)
@@ -269,18 +269,20 @@ describe("Umbra draft behavior", () => {
     expect(expandedSkillActionLayout("SweepAll", allSkillDefinitions).conditional).toBe(true)
   })
 
-  it.each(["SweepAll", "SweepAllWaterDrop", "SweepAllSpringSurge", "SweepAllRiverFlow"])(
-    "times %s's one hit and following cast at the selected cancel boundary",
-    skill => {
-      const rows = run(casts(skill, "InnerTrackSlash1"))
-      const sweep = rows.find(row => row.step.skill === skill)!
-      expect(sweep.actions.filter(action => action.type === "damage")).toHaveLength(1)
-      expect(sweep.resourceConsumption?.Endurance).toBe(40)
-      expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.resources.Endurance).toBe(60)
-      expect(sweep.actions.find(action => action.type === "damage")!.time).toBeCloseTo(0.304, 8)
-      expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.startTime).toBeCloseTo(0.304, 8)
-    },
-  )
+  it.each([
+    ["SweepAll", 0.26737638636363636],
+    ["SweepAllWaterDrop", 0.26737638636363636],
+    ["SweepAllSpringSurge", 0.30375544363636364],
+    ["SweepAllRiverFlow", 0.30375544363636364],
+  ] as const)("times %s's hit before the preserved cancel boundary", (skill, hitTime) => {
+    const rows = run(casts(skill, "InnerTrackSlash1"))
+    const sweep = rows.find(row => row.step.skill === skill)!
+    expect(sweep.actions.filter(action => action.type === "damage")).toHaveLength(1)
+    expect(sweep.resourceConsumption?.Endurance).toBe(40)
+    expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.resources.Endurance).toBe(60)
+    expect(sweep.actions.find(action => action.type === "damage")!.time).toBeCloseTo(hitTime, 8)
+    expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.startTime).toBeCloseTo(0.304, 8)
+  })
 
   it("resolves timed Sober Sorrow hits and its full or five-hit cancel boundary", () => {
     const rows = run(casts("SoberSorrow5Hits", "SoberSorrow", "InnerTrackSlash1"))
@@ -376,7 +378,7 @@ describe("Umbra draft behavior", () => {
     expect(authored[0].resourceConsumption?.Endurance).toBe(6)
     expect(authored[1].resources.Endurance).toBeCloseTo(89.8003, 8)
     const damage = authored[0].actions.find(action => action.type === "damage")!
-    expect(damage.time).toBeCloseTo(0.595977982, 8)
+    expect(damage.time).toBeCloseTo(0.594987652, 8)
     expect(authored[1].startTime).toBeCloseTo(1.447, 8)
     expect(authored[1].resourceConsumption?.Endurance).toBe(40)
     expect(authored[2].resourceConsumption?.Endurance).toBe(40)

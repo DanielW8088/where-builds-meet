@@ -178,12 +178,12 @@
         "attrCoef": 1.712176,
         "phyBonus": 474.4,
         "attrBonus": 258.4,
-        "time": 0.304
+        "time": 0.26737638636363636
       },
       {
         "type": "trigger",
         "value": "BloodBurstDamage",
-        "time": 0.304,
+        "time": 0.26737638636363636,
         "cooldown": 12,
         "requirement": [
           { "target": "self", "value": "EmpoweredRiverFlow" },
@@ -194,7 +194,7 @@
         "type": "addResource",
         "value": "Endurance",
         "amount": 20,
-        "time": 0.304,
+        "time": 0.26737638636363636,
         "cooldown": 12,
         "requirement": [
           { "target": "self", "value": "EmpoweredRiverFlow" },
@@ -215,11 +215,18 @@
     "editableCastTime": true,
     "action": [
       { "type": "consumeResource", "value": "Endurance", "amount": 40, "time": 0 },
-      { "type": "damage", "phyCoef": 2.14022, "attrCoef": 2.14022, "phyBonus": 593, "attrBonus": 323, "time": 0.304 },
+      {
+        "type": "damage",
+        "phyCoef": 2.14022,
+        "attrCoef": 2.14022,
+        "phyBonus": 593,
+        "attrBonus": 323,
+        "time": 0.30375544363636364
+      },
       {
         "type": "trigger",
         "value": "BloodBurstDamage",
-        "time": 0.304,
+        "time": 0.30375544363636364,
         "cooldown": 12,
         "requirement": [
           { "target": "self", "value": "EmpoweredRiverFlow" },
@@ -230,7 +237,7 @@
         "type": "addResource",
         "value": "Endurance",
         "amount": 20,
-        "time": 0.304,
+        "time": 0.30375544363636364,
         "cooldown": 12,
         "requirement": [
           { "target": "self", "value": "EmpoweredRiverFlow" },
@@ -265,13 +272,13 @@
         "attrCoef": 2.568264,
         "phyBonus": 711.6,
         "attrBonus": 387.6,
-        "time": 0.304
+        "time": 0.30375544363636364
       },
-      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 5, "time": 0.304 },
+      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 5, "time": 0.30375544363636364 },
       {
         "type": "trigger",
         "value": "BloodBurstDamage",
-        "time": 0.304,
+        "time": 0.30375544363636364,
         "cooldown": 12,
         "requirement": [
           { "target": "self", "value": "EmpoweredRiverFlow" },
@@ -282,7 +289,7 @@
         "type": "addResource",
         "value": "Endurance",
         "amount": 20,
-        "time": 0.304,
+        "time": 0.30375544363636364,
         "cooldown": 12,
         "requirement": [
           { "target": "self", "value": "EmpoweredRiverFlow" },

@@ -1278,8 +1278,11 @@ cancel timing remains unmeasured. The first-stage special imports all four
 hits and its 1.4s interrupt boundary. Sober Sorrow now uses all six exported
 hit markers and the 1.996s full-cast interrupt boundary. Its five-hit cancel
 uses a temporary boundary at the fifth hit (1.374300296s); actual cancel timing
-remains unmeasured. Sweep All uses the user-selected 0.304s first-hit and one-hit cancel boundary
-for all buff variants. Its exported animation route mapping remains unresolved.
+remains unmeasured. Sweep All retains its 0.304s one-hit cancel duration. The
+2026-10-21 14:51 export supplies first-hit markers at 0.26737638636363636s for
+basic/Water Drop and 0.30375544363636364s for Spring Surge/River Flow; the user
+confirmed this buff mapping. Damage and hit-attached effects use these markers
+without shortening casts.
 These remaining placeholders cannot validate the proposed sequence within 60s,
 cooldown readiness, effect coverage, or its named 38 BB count.
 
@@ -1299,6 +1302,13 @@ semantics are user-confirmed from combat comparison, rather than explicit
 tooltip ordering. Charged follow-ups expose one-hit and two-hit
 cancel variants; the rotation uses the one-hit variant. Their temporary cancel
 boundaries equal their last retained hit marker (0.22504647s or 0.68347914s).
+
+The 2026-10-21 14:51 export also moves Second Track Slash release's first hit
+to 0.094987652s and Inner Balance Strike III's follow-up hit to 0.095032667s.
+Their hit-attached Bleed and burst checks follow the corrected markers; existing
+cancel durations and combo transitions are preserved. The 38-BB preset's authored
+Qi thresholds retain their proportional placement against the corrected final-hit
+break anchor.
 
 Damage coverage and remaining omissions:
 

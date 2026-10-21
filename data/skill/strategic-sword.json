@@ -318,13 +318,13 @@
         "attrCoef": 0.625421412,
         "phyBonus": 0,
         "attrBonus": 0,
-        "time": 0.09597798199999999
+        "time": 0.095032667
       },
-      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 1, "time": 0.09597798199999999 },
+      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 1, "time": 0.095032667 },
       {
         "type": "trigger",
         "value": "StrategicSwordSpecialBloodBurst",
-        "time": 0.09597798199999999,
+        "time": 0.095032667,
         "requirement": [
           { "target": "target", "value": "UmbraBleeding", "stack": 5 },
           { "target": "self", "value": "SwordHorizonT0" }
@@ -499,9 +499,9 @@
         "attrCoef": 0.402924,
         "phyBonus": 111.6,
         "attrBonus": 60.75,
-        "time": 0.09597798200000002
+        "time": 0.094987652
       },
-      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 1, "time": 0.09597798200000002 },
+      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 1, "time": 0.094987652 },
       {
         "type": "damage",
         "phyCoef": 0.268616,
@@ -555,9 +555,9 @@
         "attrCoef": 0.402924,
         "phyBonus": 111.6,
         "attrBonus": 60.75,
-        "time": 0.09597798200000002
+        "time": 0.094987652
       },
-      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 1, "time": 0.09597798200000002 },
+      { "type": "apply", "target": "target", "value": "UmbraBleeding", "stack": 1, "time": 0.094987652 },
       {
         "type": "damage",
         "phyCoef": 0.268616,
