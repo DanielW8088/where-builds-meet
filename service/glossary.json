@@ -1,1 +1,12 @@
-{ "stat.allMysticDmgBoost": "全奇术增伤" }
+{
+  "keys": {
+    "stat.allMysticDmgBoost": "全奇术增伤",
+    "data.rotation.bellstrikeUmbra.dummy1Min37BbDh.name": "木桩1分钟37爆血・叶龙骧首",
+    "data.rotation.stonesplitStrength.mixedDummy1MinDoubleStab.name": "双切木桩1分钟双刺",
+    "data.rotation.stonesplitStrength.pureDummy1MinInfiniteVitality.name": "纯唐木桩1分钟无限精元",
+    "data.rotation.bamboocutWind.windDummy1MinIvNoDodge.name": "木桩1分钟无限精元不闪避",
+    "data.rotation.bamboocutDust.dustDummy1Min100pc.name": "木桩1分钟100%幻鸣",
+    "data.rotation.bamboocutKite.dummy1MinIvBp.name": "木桩1分钟无限精元断石之构"
+  },
+  "replace": { "木椿": "木桩" }
+}

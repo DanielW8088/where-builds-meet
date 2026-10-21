@@ -9,7 +9,7 @@ merges stay conflict-free.
 - `service/catalog.ts`: what a character editor can choose (paths, gear affixes and maximum rolls, sets, Inner Ways, food,
   scripts, Divinecraft, global buffs) with Simplified Chinese names.
 - `service/i18n.ts`: Simplified Chinese names derived from the Traditional Chinese catalog with OpenCC;
-  `service/glossary.json` overrides individual keys.
+  `service/glossary.json` overrides individual keys (`keys`) and fixes wrong wording everywhere (`replace`).
 - `service/server.ts`, `service/worker.ts`: HTTP routes, a worker-thread pool and a result cache.
 
 Build and run:
