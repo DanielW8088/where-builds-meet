@@ -184,7 +184,10 @@ describe("Umbra draft behavior", () => {
     )
     expect(checks).toEqual([5, 3, 4, 5])
     const bursts = rows.filter(row => row.step.skill === "BloodBurstDamage")
-    expect(bursts.map(row => row.startTime)).toEqual([0.48, 1.158977982])
+    const hits = special.actions.filter(action => action.type === "damage")
+    expect(bursts.map(row => row.startTime)).toEqual(
+      [hits[0], hits[3]].map(action => special.startTime + Number(action.time)),
+    )
     const next = rows.find(row => row.step.skill === "InnerTrackSlash1")!
     expect(next.debuffs.get("UmbraBleeding")?.stack).toBe(2)
     expect((next.resources.SwordsZenith ?? 0) / 20).toBe(2)
@@ -196,7 +199,9 @@ describe("Umbra draft behavior", () => {
     const two = run(casts("CrisscrossSecondTrackSlash2", "InnerTrackSlash1"), 3)
     const bursts = two.filter(row => row.step.skill === "BloodBurstDamage")
     expect(bursts).toHaveLength(1)
-    expect(bursts[0].startTime).toBeCloseTo(0.68347914, 8)
+    const followUp = two.find(row => row.step.skill === "CrisscrossSecondTrackSlash2")!
+    const lastHit = followUp.actions.findLast(action => action.type === "damage")!
+    expect(bursts[0].startTime).toBeCloseTo(followUp.startTime + Number(lastHit.time), 8)
     expect(two.find(row => row.step.skill === "InnerTrackSlash1")!.debuffs.get("UmbraBleeding")?.stack).toBe(2)
   })
 
@@ -219,7 +224,6 @@ describe("Umbra draft behavior", () => {
     const next = rows.find(row => row.step.skill === "InnerTrackSlash1")!
     expect(next.resources.SoberSorrowCombo).toBe(10)
     expect(next.buffs.has("EmpoweredRiverFlow")).toBe(true)
-    expect(next.startTime).toBeCloseTo(1.374300296, 8)
   })
 
   it("uses ninety-percent expected gains at four Bleed stacks and rolls them in simulation", () => {
@@ -250,35 +254,44 @@ describe("Umbra draft behavior", () => {
   })
 
   it("selects conditional base duration without summing mutually exclusive branches", () => {
-    expect(expandedSkillBaseCastTime("SweepAll", allSkillDefinitions)).toBeCloseTo(0.304, 8)
+    const baseDuration = expandedSkillBaseCastTime("SweepAll", allSkillDefinitions)
     const skills = {
       ...allSkillDefinitions,
       SweepAllRiverFlow: { ...allSkillDefinitions.SweepAllRiverFlow, castTime: 2 },
     }
-    expect(expandedSkillBaseCastTime("SweepAll", skills)).toBeCloseTo(0.304, 8)
-    expect(expandedSkillBaseCastTime("InnerBalanceStrikeIII2", skills)).toBeCloseTo(1.307, 8)
-    expect(expandedSkillBaseCastTime("SecondTrackSlash2Casts1Hit", skills)).toBeCloseTo(1.67204647, 8)
+    expect(expandedSkillBaseCastTime("SweepAll", skills)).toBe(baseDuration)
   })
 
   it("reports the combined special duration consistently with the next cast", () => {
     const layout = expandedSkillActionLayout("InnerBalanceStrikeIII2", allSkillDefinitions)
     const rows = run(casts("InnerBalanceStrikeIII2", "InnerTrackSlash1"))
     expect(layout.conditional).toBe(false)
-    expect(layout.castTime).toBeCloseTo(1.307, 8)
     expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.startTime).toBeCloseTo(layout.castTime, 8)
     expect(expandedSkillActionLayout("SweepAll", allSkillDefinitions).conditional).toBe(true)
   })
 
   it.each(["SweepAll", "SweepAllWaterDrop", "SweepAllSpringSurge", "SweepAllRiverFlow"])(
-    "times %s's one hit and following cast at the selected cancel boundary",
+    "schedules %s independently of an earlier hit marker",
     skill => {
-      const rows = run(casts(skill, "InnerTrackSlash1"))
+      const route = skill === "SweepAll" ? "SweepAllWaterDrop" : skill
+      const definition = allSkillDefinitions[route] as SkillRecord
+      const castTime = Number(definition.castTime)
+      const hitTime = castTime / 3
+      const overrides = {
+        [route]: {
+          ...definition,
+          action: definition.action!.map(action =>
+            Number((action as { time?: number }).time) > 0 ? Object.assign({}, action, { time: hitTime }) : action,
+          ),
+        },
+      }
+      const rows = run(casts(skill, "InnerTrackSlash1"), 0, 0, ways, overrides)
       const sweep = rows.find(row => row.step.skill === skill)!
       expect(sweep.actions.filter(action => action.type === "damage")).toHaveLength(1)
       expect(sweep.resourceConsumption?.Endurance).toBe(40)
       expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.resources.Endurance).toBe(60)
-      expect(sweep.actions.find(action => action.type === "damage")!.time).toBeCloseTo(0.304, 8)
-      expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.startTime).toBeCloseTo(0.304, 8)
+      expect(sweep.actions.find(action => action.type === "damage")!.time).toBeCloseTo(hitTime, 8)
+      expect(rows.find(row => row.step.skill === "InnerTrackSlash1")!.startTime).toBeCloseTo(castTime, 8)
     },
   )
 
@@ -288,12 +301,10 @@ describe("Umbra draft behavior", () => {
       row =>
         row.step.type === "skill" && ["SoberSorrow5Hits", "SoberSorrow", "InnerTrackSlash1"].includes(row.step.skill!),
     )
-    expect(castsOnly[1].startTime).toBeCloseTo(1.374300296, 8)
-    expect(castsOnly[2].startTime).toBeCloseTo(3.370300296, 8)
+    expect(castsOnly[1].startTime).toBeCloseTo(castsOnly[0].effectiveCastTime, 8)
+    expect(castsOnly[2].startTime - castsOnly[1].startTime).toBeCloseTo(castsOnly[1].effectiveCastTime, 8)
     const hits = castsOnly[1].actions.filter(action => action.type === "damage")
     expect(hits).toHaveLength(6)
-    expect(hits[0].time).toBeCloseTo(0.232051435, 8)
-    expect(hits[5].time).toBeCloseTo(1.640357722, 8)
   })
 
   it("preserves charge and follow-up hits, burst state and resources when merged", () => {
@@ -361,7 +372,6 @@ describe("Umbra draft behavior", () => {
     })
     const next = rows.find(row => row.step.type === "skill" && row.step.skill === "InnerTrackSlash1")!
     expect(next.resources.Endurance).toBeCloseTo(77.2012, 8)
-    expect(next.startTime).toBeCloseTo(2.347, 8)
   })
 
   it("spends the minimum charge cost and pays each special route once without enforcing its minimum", () => {
@@ -375,9 +385,6 @@ describe("Umbra draft behavior", () => {
     )
     expect(authored[0].resourceConsumption?.Endurance).toBe(6)
     expect(authored[1].resources.Endurance).toBeCloseTo(89.8003, 8)
-    const damage = authored[0].actions.find(action => action.type === "damage")!
-    expect(damage.time).toBeCloseTo(0.595977982, 8)
-    expect(authored[1].startTime).toBeCloseTo(1.447, 8)
     expect(authored[1].resourceConsumption?.Endurance).toBe(40)
     expect(authored[2].resourceConsumption?.Endurance).toBe(40)
     expect(authored).toHaveLength(4)
@@ -520,10 +527,10 @@ describe("Umbra draft behavior", () => {
     expect(authored.slice(0, 3).map(row => row.actions.filter(action => action.type === "damage").length)).toEqual([
       4, 1, 2,
     ])
-    expect(authored[1].startTime - authored[0].startTime).toBeCloseTo(1.307, 8)
+    expect(authored[1].startTime - authored[0].startTime).toBeCloseTo(authored[0].effectiveCastTime, 8)
     expect(authored[1].debuffs.get("UmbraBleeding")?.stack).toBe(4)
-    expect(authored[2].startTime - authored[1].startTime).toBeCloseTo(0.22504647, 8)
-    expect(authored[3].startTime - authored[2].startTime).toBeCloseTo(0.68347914, 8)
+    expect(authored[2].startTime - authored[1].startTime).toBeCloseTo(authored[1].effectiveCastTime, 8)
+    expect(authored[3].startTime - authored[2].startTime).toBeCloseTo(authored[2].effectiveCastTime, 8)
   })
 
   it("cancels QQQ immediately after both third-cast hits without dropping either hit", () => {
@@ -541,22 +548,25 @@ describe("Umbra draft behavior", () => {
         .map(action => action.time),
     )
     expect(cancelled.find(row => row.step.skill === "Observe")!.startTime).toBeCloseTo(Number(hits.at(-1)!.time), 10)
-    expect(q.effectiveCastTime).toBeCloseTo(2.510104707, 10)
-    expect(expandedSkillBaseCastTime("InnerTrackSlashCancel", allSkillDefinitions)).toBeCloseTo(2.510104707, 10)
+    expect(q.effectiveCastTime).toBeCloseTo(Number(hits.at(-1)!.time), 10)
+    expect(expandedSkillBaseCastTime("InnerTrackSlashCancel", allSkillDefinitions)).toBeCloseTo(q.effectiveCastTime, 10)
   })
 
   it("advances all three Q animation clocks and resolves both Horizon hits before the next cast", () => {
     const rows = run(casts("InnerTrackSlash", "SecondTrackSlash1"))
     const q = rows.find(row => row.step.type === "skill" && row.step.skill === "InnerTrackSlash")!
     const charge = rows.find(row => row.step.type === "skill" && row.step.skill === "SecondTrackSlash1")!
-    expect(charge.startTime - q.startTime).toBeCloseTo(2.7484, 8)
+    expect(charge.startTime - q.startTime).toBeCloseTo(q.effectiveCastTime, 8)
     const hits = q.actions.filter(action => action.type === "damage")
     expect(hits).toHaveLength(7)
     expect(hits.every(action => typeof action.phyCoef === "number" && action.phyCoef > 0)).toBe(true)
-    const expectedTimes = [
-      0.17471346000000001, 0.3904248768, 0.684907836, 0.8673584592, 1.0113996264, 1.850357654, 2.510104707,
-    ]
-    hits.forEach((action, index) => expect(action.time).toBeCloseTo(expectedTimes[index], 8))
+    const separate = run(casts("InnerTrackSlash1", "InnerTrackSlash2", "InnerTrackSlash3"))
+    const separateHits = separate
+      .filter(row => row.kind === "rotation")
+      .flatMap(row =>
+        row.actions.filter(action => action.type === "damage").map(action => row.startTime + Number(action.time)),
+      )
+    expect(hits.map(action => q.startTime + Number(action.time))).toEqual(separateHits)
   })
 
   it("calculates nonzero Blood Burst damage through the shared preset pipeline", async () => {

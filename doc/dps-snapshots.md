@@ -588,6 +588,21 @@ Special 1 hit in the changed post-flute sequence. Both presets measure 60 second
 | bellstrikeUmbra/dummy-1-min-38-bb/18    | 85334.27364913882 |  87699.8570634879 |     5120056.418948329 |     5261991.423809274 |
 | bellstrikeUmbra/dummy-1-min-38-bb/19    | 89769.16730002478 | 92262.43970756652 |     5386150.038001487 |     5535746.382453991 |
 
+## Reviewed Umbra hit markers (2026-10-21)
+
+The user accepted the October 21 14:51 export's hit timing corrections while
+preserving cast and cancel durations. The opening charge hit starts battle
+0.00099033 seconds earlier. In Dummy 1 Min 39 BB (`dummy-1-min-38-bb`), the final
+Bleed tick consequently moves from 59.999569962636336 to 60.000560292636336
+seconds and falls outside Battle End: 59 ticks remain instead of 60. Other
+preset snapshots are unchanged, including the Dragon Head variant. Duration
+remains 60 seconds.
+
+| Preset / breakthrough                |      Previous DPS |      Accepted DPS | Previous total damage | Accepted total damage |
+| ------------------------------------ | ----------------: | ----------------: | --------------------: | --------------------: |
+| bellstrikeUmbra/dummy-1-min-38-bb/18 |  87699.8570634879 | 87569.14402156408 |     5261991.423809274 |     5254148.641293844 |
+| bellstrikeUmbra/dummy-1-min-38-bb/19 | 92262.43970756652 | 92124.45752802271 |     5535746.382453991 |     5527467.451681362 |
+
 ## Accepted Deluge Ivorybloom builds (October 21, 2026)
 
 The user accepted both new Ivorybloom builds for release. Sixteen additional
